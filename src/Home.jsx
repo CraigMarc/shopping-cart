@@ -1,11 +1,16 @@
-function Home () {
+import { Header } from './Header'
 
-return (
-    <div>
-        <p>hello</p>
-    </div>
-)
 
+function Home() {
+
+    return (
+        <div>
+            <Header
+            />
+            <p>home</p>
+
+        </div>
+    )
 
 }
 
