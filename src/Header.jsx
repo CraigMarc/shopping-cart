@@ -8,6 +8,9 @@ function Header() {
                 <div>home page</div>
             </Link>
             <Link to="/shop">
+                <div>shop</div>
+            </Link>
+            <Link to="/cart">
                 <div>shopping cart</div>
             </Link>
         </header>

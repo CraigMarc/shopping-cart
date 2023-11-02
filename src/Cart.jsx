@@ -1,12 +1,12 @@
 import { Header } from './Header'
 
-function Shop() {
+function Cart() {
 
     return (
         <div>
             <Header
             />
-            <p>shop</p>
+            <p>shopping cart</p>
 
         </div>
     )
@@ -14,4 +14,4 @@ function Shop() {
 
 }
 
-export default Shop
+export default Cart
