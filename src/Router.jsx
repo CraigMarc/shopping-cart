@@ -7,22 +7,21 @@ import Cart from "./Cart"
 
 const Router = () => {
   const router = createBrowserRouter([
+    
     {
       path: "/",
-      element: <App />,
-      errorElement: <ErrorPage />,
-    },
-    {
-      path: "/home",
       element: <Home />,
+      errorElement: <ErrorPage />,
     },
     {
         path: "/shop",
         element: <Shop />,
+        errorElement: <ErrorPage />,
       },
       {
         path: "/cart",
         element: < Cart/>,
+        errorElement: <ErrorPage />,
       },
   ]);
 
