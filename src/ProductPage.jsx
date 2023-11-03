@@ -36,9 +36,9 @@ function ProductPage(props) {
         }
         console.log(quantity)
 
-        setCartItems({ id: uuid, title: itemTitle, price: itemPrice, quantity: quantity })
+        setCartItems([...cartItems, { id: uuid, title: itemTitle, price: itemPrice, quantity: quantity }])
 
-
+        
     }
     console.log(cartItems)
     return (
