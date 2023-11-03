@@ -11,7 +11,7 @@ import { Route, Routes } from "react-router-dom";
 
 function App() {
 
-  const [cartItems, setCartItems] = useState(['hello props'])
+  const [cartItems, setCartItems] = useState()
   const [apiItems, setApiItems] = useState()
 
   /*
@@ -72,7 +72,10 @@ fetch('https://fakestoreapi.com/products?limit=10')
         <Route
           path="/product"
           element={
-            <ProductPage apiItems={apiItems} setApiItems={setApiItems} />
+            <ProductPage 
+            apiItems={apiItems} setApiItems={setApiItems}
+            cartItems={cartItems} setCartItems={setCartItems}
+            />
           }
         ></Route>
 
