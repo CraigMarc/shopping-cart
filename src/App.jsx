@@ -12,6 +12,7 @@ import { Route, Routes } from "react-router-dom";
 function App() {
 
   const [cartItems, setCartItems] = useState(['hello props'])
+  const [apiItems, setApiItems] = useState()
 
   /*
 fetch('https://fakestoreapi.com/products?limit=10')
@@ -59,7 +60,7 @@ fetch('https://fakestoreapi.com/products?limit=10')
         <Route
           path="/shop"
           element={
-            <Shop cartItems={cartItems} setCartItems={setCartItems} />
+            <Shop apiItems={apiItems} setApiItems={setApiItems} />
           }
         ></Route>
         <Route
@@ -71,7 +72,7 @@ fetch('https://fakestoreapi.com/products?limit=10')
         <Route
           path="/product"
           element={
-            <ProductPage cartItems={cartItems} setCartItems={setCartItems} />
+            <ProductPage apiItems={apiItems} setApiItems={setApiItems} />
           }
         ></Route>
 

@@ -3,9 +3,16 @@ import { useState, useEffect } from 'react'
 import { Link } from "react-router-dom";
 
 
-function Shop() {
+function Shop(props) {
 
-  const [data, setData] = useState()
+  const {
+        
+    apiItems,
+    setApiItems
+
+} = props;
+
+  //const [data, setData] = useState()
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -17,8 +24,8 @@ function Shop() {
       const res = await fetch("https://fakestoreapi.com/products?limit=12")
 
       const productData = await res.json();
-      setData(productData)
-
+      //setData(productData)
+      setApiItems(productData)
 
     }
 
@@ -46,14 +53,15 @@ function Shop() {
   return (
     <div>
       <Header
-        data={data}
+        
       />
 
       <div className="product card">
-      <Link to="/product">
-        {data.map((index) => {
-
+      
+        {apiItems.map((index) => {
+         
           return (
+            <Link to="/product" state={index.id }>
             <div key={index.id}  id={index.id} className="card" >
 
               <img className="img" src={index.image}></img>
@@ -61,9 +69,10 @@ function Shop() {
               <p>${index.price}</p>
 
             </div>
+            </Link>
           )
         })}
-        </Link>
+        
       </div>
 
     </div>
