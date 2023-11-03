@@ -16,7 +16,7 @@ function ProductPage(props) {
     //get data from link
 
     const location = useLocation()
-    console.log(location.state)
+   
     let arrayNumber = location.state
 
     let itemTitle = apiItems[arrayNumber - 1].title
@@ -34,13 +34,14 @@ function ProductPage(props) {
         if (quantity == "") {
             quantity = 1
         }
-        console.log(quantity)
+        let total = quantity * itemPrice
+        let totalRounded = (Math.round(total * 100) / 100).toFixed(2);
 
-        setCartItems([...cartItems, { id: uuid, title: itemTitle, price: itemPrice, quantity: quantity }])
+        setCartItems([...cartItems, { id: uuid, title: itemTitle, price: itemPrice, quantity: quantity, total: totalRounded }])
 
         
     }
-    console.log(cartItems)
+    
     return (
         <div>
             <Header
