@@ -14,6 +14,15 @@ function Cart(props) {
 
     }
 
+    if (cartItems.length == 0) {
+        return (
+            <div>
+                <Header />
+                <p>cart is empty</p>
+            </div>
+        )
+    }
+
     function grandTotal(cartItems) {
         let cartTotal = 0
         for (let i = 0; i < cartItems.length; i++) {
@@ -23,14 +32,14 @@ function Cart(props) {
     }
 
     let cartGrandTotal = (Math.round(grandTotal(cartItems) * 100) / 100).toFixed(2);
-    
+
 
     const listCartItems = cartItems.map(data =>
         <div key={data.id}>
             <p>{data.title}</p>
             <p>{data.quantity}</p>
             <p>{data.total}</p>
-           
+
             <div className="deleteButtonContainer">
                 <button className="delete" value={data.id} onClick={handleDelete}>delete</button>
 
