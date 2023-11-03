@@ -15,8 +15,7 @@ function Header(props) {
 
     }
 
-    console.log(itemNumber)
-
+    
     return (
         <header>
             <Link to="/">
