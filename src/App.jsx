@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import Home from './Home'
 import Shop from './Shop'
 import Cart from './Cart'
+import ProductPage from './ProductPage'
 import './App.css'
 import { BrowserRouter } from 'react-router-dom';
 import { Route, Routes } from "react-router-dom";
@@ -67,10 +68,17 @@ fetch('https://fakestoreapi.com/products?limit=10')
             <Cart cartItems={cartItems} setCartItems={setCartItems} />
           }
         ></Route>
+        <Route
+          path="/product"
+          element={
+            <ProductPage cartItems={cartItems} setCartItems={setCartItems} />
+          }
+        ></Route>
+
       </Routes>
-      </BrowserRouter>
-      )  
-            
+    </BrowserRouter>
+  )
+
 }
 
-      export default App
+export default App

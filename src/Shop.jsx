@@ -1,5 +1,6 @@
 import { Header } from './Header'
 import { useState, useEffect } from 'react'
+import { Link } from "react-router-dom";
 
 
 function Shop() {
@@ -13,7 +14,7 @@ function Shop() {
 
     try {
       //return fetch(picUrl)
-      const res = await fetch("https://fakestoreapi.com/products?limit=10")
+      const res = await fetch("https://fakestoreapi.com/products?limit=12")
 
       const productData = await res.json();
       setData(productData)
@@ -24,8 +25,8 @@ function Shop() {
     catch (error) {
       console.error("There has been a problem with your fetch operation:", error);
       //add error message to dom
-      //setError("true")
-      //setFindPicsState(true)
+      setError("true")
+      
     }
     setLoading(false)
 
@@ -36,8 +37,9 @@ function Shop() {
     fetchInfo();
   }, [])
 
-  console.log(data)
+  //console.log(data)
   
+  //display error and loading for api call
   if (error) return <p>A network error was encountered</p>;
   if (loading) return <p>Loading...</p>;
 
@@ -48,6 +50,7 @@ function Shop() {
       />
 
       <div className="product card">
+      <Link to="/product">
         {data.map((index) => {
 
           return (
@@ -55,9 +58,12 @@ function Shop() {
 
               <img className="img" src={index.image}></img>
               <p>{index.title}</p>
+              <p>${index.price}</p>
+
             </div>
           )
         })}
+        </Link>
       </div>
 
     </div>
