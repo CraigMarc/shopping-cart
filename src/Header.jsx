@@ -8,7 +8,7 @@ function Header(props) {
         data,
 
     } = props;
-    console.log(data)
+    //console.log(data)
 
     return (
         <header>
