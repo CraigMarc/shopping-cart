@@ -6,13 +6,19 @@ function Cart(props) {
     const {
 
         cartItems,
+        setCartItems,
 
     } = props;
-    console.log(cartItems)
+    
 
-    function handleDelete() {
+   
 
-    }
+    const handleDelete = (event) => {
+        const id = event.target.value;
+        const newData = cartItems.filter((item) => item.id !== id)
+        setCartItems(newData);
+    
+      }
 
     if (cartItems.length == 0) {
         return (
@@ -26,13 +32,15 @@ function Cart(props) {
     function grandTotal(cartItems) {
         let cartTotal = 0
         for (let i = 0; i < cartItems.length; i++) {
-            cartTotal = cartItems[i].total + cartTotal
+            var toNumber = Number(cartItems[i].total)
+            cartTotal = toNumber + cartTotal
         }
         return cartTotal
     }
 
-    let cartGrandTotal = (Math.round(grandTotal(cartItems) * 100) / 100).toFixed(2);
-
+    let cartGrandTotal = grandTotal(cartItems)
+    let cartGrandTotalRound = Number(cartGrandTotal).toFixed(2);
+   
 
     const listCartItems = cartItems.map(data =>
         <div key={data.id}>
@@ -56,7 +64,7 @@ function Cart(props) {
             />
             <p>shopping cart</p>
             <div>{listCartItems}</div>
-            <div>{cartGrandTotal}</div>
+            <div>{cartGrandTotalRound}</div>
         </div>
     )
 
