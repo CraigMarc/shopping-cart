@@ -61,7 +61,7 @@ function Shop(props) {
         {apiItems.map((index) => {
          
           return (
-            <Link to="/product" state={index.id }>
+            <Link key={index.id} to="/product" state={index.id }>
             <div key={index.id}  id={index.id} className="card" >
 
               <img className="img" src={index.image}></img>

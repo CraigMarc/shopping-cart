@@ -53,6 +53,9 @@ fetch('https://fakestoreapi.com/products?limit=10')
     console.log(data)
   */
   return (
+
+   <div>
+   
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
@@ -81,6 +84,8 @@ fetch('https://fakestoreapi.com/products?limit=10')
 
       </Routes>
     </BrowserRouter>
+
+    </div>
   )
 
 }

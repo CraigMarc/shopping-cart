@@ -4,11 +4,18 @@ import { Link } from "react-router-dom";
 function Header(props) {
 
     const {
-        
-        data,
+
+        cartItems
 
     } = props;
-    //console.log(data)
+
+    let itemNumber = 0
+    if (cartItems != undefined) {
+        itemNumber = cartItems.length
+
+    }
+
+    console.log(itemNumber)
 
     return (
         <header>
@@ -19,12 +26,12 @@ function Header(props) {
                 <div>shop</div>
             </Link>
             <Link to="/cart">
-                <div>shopping cart</div>
-                
+                <div>{itemNumber} shopping cart</div>
+
             </Link>
         </header>
     )
 
 }
 
-export { Header };
+export { Header }

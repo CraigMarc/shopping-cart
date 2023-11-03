@@ -45,6 +45,7 @@ function ProductPage(props) {
     return (
         <div>
             <Header
+            cartItems={cartItems}
             />
             <h2>{itemTitle}</h2>
             <img className="img" src={itemImage}></img>
