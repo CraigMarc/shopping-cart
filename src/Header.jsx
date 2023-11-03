@@ -1,6 +1,14 @@
 import { Link } from "react-router-dom";
 
-function Header() {
+
+function Header(props) {
+
+    const {
+        
+        data,
+
+    } = props;
+    console.log(data)
 
     return (
         <header>
@@ -12,6 +20,7 @@ function Header() {
             </Link>
             <Link to="/cart">
                 <div>shopping cart</div>
+                
             </Link>
         </header>
     )

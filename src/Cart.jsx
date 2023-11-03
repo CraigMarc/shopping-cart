@@ -1,6 +1,15 @@
 import { Header } from './Header'
 
-function Cart() {
+
+function Cart(props) {
+
+    const {
+        
+        cartItems,
+
+    } = props;
+    console.log(cartItems)
+
 
     return (
         <div>
