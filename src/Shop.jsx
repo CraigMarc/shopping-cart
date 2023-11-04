@@ -53,7 +53,7 @@ function Shop(props) {
 
     if (error) return (
       <div>
-        <Header/>
+        <Header />
         <p>A network error was encountered</p>
       </div>
     )
@@ -68,25 +68,25 @@ function Shop(props) {
       <Header
         cartItems={cartItems}
       />
-
+      <h1>Our Products</h1>
       <div className="productCard">
 
         {apiItems.map((index) => {
 
           return (
-           
-           <div className="product">
-            <Link key={index.id} to="/product" state={index.id}>
-              <div key={index.id} id={index.id} className="card" >
 
-                <img className="img" src={index.image}></img>
-                <p>{index.title}</p>
-                <p>${index.price}</p>
+            <div className="product">
+              <Link key={index.id} to="/product" state={index.id}>
+                <div key={index.id} id={index.id} className="card" >
 
-              </div>
-            </Link>
-           </div>
-           
+                  <img className="img" src={index.image}></img>
+                  <p>{index.title}</p>
+                  <p>${index.price}</p>
+
+                </div>
+              </Link>
+            </div>
+
           )
         })}
 

@@ -3,7 +3,14 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 30px;
+    
 }
+
+.img {
+    height: 150px;
+    width: 100px
+  }
+  
 
 .product {
     height: 300px;
@@ -14,5 +21,15 @@
 
 .card {
     padding-top: 20px;
+    text-align: center;
+    
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+h1 {
     text-align: center;
 }
