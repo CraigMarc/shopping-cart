@@ -12,11 +12,21 @@ function ProductPage(props) {
 
     } = props;
 
+    if (apiItems == undefined) {
+        return (
+            <div>
+                <Header
+                    cartItems={cartItems}
+                />
+            </div>
+        )
+    }
+
 
     //get data from link
 
     const location = useLocation()
-   
+
     let arrayNumber = location.state
 
     let itemTitle = apiItems[arrayNumber - 1].title
@@ -39,34 +49,36 @@ function ProductPage(props) {
 
         setCartItems([...cartItems, { id: uuid, title: itemTitle, price: itemPrice, quantity: quantity, total: totalRounded }])
 
-        
-    }
-    
-    return (
-        <div>
-            <Header
-            cartItems={cartItems}
-            />
-            <h2>{itemTitle}</h2>
-            <img className="img" src={itemImage}></img>
-            <p>{itemDescription}</p>
-            <p>${itemPrice}</p>
-            <form id="edForm" onSubmit={handleProductSubmit}>
-                <label>
-                    Quantity {' '}
-                    <input
-                        id="quantity"
-                        type="number"
-                        name="quantity"
-                        min="1"
-                        placeholder='1'
-                    />
-                </label>
-                <input type="submit" value="Add to Cart" />
-            </form>
 
-        </div>
-    )
+    }
+
+    if (apiItems[arrayNumber - 1].title)
+
+        return (
+            <div>
+                <Header
+                    cartItems={cartItems}
+                />
+                <h2>{itemTitle}</h2>
+                <img className="img" src={itemImage}></img>
+                <p>{itemDescription}</p>
+                <p>${itemPrice}</p>
+                <form id="edForm" onSubmit={handleProductSubmit}>
+                    <label>
+                        Quantity {' '}
+                        <input
+                            id="quantity"
+                            type="number"
+                            name="quantity"
+                            min="1"
+                            placeholder='1'
+                        />
+                    </label>
+                    <input type="submit" value="Add to Cart" />
+                </form>
+
+            </div>
+        )
 
 
 }
