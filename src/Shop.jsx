@@ -13,43 +13,47 @@ function Shop(props) {
 
   } = props;
 
-  //const [data, setData] = useState()
+  if (apiItems == undefined) {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const fetchInfo = async (pics) => {
-    //setLoading(true)
+  
+    const fetchInfo = async (pics) => {
+      //setLoading(true)
 
-    try {
-      //return fetch(picUrl)
-      const res = await fetch("https://fakestoreapi.com/products?limit=12")
+      try {
+        //return fetch(picUrl)
+        const res = await fetch("https://fakestoreapi.com/products?limit=12")
 
-      const productData = await res.json();
-      //setData(productData)
-      setApiItems(productData)
+        const productData = await res.json();
+        //setData(productData)
+        setApiItems(productData)
+
+      }
+
+      catch (error) {
+        console.error("There has been a problem with your fetch operation:", error);
+        //add error message to dom
+        setError("true")
+
+      }
+      setLoading(false)
 
     }
 
-    catch (error) {
-      console.error("There has been a problem with your fetch operation:", error);
-      //add error message to dom
-      setError("true")
 
-    }
-    setLoading(false)
+    useEffect(() => {
+      fetchInfo();
+    }, [])
 
-  }
-
-
-  useEffect(() => {
-    fetchInfo();
-  }, [])
-
-  //console.log(data)
+  
 
   //display error and loading for api call
   if (error) return <p>A network error was encountered</p>;
   if (loading) return <p>Loading...</p>;
+  
+  }
+
 
   return (
     <div>
