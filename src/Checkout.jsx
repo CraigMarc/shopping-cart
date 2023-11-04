@@ -1,14 +1,15 @@
 import { Header } from './Header'
 import { useLocation } from 'react-router-dom';
 
-function Home(props) {
+function Checkout(props) {
 
 
     return (
         <div>
             <Header
+                cartItems={cartItems}
             />
-            <p>home</p>
+            <h2>Not a real store</h2>
 
 
         </div>
@@ -16,4 +17,4 @@ function Home(props) {
 
 }
 
-export default Home
+export default Checkout

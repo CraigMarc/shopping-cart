@@ -6,11 +6,12 @@ import { Link } from "react-router-dom";
 function Shop(props) {
 
   const {
-        
-    apiItems,
-    setApiItems
 
-} = props;
+    apiItems,
+    setApiItems,
+    cartItems
+
+  } = props;
 
   //const [data, setData] = useState()
   const [error, setError] = useState(null);
@@ -33,7 +34,7 @@ function Shop(props) {
       console.error("There has been a problem with your fetch operation:", error);
       //add error message to dom
       setError("true")
-      
+
     }
     setLoading(false)
 
@@ -45,7 +46,7 @@ function Shop(props) {
   }, [])
 
   //console.log(data)
-  
+
   //display error and loading for api call
   if (error) return <p>A network error was encountered</p>;
   if (loading) return <p>Loading...</p>;
@@ -53,26 +54,26 @@ function Shop(props) {
   return (
     <div>
       <Header
-        
+        cartItems={cartItems}
       />
 
       <div className="product card">
-      
+
         {apiItems.map((index) => {
-         
+
           return (
-            <Link key={index.id} to="/product" state={index.id }>
-            <div key={index.id}  id={index.id} className="card" >
+            <Link key={index.id} to="/product" state={index.id}>
+              <div key={index.id} id={index.id} className="card" >
 
-              <img className="img" src={index.image}></img>
-              <p>{index.title}</p>
-              <p>${index.price}</p>
+                <img className="img" src={index.image}></img>
+                <p>{index.title}</p>
+                <p>${index.price}</p>
 
-            </div>
+              </div>
             </Link>
           )
         })}
-        
+
       </div>
 
     </div>

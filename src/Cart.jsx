@@ -1,5 +1,6 @@
 import { Header } from './Header'
-
+import Checkout from './Checkout'
+import { Link } from "react-router-dom";
 
 function Cart(props) {
 
@@ -57,6 +58,14 @@ function Cart(props) {
 
     )
 
+    function handleCheckout () {
+        return (
+            <div>
+            <Checkout/>
+            </div>
+        )
+    }
+
 
     return (
         <div>
@@ -66,6 +75,12 @@ function Cart(props) {
             <p>shopping cart</p>
             <div>{listCartItems}</div>
             <div>{cartGrandTotalRound}</div>
+            
+            <Link to="/checkout">
+     <button type="button">
+          Check Out
+     </button>
+ </Link>
         </div>
     )
 
