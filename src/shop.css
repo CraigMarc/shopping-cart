@@ -1,0 +1,18 @@
+.productCard {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.product {
+    height: 300px;
+    width: 200px;
+    border: solid;
+    
+}
+
+.card {
+    padding-top: 20px;
+    text-align: center;
+}

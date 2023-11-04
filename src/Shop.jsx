@@ -1,6 +1,7 @@
 import { Header } from './Header'
 import { useState, useEffect } from 'react'
 import { Link } from "react-router-dom";
+import './shop.css'
 
 
 function Shop(props) {
@@ -68,11 +69,13 @@ function Shop(props) {
         cartItems={cartItems}
       />
 
-      <div className="product card">
+      <div className="productCard">
 
         {apiItems.map((index) => {
 
           return (
+           
+           <div className="product">
             <Link key={index.id} to="/product" state={index.id}>
               <div key={index.id} id={index.id} className="card" >
 
@@ -82,6 +85,8 @@ function Shop(props) {
 
               </div>
             </Link>
+           </div>
+           
           )
         })}
 
