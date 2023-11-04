@@ -1,5 +1,6 @@
 import { Header } from './Header'
 import { useLocation } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 function ProductPage(props) {
 
@@ -76,7 +77,12 @@ function ProductPage(props) {
                     </label>
                     <input type="submit" value="Add to Cart" />
                 </form>
-
+                <Link to="/shop">
+            <button>Continue Shopping</button>
+            </Link>
+            <Link to="/cart">
+            <button>Proceed to Checkout</button>
+            </Link>
             </div>
         )
 
