@@ -6,7 +6,8 @@ import Shop from './Shop'
 import Cart from './Cart'
 import Checkout from './Checkout'
 import ProductPage from './ProductPage'
-
+import ErrorPage from './ErrorPage'
+import Router from './Router'
 import './App.css'
 import { BrowserRouter } from 'react-router-dom';
 import { Route, Routes } from "react-router-dom";
@@ -17,6 +18,18 @@ function App() {
   //if api goes down data in assets data
   const [apiItems, setApiItems] = useState()
 
+return (
+  <div>
+    <Router
+    cartItems={cartItems}
+    setCartItems={setCartItems}
+    apiItems={apiItems}
+    setApiItems={setApiItems}
+    />
+  </div>
+)
+  
+/*
 
   return (
 
@@ -24,7 +37,12 @@ function App() {
 
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home></Home>}></Route>
+          <Route path="/" 
+          element={<Home></Home>}
+          errorElement={<ErrorPage />}
+          >
+
+          </Route>
 
           <Route
             path="/shop"
@@ -34,12 +52,14 @@ function App() {
               cartItems={cartItems}
               />
             }
+            errorElement={<ErrorPage />}
           ></Route>
           <Route
             path="/cart"
             element={
               <Cart cartItems={cartItems} setCartItems={setCartItems} />
             }
+            errorElement={<ErrorPage />}
           ></Route>
           <Route
             path="/product"
@@ -49,6 +69,7 @@ function App() {
                 cartItems={cartItems} setCartItems={setCartItems}
               />
             }
+            errorElement={<ErrorPage />}
          ></Route>
          <Route
             path="/checkout"
@@ -58,13 +79,14 @@ function App() {
                 cartItems={cartItems} setCartItems={setCartItems}
               />
             }
+            errorElement={<ErrorPage />}
          ></Route>
         </Routes>
       </BrowserRouter>
 
     </div>
   )
-
+*/
 }
 
 export default App

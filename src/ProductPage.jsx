@@ -78,11 +78,11 @@ function ProductPage(props) {
                     <input type="submit" value="Add to Cart" />
                 </form>
                 <Link to="/shop">
-            <button>Continue Shopping</button>
-            </Link>
-            <Link to="/cart">
-            <button>Proceed to Checkout</button>
-            </Link>
+                    <button>Continue Shopping</button>
+                </Link>
+                <Link to="/cart">
+                    <button>Proceed to Checkout</button>
+                </Link>
             </div>
         )
 

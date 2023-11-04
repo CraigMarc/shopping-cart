@@ -58,10 +58,10 @@ function Cart(props) {
 
     )
 
-    function handleCheckout () {
+    function handleCheckout() {
         return (
             <div>
-            <Checkout/>
+                <Checkout />
             </div>
         )
     }
@@ -75,12 +75,17 @@ function Cart(props) {
             <p>shopping cart</p>
             <div>{listCartItems}</div>
             <div>{cartGrandTotalRound}</div>
-            
+
+            <Link to="/shop">
+                <button>Continue Shopping</button>
+            </Link>
+
             <Link to="/checkout">
-     <button type="button">
-          Check Out
-     </button>
- </Link>
+                <button type="button">
+                    Check Out
+                </button>
+            </Link>
+            
         </div>
     )
 
