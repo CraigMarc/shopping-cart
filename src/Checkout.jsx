@@ -3,6 +3,13 @@ import { useLocation } from 'react-router-dom';
 
 function Checkout(props) {
 
+    const {
+
+       
+        cartItems
+    
+      } = props;
+
 
     return (
         <div>
