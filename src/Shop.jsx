@@ -14,10 +14,10 @@ function Shop(props) {
   } = props;
 
   if (apiItems == undefined) {
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true);
 
-  
+
     const fetchInfo = async (pics) => {
       //setLoading(true)
 
@@ -46,12 +46,19 @@ function Shop(props) {
       fetchInfo();
     }, [])
 
-  
 
-  //display error and loading for api call
-  if (error) return <p>A network error was encountered</p>;
-  if (loading) return <p>Loading...</p>;
-  
+
+    //display error and loading for api call
+
+    if (error) return (
+      <div>
+        <Header/>
+        <p>A network error was encountered</p>
+      </div>
+    )
+
+    if (loading) return <p>Loading...</p>;
+
   }
 
 
