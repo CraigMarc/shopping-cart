@@ -1,6 +1,7 @@
 import { Header } from './Header'
 import { useLocation } from 'react-router-dom'
 import { Link } from "react-router-dom";
+import './productPage.css'
 
 function ProductPage(props) {
 
@@ -60,29 +61,45 @@ function ProductPage(props) {
                 <Header
                     cartItems={cartItems}
                 />
-                <h2>{itemTitle}</h2>
-                <img className="img" src={itemImage}></img>
-                <p>{itemDescription}</p>
-                <p>${itemPrice}</p>
-                <form id="edForm" onSubmit={handleProductSubmit}>
-                    <label>
-                        Quantity {' '}
-                        <input
-                            id="quantity"
-                            type="number"
-                            name="quantity"
-                            min="1"
-                            placeholder='1'
-                        />
-                    </label>
-                    <input type="submit" value="Add to Cart" />
-                </form>
-                <Link to="/shop">
-                    <button>Continue Shopping</button>
-                </Link>
-                <Link to="/cart">
-                    <button>Proceed to Checkout</button>
-                </Link>
+                <div className="itemContainer">
+                    <div className="item">
+                        <h2>{itemTitle}</h2>
+                        <img className="img" src={itemImage}></img>
+                        <p>{itemDescription}</p>
+                        <p>${itemPrice}</p>
+                    </div>
+                </div>
+                <div className='formContainer'>
+                    <form id="edForm" onSubmit={handleProductSubmit}>
+                        <label>
+                            Quantity {' '}
+                            <input
+                                id="quantity"
+                                type="number"
+                                name="quantity"
+                                min="1"
+                                placeholder='1'
+                            />
+                        </label>
+
+                        <input type="submit" value="Add to Cart" />
+
+                    </form>
+                    <div className='productButton'>
+                        <Link to="/shop">
+                            <div className='shopButtonContainer'>
+                                <button>Continue Shopping</button>
+                            </div>
+                        </Link>
+                        <Link to="/cart">
+                            <div className='checkoutButtonContainer'>
+                                <button>Proceed to Checkout</button>
+                            </div>
+                        </Link>
+                    </div>
+                </div>
+
+
             </div>
         )
 
