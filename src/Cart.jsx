@@ -25,7 +25,7 @@ function Cart(props) {
         return (
             <div className='checkoutContainer'>
                 <Header />
-                <p>cart is empty</p>
+                <h1>cart is empty</h1>
             </div>
         )
     }

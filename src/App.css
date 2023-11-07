@@ -143,6 +143,9 @@ header {
   box-shadow: 0 0 10px grey;
   width: 70vw;
   text-align: center;
+  background-color: white;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .itemContainer {
@@ -180,6 +183,15 @@ form {
 
 label {
   padding-right: 20px;
+}
+
+#quantity {
+  width: 50px;
+  font-size: 17px;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+  opacity: 1
 }
 
 /*cart css*/
