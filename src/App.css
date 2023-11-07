@@ -121,7 +121,7 @@ header {
   gap: 5px;
 }
 
-a:hover {
+.heading:hover {
 
   border-bottom: solid;
   border-width: 2px;

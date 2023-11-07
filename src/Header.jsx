@@ -20,10 +20,10 @@ function Header(props) {
     return (
         <div className="headerDiv"> 
         <header>
-            <Link to="/">
+            <Link className="heading" to="/">
                 <div>Home Page</div>
             </Link>
-            <Link to="/shop">
+            <Link className="heading" to="/shop">
                 <div>Shop</div>
             </Link>
             <Link to="/cart">
