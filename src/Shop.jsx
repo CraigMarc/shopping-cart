@@ -68,30 +68,31 @@ function Shop(props) {
       <Header
         cartItems={cartItems}
       />
-      <h1>Our Products</h1>
-      <div className="productCard">
+      <div className='shopContainer'>
+        <h1>Our Products</h1>
+        <div className="productCard">
 
-        {apiItems.map((index) => {
+          {apiItems.map((index) => {
 
-          return (
+            return (
 
-            <div className="product">
-              <Link key={index.id} to="/product" state={index.id}>
-                <div key={index.id} id={index.id} className="card" >
+              <div className="product">
+                <Link key={index.id} to="/product" state={index.id}>
+                  <div key={index.id} id={index.id} className="card" >
 
-                  <img className="img" src={index.image}></img>
-                  <p>{index.title}</p>
-                  <p>${index.price}</p>
+                    <img className="img" src={index.image}></img>
+                    <p>{index.title}</p>
+                    <p>${index.price}</p>
 
-                </div>
-              </Link>
-            </div>
+                  </div>
+                </Link>
+              </div>
 
-          )
-        })}
+            )
+          })}
 
+        </div>
       </div>
-
     </div>
   )
 
