@@ -27,8 +27,8 @@ function Header(props) {
                 <div>Shop</div>
             </Link>
             <Link className="heading" to="/cart">
-                <div className="cartContainer">{itemNumber} <img className="shoppingCart" src={shoppingCart}></img></div>
-
+                <div className="cartContainer"><span className="itemNumber">{itemNumber}</span><img className="shoppingCart" src={shoppingCart}></img></div>
+                    
             </Link>
         </header>
         </div>

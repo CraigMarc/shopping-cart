@@ -16,8 +16,9 @@ function Checkout(props) {
             <Header
                 cartItems={cartItems}
             />
-            <h2>Not a real store</h2>
-
+            <div className='finalContainer'>
+            <h2>Not a real store so didn't make the checkout functional</h2>
+            </div>
 
         </div>
     )
