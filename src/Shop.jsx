@@ -1,7 +1,7 @@
 import { Header } from './Header'
 import { useState, useEffect } from 'react'
 import { Link } from "react-router-dom";
-import './shop.css'
+
 
 
 function Shop(props) {

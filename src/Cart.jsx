@@ -23,7 +23,7 @@ function Cart(props) {
 
     if (cartItems.length == 0) {
         return (
-            <div>
+            <div className='checkoutContainer'>
                 <Header />
                 <p>cart is empty</p>
             </div>
@@ -48,6 +48,7 @@ function Cart(props) {
             <p>{data.title}</p>
             <p>{data.quantity}</p>
             <p>{data.total}</p>
+            <img className="checkoutImg" src={data.image}></img>
 
             <div className="deleteButtonContainer">
                 <button className="delete" value={data.id} onClick={handleDelete}>delete</button>
@@ -72,6 +73,8 @@ function Cart(props) {
             <Header
                 cartItems={cartItems}
             />
+
+            <div className='checkoutContainer'>
             <p>shopping cart</p>
             <div>{listCartItems}</div>
             <div>{cartGrandTotalRound}</div>
@@ -85,7 +88,9 @@ function Cart(props) {
                     Check Out
                 </button>
             </Link>
-            
+            </div>
+
+
         </div>
     )
 
