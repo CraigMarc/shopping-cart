@@ -26,7 +26,7 @@ function Header(props) {
             <Link className="heading" to="/shop">
                 <div>Shop</div>
             </Link>
-            <Link to="/cart">
+            <Link className="heading" to="/cart">
                 <div className="cartContainer">{itemNumber} <img className="shoppingCart" src={shoppingCart}></img></div>
 
             </Link>
