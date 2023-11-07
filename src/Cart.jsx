@@ -46,9 +46,10 @@ function Cart(props) {
     const listCartItems = cartItems.map(data =>
         <div key={data.id}>
             <p>{data.title}</p>
+            <img className="checkoutImg" src={data.image}></img>
             <p>{data.quantity}</p>
             <p>{data.total}</p>
-            <img className="checkoutImg" src={data.image}></img>
+            
 
             <div className="deleteButtonContainer">
                 <button className="delete" value={data.id} onClick={handleDelete}>delete</button>

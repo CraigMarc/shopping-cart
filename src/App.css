@@ -127,8 +127,60 @@ a:hover {
   border-width: 2px;
 }
 
+/*product page css*/
+
+.productPageContainer {
+  padding-top: 80px;
+}
+
+.item {
+  border: solid;
+  width: 70vw;
+  text-align: center;
+}
+
+.itemContainer {
+  display: flex;
+  justify-content: center;
+}
+
+form {
+  padding-top: 10px;
+}
+
+.formContainer {
+  text-align: center;
+}
+
+.productButton {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.shopButtonContainer {
+  padding-top: 10px;
+}
+
+.checkoutButtonContainer {
+  padding-top: 10px;
+}
+
+.addToCartButton {
+  padding-right: 20px;
+}
+
+label {
+  padding-right: 20px;
+}
+
 /*cart css*/
 
 .checkoutContainer {
   padding-top: 50px;
+}
+
+.checkoutImg {
+  width: 100px;
+  height: 150px;
 }
