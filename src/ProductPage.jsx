@@ -87,7 +87,7 @@ function ProductPage(props) {
 
                         </form>
                         <div className='productButton'>
-                            <Link to="/shop">
+                            <Link to="/">
                                 <div className='shopButtonContainer'>
                                     <button>Continue Shopping</button>
                                 </div>

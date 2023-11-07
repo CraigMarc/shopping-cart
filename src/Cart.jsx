@@ -86,7 +86,7 @@ function Cart(props) {
                 <div className='subTotal'>Subtotal: ${cartGrandTotalRound}</div>
 
                 <div className='checkoutButtons'>
-                <Link to="/shop">
+                <Link to="/">
                     <button>Continue Shopping</button>
                 </Link>
 

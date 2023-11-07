@@ -20,12 +20,11 @@ function Header(props) {
     return (
         <div className="headerDiv"> 
         <header>
+            <h1>My Store</h1>
             <Link className="heading" to="/">
                 <div>Home</div>
             </Link>
-            <Link className="heading" to="/shop">
-                <div>Shop</div>
-            </Link>
+            
             <Link className="heading" to="/cart">
                 <div className="cartContainer"><span className="itemNumber">{itemNumber}</span><img className="shoppingCart" src={shoppingCart}></img></div>
                     

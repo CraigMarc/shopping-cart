@@ -18,14 +18,14 @@ const Router = (props) => {
   } = props;
 
   const router = createBrowserRouter([
-    
+    /*
     {
       path: "/",
       element: <Home />,
       errorElement: <ErrorPage />,
-    },
+    },*/
     {
-        path: "/shop",
+        path: "/",
         element:
           <Shop 
           apiItems={apiItems} 

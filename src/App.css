@@ -54,9 +54,11 @@ body {
 /*shop*/
 
 .shopContainer {
-  padding-top: 60px;
+  padding-top: 80px;
   background-color: #F5F5F5;
   padding-bottom: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 
@@ -106,10 +108,20 @@ h1 {
   top: 0;
   width: 100%;
   border: 0;
-  padding-bottom: 20px;
-  padding-top: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  
 }
 
+header > h1 {
+  margin: 0;
+}
+
+@media only screen and (max-width: 650px) {
+  header > h1 {
+    font-size: 20px;
+  }
+}
 
 header {
   display: flex;
@@ -117,6 +129,7 @@ header {
   gap: 40px;
   font-size: 20px;
   align-items: center;
+ 
 
 }
 
@@ -251,8 +264,8 @@ input[type=number]::-webkit-inner-spin-button {
 
 @media only screen and (max-width: 650px) {
   .cartCont {
-      width: 80vw;
-      
+    width: 80vw;
+
   }
 }
 
