@@ -54,6 +54,7 @@ body {
 
 .shopContainer {
   padding-top: 40px;
+  background-color: #F5F5F5;
 }
 
 
@@ -62,6 +63,7 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   gap: 30px;
+  
   
 }
 
@@ -74,8 +76,8 @@ body {
 .product {
   height: 300px;
   width: 200px;
-  border: solid;
-  
+  box-shadow: 0 0 10px grey;
+  background-color: white;
 }
 
 .card {
