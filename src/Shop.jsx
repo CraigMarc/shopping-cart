@@ -76,9 +76,9 @@ function Shop(props) {
 
             return (
 
-              <div className="product">
-                <Link key={index.id} to="/product" state={index.id}>
-                  <div key={index.id} id={index.id} className="card" >
+              <div key={index.id} className="product">
+                <Link  to="/product" state={index.id}>
+                  <div id={index.id} className="card" >
 
                     <img className="img" src={index.image}></img>
                     <p>{index.title}</p>
