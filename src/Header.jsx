@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import './header.css'
+import shoppingCart from './assets/shoppingCart.png';
 
 
 function Header(props) {
@@ -17,18 +19,20 @@ function Header(props) {
 
     
     return (
+        <div className="headerDiv"> 
         <header>
             <Link to="/">
-                <div>home page</div>
+                <div>Home Page</div>
             </Link>
             <Link to="/shop">
-                <div>shop</div>
+                <div>Shop</div>
             </Link>
             <Link to="/cart">
-                <div>{itemNumber} shopping cart</div>
+                <div className="cartContainer">{itemNumber} <img className="shoppingCart" src={shoppingCart}></img></div>
 
             </Link>
         </header>
+        </div>
     )
 
 }
