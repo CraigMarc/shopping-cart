@@ -45,16 +45,21 @@ function Cart(props) {
 
     const listCartItems = cartItems.map(data =>
         <div key={data.id}>
-            <p>{data.title}</p>
-            <img className="checkoutImg" src={data.image}></img>
-            <p>{data.quantity}</p>
-            <p>{data.total}</p>
-            
-
-            <div className="deleteButtonContainer">
+            <div className='cartCont'>
+                <div className='cartCont1'>
+                    <p>{data.title}</p>
+                    <img className="checkoutImg" src={data.image}></img>
+                </div>
+                <div className='cartCont2'>
+                    <p>quantity: {data.quantity}</p>
+                    <p>${data.total}</p>
+                </div>
+                <div className="deleteButtonContainer">
                 <button className="delete" value={data.id} onClick={handleDelete}>delete</button>
 
             </div>
+            </div>
+            
 
         </div>
 
@@ -76,19 +81,22 @@ function Cart(props) {
             />
 
             <div className='checkoutContainer'>
-            <p>shopping cart</p>
-            <div>{listCartItems}</div>
-            <div>{cartGrandTotalRound}</div>
+                <h1>Shopping Cart</h1>
+                <div>{listCartItems}</div>
+                <div className='subTotal'>Subtotal: ${cartGrandTotalRound}</div>
 
-            <Link to="/shop">
-                <button>Continue Shopping</button>
-            </Link>
+                <div className='checkoutButtons'>
+                <Link to="/shop">
+                    <button>Continue Shopping</button>
+                </Link>
 
-            <Link to="/checkout">
-                <button type="button">
-                    Check Out
-                </button>
-            </Link>
+                <Link to="/checkout">
+                    <button type="button">
+                        Check Out
+                    </button>
+                </Link>
+                </div>
+
             </div>
 
 

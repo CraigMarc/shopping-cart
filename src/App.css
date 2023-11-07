@@ -178,9 +178,49 @@ label {
 
 .checkoutContainer {
   padding-top: 50px;
+  text-align: center;
 }
 
 .checkoutImg {
-  width: 100px;
-  height: 150px;
+  width: 50px;
+  height: 75px;
+}
+
+
+.cartCont1 {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.cartCont2 {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.cartCont {
+  border-bottom: solid;
+  border-width: 2px;
+  width: 50%;
+  margin: auto;
+  padding-top: 10px;
+}
+
+.deleteButtonContainer {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.checkoutButtons {
+
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding-top: 30px;
+}
+
+.subTotal {
+  padding-top: 20px;
+  font-weight: bold;
 }
