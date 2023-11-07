@@ -53,7 +53,7 @@ body {
 /*shop*/
 
 .shopContainer {
-  padding-top: 40px;
+  padding-top: 60px;
   background-color: #F5F5F5;
 }
 
@@ -105,6 +105,7 @@ h1 {
   width: 100%;
   border: 0;
   padding-bottom: 20px;
+  padding-top: 20px;
 }
 
 
@@ -132,11 +133,12 @@ header {
 /*product page css*/
 
 .productPageContainer {
-  padding-top: 80px;
+  padding-top: 130px;
+  background-color: #F5F5F5;
 }
 
 .item {
-  border: solid;
+  box-shadow: 0 0 10px grey;
   width: 70vw;
   text-align: center;
 }
@@ -158,6 +160,8 @@ form {
   display: flex;
   justify-content: center;
   gap: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .shopButtonContainer {
@@ -179,8 +183,9 @@ label {
 /*cart css*/
 
 .checkoutContainer {
-  padding-top: 50px;
+  padding-top: 70px;
   text-align: center;
+  background-color: #F5F5F5;
 }
 
 .checkoutImg {
@@ -201,12 +206,18 @@ label {
   gap: 20px;
 }
 
+.cart2 {
+  margin: 20px;
+}
+
 .cartCont {
-  border-bottom: solid;
+  
   border-width: 2px;
   width: 50%;
   margin: auto;
   padding-top: 10px;
+  background-color: white;
+  box-shadow: 0 0 10px grey;
 }
 
 .deleteButtonContainer {

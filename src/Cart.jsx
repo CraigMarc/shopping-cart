@@ -44,7 +44,7 @@ function Cart(props) {
 
 
     const listCartItems = cartItems.map(data =>
-        <div key={data.id}>
+        <div className='cart2' key={data.id}>
             <div className='cartCont'>
                 <div className='cartCont1'>
                     <p>{data.title}</p>
