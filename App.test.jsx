@@ -14,6 +14,8 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import TestApp from "./src/TestApp";
 import { describe, it, expect } from 'vitest';
+import { MemoryRouter } from "react-router";
+//import Shop from ".src/Shop"
 
 describe("App component", () => {
   it("renders magnificent monkeys", () => {
@@ -32,3 +34,4 @@ describe("App component", () => {
     expect(screen.getByRole("heading").textContent).toMatch(/radical rhinos/i);
   });
 });
+
