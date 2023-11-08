@@ -14,7 +14,7 @@ function Header(props) {
 
     let itemNumber = 0
     if (cartItems != undefined) {
-        //itemNumber = cartItems.length
+       
         for (let i=0; i<cartItems.length; i++){
              let toNumber = Number(cartItems[i].quantity)
             itemNumber = itemNumber + toNumber
