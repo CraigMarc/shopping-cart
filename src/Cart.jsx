@@ -12,7 +12,7 @@ function Cart(props) {
     } = props;
 
 
-
+   
 
     const handleDelete = (event) => {
         const id = event.target.value;
