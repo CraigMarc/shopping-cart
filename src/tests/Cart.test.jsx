@@ -168,3 +168,34 @@ it('right number in cart', async () => {
 
     })
 
+    // test 8
+
+    it('header links to a checkout page', async () => {
+   
+        render(
+            <BrowserRouter >
+                <Cart 
+                cartItems={mockItems} />
+                 <Routes>
+              
+              <Route path="/" element={<h1>Home</h1>} />
+            </Routes>
+              
+            </BrowserRouter>
+        );
+    
+        const user = userEvent.setup();
+    
+        //const links = screen.getByTestId("home");
+        const links = screen.getByRole('link', { name: /home/i });
+        await user.click(links)
+        
+        
+        
+       expect(
+            screen.getByRole('heading', { level: 1, name: 'Home' }),
+        ).toBeInTheDocument();
+    });
+    
+    
+
