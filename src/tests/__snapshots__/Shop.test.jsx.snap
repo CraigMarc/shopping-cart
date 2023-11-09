@@ -27,6 +27,7 @@ exports[`renders home page 1`] = `
           >
             <span
               class="itemNumber"
+              data-testid="cartNumber"
             >
               0
             </span>

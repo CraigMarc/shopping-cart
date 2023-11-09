@@ -4,6 +4,7 @@ import userEvent from "@testing-library/user-event";
 import { describe, it, expect } from 'vitest';
 import Shop from "../Shop"
 import data from "../assets/data/data.json"
+
 import { BrowserRouter, Routes, Route, useParams } from 'react-router-dom';
 
 //test1
@@ -41,10 +42,16 @@ it("renders home page", () => {
     const { container } = render(
         <BrowserRouter >
         <Shop
-        apiItems={data} />
+        apiItems={data}
+        
+        />
        
       
     </BrowserRouter>
     );
     expect(container).toMatchSnapshot();
   });
+
+  //test3
+
+

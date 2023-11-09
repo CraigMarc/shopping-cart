@@ -32,7 +32,7 @@ function Header(props) {
             </Link>
             
             <Link className="heading" to="/cart">
-                <div className="cartContainer"><span className="itemNumber">{itemNumber}</span><img className="shoppingCart" src={shoppingCart}></img></div>
+                <div className="cartContainer"><span data-testid="cartNumber" className="itemNumber">{itemNumber}</span><img className="shoppingCart" src={shoppingCart}></img></div>
                     
             </Link>
         </header>

@@ -150,8 +150,21 @@ it('test empty cart', async () => {
 
 });
 
+// test 7
+
+it('right number in cart', async () => {
+
+    render(
+        <BrowserRouter>
+            <Cart cartItems={mockItems} />
+        </BrowserRouter>
+    );
+
+    const cartNumber = screen.getByTestId("cartNumber")
+   
 
 
+    expect(cartNumber).toContain(/3/i);
 
-
+    })
 
