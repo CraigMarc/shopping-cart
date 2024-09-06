@@ -24,13 +24,16 @@ function Shop(props) {
 
       try {
         //return fetch(picUrl)
-        const res = await fetch("https://fakestoreapi.com/products?limit=12")
+       // const res = await fetch("https://fakestoreapi.com/products?limit=12")
+        const res = await fetch("https://fakestoreapi.in/api/products?limit=12")
 
         const productData = await res.json();
+        console.log(productData.products)
         //setData(productData)
-        setApiItems(productData)
+        setApiItems(productData.products)
 
       }
+      
 
       catch (error) {
         console.error("There has been a problem with your fetch operation:", error);
@@ -47,7 +50,7 @@ function Shop(props) {
       fetchInfo();
     }, [])
 
-
+   
 
     //display error and loading for api call
 

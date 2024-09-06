@@ -78,8 +78,8 @@ body {
 
 
 .product {
-  height: 330px;
-  width: 200px;
+  height: 400px;
+  width: 300px;
   box-shadow: 0 0 10px grey;
   background-color: white;
 }
