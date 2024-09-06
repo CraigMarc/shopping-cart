@@ -1,12 +1,15 @@
 import { useState } from 'react'
 import Router from './Router'
 import './App.css'
+import fileJson from './assets/data/data2.json';
+
 
 
 function App() {
 
   const [cartItems, setCartItems] = useState([])
-  //if api goes down data in assets data
+  //if api goes down data in assets data use the following setstate
+  //const [apiItems, setApiItems] = useState(fileJson.products)
   const [apiItems, setApiItems] = useState()
 
 //send props to router so routes have them available
