@@ -46,7 +46,7 @@ function Shop(props) {
         const res = await fetch("https://fakestoreapi.in/api/products?limit=12")
 
         const productData = await res.json();
-       console.log(productData)
+       
         //setData(productData)
         setApiItems(productData.products)
 
