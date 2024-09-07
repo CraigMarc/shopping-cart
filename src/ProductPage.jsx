@@ -67,7 +67,7 @@ function ProductPage(props) {
                             <h2>{itemTitle}</h2>
                             <img className="img" src={itemImage}></img>
                             <p>{itemDescription}</p>
-                            <p>${itemPrice}</p>
+                            <p className="price">${itemPrice}.00</p>
                         </div>
                     </div>
                     <div className='formContainer'>

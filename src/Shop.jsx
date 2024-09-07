@@ -102,7 +102,7 @@ function Shop(props) {
 
                     <img className="img" src={index.image}></img>
                     <p>{index.title}</p>
-                    <p>${index.price}</p>
+                    <p className="price">${index.price}.00</p>
 
                   </div>
                 </Link>
