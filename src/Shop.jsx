@@ -43,7 +43,7 @@ function Shop(props) {
       try {
         //return fetch(picUrl)
        // const res = await fetch("https://fakestoreapi.com/products?limit=12")
-        const res = await fetch("https://fakestoreapi.in/api/products?limit=12")
+        const res = await fetch("https://fakestoreapi.in/api/products")
 
         const productData = await res.json();
       
