@@ -46,8 +46,7 @@ function Shop(props) {
         const res = await fetch("https://fakestoreapi.in/api/products?limit=12")
 
         const productData = await res.json();
-       
-        //setData(productData)
+      
         setApiItems(productData.products)
 
       }
@@ -79,7 +78,7 @@ function Shop(props) {
       </div>
     )
 
-    if (loading) return <p>Loading...</p>;
+    if (loading) return <p className="loading">Loading...</p>;
 
   }
 
