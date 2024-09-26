@@ -123,7 +123,15 @@ export default function App() {
 import {useStripe, useElements, PaymentElement, CardElement} from '@stripe/react-stripe-js';
 import { useState } from "react";
 
-const Checkout = () => {
+const Checkout = (props) => {
+
+  const {
+
+    cartState,
+    
+} = props;
+
+
   const stripe = useStripe();
   const elements = useElements();
 
@@ -162,7 +170,7 @@ const Checkout = () => {
     method: 'POST',
     body: JSON.stringify({
         currency: 'usd',
-        amount: 2000,
+        amount: cartState * 100,
     }),
    headers: {
         'Content-type': 'application/json; charset=UTF-8',

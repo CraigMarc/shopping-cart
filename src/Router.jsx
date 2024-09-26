@@ -17,12 +17,7 @@ const Router = (props) => {
 
 const stripePromise = loadStripe('pk_test_51Q0OsODmVJRVlYWkkRMV6XZ4NcD9VOVBEdsCb0ypBuBtQN4NL7bDDZFJETo7JwD7XA2uYNbTVqkk3A3Z115I1zaY00RVrJ1opv');
 
-const options = {
-  mode: 'payment',
-  amount: 1099,
-  currency: 'usd'
- 
-};
+
 
   const {
 
@@ -30,9 +25,20 @@ const options = {
     setApiItems,
     cartItems,
     setCartItems,
-   
+    cartState,
+    setCartState,
 
   } = props;
+
+ 
+  const options = {
+    mode: 'payment',
+    amount: cartState *100,
+    currency: 'usd'
+   
+  };
+
+ 
 
   const router = createBrowserRouter([
     /*
@@ -58,6 +64,8 @@ const options = {
         < Cart
         cartItems={cartItems}
         setCartItems={setCartItems}
+        cartState={cartState}
+        setCartState={setCartState}
         />,
         errorElement: <ErrorPage />,
       },
@@ -79,6 +87,7 @@ const options = {
         <Checkout
         cartItems={cartItems}
         setCartItems={setCartItems}
+        cartState={cartState}
         />
         </Elements>,
     

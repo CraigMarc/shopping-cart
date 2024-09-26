@@ -9,6 +9,8 @@ function Cart(props) {
 
         cartItems,
         setCartItems,
+        cartState,
+        setCartState,
 
     } = props;
 
@@ -34,15 +36,16 @@ function Cart(props) {
     function grandTotal(cartItems) {
         let cartTotal = 0
         for (let i = 0; i < cartItems.length; i++) {
-            var toNumber = Number(cartItems[i].total)
+            let toNumber = Number(cartItems[i].total)
             cartTotal = toNumber + cartTotal
         }
+        
         return cartTotal
     }
 
     let cartGrandTotal = grandTotal(cartItems)
     let cartGrandTotalRound = Number(cartGrandTotal).toFixed(2);
-
+    setCartState(cartGrandTotalRound)
 
     const listCartItems = cartItems.map(data =>
         <div className='cart2' key={data.id}>
@@ -69,7 +72,9 @@ function Cart(props) {
     function handleCheckout() {
         return (
             <div>
-                <Checkout />
+                <Checkout 
+               
+                />
             </div>
         )
     }
@@ -84,7 +89,7 @@ function Cart(props) {
             <div className='checkoutContainer'>
                 <h1>Shopping Cart</h1>
                 <div>{listCartItems}</div>
-                <div className='subTotal'>Subtotal: ${cartGrandTotalRound}</div>
+                <div className='subTotal'>Subtotal: ${cartState}</div>
 
                 <div className='checkoutButtons'>
                 <Link to="/">
@@ -96,6 +101,7 @@ function Cart(props) {
                         Check Out
                     </button>
                 </Link>
+               
                 </div>
 
             </div>
