@@ -1,6 +1,7 @@
 import { Header } from './Header'
 import Checkout from './Checkout'
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 
 function Cart(props) {
@@ -45,7 +46,11 @@ function Cart(props) {
 
     let cartGrandTotal = grandTotal(cartItems)
     let cartGrandTotalRound = Number(cartGrandTotal).toFixed(2);
-    setCartState(cartGrandTotalRound)
+
+    useEffect(() => {
+        setCartState(cartGrandTotalRound)
+      }, [cartItems]); 
+   
 
     const listCartItems = cartItems.map(data =>
         <div className='cart2' key={data.id}>
