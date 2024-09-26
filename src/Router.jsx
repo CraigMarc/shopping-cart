@@ -5,15 +5,32 @@ import ErrorPage from "./ErrorPage";
 import Cart from "./Cart"
 import Checkout from './Checkout'
 import ProductPage from './ProductPage'
+import Success from './Success'
+import {Elements} from '@stripe/react-stripe-js';
+import {loadStripe} from '@stripe/stripe-js';
+
+
+
+
 
 const Router = (props) => {
+
+const stripePromise = loadStripe('pk_test_51Q0OsODmVJRVlYWkkRMV6XZ4NcD9VOVBEdsCb0ypBuBtQN4NL7bDDZFJETo7JwD7XA2uYNbTVqkk3A3Z115I1zaY00RVrJ1opv');
+
+const options = {
+  mode: 'payment',
+  amount: 1099,
+  currency: 'usd'
+ 
+};
 
   const {
 
     apiItems,
     setApiItems,
     cartItems,
-    setCartItems
+    setCartItems,
+   
 
   } = props;
 
@@ -58,7 +75,21 @@ const Router = (props) => {
       {
         path: "/checkout",
         element: 
-        < Checkout
+        <Elements stripe={stripePromise} options={options}>
+        <Checkout
+        cartItems={cartItems}
+        setCartItems={setCartItems}
+        />
+        </Elements>,
+    
+        errorElement: <ErrorPage />,
+      },
+     
+
+      {
+        path: "/success",
+        element: 
+        < Success
         cartItems={cartItems}
         setCartItems={setCartItems}
         />,

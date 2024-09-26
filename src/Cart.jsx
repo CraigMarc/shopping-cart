@@ -2,6 +2,7 @@ import { Header } from './Header'
 import Checkout from './Checkout'
 import { Link } from "react-router-dom";
 
+
 function Cart(props) {
 
     const {

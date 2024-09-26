@@ -3,8 +3,6 @@ import Router from './Router'
 import './App.css'
 import fileJson from './assets/data/data2.json';
 
-
-
 function App() {
 
   const [cartItems, setCartItems] = useState([])
@@ -21,6 +19,7 @@ return (
     setCartItems={setCartItems}
     apiItems={apiItems}
     setApiItems={setApiItems}
+    
     />
   </div>
 )
