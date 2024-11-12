@@ -73,16 +73,16 @@ function Cart(props) {
         </div>
 
     )
-
+/*
     function handleCheckout() {
         return (
             <div>
-                <Checkout 
+                <Address 
                
                 />
             </div>
         )
-    }
+    }*/
 
 
     return (
@@ -101,7 +101,7 @@ function Cart(props) {
                     <button>Continue Shopping</button>
                 </Link>
 
-                <Link to="/checkout">
+                <Link to="/address">
                     <button type="button">
                         Check Out
                     </button>

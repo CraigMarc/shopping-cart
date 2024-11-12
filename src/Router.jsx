@@ -6,6 +6,7 @@ import Cart from "./Cart"
 import Checkout from './Checkout'
 import ProductPage from './ProductPage'
 import Success from './Success'
+import Address from './Address'
 import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
 
@@ -101,6 +102,15 @@ const stripePromise = loadStripe('pk_test_51Q0OsODmVJRVlYWkkRMV6XZ4NcD9VOVBEdsCb
         < Success
         cartItems={cartItems}
         setCartItems={setCartItems}
+        />,
+        errorElement: <ErrorPage />,
+      },
+
+      {
+        path: "/address",
+        element: 
+        < Address
+       
         />,
         errorElement: <ErrorPage />,
       },
