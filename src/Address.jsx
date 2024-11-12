@@ -29,13 +29,11 @@ const Address = () => {
                 destinationEntryFacilityType: "NONE",
                 priceType: "COMMERCIAL",
                 mailingDate: "2021-07-01"
-               
-
-
             }),
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
             },
+           
         })
 
 
