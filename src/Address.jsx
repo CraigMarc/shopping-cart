@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Address = () => {
 
@@ -7,11 +7,43 @@ const Address = () => {
     const [state, setState] = useState()
     const [zip, setZip] = useState()
     const [town, setTown] = useState()
+    const [token, setToken] = useState()
+    const [loading, setLoading] = useState()
 
+    // get token
+
+    
+    const fetchInfo = async (pics) => {
+        //setLoading(true)
+  
+        try {
+          const res = await fetch("https://api.usps.com/oauth2/v3/token")
+  
+          const tokenData = await res.json();
+        
+          setToken(tokenData)
+  
+        }
+        
+  
+        catch (error) {
+          console.error("There has been a problem with your fetch operation:", error);
+          //add error message to dom
+          //setError("true")
+  
+        }
+        setLoading(false)
+  
+      }
+  
+  
+      useEffect(() => {
+        fetchInfo();
+      }, [])
+  
+console.log(token)
     const handleSubmit = async e => {
         e.preventDefault();
-
-
 
         //send form data
         await fetch("https://api.usps.com/prices/v3/base-rates/search", {
