@@ -12,36 +12,51 @@ const Address = () => {
 
     // get token
 
-    
-    const fetchInfo = async (pics) => {
+
+    const fetchInfo = async () => {
         //setLoading(true)
-  
+
         try {
-          const res = await fetch("https://api.usps.com/oauth2/v3/token")
-  
-          const tokenData = await res.json();
-        
-          setToken(tokenData)
-  
+         
+                const res = await fetch("https://api.usps.com/oauth2/v3/token", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    // body: '{\r\n\t\t"client_id": "{{CLIENT_ID}}",\r\n\t\t"client_secret": "{{CLIENT_SECRET}}",\r\n\t\t"grant_type": "client_credentials"\r\n\t\t}',
+                    body: JSON.stringify({
+                       
+                        
+                    }),
+                    mode: 'no-cors',
+                });
+
+            const tokenData = await res.json();
+
+            setToken(tokenData)
+
         }
-        
-  
+
+
         catch (error) {
-          console.error("There has been a problem with your fetch operation:", error);
-          //add error message to dom
-          //setError("true")
-  
+            console.error("There has been a problem with your fetch operation:", error);
+            //add error message to dom
+            //setError("true")
+
         }
         setLoading(false)
-  
-      }
-  
-  
-      useEffect(() => {
+
+    }
+
+
+    useEffect(() => {
         fetchInfo();
-      }, [])
-  
-console.log(token)
+    }, [])
+
+    console.log(token)
+
+    // submit info for shipping price
+
     const handleSubmit = async e => {
         e.preventDefault();
 
@@ -52,9 +67,9 @@ console.log(token)
                 originZIPCode: "22407",
                 destinationZIPCode: "63118",
                 weight: 5,
-                length: 0,
-                width: 0,
-                height: 0,
+                length: 3,
+                width: 2,
+                height: 1,
                 mailClass: "USPS_GROUND_ADVANTAGE",
                 processingCategory: "MACHINABLE",
                 rateIndicator: "SP",
@@ -65,26 +80,26 @@ console.log(token)
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
             },
-           
+
         })
 
 
 
             .then((response) => response.json())
             .then((data) => {
-               console.log(data)
+                console.log(data)
 
             })
 
 
             .catch((err) => {
                 console.log(err.message);
-/*
-                if (err.message.includes("Unauthorized")) {
-                    sessionStorage.removeItem("token");
-                    sessionStorage.removeItem("userName");
-                    navigate('/login')
-                }*/
+                /*
+                                if (err.message.includes("Unauthorized")) {
+                                    sessionStorage.removeItem("token");
+                                    sessionStorage.removeItem("userName");
+                                    navigate('/login')
+                                }*/
 
             });
 
