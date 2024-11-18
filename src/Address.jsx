@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 
 const Address = () => {
 
+
+    const [firstName, setFirstName] = useState()
+    const [lastName, setLastName] = useState()
     const [address1, setAddress1] = useState()
     const [address2, setAddress2] = useState()
     const [state, setState] = useState()
@@ -68,6 +71,14 @@ const Address = () => {
             <form onSubmit={handleSubmit}>
                 <div className="newAddressContainer">
                     <div>
+                    <label>
+                            First Name
+                            <input type="text" required onChange={e => setFirstName(e.target.value)} />
+                        </label>
+                        <label>
+                            Last Name
+                            <input type="text" required onChange={e => setLastName(e.target.value)} />
+                        </label>
                         <label>
                             Address Line 1
                             <input type="text" required onChange={e => setAddress1(e.target.value)} />
