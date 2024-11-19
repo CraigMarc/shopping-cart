@@ -73,16 +73,6 @@ function Cart(props) {
         </div>
 
     )
-/*
-    function handleCheckout() {
-        return (
-            <div>
-                <Address 
-               
-                />
-            </div>
-        )
-    }*/
 
 
     return (

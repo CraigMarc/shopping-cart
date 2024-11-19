@@ -12,30 +12,34 @@ const Summary = (props) => {
 
   let orderTotal = order.price + order.shipping
 
-  console.log(order)
 // add other stuff and fix total when switch api ***********************
   return (
     <div className="error">
       <h1>Order Summary</h1>
 
-      {order.items.map((index) => {
+{cartItems.map((data) => {
 
-        return (
+return (
 
-          <div key={index.id} className="product">
+  <div className='cart2' key={data.id}>
+  <div className='cartCont'>
+      <div className='cartCont1'>
+          <p>{data.title}</p>
+          <img className="checkoutImg" src={data.image}></img>
+      </div>
+      <div className='cartCont2'>
+          <p>quantity: {data.quantity}</p>
+          <p>${data.total}</p>
+      </div>
+     
+  </div>
+  
 
-            <div id={index.id} className="card" >
+</div>
 
-
-              <p>{index.title}</p>
-
-
-            </div>
-
-          </div>
-
-        )
-      })}
+)
+})}
+    
       <p>{order.firstName} {order.lastName}</p>
       <p>{order.address1}</p>
       <p>{order.address2}</p>
