@@ -5,6 +5,7 @@ import ErrorPage from "./ErrorPage";
 import Cart from "./Cart"
 import Checkout from './Checkout'
 import ProductPage from './ProductPage'
+import Summary from './Summary'
 import Success from './Success'
 import Address from './Address'
 import {Elements} from '@stripe/react-stripe-js';
@@ -28,6 +29,8 @@ const stripePromise = loadStripe('pk_test_51Q0OsODmVJRVlYWkkRMV6XZ4NcD9VOVBEdsCb
     setCartItems,
     cartState,
     setCartState,
+    order,
+    setOrder
 
   } = props;
 
@@ -110,10 +113,26 @@ const stripePromise = loadStripe('pk_test_51Q0OsODmVJRVlYWkkRMV6XZ4NcD9VOVBEdsCb
         path: "/address",
         element: 
         < Address
-       
+       order={order}
+       setOrder={setOrder}
+       cartState={cartState}
+       cartItems={cartItems}
         />,
         errorElement: <ErrorPage />,
       },
+
+      {
+        path: "/summary",
+        element: 
+        < Summary
+       order={order}
+       setOrder={setOrder}
+       cartState={cartState}
+       cartItems={cartItems}
+        />,
+        errorElement: <ErrorPage />,
+      },
+
 
   ]);
 
