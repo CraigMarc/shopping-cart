@@ -208,7 +208,7 @@ let totalPrice = order.shipping + cartNum
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className='paymentForm' onSubmit={handleSubmit}>
       <PaymentElement />
       <button type="submit" disabled={!stripe || loading}>
         Submit Payment
