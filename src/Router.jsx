@@ -89,6 +89,7 @@ const stripePromise = loadStripe('pk_test_51Q0OsODmVJRVlYWkkRMV6XZ4NcD9VOVBEdsCb
         element: 
         <Elements stripe={stripePromise} options={options}>
         <Checkout
+        order={order}
         cartItems={cartItems}
         setCartItems={setCartItems}
         cartState={cartState}

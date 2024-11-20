@@ -128,9 +128,14 @@ const Checkout = (props) => {
   const {
 
     cartState,
+    order
     
 } = props;
 
+let cartNum = Number(cartState)
+
+
+let totalPrice = order.shipping + cartNum
 
   const stripe = useStripe();
   const elements = useElements();
@@ -170,7 +175,7 @@ const Checkout = (props) => {
     method: 'POST',
     body: JSON.stringify({
         currency: 'usd',
-        amount: cartState * 100,
+        amount: totalPrice * 100,
     }),
    headers: {
         'Content-type': 'application/json; charset=UTF-8',

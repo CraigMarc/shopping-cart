@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Summary = (props) => {
 
   const {
@@ -10,36 +12,38 @@ const Summary = (props) => {
 
   } = props;
 
-  let orderTotal = order.price + order.shipping
+  let orderNum = Number(order.price)
 
-// add other stuff and fix total when switch api ***********************
+  let orderTotal = orderNum + order.shipping
+
+  // add other stuff and fix total when switch api ***********************
   return (
     <div className="error">
       <h1>Order Summary</h1>
 
-{cartItems.map((data) => {
+      {cartItems.map((data) => {
 
-return (
+        return (
 
-  <div className='cart2' key={data.id}>
-  <div className='cartCont'>
-      <div className='cartCont1'>
-          <p>{data.title}</p>
-          <img className="checkoutImg" src={data.image}></img>
-      </div>
-      <div className='cartCont2'>
-          <p>quantity: {data.quantity}</p>
-          <p>${data.total}</p>
-      </div>
-     
-  </div>
-  
+          <div className='cart2' key={data.id}>
+            <div className='cartCont'>
+              <div className='cartCont1'>
+                <p>{data.title}</p>
+                <img className="checkoutImg" src={data.image}></img>
+              </div>
+              <div className='cartCont2'>
+                <p>quantity: {data.quantity}</p>
+                <p>${data.total}</p>
+              </div>
 
-</div>
+            </div>
 
-)
-})}
-    
+
+          </div>
+
+        )
+      })}
+
       <p>{order.firstName} {order.lastName}</p>
       <p>{order.address1}</p>
       <p>{order.address2}</p>
@@ -47,7 +51,16 @@ return (
       <p>subtotal: {order.price}</p>
       <p>shipping: {order.shipping}</p>
       <p>order total: {orderTotal}</p>
+
+      <Link to="/checkout">
+        <button type="button">
+          Proceed to Payment
+        </button>
+      </Link>
+
     </div>
+
+
   );
 };
 
