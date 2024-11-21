@@ -43,15 +43,15 @@ const Summary = (props) => {
 
         )
       })}
-
-      <p>{order.firstName} {order.lastName}</p>
-      <p>{order.address1}</p>
-      <p>{order.address2}</p>
-      <p>{order.email}</p>
-      <p>subtotal: {order.price}</p>
-      <p>shipping: {order.shipping}</p>
-      <p>order total: {orderTotal}</p>
-
+      <div className="orderContainer">
+        <p className="pItems">{order.firstName} {order.lastName}</p>
+        <p className="pItems">{order.address1}</p>
+        <p className="pItems">{order.address2}</p>
+        <p className="pItems">{order.email}</p>
+        <p className="pItems">subtotal: {order.price}</p>
+        <p className="pItems">shipping: {order.shipping}</p>
+        <p className="total">order total: {orderTotal}</p>
+      </div>
       <Link to="/checkout">
         <button type="button">
           Proceed to Payment

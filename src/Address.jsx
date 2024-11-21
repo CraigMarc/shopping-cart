@@ -94,42 +94,35 @@ const Address = (props) => {
 
     return (
         <div>
-            <p>address</p>
+    
             <form onSubmit={handleSubmit}>
                 <div className="newAddressContainer">
                     <div>
-                        <label>
-                            First Name
-                            <input type="text" required onChange={e => setFirstName(e.target.value)} />
-                        </label>
-                        <label>
-                            Last Name
-                            <input type="text" required onChange={e => setLastName(e.target.value)} />
-                        </label>
-                        <label>
-                            Email
-                            <input type="email" required onChange={e => setEmail(e.target.value)} />
-                        </label>
-                        <label>
-                            Address Line 1
-                            <input type="text" required onChange={e => setAddress1(e.target.value)} />
-                        </label>
-                        <label>
-                            Address Line 2
-                            <input type="text" onChange={e => setAddress2(e.target.value)} />
-                        </label>
-                        <label>
-                            Town
-                            <input type="text" required onChange={e => setTown(e.target.value)} />
-                        </label>
-                        <label>
-                            State
-                            <input type="text" required onChange={e => setState(e.target.value)} />
-                        </label>
-                        <label>
-                            Zip Code
-                            <input type="text" required onChange={e => setZip(e.target.value)} />
-                        </label>
+                        <label>First Name</label>
+                        <input type="text" required onChange={e => setFirstName(e.target.value)} />
+
+                        <label>Last Name</label>
+                        <input type="text" required onChange={e => setLastName(e.target.value)} />
+
+                        <label>Email </label>
+                        <input type="email" required onChange={e => setEmail(e.target.value)} />
+
+                        <label>Address Line 1</label>
+                        <input type="text" required onChange={e => setAddress1(e.target.value)} />
+
+                        <label>Address Line 2</label>
+                        <input type="text" onChange={e => setAddress2(e.target.value)} />
+
+                        <label>Town</label>
+                        <input type="text" required onChange={e => setTown(e.target.value)} />
+
+                        <label>State</label>
+
+                        <input type="text" required onChange={e => setState(e.target.value)} />
+
+                        <label>Zip Code</label>
+                        <input type="text" required onChange={e => setZip(e.target.value)} />
+
                     </div>
                     <div className="submitAddress">
                         <input type="submit" />
