@@ -25,6 +25,8 @@ const Address = (props) => {
     const [zip, setZip] = useState()
     const [town, setTown] = useState()
 
+    console.log(cartItems[0].weight)
+
 
     // submit info for shipping price
 
@@ -34,7 +36,7 @@ const Address = (props) => {
         //send form data
         await fetch("http://localhost:3000/users/usps", {
             method: 'POST',
-            //************ add weight and length later from db */
+            //************ add weight and length later from db  and add all values together/
             body: JSON.stringify({
                 originZIPCode: "22407",
                 destinationZIPCode: zip,

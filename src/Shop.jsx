@@ -46,7 +46,7 @@ function Shop(props) {
         // const res = await fetch("https://fakestoreapi.in/api/products")
 
         const productData = await res.json();
-        console.log(productData)
+      
         setApiItems(productData)
 
       }
@@ -97,7 +97,7 @@ function Shop(props) {
 
             return (
 
-              <div key={index.id} className="product">
+              <div key={iter} className="product">
                 <Link to="/product" state={iter}>
                   <div id={index.id} className="card" >
 

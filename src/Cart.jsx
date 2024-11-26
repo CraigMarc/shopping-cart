@@ -16,7 +16,7 @@ function Cart(props) {
     } = props;
 
 
-   
+
 
     const handleDelete = (event) => {
         const id = event.target.value;
@@ -40,7 +40,7 @@ function Cart(props) {
             let toNumber = Number(cartItems[i].total)
             cartTotal = toNumber + cartTotal
         }
-        
+
         return cartTotal
     }
 
@@ -49,30 +49,43 @@ function Cart(props) {
 
     useEffect(() => {
         setCartState(cartGrandTotalRound)
-      }, [cartItems]); 
-   
+    }, [cartItems]);
 
-    const listCartItems = cartItems.map(data =>
-        <div className='cart2' key={data.id}>
-            <div className='cartCont'>
-                <div className='cartCont1'>
-                    <p>{data.title}</p>
-                    <img className="checkoutImg" src={data.image}></img>
-                </div>
-                <div className='cartCont2'>
-                    <p>quantity: {data.quantity}</p>
-                    <p>${data.total}</p>
-                </div>
-                <div className="deleteButtonContainer">
-                <button className="delete" value={data.id} onClick={handleDelete}>delete</button>
 
+    const listCartItems = () => {
+        return (
+            <div>
+                {cartItems.map((data, iter) => {
+
+                    let url = `http://localhost:3000/uploads/${data.image}`
+
+                    return (
+                        <div className='cart2' key={data.id}>
+                            <div className='cartCont'>
+                                <div className='cartCont1'>
+                                    <p>{data.title}</p>
+                                    <img className="checkoutImg" src={url}></img>
+                                </div>
+                                <div className='cartCont2'>
+                                    <p>quantity: {data.quantity}</p>
+                                    <p>${data.total}</p>
+                                </div>
+                                <div className="deleteButtonContainer">
+                                    <button className="delete" value={data.id} onClick={handleDelete}>delete</button>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    )
+
+                })}
             </div>
-            </div>
-            
+        )
+    }
 
-        </div>
-
-    )
 
 
     return (
@@ -83,20 +96,20 @@ function Cart(props) {
 
             <div className='checkoutContainer'>
                 <h1>Shopping Cart</h1>
-                <div>{listCartItems}</div>
+                <div>{listCartItems()}</div>
                 <div className='subTotal'>Subtotal: ${cartState}</div>
 
                 <div className='checkoutButtons'>
-                <Link to="/">
-                    <button>Continue Shopping</button>
-                </Link>
+                    <Link to="/">
+                        <button>Continue Shopping</button>
+                    </Link>
 
-                <Link to="/address">
-                    <button type="button">
-                        Check Out
-                    </button>
-                </Link>
-               
+                    <Link to="/address">
+                        <button type="button">
+                            Check Out
+                        </button>
+                    </Link>
+
                 </div>
 
             </div>

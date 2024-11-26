@@ -24,13 +24,15 @@ const Summary = (props) => {
 
       {cartItems.map((data) => {
 
+        let url = `http://localhost:3000/uploads/${data.image}`
+
         return (
 
           <div className='cart2' key={data.id}>
             <div className='cartCont'>
               <div className='cartCont1'>
                 <p>{data.title}</p>
-                <img className="checkoutImg" src={data.image}></img>
+                <img className="checkoutImg" src={url}></img>
               </div>
               <div className='cartCont2'>
                 <p>quantity: {data.quantity}</p>

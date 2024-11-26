@@ -30,12 +30,14 @@ function ProductPage(props) {
     const location = useLocation()
 
     let arrayNumber = location.state
-    console.log(arrayNumber)
-    console.log(apiItems[arrayNumber].title)
-
+  
     let itemTitle = apiItems[arrayNumber].title
     let itemDescription = apiItems[arrayNumber].description
     let itemPrice = apiItems[arrayNumber].price
+    let itemLength = apiItems[arrayNumber].length
+    let itemHeight = apiItems[arrayNumber].height
+    let itemWidth = apiItems[arrayNumber].width
+    let itemWeight = apiItems[arrayNumber].weight
     let itemImage = apiItems[arrayNumber].image
 
      let url = `http://localhost:3000/uploads/${itemImage}`
@@ -53,7 +55,7 @@ function ProductPage(props) {
         let total = quantity * itemPrice
         let totalRounded = (Math.round(total * 100) / 100).toFixed(2);
 
-        setCartItems([...cartItems, { id: uuid, title: itemTitle, price: itemPrice, quantity: quantity, total: totalRounded, image: itemImage }])
+        setCartItems([...cartItems, { id: uuid, title: itemTitle, price: itemPrice, quantity: quantity, total: totalRounded, image: itemImage, length: itemLength, width: itemWidth, height: itemHeight, weight: itemWeight }])
 
 
     }
