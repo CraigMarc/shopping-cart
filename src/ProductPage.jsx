@@ -30,11 +30,15 @@ function ProductPage(props) {
     const location = useLocation()
 
     let arrayNumber = location.state
+    console.log(arrayNumber)
+    console.log(apiItems[arrayNumber].title)
 
-    let itemTitle = apiItems[arrayNumber - 1].title
-    let itemDescription = apiItems[arrayNumber - 1].description
-    let itemPrice = apiItems[arrayNumber - 1].price
-    let itemImage = apiItems[arrayNumber - 1].image
+    let itemTitle = apiItems[arrayNumber].title
+    let itemDescription = apiItems[arrayNumber].description
+    let itemPrice = apiItems[arrayNumber].price
+    let itemImage = apiItems[arrayNumber].image
+
+     let url = `http://localhost:3000/uploads/${itemImage}`
 
     //submit to cart
 
@@ -54,7 +58,8 @@ function ProductPage(props) {
 
     }
 
-    if (apiItems[arrayNumber - 1].title)
+    if (apiItems[arrayNumber].title)
+
 
         return (
             <div>
@@ -65,7 +70,7 @@ function ProductPage(props) {
                     <div className="itemContainer">
                         <div className="item">
                             <h2>{itemTitle}</h2>
-                            <img className="img" src={itemImage}></img>
+                            <img className="img" src={url}></img>
                             <p>{itemDescription}</p>
                             <p className="price">${itemPrice}.00</p>
                         </div>

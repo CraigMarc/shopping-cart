@@ -16,6 +16,7 @@ const Summary = (props) => {
 
   let orderTotal = orderNum + order.shipping
 
+
   // add other stuff and fix total when switch api ***********************
   return (
     <div className="error">

@@ -27,10 +27,10 @@ function Shop(props) {
   } = props;
 
   // if api goes down use data in assets file uncomment and comment out fetch change setApiItems in app.jsx
-//<img className="img" src={imageArray[index.id - 1]}></img>
+  //<img className="img" src={imageArray[index.id - 1]}></img>
 
-//let imageArray = [image1, image2, image3, image4, image5, image6, image7, image8, image9, image10, image11, image12]
- 
+  //let imageArray = [image1, image2, image3, image4, image5, image6, image7, image8, image9, image10, image11, image12]
+
 
 
   if (apiItems == undefined) {
@@ -42,15 +42,15 @@ function Shop(props) {
 
       try {
         //return fetch(picUrl)
-       // const res = await fetch("https://fakestoreapi.com/products?limit=12")
-        const res = await fetch("https://fakestoreapi.in/api/products")
+        const res = await fetch("http://localhost:3000/users/all")
+        // const res = await fetch("https://fakestoreapi.in/api/products")
 
         const productData = await res.json();
-      
-        setApiItems(productData.products)
+        console.log(productData)
+        setApiItems(productData)
 
       }
-      
+
 
       catch (error) {
         console.error("There has been a problem with your fetch operation:", error);
@@ -67,8 +67,6 @@ function Shop(props) {
       fetchInfo();
     }, [])
 
-   
-
     //display error and loading for api call
 
     if (error) return (
@@ -83,6 +81,7 @@ function Shop(props) {
   }
 
 
+
   return (
     <div>
       <Header
@@ -92,15 +91,17 @@ function Shop(props) {
         <h1>Our Products</h1>
         <div className="productCard">
 
-          {apiItems.map((index) => {
+          {apiItems.map((index, iter) => {
+
+            let url = `http://localhost:3000/uploads/${index.image}`
 
             return (
 
               <div key={index.id} className="product">
-                <Link  to="/product" state={index.id}>
+                <Link to="/product" state={iter}>
                   <div id={index.id} className="card" >
 
-                    <img className="img" src={index.image}></img>
+                    <img className="img" src={url}></img>
                     <p>{index.title}</p>
                     <p className="price">${index.price}.00</p>
 
