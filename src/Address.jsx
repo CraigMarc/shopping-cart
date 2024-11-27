@@ -25,7 +25,33 @@ const Address = (props) => {
     const [zip, setZip] = useState()
     const [town, setTown] = useState()
 
-    console.log(cartItems[0].weight)
+
+    const packageTotal = () => {
+
+        let totalLength = 0
+        let totalWidth = 0
+        let totalHeight = 0
+        let totalWeight = 0
+
+
+        for (let i = 0; i < cartItems.length; i++) {
+            let quant = Number(cartItems[i].quantity)
+
+            if (totalLength < cartItems[i].length) {
+                totalLength = cartItems[i].length
+            }
+
+            if (totalWidth < cartItems[i].width) {
+                totalWidth = cartItems[i].width
+            }
+
+            totalHeight = totalHeight + cartItems[i].height * quant
+            totalWeight = totalWeight + cartItems[i].weight * quant
+
+        }
+        return { length: totalLength, width: totalWidth, height: totalHeight, weight: totalWeight }
+
+    }
 
 
     // submit info for shipping price
@@ -33,17 +59,20 @@ const Address = (props) => {
     const handleSubmit = async e => {
         e.preventDefault();
 
+        let packageShip = packageTotal()
+       
+
         //send form data
         await fetch("http://localhost:3000/users/usps", {
             method: 'POST',
-            //************ add weight and length later from db  and add all values together/
+            
             body: JSON.stringify({
                 originZIPCode: "22407",
                 destinationZIPCode: zip,
-                weight: 5,
-                length: 3,
-                width: 2,
-                height: 1,
+                weight: packageShip.weight,
+                length: packageShip.length,
+                width: packageShip.width,
+                height: packageShip.height,
                 mailClass: "USPS_GROUND_ADVANTAGE",
                 processingCategory: "NON_MACHINABLE",
                 rateIndicator: "SP",
@@ -61,7 +90,7 @@ const Address = (props) => {
 
             .then((response) => response.json())
             .then((data) => {
-                console.log(data.totalBasePrice)
+             
                 setOrder({
                     lastName: lastName,
                     firstName: firstName,
@@ -96,7 +125,7 @@ const Address = (props) => {
 
     return (
         <div>
-    
+
             <form onSubmit={handleSubmit}>
                 <div className="newAddressContainer">
                     <div>

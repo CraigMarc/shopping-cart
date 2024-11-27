@@ -80,7 +80,7 @@ function ProductPage(props) {
                     <div className='formContainer'>
                         <form id="edForm" onSubmit={handleProductSubmit}>
                             <label>
-                                Quantity {' '}
+                                Quantity { }
                                 <input
                                     id="quantity"
                                     type="number"
