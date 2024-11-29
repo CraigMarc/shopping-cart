@@ -135,7 +135,6 @@ const Checkout = (props) => {
 
 let cartNum = Number(cartState)
 
-
 function objectToQueryString(obj, iter) {
   return Object.keys(obj)
     .map(key => `${encodeURIComponent(key + iter)}=${encodeURIComponent(obj[key])}`)

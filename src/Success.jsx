@@ -20,7 +20,8 @@ const Success = (props) => {
   const state = new URLSearchParams(search).get('state');
   const zip = new URLSearchParams(search).get('zip');
   const itemNumber = new URLSearchParams(search).get('itemnumber');
-  
+  const orderCost = new URLSearchParams(search).get('price');
+  const shippingCost = new URLSearchParams(search).get('shipping');
 
   function createProductArray() {
 
@@ -36,7 +37,7 @@ const Success = (props) => {
       let lengthIter = "length" + i
       let titleIter = "title" + i
       let totalIter = "total" + i
-      let weightIter = "weigth" + i
+      let weightIter = "weight" + i
       let widthIter = "title" + i
 
       const price = new URLSearchParams(search).get(priceIter);
@@ -69,17 +70,17 @@ console.log(productArray)
       method: 'Post',
       body: JSON.stringify({
 
-        firstName: order.firstName,
-        lastName: order.lastName,
-        email: order.email,
-        address1: order.address1,
-        address2: order.address2,
-        town: order.town,
-        state: order.state,
-        zip: order.zip,
-        orderCost: order.price,
-        shippingCost: order.shipping,
-        productsArray: order.items,
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        address1: address1,
+        address2: address2,
+        town: town,
+        state: state,
+        zip: zip,
+        orderCost: orderCost,
+        shippingCost: shippingCost,
+        productsArray: productArray,
 
       }),
       headers: {
