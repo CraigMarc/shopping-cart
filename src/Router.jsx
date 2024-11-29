@@ -106,6 +106,7 @@ const stripePromise = loadStripe('pk_test_51Q0OsODmVJRVlYWkkRMV6XZ4NcD9VOVBEdsCb
         < Success
         cartItems={cartItems}
         setCartItems={setCartItems}
+        order={order}
         />,
         errorElement: <ErrorPage />,
       },
@@ -133,6 +134,7 @@ const stripePromise = loadStripe('pk_test_51Q0OsODmVJRVlYWkkRMV6XZ4NcD9VOVBEdsCb
         />,
         errorElement: <ErrorPage />,
       },
+
 
 
   ]);

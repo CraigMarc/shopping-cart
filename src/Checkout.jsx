@@ -125,6 +125,7 @@ import { useState } from "react";
 
 const Checkout = (props) => {
 
+
   const {
 
     cartState,
@@ -134,6 +135,24 @@ const Checkout = (props) => {
 
 let cartNum = Number(cartState)
 
+function objectToQueryString(obj, iter) {
+  return Object.keys(obj)
+    .map(key => `${encodeURIComponent(key + iter)}=${encodeURIComponent(obj[key])}`)
+    .join('&');
+}
+
+let queryString = ""
+
+for (let i = 0; i < order.items.length; i++) {
+ queryString = queryString + "&" + objectToQueryString(order.items[i], i);
+ /*
+  Object.keys(order.items[i])
+    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(order.items[i][key])}`)
+    .join('&');*/
+  
+}
+
+console.log(queryString)
 
 let totalPrice = order.shipping + cartNum
 
@@ -190,15 +209,16 @@ let totalPrice = order.shipping + cartNum
       elements,
       clientSecret,
       confirmParams: {
-        return_url: 'http://localhost:5173/success',
+        return_url: `http://localhost:5173/success?firstname=${order.firstName}&lastname=${order.lastName}&email=${order.email}&address1=${order.address1}&address2=${order.address2}&town=${order.town}&state=${order.state}&zip=${order.zip}&price=${order.price}&shipping=${order.shipping}&items=${order.items}`,
       },
     });
-
+  
     if (error) {
       // This point is only reached if there's an immediate error when
       // confirming the payment. Show the error to your customer (for example, payment details incomplete)
       handleError(error);
     } else {
+     
       // Your customer is redirected to your `return_url`. For some payment
       // methods like iDEAL, your customer is redirected to an intermediate
       // site first to authorize the payment, then redirected to the `return_url`.
