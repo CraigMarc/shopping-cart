@@ -142,17 +142,13 @@ function objectToQueryString(obj, iter) {
 }
 
 let queryString = ""
+let itemNumber = order.items.length
 
 for (let i = 0; i < order.items.length; i++) {
  queryString = queryString + "&" + objectToQueryString(order.items[i], i);
- /*
-  Object.keys(order.items[i])
-    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(order.items[i][key])}`)
-    .join('&');*/
   
 }
 
-console.log(queryString)
 
 let totalPrice = order.shipping + cartNum
 
@@ -209,7 +205,7 @@ let totalPrice = order.shipping + cartNum
       elements,
       clientSecret,
       confirmParams: {
-        return_url: `http://localhost:5173/success?firstname=${order.firstName}&lastname=${order.lastName}&email=${order.email}&address1=${order.address1}&address2=${order.address2}&town=${order.town}&state=${order.state}&zip=${order.zip}&price=${order.price}&shipping=${order.shipping}&items=${order.items}`,
+        return_url: `http://localhost:5173/success?firstname=${order.firstName}&lastname=${order.lastName}&email=${order.email}&address1=${order.address1}&address2=${order.address2}&town=${order.town}&state=${order.state}&zip=${order.zip}&price=${order.price}&shipping=${order.shipping}&items=${order.items}&itemnumber=${itemNumber}${queryString}`,
       },
     });
   

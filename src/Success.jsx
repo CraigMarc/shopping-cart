@@ -19,10 +19,13 @@ const search = useLocation().search;
     const town = new URLSearchParams(search).get('town');
     const state = new URLSearchParams(search).get('state');
     const zip = new URLSearchParams(search).get('zip');
-    const items = new URLSearchParams(search).get('items');
+    const itemNumber = new URLSearchParams(search).get('itemnumber');
+    const price0 = new URLSearchParams(search).get('price0');
+    const quantity0 = new URLSearchParams(search).get('quantity0');
 
+// use item number to loop through the querystring and add variables to it item number it the length of the products array
 
-    console.log({ firstName, lastName, email, address1, address2, town, state, zip, items })
+    console.log({ firstName, lastName, email, address1, address2, town, state, zip, itemNumber, price0, quantity0 })
 
  //submit new product
  
