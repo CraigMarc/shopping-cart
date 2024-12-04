@@ -39,6 +39,7 @@ function ProductPage(props) {
     let itemWidth = apiItems[arrayNumber].width
     let itemWeight = apiItems[arrayNumber].weight
     let itemImage = apiItems[arrayNumber].image
+    let itemId = apiItems[arrayNumber]._id
 
      let url = `http://localhost:3000/uploads/${itemImage}`
 
@@ -55,7 +56,7 @@ function ProductPage(props) {
         let total = quantity * itemPrice
         let totalRounded = (Math.round(total * 100) / 100).toFixed(2);
 
-        setCartItems([...cartItems, { id: uuid, title: itemTitle, price: itemPrice, quantity: quantity, total: totalRounded, image: itemImage, length: itemLength, width: itemWidth, height: itemHeight, weight: itemWeight }])
+        setCartItems([...cartItems, { id: itemId, title: itemTitle, price: itemPrice, quantity: quantity, total: totalRounded, image: itemImage, length: itemLength, width: itemWidth, height: itemHeight, weight: itemWeight }])
 
 
     }
