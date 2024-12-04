@@ -41,28 +41,34 @@ const Success = (props) => {
       let widthIter = "title" + i
 
       const price = new URLSearchParams(search).get(priceIter);
+      const priceN = Number(price)
       const quantity = new URLSearchParams(search).get(quantityIter);
+      const quantityN = Number(quantity)
       const id = new URLSearchParams(search).get(idIter);
       const height = new URLSearchParams(search).get(heightIter);
+      const heightN = Number(height)
       const image = new URLSearchParams(search).get(imageIter);
       const length = new URLSearchParams(search).get(lengthIter);
+      const lengthN = Number(length)
       const title = new URLSearchParams(search).get(titleIter);
       const total = new URLSearchParams(search).get(totalIter);
+      const totalN = Number(total)
       const weight = new URLSearchParams(search).get(weightIter);
+      const weightN = Number(weight)
       const width = new URLSearchParams(search).get(widthIter);
+      const widthN = Number(width)
 
-
-productArray.push({price: price, quantity: quantity, id: id, height: height, image: image, length: length, title: title, total: total, weight: weight, width: width })
+      productArray.push({ price: priceN, quantity: quantityN, id: id, height: heightN, image: image, length: lengthN, title: title, total: totalN, weight: weightN, width: widthN })
 
     }
     return productArray
   }
 
 
-let productArray = createProductArray()
+  let productArray = createProductArray()
 
-console.log(productArray)
- 
+  console.log(productArray)
+
   //submit new product
 
   async function newOrder() {
