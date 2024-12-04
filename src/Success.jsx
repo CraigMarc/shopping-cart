@@ -38,7 +38,7 @@ const Success = (props) => {
       let titleIter = "title" + i
       let totalIter = "total" + i
       let weightIter = "weight" + i
-      let widthIter = "title" + i
+      let widthIter = "width" + i
 
       const price = new URLSearchParams(search).get(priceIter);
       const priceN = Number(price)

@@ -135,7 +135,7 @@ const Checkout = (props) => {
 
 let cartNum = Number(cartState)
 
-console.log(order)
+
 
 function objectToQueryString(obj, iter) {
   return Object.keys(obj)
