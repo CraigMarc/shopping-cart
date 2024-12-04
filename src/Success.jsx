@@ -21,7 +21,9 @@ const Success = (props) => {
   const zip = new URLSearchParams(search).get('zip');
   const itemNumber = new URLSearchParams(search).get('itemnumber');
   const orderCost = new URLSearchParams(search).get('price');
+  const orderCostN = Number(orderCost)
   const shippingCost = new URLSearchParams(search).get('shipping');
+  const shippingCostN = Number(shippingCost)
 
   function createProductArray() {
 
@@ -64,10 +66,70 @@ const Success = (props) => {
     return productArray
   }
 
+  // create email temp literals
 
   let productArray = createProductArray()
 
-  console.log(productArray)
+  function orderTL() {
+    let template = ""
+    for (let i = 0; i < productArray.length; i++) {
+
+      template = template + 
+      `
+      ` +
+      `
+      ${productArray[i].title} 
+      Quantity: ${productArray[i].quantity} 
+      Price: ${productArray[i].price
+      }`
+    }
+
+    template = template + `
+    ` +
+    `Total: ${orderCostN + shippingCostN}`
+
+    return template
+  }
+
+  
+
+  // send email
+
+  async function sendEmail() {
+    await fetch(`http://localhost:3000/users/email`, {
+      method: 'Post',
+      body: JSON.stringify({
+        email: email,
+        order_details: `Thank you for your order ${firstName}, it will be shipped shortly.
+
+        Order Summary:
+        ${orderTL()}
+        `
+
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    })
+
+
+
+      .then((response) => response.json())
+      .then((data) => {
+        //navigate('/')
+
+      })
+
+
+      .catch((err) => {
+        console.log(err.message);
+
+
+      });
+
+
+  }
+
 
   //submit new product
 
@@ -114,6 +176,7 @@ const Success = (props) => {
 
   useEffect(() => {
     newOrder();
+    sendEmail();
   }, [])
 
 

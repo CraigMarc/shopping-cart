@@ -153,6 +153,9 @@ for (let i = 0; i < order.items.length; i++) {
 
 
 let totalPrice = order.shipping + cartNum
+console.log(Math.round(totalPrice *100))
+
+let priceSubmit = Math.round(totalPrice *100)
 
   const stripe = useStripe();
   const elements = useElements();
@@ -187,12 +190,13 @@ let totalPrice = order.shipping + cartNum
     }
 
   
+
      const response = await fetch('http://localhost:3000/users/intent', {
 
     method: 'POST',
     body: JSON.stringify({
         currency: 'usd',
-        amount: totalPrice * 100,
+        amount: priceSubmit,
     }),
    headers: {
         'Content-type': 'application/json; charset=UTF-8',
