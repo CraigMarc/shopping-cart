@@ -100,7 +100,7 @@ const Address = (props) => {
                     state: state,
                     zip: zip,
                     town: town,
-                    shipping: data.totalBasePrice * 100,
+                    shipping: Math.round(data.totalBasePrice * 100),
                     price: cartState,
                     items: cartItems
 

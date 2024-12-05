@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { useLocation } from "react-router-dom";
 
 const Success = (props) => {
@@ -70,28 +70,34 @@ const Success = (props) => {
 
   let productArray = createProductArray()
 
+  let orderTotal = orderCostN + shippingCostN
+
   function orderTL() {
     let template = ""
     for (let i = 0; i < productArray.length; i++) {
 
-      template = template + 
-      `
+      template = template +
+        `
       ` +
-      `
+        `
       ${productArray[i].title} 
       Quantity: ${productArray[i].quantity} 
-      Price: ${productArray[i].price
-      }`
+      Price: ${(productArray[i].price / 100).toFixed(2)
+        }`
     }
 
     template = template + `
+    ` + 
+    `Shipping: ${(shippingCostN / 100).toFixed(2)}` + `
+
     ` +
-    `Total: ${orderCostN + shippingCostN}`
+
+      `Total: ${(orderTotal / 100).toFixed(2)}`
 
     return template
   }
 
-  
+
 
   // send email
 
@@ -173,13 +179,18 @@ const Success = (props) => {
 
 
   }
-/*
-  useEffect(() => {
-    newOrder();
-    
-  }, [])*/
+ 
+  const initialized = useRef(false)
 
-  newOrder()
+  useEffect(() => {
+    if (!initialized.current) {
+      initialized.current = true
+      newOrder();
+      sendEmail()
+    }
+  }, [])
+
+
 
 
   return (
