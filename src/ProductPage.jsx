@@ -30,7 +30,7 @@ function ProductPage(props) {
     const location = useLocation()
 
     let arrayNumber = location.state
-  
+
     let itemTitle = apiItems[arrayNumber].title
     let itemDescription = apiItems[arrayNumber].description
     let itemPrice = apiItems[arrayNumber].price
@@ -41,7 +41,7 @@ function ProductPage(props) {
     let itemImage = apiItems[arrayNumber].image
     let itemId = apiItems[arrayNumber]._id
 
-     let url = `http://localhost:3000/uploads/${itemImage}`
+    let url = `http://localhost:3000/uploads/${itemImage}`
 
     //submit to cart
 
@@ -61,8 +61,9 @@ function ProductPage(props) {
 
     }
 
-    if (apiItems[arrayNumber].title)
+    console.log(apiItems[arrayNumber].quantity)
 
+    if (apiItems[arrayNumber].quantity == 0) {
 
         return (
             <div>
@@ -94,6 +95,48 @@ function ProductPage(props) {
                             <input type="submit" value="Add to Cart" />
 
                         </form>
+                        <div className='productButton'>
+                            <Link to="/">
+                                <div className='shopButtonContainer'>
+                                    <button>Continue Shopping</button>
+                                </div>
+                            </Link>
+                            <Link to="/cart">
+                                <div className='checkoutButtonContainer'>
+                                    <button>Proceed to Checkout</button>
+                                </div>
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        )
+
+
+
+
+    }
+
+    if (apiItems[arrayNumber].title)
+
+
+        return (
+            <div>
+                <Header
+                    cartItems={cartItems}
+                />
+                <div className='productPageContainer'>
+                    <div className="itemContainer">
+                        <div className="item">
+                            <h2>{itemTitle}</h2>
+                            <img className="img" src={url}></img>
+                            <p>{itemDescription}</p>
+                            <p className="price">${itemPrice}.00</p>
+                        </div>
+                    </div>
+                    <div className='formContainer'>
+                       <h2>This item is currently out of stock</h2>
                         <div className='productButton'>
                             <Link to="/">
                                 <div className='shopButtonContainer'>
