@@ -96,7 +96,7 @@ function ProductPage(props) {
         }
 
         // if item is out of stock 
-        if (apiItems[arrayNumber].quantity < 0) {
+        if (apiItems[arrayNumber].quantity <= 0) {
             return (
             
                 <h2>This item is currently out of stock</h2>
