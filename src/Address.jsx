@@ -60,7 +60,7 @@ const Address = (props) => {
         e.preventDefault();
 
         let packageShip = packageTotal()
-       
+
 
         //send form data
         await fetch("http://localhost:3000/users/usps", {
@@ -69,10 +69,10 @@ const Address = (props) => {
             body: JSON.stringify({
                 originZIPCode: "22407",
                 destinationZIPCode: zip,
-                weight: packageShip.weight,
-                length: packageShip.length,
-                width: packageShip.width,
-                height: packageShip.height,
+                weight: packageShip.weight / 100,
+                length: packageShip.length / 100,
+                width: packageShip.width /100,
+                height: packageShip.height /100,
                 mailClass: "USPS_GROUND_ADVANTAGE",
                 processingCategory: "NON_MACHINABLE",
                 rateIndicator: "SP",
@@ -100,28 +100,24 @@ const Address = (props) => {
                     state: state,
                     zip: zip,
                     town: town,
-                    shipping: data.totalBasePrice,
+                    shipping: data.totalBasePrice * 100,
                     price: cartState,
                     items: cartItems
 
                 })
-                navigate('/summary')
+               navigate('/summary')
             })
 
 
             .catch((err) => {
                 console.log(err.message);
-                /*
-                                if (err.message.includes("Unauthorized")) {
-                                    sessionStorage.removeItem("token");
-                                    sessionStorage.removeItem("userName");
-                                    navigate('/login')
-                                }*/
+               
 
             });
 
 
     }
+
 
     return (
         <div>

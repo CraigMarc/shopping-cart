@@ -133,9 +133,6 @@ const Checkout = (props) => {
     
 } = props;
 
-let cartNum = Number(cartState)
-
-
 
 function objectToQueryString(obj, iter) {
   return Object.keys(obj)
@@ -152,10 +149,7 @@ for (let i = 0; i < order.items.length; i++) {
 }
 
 
-let totalPrice = order.shipping + cartNum
-console.log(Math.round(totalPrice *100))
-
-let priceSubmit = Math.round(totalPrice *100)
+let totalPrice = order.shipping + cartState
 
   const stripe = useStripe();
   const elements = useElements();
@@ -196,7 +190,7 @@ let priceSubmit = Math.round(totalPrice *100)
     method: 'POST',
     body: JSON.stringify({
         currency: 'usd',
-        amount: priceSubmit,
+        amount: totalPrice,
     }),
    headers: {
         'Content-type': 'application/json; charset=UTF-8',

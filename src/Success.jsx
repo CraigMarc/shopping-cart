@@ -173,11 +173,13 @@ const Success = (props) => {
 
 
   }
-
+/*
   useEffect(() => {
     newOrder();
-    sendEmail();
-  }, [])
+    
+  }, [])*/
+
+  newOrder()
 
 
   return (

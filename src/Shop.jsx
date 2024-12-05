@@ -104,7 +104,7 @@ function Shop(props) {
 
                     <img className="img" src={url}></img>
                     <p>{index.title}</p>
-                    <p className="price">${index.price}.00</p>
+                    <p className="price">${index.price / 100}.00</p>
 
                   </div>
                 </Link>

@@ -12,6 +12,7 @@ const Summary = (props) => {
 
   } = props;
 
+
   let orderNum = Number(order.price)
 
   let orderTotal = orderNum + order.shipping

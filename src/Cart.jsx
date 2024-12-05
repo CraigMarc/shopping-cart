@@ -17,7 +17,6 @@ function Cart(props) {
 
 
 
-
     const handleDelete = (event) => {
         const id = event.target.value;
         const newData = cartItems.filter((item) => item.id !== id)
@@ -45,10 +44,10 @@ function Cart(props) {
     }
 
     let cartGrandTotal = grandTotal(cartItems)
-    let cartGrandTotalRound = Number(cartGrandTotal).toFixed(2);
+   // let cartGrandTotalRound = Number(cartGrandTotal).toFixed(2);
 
     useEffect(() => {
-        setCartState(cartGrandTotalRound)
+        setCartState(cartGrandTotal)
     }, [cartItems]);
 
 

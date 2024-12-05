@@ -58,9 +58,8 @@ function ProductPage(props) {
             quantity = 1
         }
         let total = quantity * itemPrice
-        let totalRounded = (Math.round(total * 100) / 100).toFixed(2);
-
-        setCartItems([...cartItems, { id: itemId, title: itemTitle, price: itemPrice, quantity: quantity, total: totalRounded, image: itemImage, length: itemLength, width: itemWidth, height: itemHeight, weight: itemWeight }])
+        
+        setCartItems([...cartItems, { id: itemId, title: itemTitle, price: itemPrice, quantity: quantity, total: total, image: itemImage, length: itemLength, width: itemWidth, height: itemHeight, weight: itemWeight }])
 
 
     }
@@ -144,7 +143,7 @@ function ProductPage(props) {
                             <h2>{itemTitle}</h2>
                             <img className="img" src={url}></img>
                             <p>{itemDescription}</p>
-                            <p className="price">${itemPrice}.00</p>
+                            <p className="price">${itemPrice / 100}.00</p>
                         </div>
                     </div>
                     <div className='formContainer'>
