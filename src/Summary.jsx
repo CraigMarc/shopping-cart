@@ -37,7 +37,7 @@ const Summary = (props) => {
               </div>
               <div className='cartCont2'>
                 <p>quantity: {data.quantity}</p>
-                <p>${data.total}</p>
+                <p>${(data.total / 100).toFixed(2)}</p>
               </div>
 
             </div>
@@ -52,9 +52,9 @@ const Summary = (props) => {
         <p className="pItems">{order.address1}</p>
         <p className="pItems">{order.address2}</p>
         <p className="pItems">{order.email}</p>
-        <p className="pItems">subtotal: {order.price}</p>
-        <p className="pItems">shipping: {order.shipping}</p>
-        <p className="total">order total: {orderTotal}</p>
+        <p className="pItems">subtotal: {(order.price / 100).toFixed(2)}</p>
+        <p className="pItems">shipping: {(order.shipping / 100).toFixed(2)}</p>
+        <p className="total">order total: {(orderTotal / 100).toFixed(2)}</p>
       </div>
       <Link to="/checkout">
         <button type="button">

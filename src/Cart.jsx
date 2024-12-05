@@ -67,7 +67,7 @@ function Cart(props) {
                                 </div>
                                 <div className='cartCont2'>
                                     <p>quantity: {data.quantity}</p>
-                                    <p>${data.total}</p>
+                                    <p>${(data.total / 100).toFixed(2)}</p>
                                 </div>
                                 <div className="deleteButtonContainer">
                                     <button className="delete" value={data.id} onClick={handleDelete}>delete</button>
@@ -96,7 +96,7 @@ function Cart(props) {
             <div className='checkoutContainer'>
                 <h1>Shopping Cart</h1>
                 <div>{listCartItems()}</div>
-                <div className='subTotal'>Subtotal: ${cartState}</div>
+                <div className='subTotal'>Subtotal: ${(cartState / 100).toFixed(2)}</div>
 
                 <div className='checkoutButtons'>
                     <Link to="/">

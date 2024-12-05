@@ -143,7 +143,7 @@ function ProductPage(props) {
                             <h2>{itemTitle}</h2>
                             <img className="img" src={url}></img>
                             <p>{itemDescription}</p>
-                            <p className="price">${itemPrice / 100}.00</p>
+                            <p className="price">${(itemPrice / 100).toFixed(2)}</p>
                         </div>
                     </div>
                     <div className='formContainer'>
