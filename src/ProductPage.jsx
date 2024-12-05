@@ -1,6 +1,7 @@
 import { Header } from './Header'
 import { useLocation } from 'react-router-dom'
 import { Link } from "react-router-dom";
+import { useState } from 'react'
 
 
 function ProductPage(props) {
@@ -13,6 +14,9 @@ function ProductPage(props) {
         setCartItems,
 
     } = props;
+
+    const [newQuantity, setNewQuantity] = useState()
+
 
     if (apiItems == undefined) {
         return (
@@ -61,66 +65,74 @@ function ProductPage(props) {
 
     }
 
-    console.log(apiItems[arrayNumber].quantity)
+   
 
-    if (apiItems[arrayNumber].quantity == 0) {
+    // if order is more then inventory
 
-        return (
-            <div>
-                <Header
-                    cartItems={cartItems}
-                />
-                <div className='productPageContainer'>
-                    <div className="itemContainer">
-                        <div className="item">
-                            <h2>{itemTitle}</h2>
-                            <img className="img" src={url}></img>
-                            <p>{itemDescription}</p>
-                            <p className="price">${itemPrice}.00</p>
-                        </div>
-                    </div>
-                    <div className='formContainer'>
-                        <form id="edForm" onSubmit={handleProductSubmit}>
-                            <label>
-                                Quantity { }
-                                <input
-                                    id="quantity"
-                                    type="number"
-                                    name="quantity"
-                                    min="1"
-                                    placeholder='1'
-                                />
-                            </label>
+    function renderMessage() {
 
-                            <input type="submit" value="Add to Cart" />
+        if (newQuantity > apiItems[arrayNumber].quantity) {
 
-                        </form>
-                        <div className='productButton'>
-                            <Link to="/">
-                                <div className='shopButtonContainer'>
-                                    <button>Continue Shopping</button>
-                                </div>
-                            </Link>
-                            <Link to="/cart">
-                                <div className='checkoutButtonContainer'>
-                                    <button>Proceed to Checkout</button>
-                                </div>
-                            </Link>
-                        </div>
-                    </div>
-                </div>
+            return (
 
-            </div>
-        )
+                <form id="edForm" onSubmit={handleProductSubmit}>
+                    <label>
+                        Quantity { }
+                        <input
+                            onChange={e => setNewQuantity(e.target.value)}
+                            id="quantity"
+                            type="number"
+                            name="quantity"
+                            min="1"
+                            placeholder='1'
+                        />
+                    </label>
 
+                    <h2>There are only {apiItems[arrayNumber].quantity} left in inventory</h2>
 
+                </form>
 
+            )
+        }
 
+        // if item is out of stock 
+        if (apiItems[arrayNumber].quantity < 0) {
+            return (
+            
+                <h2>This item is currently out of stock</h2>
+            )
+
+        }
+
+        else {
+            return (
+
+                <form id="edForm" onSubmit={handleProductSubmit}>
+                    <label>
+                        Quantity { }
+                        <input
+                            onChange={e => setNewQuantity(e.target.value)}
+                            id="quantity"
+                            type="number"
+                            name="quantity"
+                            min="1"
+                            placeholder='1'
+                        />
+                    </label>
+
+                    <input type="submit" value="Add to Cart" />
+
+                </form>
+
+            )
+        }
     }
 
+  
     if (apiItems[arrayNumber].title)
 
 
+
         return (
             <div>
                 <Header
@@ -136,7 +148,7 @@ function ProductPage(props) {
                         </div>
                     </div>
                     <div className='formContainer'>
-                       <h2>This item is currently out of stock</h2>
+                        {renderMessage()}
                         <div className='productButton'>
                             <Link to="/">
                                 <div className='shopButtonContainer'>
@@ -154,6 +166,7 @@ function ProductPage(props) {
 
             </div>
         )
+
 
 
 }
