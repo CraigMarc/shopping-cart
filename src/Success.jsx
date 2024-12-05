@@ -87,8 +87,8 @@ const Success = (props) => {
     }
 
     template = template + `
-    ` + 
-    `Shipping: ${(shippingCostN / 100).toFixed(2)}` + `
+    ` 
+     + `  Shipping: ${(shippingCostN / 100).toFixed(2)}` + `
 
     ` +
 
