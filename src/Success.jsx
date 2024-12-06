@@ -26,7 +26,6 @@ const Success = (props) => {
   const shippingCost = new URLSearchParams(search).get('shipping');
   const shippingCostN = Number(shippingCost)
 
-  console.log(orderId)
 
   function createProductArray() {
 
@@ -109,11 +108,12 @@ const Success = (props) => {
       method: 'Post',
       body: JSON.stringify({
         email: email,
-        order_details: `Thank you for your order ${firstName}, it will be shipped shortly.
+        order_details: `Thank you for your order ${firstName}, it will be shipped shortly.,
 
         Order Summary:
         ${orderTL()}
-        `
+        `,
+        orderId: orderId
 
       }),
       headers: {
