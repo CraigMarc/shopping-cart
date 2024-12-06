@@ -61,18 +61,19 @@ const Address = (props) => {
 
         let packageShip = packageTotal()
 
+        let uuid = self.crypto.randomUUID();
 
         //send form data
         await fetch("http://localhost:3000/users/usps", {
             method: 'POST',
-            
+
             body: JSON.stringify({
                 originZIPCode: "22407",
                 destinationZIPCode: zip,
                 weight: packageShip.weight / 100,
                 length: packageShip.length / 100,
-                width: packageShip.width /100,
-                height: packageShip.height /100,
+                width: packageShip.width / 100,
+                height: packageShip.height / 100,
                 mailClass: "USPS_GROUND_ADVANTAGE",
                 processingCategory: "NON_MACHINABLE",
                 rateIndicator: "SP",
@@ -90,8 +91,9 @@ const Address = (props) => {
 
             .then((response) => response.json())
             .then((data) => {
-             
+
                 setOrder({
+                    orderId: uuid,
                     lastName: lastName,
                     firstName: firstName,
                     address1: address1,
@@ -105,13 +107,13 @@ const Address = (props) => {
                     items: cartItems
 
                 })
-               navigate('/summary')
+                navigate('/summary')
             })
 
 
             .catch((err) => {
                 console.log(err.message);
-               
+
 
             });
 

@@ -11,6 +11,7 @@ const Success = (props) => {
   } = props;
 
   const search = useLocation().search;
+  const orderId = new URLSearchParams(search).get('orderId');
   const firstName = new URLSearchParams(search).get('firstname');
   const lastName = new URLSearchParams(search).get('lastname');
   const email = new URLSearchParams(search).get('email');
@@ -24,6 +25,8 @@ const Success = (props) => {
   const orderCostN = Number(orderCost)
   const shippingCost = new URLSearchParams(search).get('shipping');
   const shippingCostN = Number(shippingCost)
+
+  console.log(orderId)
 
   function createProductArray() {
 
@@ -144,6 +147,7 @@ const Success = (props) => {
       method: 'Post',
       body: JSON.stringify({
 
+        orderId: orderId,
         firstName: firstName,
         lastName: lastName,
         email: email,
