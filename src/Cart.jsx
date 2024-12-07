@@ -1,7 +1,7 @@
 import { Header } from './Header'
 import Checkout from './Checkout'
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 
 function Cart(props) {
@@ -16,9 +16,8 @@ function Cart(props) {
 
     } = props;
 
-    console.log(apiItems)
+    const showButton = useRef(true);
 
-    const [newQuantity, setNewQuantity] = useState()
 
     const handleDelete = (event) => {
         const id = event.target.value;
@@ -47,7 +46,7 @@ function Cart(props) {
     }
 
     let cartGrandTotal = grandTotal(cartItems)
-   // let cartGrandTotalRound = Number(cartGrandTotal).toFixed(2);
+    // let cartGrandTotalRound = Number(cartGrandTotal).toFixed(2);
 
     useEffect(() => {
         setCartState(cartGrandTotal)
@@ -89,73 +88,97 @@ function Cart(props) {
         )
     }
 
-     // render quantity update
+    // render quantity update
 
-  function renderMessage(data) {
+    function renderMessage(data) {
 
-    // uncomment to undiable when finished testing ************
+        const [newQuantity, setNewQuantity] = useState()
 
-    let productArray = apiItems.filter(function (obj) {
-        return obj._id == data.id
-      }
-      );
-console.log(productArray[0].quantity)
-    if (newQuantity > productArray[0].quantity) {
+        // uncomment to undiable when finished testing ************
 
-        return (
+        let productArray = apiItems.filter(function (obj) {
+            return obj._id == data.id
+        }
+        );
 
-            <form id="edForm">
-                <label>
-                    Quantity { }
-                    <input
-                        onChange={e => setNewQuantity(e.target.value)}
-                        id="quantity"
-                        type="number"
-                        name="quantity"
-                        min="1"
-                        placeholder='1'
-                    />
-                </label>
+        if (newQuantity > productArray[0].quantity) {
+            showButton.current = false
+            return (
 
-                <h2>There are only {productArray[0].quantity} left in inventory</h2>
+                <form id="edForm">
+                    <label>
+                        Quantity { }
+                        <input
+                            onChange={e => setNewQuantity(e.target.value)}
+                            id="quantity"
+                            type="number"
+                            name="quantity"
+                            min="1"
+                            placeholder='1'
+                        />
+                    </label>
 
-            </form>
+                    <h2>There are only {productArray[0].quantity} left in inventory</h2>
 
-        )
+                </form>
+
+            )
+        }
+
+        // if item is out of stock 
+        if (productArray[0].quantity <= 0) {
+            showButton.current = false
+
+            return (
+
+                <h2>This item is currently out of stock</h2>
+            )
+
+        }
+
+        else {
+            showButton.current = true
+            return (
+
+                <form id="edForm">
+                    <label>
+                        Quantity { }
+                        <input
+                            onChange={e => setNewQuantity(e.target.value)}
+                            id="quantity"
+                            type="number"
+                            name="quantity"
+                            min="1"
+                            placeholder='1'
+                        />
+                    </label>
+
+                </form>
+
+            )
+        }
     }
 
-    // if item is out of stock 
-    if (productArray[0].quantity <= 0) {
-        return (
-        
-            <h2>This item is currently out of stock</h2>
-        )
+    // render checkout button
 
+    function checkoutButton() {
+       
+        if (showButton.current == true) {
+
+            return (
+                <Link to="/address">
+                    <button type="button">
+                        Check Out
+                    </button>
+                </Link>
+            )
+        }
+        if (showButton.current == false) {
+            return (
+                <p></p>
+            )
+        }
     }
-
-    else {
-        return (
-
-            <form id="edForm">
-                <label>
-                    Quantity { }
-                    <input
-                        onChange={e => setNewQuantity(e.target.value)}
-                        id="quantity"
-                        type="number"
-                        name="quantity"
-                        min="1"
-                        placeholder='1'
-                    />
-                </label>
-
-            </form>
-
-        )
-    }
-}
-
-
 
 
 
@@ -175,12 +198,7 @@ console.log(productArray[0].quantity)
                         <button>Continue Shopping</button>
                     </Link>
 
-                    <Link to="/address">
-                        <button type="button">
-                            Check Out
-                        </button>
-                    </Link>
-
+                    {checkoutButton()}
                 </div>
 
             </div>
