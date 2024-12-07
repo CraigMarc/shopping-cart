@@ -31,7 +31,8 @@ const Router = (props) => {
     cartState,
     setCartState,
     order,
-    setOrder
+    setOrder,
+    oosRef
 
   } = props;
 
@@ -94,6 +95,8 @@ const Router = (props) => {
             cartItems={cartItems}
             setCartItems={setCartItems}
             cartState={cartState}
+            oosRef={oosRef}
+            setApiItems={setApiItems}
           />
         </Elements>,
 
@@ -140,7 +143,8 @@ const Router = (props) => {
       path: "/oos",
       element:
         < OutOfStock
-        
+          oosRef={oosRef}
+          order={order}
         />,
       errorElement: <ErrorPage />,
     },

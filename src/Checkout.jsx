@@ -129,7 +129,9 @@ const Checkout = (props) => {
   const {
 
     cartState,
-    order
+    order,
+    oosRef,
+    setApiItems
 
   } = props;
 
@@ -255,6 +257,8 @@ const Checkout = (props) => {
   
         // stripe logic here if (inventory < order) send to out of stock check whole product array
         if (buildOosArray().length > 0) {
+          oosRef.current = buildOosArray()
+          setApiItems(data)
           navigate('/oos')
 
         }
