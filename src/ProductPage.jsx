@@ -70,6 +70,8 @@ function ProductPage(props) {
 
     function renderMessage() {
 
+        // uncomment to undiable when finished testing ************
+/*
         if (newQuantity > apiItems[arrayNumber].quantity) {
 
             return (
@@ -92,7 +94,7 @@ function ProductPage(props) {
                 </form>
 
             )
-        }
+        }*/
 
         // if item is out of stock 
         if (apiItems[arrayNumber].quantity <= 0) {

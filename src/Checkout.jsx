@@ -1,5 +1,5 @@
 import { Header } from './Header'
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 // before using backend and payment
 /*
@@ -120,7 +120,7 @@ export default function App() {
 
 // code for new stripe api
 
-import {useStripe, useElements, PaymentElement, CardElement} from '@stripe/react-stripe-js';
+import { useStripe, useElements, PaymentElement, CardElement } from '@stripe/react-stripe-js';
 import { useState } from "react";
 
 const Checkout = (props) => {
@@ -130,26 +130,27 @@ const Checkout = (props) => {
 
     cartState,
     order
-    
-} = props;
+
+  } = props;
+
+  const navigate = useNavigate();
+
+  function objectToQueryString(obj, iter) {
+    return Object.keys(obj)
+      .map(key => `${encodeURIComponent(key + iter)}=${encodeURIComponent(obj[key])}`)
+      .join('&');
+  }
+
+  let queryString = ""
+  let itemNumber = order.items.length
+
+  for (let i = 0; i < order.items.length; i++) {
+    queryString = queryString + "&" + objectToQueryString(order.items[i], i);
+
+  }
 
 
-function objectToQueryString(obj, iter) {
-  return Object.keys(obj)
-    .map(key => `${encodeURIComponent(key + iter)}=${encodeURIComponent(obj[key])}`)
-    .join('&');
-}
-
-let queryString = ""
-let itemNumber = order.items.length
-
-for (let i = 0; i < order.items.length; i++) {
- queryString = queryString + "&" + objectToQueryString(order.items[i], i);
-  
-}
-
-
-let totalPrice = order.shipping + cartState
+  let totalPrice = order.shipping + cartState
 
   const stripe = useStripe();
   const elements = useElements();
@@ -162,11 +163,50 @@ let totalPrice = order.shipping + cartState
     setErrorMessage(error.message);
   }
 
+  async function callStripe() { 
+
+    const response = await fetch('http://localhost:3000/users/intent', {
+    
+      method: 'POST',
+      body: JSON.stringify({
+        currency: 'usd',
+        amount: totalPrice,
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    })
+
+    const { client_secret: clientSecret } = await response.json();
+
+    // Confirm the PaymentIntent using the details collected by the Payment Element
+
+    const { error } = await stripe.confirmPayment({
+      elements,
+      clientSecret,
+      confirmParams: {
+        return_url: `http://localhost:5173/success?orderId=${order.orderId}&firstname=${order.firstName}&lastname=${order.lastName}&email=${order.email}&address1=${order.address1}&address2=${order.address2}&town=${order.town}&state=${order.state}&zip=${order.zip}&price=${order.price}&shipping=${order.shipping}&items=${order.items}&itemnumber=${itemNumber}${queryString}`,
+      },
+    });
+
+    if (error) {
+      // This point is only reached if there's an immediate error when
+      // confirming the payment. Show the error to your customer (for example, payment details incomplete)
+      handleError(error);
+    } else {
+
+      // Your customer is redirected to your `return_url`. For some payment
+      // methods like iDEAL, your customer is redirected to an intermediate
+      // site first to authorize the payment, then redirected to the `return_url`.
+    }
+  }
+
+
   const handleSubmit = async (event) => {
     // We don't want to let default form submission happen here,
     // which would refresh the page.
     event.preventDefault();
-   
+
 
     if (!stripe) {
       // Stripe.js hasn't yet loaded.
@@ -177,52 +217,58 @@ let totalPrice = order.shipping + cartState
     setLoading(true);
 
     // Trigger form validation and wallet collection
-    const {error: submitError} = await elements.submit();
+    const { error: submitError } = await elements.submit();
     if (submitError) {
       handleError(submitError);
       return;
     }
 
+    // make api call to make sure items are in stock
+
+    await fetch("http://localhost:3000/users/all")
+
+
+      .then((response) => response.json())
+      .then((data) => {
+
+    
+        function buildOosArray() {
+
+          let oosArrayAll = []
+
+          for (let i = 0; i < order.items.length; i++) {
+            
+            let oosArray = data.filter(function (obj) {
+              return obj._id == order.items[i].id
+            }
+            );
+           
+            if (oosArray[0].quantity < order.items[i].quantity ) {
+             
+              oosArrayAll.push(oosArray[0])
+            
+            }
+          }
+          
+          return oosArrayAll
+        }
   
+        // stripe logic here if (inventory < order) send to out of stock check whole product array
+        if (buildOosArray().length > 0) {
+          navigate('/oos')
 
-     const response = await fetch('http://localhost:3000/users/intent', {
+        }
+        else {
+          callStripe()
+        }
+      })
+      .catch((err) => {
+        console.log(err.message);
+      })
 
-    method: 'POST',
-    body: JSON.stringify({
-        currency: 'usd',
-        amount: totalPrice,
-    }),
-   headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-    },
-})
-
-    const {client_secret: clientSecret} = await response.json();
-
-    // Confirm the PaymentIntent using the details collected by the Payment Element
-   
-    const {error} = await stripe.confirmPayment({
-      elements,
-      clientSecret,
-      confirmParams: {
-        return_url: `http://localhost:5173/success?orderId=${order.orderId}&firstname=${order.firstName}&lastname=${order.lastName}&email=${order.email}&address1=${order.address1}&address2=${order.address2}&town=${order.town}&state=${order.state}&zip=${order.zip}&price=${order.price}&shipping=${order.shipping}&items=${order.items}&itemnumber=${itemNumber}${queryString}`,
-      },
-    });
-  
-    if (error) {
-      // This point is only reached if there's an immediate error when
-      // confirming the payment. Show the error to your customer (for example, payment details incomplete)
-      handleError(error);
-    } else {
-     
-      // Your customer is redirected to your `return_url`. For some payment
-      // methods like iDEAL, your customer is redirected to an intermediate
-      // site first to authorize the payment, then redirected to the `return_url`.
-    }
-
-  
   };
 
+  
   return (
     <form className='paymentForm' onSubmit={handleSubmit}>
       <PaymentElement />

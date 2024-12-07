@@ -8,8 +8,9 @@ import ProductPage from './ProductPage'
 import Summary from './Summary'
 import Success from './Success'
 import Address from './Address'
-import {Elements} from '@stripe/react-stripe-js';
-import {loadStripe} from '@stripe/stripe-js';
+import OutOfStock from './OutOfStock'
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
 
 
 
@@ -17,7 +18,7 @@ import {loadStripe} from '@stripe/stripe-js';
 
 const Router = (props) => {
 
-const stripePromise = loadStripe('pk_test_51Q0OsODmVJRVlYWkkRMV6XZ4NcD9VOVBEdsCb0ypBuBtQN4NL7bDDZFJETo7JwD7XA2uYNbTVqkk3A3Z115I1zaY00RVrJ1opv');
+  const stripePromise = loadStripe('pk_test_51Q0OsODmVJRVlYWkkRMV6XZ4NcD9VOVBEdsCb0ypBuBtQN4NL7bDDZFJETo7JwD7XA2uYNbTVqkk3A3Z115I1zaY00RVrJ1opv');
 
 
 
@@ -34,15 +35,15 @@ const stripePromise = loadStripe('pk_test_51Q0OsODmVJRVlYWkkRMV6XZ4NcD9VOVBEdsCb
 
   } = props;
 
- 
+
   const options = {
     mode: 'payment',
-    amount: cartState *100,
+    amount: cartState * 100,
     currency: 'usd'
-   
+
   };
 
- 
+
 
   const router = createBrowserRouter([
     /*
@@ -52,88 +53,97 @@ const stripePromise = loadStripe('pk_test_51Q0OsODmVJRVlYWkkRMV6XZ4NcD9VOVBEdsCb
       errorElement: <ErrorPage />,
     },*/
     {
-        path: "/",
-        element:
-          <Shop 
-          apiItems={apiItems} 
-          setApiItems={setApiItems} 
+      path: "/",
+      element:
+        <Shop
+          apiItems={apiItems}
+          setApiItems={setApiItems}
           cartItems={cartItems}
-          />,
-        
-        errorElement: <ErrorPage />,
-      },
-      {
-        path: "/cart",
-        element: 
+        />,
+
+      errorElement: <ErrorPage />,
+    },
+    {
+      path: "/cart",
+      element:
         < Cart
-        cartItems={cartItems}
-        setCartItems={setCartItems}
-        cartState={cartState}
-        setCartState={setCartState}
+          cartItems={cartItems}
+          setCartItems={setCartItems}
+          cartState={cartState}
+          setCartState={setCartState}
         />,
-        errorElement: <ErrorPage />,
-      },
-      {
-        path: "/product",
-        element: 
+      errorElement: <ErrorPage />,
+    },
+    {
+      path: "/product",
+      element:
         < ProductPage
-        cartItems={cartItems}
-        setCartItems={setCartItems}
-        apiItems={apiItems} 
-        setApiItems={setApiItems}
+          cartItems={cartItems}
+          setCartItems={setCartItems}
+          apiItems={apiItems}
+          setApiItems={setApiItems}
         />,
-        errorElement: <ErrorPage />,
-      },
-      {
-        path: "/checkout",
-        element: 
+      errorElement: <ErrorPage />,
+    },
+    {
+      path: "/checkout",
+      element:
         <Elements stripe={stripePromise} options={options}>
-        <Checkout
-        order={order}
-        cartItems={cartItems}
-        setCartItems={setCartItems}
-        cartState={cartState}
-        />
+          <Checkout
+            order={order}
+            cartItems={cartItems}
+            setCartItems={setCartItems}
+            cartState={cartState}
+          />
         </Elements>,
-    
-        errorElement: <ErrorPage />,
-      },
-     
 
-      {
-        path: "/success",
-        element: 
+      errorElement: <ErrorPage />,
+    },
+
+
+    {
+      path: "/success",
+      element:
         < Success
-        cartItems={cartItems}
-        setCartItems={setCartItems}
-        order={order}
+          cartItems={cartItems}
+          setCartItems={setCartItems}
+          order={order}
         />,
-        errorElement: <ErrorPage />,
-      },
+      errorElement: <ErrorPage />,
+    },
 
-      {
-        path: "/address",
-        element: 
+    {
+      path: "/address",
+      element:
         < Address
-       order={order}
-       setOrder={setOrder}
-       cartState={cartState}
-       cartItems={cartItems}
+          order={order}
+          setOrder={setOrder}
+          cartState={cartState}
+          cartItems={cartItems}
         />,
-        errorElement: <ErrorPage />,
-      },
+      errorElement: <ErrorPage />,
+    },
 
-      {
-        path: "/summary",
-        element: 
+    {
+      path: "/summary",
+      element:
         < Summary
-       order={order}
-       setOrder={setOrder}
-       cartState={cartState}
-       cartItems={cartItems}
+          order={order}
+          setOrder={setOrder}
+          cartState={cartState}
+          cartItems={cartItems}
         />,
-        errorElement: <ErrorPage />,
-      },
+      errorElement: <ErrorPage />,
+    },
+
+    {
+      path: "/oos",
+      element:
+        < OutOfStock
+        
+        />,
+      errorElement: <ErrorPage />,
+    },
 
 
 
