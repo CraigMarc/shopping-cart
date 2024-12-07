@@ -1,7 +1,7 @@
 import { Header } from './Header'
 import Checkout from './Checkout'
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 
 function Cart(props) {
@@ -12,10 +12,13 @@ function Cart(props) {
         setCartItems,
         cartState,
         setCartState,
+        apiItems
 
     } = props;
 
+    console.log(apiItems)
 
+    const [newQuantity, setNewQuantity] = useState()
 
     const handleDelete = (event) => {
         const id = event.target.value;
@@ -67,6 +70,7 @@ function Cart(props) {
                                 </div>
                                 <div className='cartCont2'>
                                     <p>quantity: {data.quantity}</p>
+                                    {renderMessage(data)}
                                     <p>${(data.total / 100).toFixed(2)}</p>
                                 </div>
                                 <div className="deleteButtonContainer">
@@ -84,6 +88,74 @@ function Cart(props) {
             </div>
         )
     }
+
+     // render quantity update
+
+  function renderMessage(data) {
+
+    // uncomment to undiable when finished testing ************
+
+    let productArray = apiItems.filter(function (obj) {
+        return obj._id == data.id
+      }
+      );
+console.log(productArray[0].quantity)
+    if (newQuantity > productArray[0].quantity) {
+
+        return (
+
+            <form id="edForm">
+                <label>
+                    Quantity { }
+                    <input
+                        onChange={e => setNewQuantity(e.target.value)}
+                        id="quantity"
+                        type="number"
+                        name="quantity"
+                        min="1"
+                        placeholder='1'
+                    />
+                </label>
+
+                <h2>There are only {productArray[0].quantity} left in inventory</h2>
+
+            </form>
+
+        )
+    }
+
+    // if item is out of stock 
+    if (productArray[0].quantity <= 0) {
+        return (
+        
+            <h2>This item is currently out of stock</h2>
+        )
+
+    }
+
+    else {
+        return (
+
+            <form id="edForm">
+                <label>
+                    Quantity { }
+                    <input
+                        onChange={e => setNewQuantity(e.target.value)}
+                        id="quantity"
+                        type="number"
+                        name="quantity"
+                        min="1"
+                        placeholder='1'
+                    />
+                </label>
+
+            </form>
+
+        )
+    }
+}
+
+
 
 
 

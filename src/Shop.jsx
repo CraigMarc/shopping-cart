@@ -26,6 +26,8 @@ function Shop(props) {
 
   } = props;
 
+ 
+
 
   // if api goes down use data in assets file uncomment and comment out fetch change setApiItems in app.jsx
   //<img className="img" src={imageArray[index.id - 1]}></img>
@@ -80,7 +82,6 @@ function Shop(props) {
     if (loading) return <p className="loading">Loading...</p>;
 
   }
-
 
 
   return (

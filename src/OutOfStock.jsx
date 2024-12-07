@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom";
 
 const OutOfStock = (props) => {
 
@@ -25,18 +25,18 @@ const OutOfStock = (props) => {
             return (
 
               <div key={iter}>
-               <p>There are only {index.quantity} {index.title}s left in stock</p>
+                <p>There are only {index.quantity} {index.title}s left in stock</p>
               </div>
 
             )
           }
-          
+
           if (index.quantity == 0) {
 
             return (
 
               <div key={iter}>
-               <p>{index.title} is out of stock</p>
+                <p>{index.title} is out of stock</p>
               </div>
 
             )
@@ -53,9 +53,13 @@ const OutOfStock = (props) => {
   return (
     <div>
       {renderMessage()}
-      <button>Revise your order</button>
+
+      <Link to="/cart">
+        <button>Revise your order</button>
+      </Link>
+
     </div>
-   
+
   );
 };
 

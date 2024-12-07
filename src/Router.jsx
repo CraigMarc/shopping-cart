@@ -72,6 +72,7 @@ const Router = (props) => {
           setCartItems={setCartItems}
           cartState={cartState}
           setCartState={setCartState}
+          apiItems={apiItems}
         />,
       errorElement: <ErrorPage />,
     },
