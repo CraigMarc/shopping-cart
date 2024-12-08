@@ -12,11 +12,15 @@ function Cart(props) {
         setCartItems,
         cartState,
         setCartState,
-        apiItems
+        apiItems,
+       
 
     } = props;
 
-    const showButton = useRef(true);
+   
+    let showButton = true
+
+   console.log(cartItems)
 
 
     const handleDelete = (event) => {
@@ -52,6 +56,7 @@ function Cart(props) {
         setCartState(cartGrandTotal)
     }, [cartItems]);
 
+let quantArray = []
 
     const listCartItems = () => {
         return (
@@ -59,7 +64,7 @@ function Cart(props) {
                 {cartItems.map((data, iter) => {
 
                     let url = `http://localhost:3000/uploads/${data.image}`
-
+                    
                     return (
                         <div className='cart2' key={data.id}>
                             <div className='cartCont'>
@@ -69,12 +74,12 @@ function Cart(props) {
                                 </div>
                                 <div className='cartCont2'>
                                     <p>quantity: {data.quantity}</p>
-                                    {renderMessage(data)}
                                     <p>${(data.total / 100).toFixed(2)}</p>
                                 </div>
+                                {renderMessage(data, iter)}
                                 <div className="deleteButtonContainer">
                                     <button className="delete" value={data.id} onClick={handleDelete}>delete</button>
-
+                                    <button>update quantity</button>
                                 </div>
                             </div>
 
@@ -88,13 +93,35 @@ function Cart(props) {
         )
     }
 
-    // render quantity update
+   // render quantity update
 
-    function renderMessage(data) {
+    let updateQuantArr = []
+    let updateQuantArr2 = []
+
+    
+
+   
+
+    function renderMessage(data, iter) {
 
         const [newQuantity, setNewQuantity] = useState()
+        updateQuantArr[iter] = cartItems[iter].quantity
 
-        // uncomment to undiable when finished testing ************
+        function updateArray (e) {
+     
+            setNewQuantity(e.target.value)
+            updateQuantArr[e.target.id] = e.target.value
+            for (let i=0; i<updateQuantArr.length; i++) {
+                if (i == e.target.id) {
+                    updateQuantArr2[i] = e.target.value
+                }
+                else {
+                    updateQuantArr2[i] = updateQuantArr[i]
+                }
+            }
+            console.log(updateQuantArr2)
+        }
+
 
         let productArray = apiItems.filter(function (obj) {
             return obj._id == data.id
@@ -102,19 +129,19 @@ function Cart(props) {
         );
 
         if (newQuantity > productArray[0].quantity) {
-            showButton.current = false
+            showButton = false
             return (
 
                 <form id="edForm">
                     <label>
                         Quantity { }
                         <input
-                            onChange={e => setNewQuantity(e.target.value)}
-                            id="quantity"
+                            onChange={updateArray}
+                            id={iter}
                             type="number"
                             name="quantity"
                             min="1"
-                            placeholder='1'
+                            placeholder={data.quantity}
                         />
                     </label>
 
@@ -127,7 +154,7 @@ function Cart(props) {
 
         // if item is out of stock 
         if (productArray[0].quantity <= 0) {
-            showButton.current = false
+            showButton = false
 
             return (
 
@@ -137,19 +164,19 @@ function Cart(props) {
         }
 
         else {
-            showButton.current = true
+            showButton = true
             return (
 
                 <form id="edForm">
                     <label>
                         Quantity { }
                         <input
-                            onChange={e => setNewQuantity(e.target.value)}
-                            id="quantity"
+                            onChange={updateArray}
+                            id={iter}
                             type="number"
                             name="quantity"
                             min="1"
-                            placeholder='1'
+                            placeholder={data.quantity}
                         />
                     </label>
 
@@ -159,21 +186,60 @@ function Cart(props) {
         }
     }
 
+   
+
+/*
+function renderStatus (data, iter){
+
+    let productArray = apiItems.filter(function (obj) {
+        return obj._id == data.id
+    }
+    );
+
+    // order exceeds inventory
+
+    if (cartItems[iter].quantity > productArray[0].quantity) {
+        showButton = false
+        return (
+
+                <h3>There are only {productArray[0].quantity} left in inventory</h3>
+
+        )
+    }
+
+     // if item is out of stock 
+     if (productArray[0].quantity <= 0) {
+        showButton = false
+
+        return (
+
+            <h2>This item is currently out of stock</h2>
+        )
+
+    }
+
+
+}*/
     // render checkout button
 
     function checkoutButton() {
        
-        if (showButton.current == true) {
-
+        if (showButton == true) {
+/*
             return (
                 <Link to="/address">
                     <button type="button">
                         Check Out
                     </button>
                 </Link>
-            )
+            )*/
+           return (
+            <button type="button">
+                        Check Out
+                    </button>
+           )
         }
-        if (showButton.current == false) {
+        if (showButton == false) {
             return (
                 <p></p>
             )

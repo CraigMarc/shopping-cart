@@ -32,7 +32,8 @@ const Router = (props) => {
     setCartState,
     order,
     setOrder,
-    oosRef
+    oosRef,
+   
 
   } = props;
 
@@ -73,6 +74,7 @@ const Router = (props) => {
           cartState={cartState}
           setCartState={setCartState}
           apiItems={apiItems}
+         
         />,
       errorElement: <ErrorPage />,
     },

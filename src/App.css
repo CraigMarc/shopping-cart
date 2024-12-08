@@ -232,6 +232,10 @@ input[type=number]::-webkit-inner-spin-button {
   padding-bottom: 10px;
 }
 
+.delete {
+  margin-right: 10px;
+}
+
 .checkoutButtons {
 
   display: flex;
