@@ -18,7 +18,7 @@ function Cart(props) {
     } = props;
 
    
-    let showButton = true
+    let showButton = [true]
 
    console.log(cartItems)
 
@@ -129,7 +129,7 @@ let quantArray = []
         );
 
         if (newQuantity > productArray[0].quantity) {
-            showButton = false
+            showButton[iter] = false
             return (
 
                 <form id="edForm">
@@ -154,7 +154,7 @@ let quantArray = []
 
         // if item is out of stock 
         if (productArray[0].quantity <= 0) {
-            showButton = false
+            showButton[iter] = false
 
             return (
 
@@ -164,7 +164,7 @@ let quantArray = []
         }
 
         else {
-            showButton = true
+            showButton[iter] = true
             return (
 
                 <form id="edForm">
@@ -187,63 +187,31 @@ let quantArray = []
     }
 
    
-
-/*
-function renderStatus (data, iter){
-
-    let productArray = apiItems.filter(function (obj) {
-        return obj._id == data.id
-    }
-    );
-
-    // order exceeds inventory
-
-    if (cartItems[iter].quantity > productArray[0].quantity) {
-        showButton = false
-        return (
-
-                <h3>There are only {productArray[0].quantity} left in inventory</h3>
-
-        )
-    }
-
-     // if item is out of stock 
-     if (productArray[0].quantity <= 0) {
-        showButton = false
-
-        return (
-
-            <h2>This item is currently out of stock</h2>
-        )
-
-    }
-
-
-}*/
     // render checkout button
 
     function checkoutButton() {
-       
-        if (showButton == true) {
-/*
-            return (
-                <Link to="/address">
-                    <button type="button">
-                        Check Out
-                    </button>
-                </Link>
-            )*/
-           return (
-            <button type="button">
-                        Check Out
-                    </button>
-           )
-        }
-        if (showButton == false) {
+       console.log(showButton)
+      
+        if (showButton.includes(false)) {
             return (
                 <p></p>
             )
         }
+        else {
+            /*
+                        return (
+                            <Link to="/address">
+                                <button type="button">
+                                    Check Out
+                                </button>
+                            </Link>
+                        )*/
+                       return (
+                        <button type="button">
+                                    Check Out
+                                </button>
+                       )
+                    }
     }
 
 
