@@ -135,6 +135,7 @@ const Checkout = (props) => {
 
   } = props;
 
+
   const navigate = useNavigate();
 
   function objectToQueryString(obj, iter) {
@@ -164,6 +165,8 @@ const Checkout = (props) => {
     setLoading(false);
     setErrorMessage(error.message);
   }
+
+// function to make payment
 
   async function callStripe() { 
 
@@ -233,7 +236,8 @@ const Checkout = (props) => {
       .then((response) => response.json())
       .then((data) => {
 
-    
+    // subtract from inventory if in stock
+
         function buildOosArray() {
 
           let oosArrayAll = []
@@ -256,13 +260,19 @@ const Checkout = (props) => {
         }
   
         // stripe logic here if (inventory < order) send to out of stock check whole product array
+
         if (buildOosArray().length > 0) {
           oosRef.current = buildOosArray()
+
+          //if item out of stock update apiItems state
           setApiItems(data)
+          
           navigate('/oos')
 
         }
         else {
+
+          // call function to make payment
           callStripe()
         }
       })

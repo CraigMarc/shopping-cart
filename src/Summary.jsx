@@ -11,7 +11,7 @@ const Summary = (props) => {
 
 
   } = props;
-
+console.log(order)
 
   let orderNum = Number(order.price)
 

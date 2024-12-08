@@ -19,6 +19,8 @@ function Cart(props) {
 
     } = props;
 
+console.log(cartItems)
+console.log(cartState)
 
     let showButton = [true]
 
@@ -38,17 +40,23 @@ function Cart(props) {
         )
     }
 
+    // total items in the cart
+
     function grandTotal(cartItems) {
+       
         let cartTotal = 0
         for (let i = 0; i < cartItems.length; i++) {
-            let toNumber = Number(cartItems[i].total)
-            cartTotal = toNumber + cartTotal
+           
+            let toNumber = Number(cartItems[i].quantity)
+            cartTotal = cartTotal + (cartItems[i].price * cartItems[i].quantity)
         }
 
         return cartTotal
     }
 
     let cartGrandTotal = grandTotal(cartItems)
+
+// update cartstate when cart array changes
 
     useEffect(() => {
         setCartState(cartGrandTotal)
@@ -72,7 +80,7 @@ function Cart(props) {
                                 </div>
                                 <div className='cartCont2'>
                                     <p>quantity: {data.quantity}</p>
-                                    <p>${(data.total / 100).toFixed(2)}</p>
+                                    <p>${(data.price / 100).toFixed(2)}</p>
                                 </div>
                                 {renderMessage(data, iter)}
                                 <div className="deleteButtonContainer">
@@ -116,6 +124,8 @@ function Cart(props) {
         
         updateQuantArr[iter] = cartItems[iter].quantity
 
+        // update quantities in array when changed by user
+
         function updateArray(e) {
 
             setNewQuantity(e.target.value)
@@ -137,6 +147,8 @@ function Cart(props) {
             return obj._id == data.id
         }
         );
+
+        // if item is over inventory  unquote when done testing *******************
 
         if (newQuantity > productArray[0].quantity) {
             showButton[iter] = false
@@ -164,6 +176,7 @@ function Cart(props) {
         }
 
         // if item is out of stock 
+
         if (productArray[0].quantity <= 0) {
             showButton[iter] = false
 
@@ -173,6 +186,8 @@ function Cart(props) {
             )
 
         }
+
+        // quantity is ok
 
         else {
             showButton[iter] = true
