@@ -10,9 +10,6 @@ const OutOfStock = (props) => {
 
   } = props;
 
-  console.log(oosRef.current)
-  console.log(order)
-
 
   function renderMessage() {
 

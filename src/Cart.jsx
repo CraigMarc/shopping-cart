@@ -19,8 +19,6 @@ function Cart(props) {
 
     } = props;
 
-console.log(cartItems)
-console.log(cartState)
 
     let showButton = [true]
 

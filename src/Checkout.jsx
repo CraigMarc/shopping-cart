@@ -154,6 +154,7 @@ const Checkout = (props) => {
 
 
   let totalPrice = order.shipping + cartState
+  console.log(totalPrice)
 
   const stripe = useStripe();
   const elements = useElements();
