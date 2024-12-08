@@ -13,6 +13,8 @@ function Cart(props) {
         cartState,
         setCartState,
         apiItems,
+        newQuantity,
+        setNewQuantity
 
 
     } = props;
@@ -113,7 +115,7 @@ function Cart(props) {
 
     function renderMessage(data, iter) {
 
-        const [newQuantity, setNewQuantity] = useState()
+        
         updateQuantArr[iter] = cartItems[iter].quantity
 
         function updateArray(e) {
@@ -151,7 +153,7 @@ function Cart(props) {
                             type="number"
                             name="quantity"
                             min="1"
-                            placeholder={data.quantity}
+                            value={data.quantity}
                         />
                     </label>
 
@@ -186,7 +188,7 @@ function Cart(props) {
                             type="number"
                             name="quantity"
                             min="1"
-                            placeholder={data.quantity}
+                            value={data.quantity}
                         />
                     </label>
 
