@@ -100,8 +100,8 @@ function Cart(props) {
 
     function updateCart() {
 
-        const updateArray = cartItems.slice(0)
-
+        const updateArray = structuredClone( cartItems)
+        
         for (let i = 0; i < cartItems.length; i++) {
             updateArray[i].quantity = updateQuantArr2[i]
         }
