@@ -13,14 +13,14 @@ function Cart(props) {
         cartState,
         setCartState,
         apiItems,
-       
+
 
     } = props;
 
-   
+
     let showButton = [true]
 
-   console.log(cartItems)
+    console.log(cartItems)
 
 
     const handleDelete = (event) => {
@@ -56,7 +56,7 @@ function Cart(props) {
         setCartState(cartGrandTotal)
     }, [cartItems]);
 
-let quantArray = []
+    let quantArray = []
 
     const listCartItems = () => {
         return (
@@ -64,7 +64,7 @@ let quantArray = []
                 {cartItems.map((data, iter) => {
 
                     let url = `http://localhost:3000/uploads/${data.image}`
-                    
+
                     return (
                         <div className='cart2' key={data.id}>
                             <div className='cartCont'>
@@ -93,25 +93,34 @@ let quantArray = []
         )
     }
 
-   // render quantity update
+    // render quantity update
 
     let updateQuantArr = []
     let updateQuantArr2 = []
 
-    
+    function updateCart() {
 
-   
+        const updateArray = cartItems.slice(0)
+
+        for (let i = 0; i < cartItems.length; i++) {
+            updateArray[i].quantity = updateQuantArr2[i]
+        }
+       
+        setCartItems(updateArray)
+    }
+
+
 
     function renderMessage(data, iter) {
 
         const [newQuantity, setNewQuantity] = useState()
         updateQuantArr[iter] = cartItems[iter].quantity
 
-        function updateArray (e) {
-     
+        function updateArray(e) {
+
             setNewQuantity(e.target.value)
             updateQuantArr[e.target.id] = e.target.value
-            for (let i=0; i<updateQuantArr.length; i++) {
+            for (let i = 0; i < updateQuantArr.length; i++) {
                 if (i == e.target.id) {
                     updateQuantArr2[i] = e.target.value
                 }
@@ -119,7 +128,8 @@ let quantArray = []
                     updateQuantArr2[i] = updateQuantArr[i]
                 }
             }
-            console.log(updateQuantArr2)
+
+            updateCart()
         }
 
 
@@ -145,7 +155,7 @@ let quantArray = []
                         />
                     </label>
 
-                    <h2>There are only {productArray[0].quantity} left in inventory</h2>
+                    <h3>There are only {productArray[0].quantity} left in inventory</h3>
 
                 </form>
 
@@ -186,12 +196,11 @@ let quantArray = []
         }
     }
 
-   
+
     // render checkout button
 
     function checkoutButton() {
-       console.log(showButton)
-      
+
         if (showButton.includes(false)) {
             return (
                 <p></p>
@@ -206,12 +215,12 @@ let quantArray = []
                                 </button>
                             </Link>
                         )*/
-                       return (
-                        <button type="button">
-                                    Check Out
-                                </button>
-                       )
-                    }
+            return (
+                <button type="button">
+                    Check Out
+                </button>
+            )
+        }
     }
 
 
