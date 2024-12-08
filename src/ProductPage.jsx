@@ -117,7 +117,7 @@ function ProductPage(props) {
                             type="number"
                             name="quantity"
                             min="1"
-                            placeholder='1'
+                            placeholder="1"
                         />
                     </label>
 

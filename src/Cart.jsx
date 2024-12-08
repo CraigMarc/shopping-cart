@@ -22,9 +22,6 @@ function Cart(props) {
 
     let showButton = [true]
 
-    console.log(cartItems)
-
-
     const handleDelete = (event) => {
         const id = event.target.value;
         const newData = cartItems.filter((item) => item.id !== id)
@@ -52,13 +49,12 @@ function Cart(props) {
     }
 
     let cartGrandTotal = grandTotal(cartItems)
-    // let cartGrandTotalRound = Number(cartGrandTotal).toFixed(2);
 
     useEffect(() => {
         setCartState(cartGrandTotal)
     }, [cartItems]);
 
-    let quantArray = []
+// render list of cart items
 
     const listCartItems = () => {
         return (
@@ -100,6 +96,8 @@ function Cart(props) {
     let updateQuantArr = []
     let updateQuantArr2 = []
 
+    // update cartitems state to new quantities
+
     function updateCart() {
 
         const updateArray = structuredClone( cartItems)
@@ -111,7 +109,7 @@ function Cart(props) {
         setCartItems(updateArray)
     }
 
-
+// render quantity inputs and show message if out of stock or over stock
 
     function renderMessage(data, iter) {
 
@@ -149,6 +147,7 @@ function Cart(props) {
                         Quantity { }
                         <input
                             onChange={updateArray}
+                            className='quantity'
                             id={iter}
                             type="number"
                             name="quantity"
@@ -184,6 +183,7 @@ function Cart(props) {
                         Quantity { }
                         <input
                             onChange={updateArray}
+                            className='quantity'
                             id={iter}
                             type="number"
                             name="quantity"
@@ -199,7 +199,7 @@ function Cart(props) {
     }
 
 
-    // render checkout button
+    // render checkout button if not out or over stock
 
     function checkoutButton() {
 
@@ -209,19 +209,15 @@ function Cart(props) {
             )
         }
         else {
-            /*
+            
                         return (
                             <Link to="/address">
                                 <button type="button">
                                     Check Out
                                 </button>
                             </Link>
-                        )*/
-            return (
-                <button type="button">
-                    Check Out
-                </button>
-            )
+                        )
+           
         }
     }
 
