@@ -85,7 +85,7 @@ console.log(cartState)
                                 {renderMessage(data, iter)}
                                 <div className="deleteButtonContainer">
                                     <button className="delete" value={data.id} onClick={handleDelete}>delete</button>
-                                    <button>update quantity</button>
+                                  
                                 </div>
                             </div>
 
