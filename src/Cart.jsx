@@ -13,9 +13,7 @@ function Cart(props) {
         cartState,
         setCartState,
         apiItems,
-        newQuantity,
-        setNewQuantity
-
+     
 
     } = props;
 
@@ -127,7 +125,6 @@ function Cart(props) {
 
         function updateArray(e) {
 
-            setNewQuantity(e.target.value)
             updateQuantArr[e.target.id] = e.target.value
             for (let i = 0; i < updateQuantArr.length; i++) {
                 if (i == e.target.id) {
