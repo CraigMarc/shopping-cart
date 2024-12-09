@@ -26,7 +26,7 @@ function Shop(props) {
 
   } = props;
 
- 
+
 
 
   // if api goes down use data in assets file uncomment and comment out fetch change setApiItems in app.jsx
@@ -49,7 +49,7 @@ function Shop(props) {
         // const res = await fetch("https://fakestoreapi.in/api/products")
 
         const productData = await res.json();
-      
+
         setApiItems(productData)
 
       }
@@ -97,12 +97,13 @@ function Shop(props) {
 
             let url = `http://localhost:3000/uploads/${index.image}`
             let priceDiv = (index.price / 100).toFixed(2)
-            
+
 
             return (
+              
+              <Link to="/product" state={iter}>
+                <div key={iter} className="product">
 
-              <div key={iter} className="product">
-                <Link to="/product" state={iter}>
                   <div id={index.id} className="card" >
 
                     <img className="img" src={url}></img>
@@ -110,9 +111,9 @@ function Shop(props) {
                     <p className="price">${priceDiv}</p>
 
                   </div>
-                </Link>
-              </div>
 
+                </div>
+              </Link>
             )
           })}
 

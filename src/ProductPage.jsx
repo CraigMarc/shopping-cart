@@ -15,6 +15,13 @@ function ProductPage(props) {
 
     } = props;
 
+
+    //get data from link
+
+    const location = useLocation()
+
+    let arrayNumber = location.state
+
     const [newQuantity, setNewQuantity] = useState()
 
 
@@ -28,12 +35,34 @@ function ProductPage(props) {
         )
     }
 
+    // check if item already in cart
+/*
+    console.log(cartItems)
+    console.log(apiItems[arrayNumber]._id)
+    let exists = Object.values(cartItems[1]).includes(apiItems[arrayNumber]._id);
+    console.log(exists)*/
 
-    //get data from link
 
-    const location = useLocation()
+    function checkCartItems() {
 
-    let arrayNumber = location.state
+        let checkArr = []
+
+        for (let i = 0; i < cartItems.length; i++) {
+
+            let exists = Object.values(cartItems[i]).includes(apiItems[arrayNumber]._id);
+
+            checkArr.push(exists)
+        }
+        
+        if (checkArr.includes(true)) {
+            return true
+        }
+        else {
+            return false
+        }
+    }
+
+console.log(checkCartItems())
 
     let itemTitle = apiItems[arrayNumber].title
     let itemDescription = apiItems[arrayNumber].description
@@ -58,13 +87,13 @@ function ProductPage(props) {
             quantity = 1
         }
         let total = quantity * itemPrice
-        
+
         setCartItems([...cartItems, { id: itemId, title: itemTitle, price: itemPrice, quantity: quantity, total: total, image: itemImage, length: itemLength, width: itemWidth, height: itemHeight, weight: itemWeight }])
 
 
     }
 
-   
+
 
     // if order is more then inventory
 
@@ -96,10 +125,20 @@ function ProductPage(props) {
             )
         }
 
+        // if item is in cart
+
+        if (checkCartItems() == true) {
+            return (
+
+                <h2>Item is in cart.</h2>
+            )
+
+        }
+
         // if item is out of stock 
         if (apiItems[arrayNumber].quantity <= 0) {
             return (
-            
+
                 <h2>This item is currently out of stock</h2>
             )
 
@@ -129,7 +168,7 @@ function ProductPage(props) {
         }
     }
 
-  
+
     if (apiItems[arrayNumber].title)
 
 

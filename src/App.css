@@ -42,6 +42,10 @@ body {
   padding-right: 5px;
 }
 
+.product:hover {
+  background-color: #F5F5F5;
+}
+
 .card {
   padding-top: 20px;
   text-align: center;
