@@ -148,7 +148,7 @@ function Cart(props) {
         }
         );
 
-        // if item is over inventory  
+        // if item is over inventory  ******
 
 
         if (updateQuantArr[iter] > productArray[0].quantity && productArray[0].quantity != 0 && productArray[0].quantity > 0) {
@@ -177,7 +177,7 @@ function Cart(props) {
         }
 
         // if item is out of stock delete oos item (only should happen if goes oos during checkout)
-       
+
 
         if (productArray[0].quantity <= 0) {
             showButton[iter] = false

@@ -17,7 +17,7 @@ console.log(order)
 
   let orderTotal = orderNum + order.shipping
 
-
+console.log(cartState)
  
   return (
     <div className="error">
@@ -37,7 +37,7 @@ console.log(order)
               </div>
               <div className='cartCont2'>
                 <p>quantity: {data.quantity}</p>
-                <p>${(data.total / 100).toFixed(2)}</p>
+                <p>${(cartState / 100).toFixed(2)}</p>
               </div>
 
             </div>

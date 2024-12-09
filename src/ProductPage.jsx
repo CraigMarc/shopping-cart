@@ -156,9 +156,8 @@ function checkCartQuantity() {
             )
         }
 
-        // uncomment when done testing *******************
      
-/*
+
         // if item is out of stock 
         if (apiItems[arrayNumber].quantity <= 0) {
             return (
@@ -166,7 +165,7 @@ function checkCartQuantity() {
                 <h2>This item is currently out of stock</h2>
             )
 
-        }*/
+        }
 
         else {
 
