@@ -161,7 +161,7 @@ function Cart(props) {
                             type="number"
                             name="quantity"
                             min="1"
-                            value={data.quantity}
+                            placeholder='1'
                         />
                     </label>
 

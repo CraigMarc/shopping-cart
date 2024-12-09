@@ -1,7 +1,7 @@
 import { Header } from './Header'
 import { useLocation } from 'react-router-dom'
 import { Link } from "react-router-dom";
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 
 function ProductPage(props) {
@@ -22,8 +22,9 @@ function ProductPage(props) {
 
     let arrayNumber = location.state
 
-    const [newQuantity, setNewQuantity] = useState()
-
+    const [newQuantity, setNewQuantity] = useState(1)
+    
+   
 
     if (apiItems == undefined) {
         return (
@@ -35,27 +36,60 @@ function ProductPage(props) {
         )
     }
 
-    // check if item already in cart
+   
+    let checkArr = []
+  
+//if item already in cart update quantity state
 
-    function checkCartItems() {
-
-        let checkArr = []
+    function checkCartQuantity() {
 
         for (let i = 0; i < cartItems.length; i++) {
 
             let exists = Object.values(cartItems[i]).includes(apiItems[arrayNumber]._id);
+            if (exists == true) {
+                
+                checkArr.push(i, cartItems[i])
+              
+            }
+        }
+        if (checkArr.length > 0) {
+           
+            setNewQuantity(checkArr[1].quantity)
+        }
+        
+      
+    }
 
-            checkArr.push(exists)
+    useEffect(() => {
+        checkCartQuantity();
+      }, [])
+   
+ // check if item already in cart
+
+      function checkCart() {
+
+        let newArr = []
+
+        for (let i = 0; i < cartItems.length; i++) {
+           
+            let exists = Object.values(cartItems[i]).includes(apiItems[arrayNumber]._id);
+            if (exists == true) {
+                newArr.push(i, cartItems[i])
+                
+            }
+        }
+        if (newArr.length > 0) {
+           
+           return true
         }
 
-        if (checkArr.includes(true)) {
-            return true
-        }
         else {
             return false
         }
+        
+      
     }
-
+    
 
     let itemTitle = apiItems[arrayNumber].title
     let itemDescription = apiItems[arrayNumber].description
@@ -81,10 +115,44 @@ function ProductPage(props) {
         }
         let total = quantity * itemPrice
 
-        setCartItems([...cartItems, { id: itemId, title: itemTitle, price: itemPrice, quantity: quantity, total: total, image: itemImage, length: itemLength, width: itemWidth, height: itemHeight, weight: itemWeight }])
+        if (checkCart() == true) {
 
+            
+            const updateArray = structuredClone(cartItems)
+            updateArray[0].quantity = quantity
+            setCartItems(updateArray)
+
+        }
+
+        else {
+
+            setCartItems([...cartItems, { id: itemId, title: itemTitle, price: itemPrice, quantity: quantity, total: total, image: itemImage, length: itemLength, width: itemWidth, height: itemHeight, weight: itemWeight }])
+        }
 
     }
+
+    // set quantity
+
+   function setCartQuant(e) {
+    setNewQuantity(e.target.value)
+   }
+
+
+    function renderSubmit() {
+        if (checkCart() == true) {
+            return (
+                <input type="submit" value="Update Quantity" />
+            )
+        }
+
+        else {
+            return (
+                <input type="submit" value="Add to Cart" />
+            )
+        }
+    }
+
+
 
 
 
@@ -102,12 +170,12 @@ function ProductPage(props) {
                     <label>
                         Quantity { }
                         <input
-                            onChange={e => setNewQuantity(e.target.value)}
+                            onChange={setCartQuant}
                             id="quantity"
                             type="number"
                             name="quantity"
                             min="1"
-                            placeholder='1'
+                            value={newQuantity}
                         />
                     </label>
 
@@ -117,16 +185,7 @@ function ProductPage(props) {
 
             )
         }
-
-        // if item is in cart
-
-        if (checkCartItems() == true) {
-            return (
-
-                <h2>Item is in cart.</h2>
-            )
-
-        }
+     
 
         // if item is out of stock 
         if (apiItems[arrayNumber].quantity <= 0) {
@@ -138,22 +197,23 @@ function ProductPage(props) {
         }
 
         else {
+
             return (
 
                 <form id="edForm" onSubmit={handleProductSubmit}>
                     <label>
                         Quantity { }
                         <input
-                            onChange={e => setNewQuantity(e.target.value)}
+                            onChange={setCartQuant}
                             id="quantity"
                             type="number"
                             name="quantity"
                             min="1"
-                            placeholder="1"
+                            value={newQuantity}
                         />
                     </label>
 
-                    <input type="submit" value="Add to Cart" />
+                    {renderSubmit()}
 
                 </form>
 

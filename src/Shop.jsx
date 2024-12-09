@@ -101,8 +101,8 @@ function Shop(props) {
 
             return (
               
-              <Link to="/product" state={iter}>
-                <div key={iter} className="product">
+              <Link key={iter} to="/product" state={iter}>
+                <div  className="product">
 
                   <div id={index.id} className="card" >
 
