@@ -41,22 +41,22 @@ function ProductPage(props) {
   
 //if item already in cart update quantity state and change incart to show items in cart
 
-    function checkCartQuantity() {
+function checkCartQuantity() {
 
-        for (let i = 0; i < cartItems.length; i++) {
+    for (let i = 0; i < cartItems.length; i++) {
 
-            let exists = Object.values(cartItems[i]).includes(apiItems[arrayNumber]._id);
-            if (exists == true) {
-                
-                checkArr.push(i, cartItems[i])
-                setNewQuantity(checkArr[1].quantity)
-                inCart.current = true
-              
-            }
+        let exists = Object.values(cartItems[i]).includes(apiItems[arrayNumber]._id);
+        if (exists == true) {
+            
+            checkArr.push(i, cartItems[i])
+            setNewQuantity(checkArr[1].quantity)
+            inCart.current = true
+          
         }
-        
-      
     }
+    
+  
+}
 
     useEffect(() => {
         checkCartQuantity();
@@ -131,9 +131,8 @@ function ProductPage(props) {
 
     function renderMessage() {
 
-        // uncomment to undiable when finished testing ************
 
-        if (newQuantity > apiItems[arrayNumber].quantity) {
+        if (newQuantity > apiItems[arrayNumber].quantity && apiItems[arrayNumber].quantity != 0 && apiItems[arrayNumber].quantity > 0) {
 
             return (
 
@@ -156,8 +155,10 @@ function ProductPage(props) {
 
             )
         }
-     
 
+        // uncomment when done testing *******************
+     
+/*
         // if item is out of stock 
         if (apiItems[arrayNumber].quantity <= 0) {
             return (
@@ -165,7 +166,7 @@ function ProductPage(props) {
                 <h2>This item is currently out of stock</h2>
             )
 
-        }
+        }*/
 
         else {
 

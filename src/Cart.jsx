@@ -13,7 +13,7 @@ function Cart(props) {
         cartState,
         setCartState,
         apiItems,
-     
+
 
     } = props;
 
@@ -39,10 +39,10 @@ function Cart(props) {
     // total items in the cart
 
     function grandTotal(cartItems) {
-       
+
         let cartTotal = 0
         for (let i = 0; i < cartItems.length; i++) {
-           
+
             let toNumber = Number(cartItems[i].quantity)
             cartTotal = cartTotal + (cartItems[i].price * cartItems[i].quantity)
         }
@@ -52,13 +52,13 @@ function Cart(props) {
 
     let cartGrandTotal = grandTotal(cartItems)
 
-// update cartstate when cart array changes
+    // update cartstate when cart array changes
 
     useEffect(() => {
         setCartState(cartGrandTotal)
     }, [cartItems]);
 
-// render list of cart items
+    // render list of cart items
 
     const listCartItems = () => {
         return (
@@ -81,7 +81,7 @@ function Cart(props) {
                                 {renderMessage(data, iter)}
                                 <div className="deleteButtonContainer">
                                     <button className="delete" value={data.id} onClick={handleDelete}>delete</button>
-                                  
+
                                 </div>
                             </div>
 
@@ -100,25 +100,29 @@ function Cart(props) {
     let updateQuantArr = []
     let updateQuantArr2 = []
 
-    
+
     // update cartitems state to new quantities
 
     function updateCart() {
 
-        const updateArray = structuredClone( cartItems)
-        
+        const updateArray = structuredClone(cartItems)
+
         for (let i = 0; i < cartItems.length; i++) {
             updateArray[i].quantity = updateQuantArr2[i]
         }
-       
+
         setCartItems(updateArray)
     }
 
-// render quantity inputs and show message if out of stock or over stock
+
+
+
+
+    // render quantity inputs and show message if out of stock or over stock
 
     function renderMessage(data, iter) {
 
-        
+
         updateQuantArr[iter] = cartItems[iter].quantity
 
         // update quantities in array when changed by user
@@ -144,10 +148,10 @@ function Cart(props) {
         }
         );
 
-        // if item is over inventory  unquote when done testing *******************
-       
+        // if item is over inventory  
 
-        if (updateQuantArr[iter] > productArray[0].quantity) {
+
+        if (updateQuantArr[iter] > productArray[0].quantity && productArray[0].quantity != 0 && productArray[0].quantity > 0) {
             showButton[iter] = false
             return (
 
@@ -172,11 +176,16 @@ function Cart(props) {
             )
         }
 
-        // if item is out of stock 
+        // if item is out of stock delete oos item (only should happen if goes oos during checkout)
+       
 
         if (productArray[0].quantity <= 0) {
             showButton[iter] = false
 
+            const filterOOS = cartItems.filter((item) => item.id != data.id);
+            setCartItems(filterOOS)
+
+            // should not render
             return (
 
                 <h2>This item is currently out of stock</h2>
@@ -221,15 +230,15 @@ function Cart(props) {
             )
         }
         else {
-            
-                        return (
-                            <Link to="/address">
-                                <button type="button">
-                                    Check Out
-                                </button>
-                            </Link>
-                        )
-           
+
+            return (
+                <Link to="/address">
+                    <button type="button">
+                        Check Out
+                    </button>
+                </Link>
+            )
+
         }
     }
 

@@ -10,6 +10,7 @@ const OutOfStock = (props) => {
 
   } = props;
 
+ 
 
   function renderMessage() {
 
