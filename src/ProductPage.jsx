@@ -1,7 +1,7 @@
 import { Header } from './Header'
 import { useLocation } from 'react-router-dom'
 import { Link } from "react-router-dom";
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef} from 'react'
 
 
 function ProductPage(props) {
@@ -23,7 +23,7 @@ function ProductPage(props) {
     let arrayNumber = location.state
 
     const [newQuantity, setNewQuantity] = useState(1)
-    
+    const inCart = useRef(false);
    
 
     if (apiItems == undefined) {
@@ -39,7 +39,7 @@ function ProductPage(props) {
    
     let checkArr = []
   
-//if item already in cart update quantity state
+//if item already in cart update quantity state and change incart to show items in cart
 
     function checkCartQuantity() {
 
@@ -49,12 +49,10 @@ function ProductPage(props) {
             if (exists == true) {
                 
                 checkArr.push(i, cartItems[i])
+                setNewQuantity(checkArr[1].quantity)
+                inCart.current = true
               
             }
-        }
-        if (checkArr.length > 0) {
-           
-            setNewQuantity(checkArr[1].quantity)
         }
         
       
@@ -64,32 +62,7 @@ function ProductPage(props) {
         checkCartQuantity();
       }, [])
    
- // check if item already in cart
 
-      function checkCart() {
-
-        let newArr = []
-
-        for (let i = 0; i < cartItems.length; i++) {
-           
-            let exists = Object.values(cartItems[i]).includes(apiItems[arrayNumber]._id);
-            if (exists == true) {
-                newArr.push(i, cartItems[i])
-                
-            }
-        }
-        if (newArr.length > 0) {
-           
-           return true
-        }
-
-        else {
-            return false
-        }
-        
-      
-    }
-    
 
     let itemTitle = apiItems[arrayNumber].title
     let itemDescription = apiItems[arrayNumber].description
@@ -115,8 +88,7 @@ function ProductPage(props) {
         }
         let total = quantity * itemPrice
 
-        if (checkCart() == true) {
-
+         if  (inCart.current == true) {
             
             const updateArray = structuredClone(cartItems)
             updateArray[0].quantity = quantity
@@ -137,9 +109,11 @@ function ProductPage(props) {
     setNewQuantity(e.target.value)
    }
 
+// update submit button
 
     function renderSubmit() {
-        if (checkCart() == true) {
+      
+        if (inCart.current == true) {
             return (
                 <input type="submit" value="Update Quantity" />
             )
@@ -151,9 +125,6 @@ function ProductPage(props) {
             )
         }
     }
-
-
-
 
 
     // if order is more then inventory
@@ -223,8 +194,6 @@ function ProductPage(props) {
 
 
     if (apiItems[arrayNumber].title)
-
-
 
         return (
             <div>
