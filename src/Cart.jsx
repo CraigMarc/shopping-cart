@@ -102,6 +102,7 @@ function Cart(props) {
     let updateQuantArr = []
     let updateQuantArr2 = []
 
+    
     // update cartitems state to new quantities
 
     function updateCart() {
@@ -147,8 +148,9 @@ function Cart(props) {
         );
 
         // if item is over inventory  unquote when done testing *******************
+       
 
-        if (newQuantity > productArray[0].quantity) {
+        if (updateQuantArr[iter] > productArray[0].quantity) {
             showButton[iter] = false
             return (
 

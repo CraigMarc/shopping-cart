@@ -36,12 +36,6 @@ function ProductPage(props) {
     }
 
     // check if item already in cart
-/*
-    console.log(cartItems)
-    console.log(apiItems[arrayNumber]._id)
-    let exists = Object.values(cartItems[1]).includes(apiItems[arrayNumber]._id);
-    console.log(exists)*/
-
 
     function checkCartItems() {
 
@@ -53,7 +47,7 @@ function ProductPage(props) {
 
             checkArr.push(exists)
         }
-        
+
         if (checkArr.includes(true)) {
             return true
         }
@@ -62,7 +56,6 @@ function ProductPage(props) {
         }
     }
 
-console.log(checkCartItems())
 
     let itemTitle = apiItems[arrayNumber].title
     let itemDescription = apiItems[arrayNumber].description
