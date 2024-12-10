@@ -17,7 +17,7 @@ const Summary = (props) => {
 
   let orderTotal = orderNum + order.shipping
 
- 
+
   return (
     <div className="error">
       <h1>Order Summary</h1>
@@ -55,13 +55,14 @@ const Summary = (props) => {
         <p className="pItems">shipping: {(order.shipping / 100).toFixed(2)}</p>
         <p className="total">order total: {(orderTotal / 100).toFixed(2)}</p>
       </div>
+      <div className="summarySubmit">
       <Link to="/checkout">
         <button type="button">
           Proceed to Payment
         </button>
       </Link>
-
     </div>
+    </div >
 
 
   );

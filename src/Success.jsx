@@ -84,17 +84,17 @@ const Success = (props) => {
         `
       ${productArray[i].title} 
       Quantity: ${productArray[i].quantity} 
-      Price: ${(productArray[i].price / 100).toFixed(2)
+      Price: $${(productArray[i].price / 100).toFixed(2)
         }`
     }
 
     template = template + `
-    ` 
-     + `  Shipping: ${(shippingCostN / 100).toFixed(2)}` + `
+    `
+      + `  Shipping: $${(shippingCostN / 100).toFixed(2)}` + `
 
     ` +
 
-      `Total: ${(orderTotal / 100).toFixed(2)}`
+      `Total: $${(orderTotal / 100).toFixed(2)}`
 
     return template
   }
@@ -109,11 +109,13 @@ const Success = (props) => {
       body: JSON.stringify({
         email: email,
         order_details: `Thank you for your order ${firstName}, it will be shipped shortly.,
+        
+        orderId: ${orderId}
 
         Order Summary:
         ${orderTL()}
         `,
-        orderId: orderId
+        
 
       }),
       headers: {
@@ -183,7 +185,7 @@ const Success = (props) => {
 
 
   }
- 
+
   const initialized = useRef(false)
 
   useEffect(() => {
@@ -194,14 +196,30 @@ const Success = (props) => {
     }
   }, [])
 
-
-
-
+  
   return (
-    <div className="container">
-      <button>Successfully Paid</button>
+    <div className="successContainer">
+     
       <p>Your order is being prepared and you will receive a confirmation email, Thank you for shopping.</p>
+      <div>
+        <h3>Order Summary:</h3>
+        <p>order number: {orderId}</p>
+       
+        {productArray.map((index, iter) => {
+
+          return (
+            <div className='orderSummary' key={iter}>
+              <p>item: {index.title}</p>
+              <p>quantity: {index.quantity}</p>
+              <p>price: ${(index.price / 100).toFixed(2)}</p>
+            </div>
+          )
+        })}
+        <p>shipping: ${(shippingCostN / 100).toFixed(2)}</p>
+        <p className='totalSum'>total: ${(orderTotal / 100).toFixed(2)}</p>
+      </div>
     </div>
+
   );
 };
 
