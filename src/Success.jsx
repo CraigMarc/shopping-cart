@@ -115,7 +115,7 @@ const Success = (props) => {
         Order Summary:
         ${orderTL()}
         `,
-        
+
 
       }),
       headers: {
@@ -196,15 +196,14 @@ const Success = (props) => {
     }
   }, [])
 
-  
+
   return (
     <div className="successContainer">
-     
-      <p>Your order is being prepared and you will receive a confirmation email, Thank you for shopping.</p>
+
       <div>
         <h3>Order Summary:</h3>
         <p>order number: {orderId}</p>
-       
+
         {productArray.map((index, iter) => {
 
           return (
@@ -218,6 +217,8 @@ const Success = (props) => {
         <p>shipping: ${(shippingCostN / 100).toFixed(2)}</p>
         <p className='totalSum'>total: ${(orderTotal / 100).toFixed(2)}</p>
       </div>
+      <p>Your order is being prepared and you should receive a confirmation email shortly.</p>
+      <p>Thank you for shopping.</p>
     </div>
 
   );
