@@ -74,8 +74,7 @@ function Shop(props) {
 
     if (error) return (
       <div>
-        <Header />
-        <p>A network error was encountered</p>
+        <h3>A network error was encountered try again later.</h3>
       </div>
     )
 

@@ -161,6 +161,7 @@ const Checkout = (props) => {
 
   const [errorMessage, setErrorMessage] = useState();
   const [loading, setLoading] = useState(false);
+  const [errorServer, setErrorServer] = useState(null);
 
   const handleError = (error) => {
     setLoading(false);
@@ -279,9 +280,16 @@ const Checkout = (props) => {
       })
       .catch((err) => {
         console.log(err.message);
+        setErrorServer(true)
       })
 
   };
+
+  if (errorServer) return (
+    <div>
+      <h3>A network error was encountered try again later.</h3>
+    </div>
+  )
 
   
   return (

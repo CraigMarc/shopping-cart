@@ -11,13 +11,12 @@ const Summary = (props) => {
 
 
   } = props;
-console.log(order)
+
 
   let orderNum = Number(order.price)
 
   let orderTotal = orderNum + order.shipping
 
-console.log(cartState)
  
   return (
     <div className="error">

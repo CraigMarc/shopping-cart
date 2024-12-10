@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 
+
 const Address = (props) => {
 
     const navigate = useNavigate();
@@ -53,6 +54,7 @@ const Address = (props) => {
 
     }
 
+    const [errorMess, setErrorMess] = useState(null);
 
     // submit info for shipping price
 
@@ -62,6 +64,8 @@ const Address = (props) => {
         let packageShip = packageTotal()
 
         let uuid = self.crypto.randomUUID();
+
+       
 
         //send form data
         await fetch("http://localhost:3000/users/usps", {
@@ -113,12 +117,18 @@ const Address = (props) => {
 
             .catch((err) => {
                 console.log(err.message);
-
-
+                setErrorMess(true)
+               
             });
 
 
     }
+
+    if (errorMess) return (
+        <div>
+          <h3>A network error was encountered try again later.</h3>
+        </div>
+      )
    
 
     return (
