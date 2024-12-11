@@ -65,7 +65,7 @@ function Cart(props) {
             <div>
                 {cartItems.map((data, iter) => {
 
-                    let url = `http://localhost:3000/uploads/${data.image}`
+                    let url = `http://localhost:3000/${data.image}`
 
                     return (
                         <div className='cart2' key={data.id}>

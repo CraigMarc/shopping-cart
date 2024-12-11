@@ -94,7 +94,7 @@ function Shop(props) {
 
           {apiItems.map((index, iter) => {
 
-            let url = `http://localhost:3000/uploads/${index.image}`
+            let url = `http://localhost:3000/${index.image}`
             let priceDiv = (index.price / 100).toFixed(2)
 
 

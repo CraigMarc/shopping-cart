@@ -24,7 +24,7 @@ const Summary = (props) => {
 
       {cartItems.map((data) => {
 
-        let url = `http://localhost:3000/uploads/${data.image}`
+        let url = `http://localhost:3000/${data.image}`
 
         return (
 

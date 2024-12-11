@@ -74,7 +74,7 @@ function checkCartQuantity() {
     let itemImage = apiItems[arrayNumber].image
     let itemId = apiItems[arrayNumber]._id
 
-    let url = `http://localhost:3000/uploads/${itemImage}`
+    let url = `http://localhost:3000/${itemImage}`
 
     //submit to cart
 
