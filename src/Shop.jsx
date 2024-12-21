@@ -81,7 +81,7 @@ function Shop(props) {
     if (loading) return <p className="loading">Loading...</p>;
 
   }
-
+console.log(apiItems)
 
   return (
     <div>
@@ -94,8 +94,10 @@ function Shop(props) {
 
           {apiItems.map((index, iter) => {
 
-            let url = `http://localhost:3000/${index.image}`
-            let priceDiv = (index.price / 100).toFixed(2)
+            let image = index.colorArray[0].images[0]
+
+            let url = `http://localhost:3000/${image}`
+            let priceDiv = (index.colorArray[0].sizeArray[0].price / 100).toFixed(2)
 
 
             return (
