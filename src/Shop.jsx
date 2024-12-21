@@ -81,7 +81,7 @@ function Shop(props) {
     if (loading) return <p className="loading">Loading...</p>;
 
   }
-console.log(apiItems)
+
 
   return (
     <div>

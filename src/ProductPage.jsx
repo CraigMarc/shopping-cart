@@ -1,7 +1,7 @@
 import { Header } from './Header'
 import { useLocation } from 'react-router-dom'
 import { Link } from "react-router-dom";
-import { useState, useEffect, useRef} from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 
 function ProductPage(props) {
@@ -24,7 +24,7 @@ function ProductPage(props) {
 
     const [newQuantity, setNewQuantity] = useState(1)
     const inCart = useRef(false);
-   
+
 
     if (apiItems == undefined) {
         return (
@@ -36,36 +36,40 @@ function ProductPage(props) {
         )
     }
 
-   
+
     let checkArr = []
-  
-//if item already in cart update quantity state and change incart to show items in cart
 
-function checkCartQuantity() {
+    //if item already in cart update quantity state and change incart to show items in cart
 
-    for (let i = 0; i < cartItems.length; i++) {
+    function checkCartQuantity() {
 
-        let exists = Object.values(cartItems[i]).includes(apiItems[arrayNumber]._id);
-        if (exists == true) {
-            
-            checkArr.push(i, cartItems[i])
-            setNewQuantity(checkArr[1].quantity)
-            inCart.current = true
-          
+        for (let i = 0; i < cartItems.length; i++) {
+
+            let exists = Object.values(cartItems[i]).includes(apiItems[arrayNumber]._id);
+            if (exists == true) {
+
+                checkArr.push(i, cartItems[i])
+                setNewQuantity(checkArr[1].quantity)
+                inCart.current = true
+
+            }
         }
+
+
     }
-    
-  
-}
 
     useEffect(() => {
         checkCartQuantity();
-      }, [])
-   
+    }, [])
 
+    const currentProduct = apiItems[arrayNumber]
+    console.log(currentProduct)
 
-    let itemTitle = apiItems[arrayNumber].title
-    let itemDescription = apiItems[arrayNumber].description
+    let itemTitle = currentProduct.title
+    let itemDescription = currentProduct.description
+
+    // change depending on size and color chosen ************************
+
     let itemPrice = apiItems[arrayNumber].price
     let itemLength = apiItems[arrayNumber].length
     let itemHeight = apiItems[arrayNumber].height
@@ -75,6 +79,29 @@ function checkCartQuantity() {
     let itemId = apiItems[arrayNumber]._id
 
     let url = `http://localhost:3000/${itemImage}`
+
+    //dropdown form
+
+    function Dropdown() {
+
+        return (
+            <div>
+                <form>
+                    <label>Color</label>
+                    <select required onChange={(e) => setState(e.target.value)}>
+                        {currentProduct.colorArray.map((item, iter) => {
+                            return (
+                                <option key={iter}>{item.color}</option>
+
+                            )
+                        })}
+                    </select>
+               
+                </form>
+            </div>
+        )
+
+    }
 
     //submit to cart
 
@@ -88,8 +115,8 @@ function checkCartQuantity() {
         }
         let total = quantity * itemPrice
 
-         if  (inCart.current == true) {
-            
+        if (inCart.current == true) {
+
             const updateArray = structuredClone(cartItems)
             updateArray[0].quantity = quantity
             setCartItems(updateArray)
@@ -105,14 +132,14 @@ function checkCartQuantity() {
 
     // set quantity
 
-   function setCartQuant(e) {
-    setNewQuantity(e.target.value)
-   }
+    function setCartQuant(e) {
+        setNewQuantity(e.target.value)
+    }
 
-// update submit button
+    // update submit button
 
     function renderSubmit() {
-      
+
         if (inCart.current == true) {
             return (
                 <input type="submit" value="Update Quantity" />
@@ -156,7 +183,7 @@ function checkCartQuantity() {
             )
         }
 
-     
+
 
         // if item is out of stock 
         if (apiItems[arrayNumber].quantity <= 0) {
@@ -211,6 +238,7 @@ function checkCartQuantity() {
                     </div>
                     <div className='formContainer'>
                         {renderMessage()}
+                        <Dropdown />
                         <div className='productButton'>
                             <Link to="/">
                                 <div className='shopButtonContainer'>
