@@ -23,10 +23,10 @@ function ProductPage(props) {
     let arrayNumber = location.state
 
     const [newQuantity, setNewQuantity] = useState(1)
-    const colorIndex = useRef()
     const inCart = useRef(false);
-    const [colorDrop, setColorDrop] = useState(apiItems[arrayNumber].colorArray[0].color)
-   
+    const [colorDrop, setColorDrop] = useState()
+    const colorIndex = useRef(0)
+    const [sizeDrop, setSizeDrop] = useState()
 
     if (apiItems == undefined) {
         return (
@@ -65,7 +65,7 @@ function ProductPage(props) {
     }, [])
 
     const currentProduct = apiItems[arrayNumber]
-    
+
     let itemTitle = currentProduct.title
     let itemDescription = currentProduct.description
 
@@ -80,19 +80,19 @@ function ProductPage(props) {
     let itemId = apiItems[arrayNumber]._id
 
     let url = `http://localhost:3000/${itemPrice}`
+    
+        function changeColor(e) {
+    
+            let index = currentProduct.colorArray.findIndex(
+                (temp) => temp['color'] == e.target.value)
+            colorIndex.current = index
+            setColorDrop(e.target.value)
+        }
+    console.log(colorDrop)
 
-    function changeColor (e) {
-      console.log(e.target.value)
-        setColorDrop(e.target.value)
-       
-       // let index = currentProduct.colorArray.findIndex(
-         //   (temp) => temp['color'] == colorDrop.current)
-            //setColorIndex({index: index})
-
-    }
-
-   
     //dropdown form
+   console.log(colorIndex.current)
+
 
     function Dropdown() {
 
@@ -100,11 +100,10 @@ function ProductPage(props) {
             <div>
                 <form>
                     <label>Color</label>
-                    <select required  onChange={(e) => changeColor(e)}>
-                    <option default value={currentProduct.colorArray[0].color}>{currentProduct.colorArray[0].color}</option>
+                    <select required value={colorDrop} onChange={(e) => changeColor(e)}>
+
                         {currentProduct.colorArray.map((item, iter) => {
-                          
-                            
+
                             return (
                                 <option id={iter} key={iter}>{item.color}</option>
 
@@ -112,11 +111,33 @@ function ProductPage(props) {
                         })}
                     </select>
 
+
                 </form>
             </div>
         )
 
     }
+    /*
+        function renderSizeDropdown() {
+            if (colorDrop) {
+                return (
+                    <div>
+                        <label>Size</label>
+                        <select required onChange={(e) => setSizeDrop(e.target.value)}>
+                            <option default value="">---</option>
+                            {currentProduct.colorArray[colorIndex.current].sizeArray.map((item, iter) => {
+    
+    
+                                return (
+                                    <option id={iter} key={iter}>{item.size}</option>
+    
+                                )
+                            })}
+                        </select>
+                    </div>
+                )
+            }
+        }*/
 
     //submit to cart
 
