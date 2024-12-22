@@ -23,8 +23,10 @@ function ProductPage(props) {
     let arrayNumber = location.state
 
     const [newQuantity, setNewQuantity] = useState(1)
+    const colorIndex = useRef()
     const inCart = useRef(false);
-
+    const [colorDrop, setColorDrop] = useState()
+   
 
     if (apiItems == undefined) {
         return (
@@ -63,8 +65,7 @@ function ProductPage(props) {
     }, [])
 
     const currentProduct = apiItems[arrayNumber]
-    console.log(currentProduct)
-
+    
     let itemTitle = currentProduct.title
     let itemDescription = currentProduct.description
 
@@ -78,8 +79,19 @@ function ProductPage(props) {
     let itemImage = apiItems[arrayNumber].image
     let itemId = apiItems[arrayNumber]._id
 
-    let url = `http://localhost:3000/${itemImage}`
+    let url = `http://localhost:3000/${itemPrice}`
 
+    function changeColor (e) {
+      console.log(e.target.value)
+        setColorDrop(e.target.value)
+       
+       // let index = currentProduct.colorArray.findIndex(
+         //   (temp) => temp['color'] == colorDrop.current)
+            //setColorIndex({index: index})
+
+    }
+
+   
     //dropdown form
 
     function Dropdown() {
@@ -88,15 +100,17 @@ function ProductPage(props) {
             <div>
                 <form>
                     <label>Color</label>
-                    <select required onChange={(e) => setState(e.target.value)}>
+                    <select required  onChange={(e) => changeColor(e)}>
                         {currentProduct.colorArray.map((item, iter) => {
+                          
+                            
                             return (
-                                <option key={iter}>{item.color}</option>
+                                <option id={iter} key={iter}>{item.color}</option>
 
                             )
                         })}
                     </select>
-               
+
                 </form>
             </div>
         )

@@ -26,7 +26,6 @@ const Address = (props) => {
     const [zip, setZip] = useState()
     const [town, setTown] = useState()
 
-
     const packageTotal = () => {
 
         let totalLength = 0
@@ -131,7 +130,7 @@ const Address = (props) => {
       )
    
 
-    return (
+    return(
         <div>
 
             <form onSubmit={handleSubmit}>
