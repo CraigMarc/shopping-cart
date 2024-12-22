@@ -101,6 +101,7 @@ function ProductPage(props) {
                 <form>
                     <label>Color</label>
                     <select required  onChange={(e) => changeColor(e)}>
+                    <option default value="">---</option>
                         {currentProduct.colorArray.map((item, iter) => {
                           
                             
