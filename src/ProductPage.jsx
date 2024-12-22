@@ -25,7 +25,7 @@ function ProductPage(props) {
     const [newQuantity, setNewQuantity] = useState(1)
     const colorIndex = useRef()
     const inCart = useRef(false);
-    const [colorDrop, setColorDrop] = useState()
+    const [colorDrop, setColorDrop] = useState(apiItems[arrayNumber].colorArray[0].color)
    
 
     if (apiItems == undefined) {
@@ -101,7 +101,7 @@ function ProductPage(props) {
                 <form>
                     <label>Color</label>
                     <select required  onChange={(e) => changeColor(e)}>
-                    <option default value="">---</option>
+                    <option default value={currentProduct.colorArray[0].color}>{currentProduct.colorArray[0].color}</option>
                         {currentProduct.colorArray.map((item, iter) => {
                           
                             
