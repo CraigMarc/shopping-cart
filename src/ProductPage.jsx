@@ -66,7 +66,7 @@ function ProductPage(props) {
     }, [])
 
     const currentProduct = apiItems[arrayNumber]
-    
+
     let itemTitle = currentProduct.title
     let itemDescription = currentProduct.description
 
@@ -77,6 +77,7 @@ function ProductPage(props) {
     let itemHeight = apiItems[arrayNumber].colorArray[colorIndex.current].sizeArray[sizeIndex.current].height
     let itemWidth = apiItems[arrayNumber].colorArray[colorIndex.current].sizeArray[sizeIndex.current].width
     let itemWeight = apiItems[arrayNumber].colorArray[colorIndex.current].sizeArray[sizeIndex.current].weight
+    let itemQuantity = apiItems[arrayNumber].colorArray[colorIndex.current].sizeArray[sizeIndex.current].quantity
     let itemImage = apiItems[arrayNumber].colorArray[colorIndex.current].images
     let itemId = apiItems[arrayNumber]._id
 
@@ -147,7 +148,7 @@ function ProductPage(props) {
     function handleProductSubmit(event) {
         event.preventDefault();
         const data = Object.fromEntries(new FormData(event.target).entries());
-        
+
         let quantity = data.quantity
         if (quantity == "") {
             quantity = 1
@@ -194,50 +195,36 @@ function ProductPage(props) {
         }
     }
 
-
-    // if order is more then inventory
+    // let know if out of stock or overordered
 
     function renderMessage() {
 
-
-        if (newQuantity > apiItems[arrayNumber].quantity && apiItems[arrayNumber].quantity != 0 && apiItems[arrayNumber].quantity > 0) {
-
+        if (newQuantity > itemQuantity && itemQuantity != 0 && itemQuantity > 0) {
             return (
-
-                <form id="edForm" onSubmit={handleProductSubmit}>
-                    <Dropdown />
-                    <label>
-                        Quantity { }
-                        <input
-                            onChange={setCartQuant}
-                            id="quantity"
-                            type="number"
-                            name="quantity"
-                            min="1"
-                            value={newQuantity}
-                        />
-                    </label>
-
-                    <h2>There are only {apiItems[arrayNumber].quantity} left in inventory</h2>
-
-                </form>
-
+                <h2>There are only {itemQuantity} left in inventory</h2>
             )
         }
-
-
-
-        // if item is out of stock 
-        if (apiItems[arrayNumber].quantity <= 0) {
+        if (itemQuantity <= 0) {
             return (
 
                 <h2>This item is currently out of stock</h2>
             )
-
         }
-
         else {
+            return (
+                <div>
+                {renderSubmit()}
+                </div>
+        )
+        }
+    }
 
+
+
+
+     // render quantity form
+
+        function renderForm() {
             return (
 
                 <form id="edForm" onSubmit={handleProductSubmit}>
@@ -253,55 +240,55 @@ function ProductPage(props) {
                             value={newQuantity}
                         />
                     </label>
-
-                    {renderSubmit()}
+                    {renderMessage()}
+                   
 
                 </form>
 
             )
         }
+       
+
+
+        if (apiItems[arrayNumber].title)
+
+            return (
+                <div>
+                    <Header
+                        cartItems={cartItems}
+                    />
+                    <div className='productPageContainer'>
+                        <div className="itemContainer">
+                            <div className="item">
+                                <h2>{itemTitle}</h2>
+                                <img className="img" src={url}></img>
+                                <p>{itemDescription}</p>
+                                <p className="price">${(itemPrice / 100).toFixed(2)}</p>
+                            </div>
+                        </div>
+                        <div className='formContainer'>
+                            {renderForm()}
+
+                            <div className='productButton'>
+                                <Link to="/">
+                                    <div className='shopButtonContainer'>
+                                        <button>Continue Shopping</button>
+                                    </div>
+                                </Link>
+                                <Link to="/cart">
+                                    <div className='checkoutButtonContainer'>
+                                        <button>Proceed to Checkout</button>
+                                    </div>
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            )
+
+
+
     }
 
-
-    if (apiItems[arrayNumber].title)
-
-        return (
-            <div>
-                <Header
-                    cartItems={cartItems}
-                />
-                <div className='productPageContainer'>
-                    <div className="itemContainer">
-                        <div className="item">
-                            <h2>{itemTitle}</h2>
-                            <img className="img" src={url}></img>
-                            <p>{itemDescription}</p>
-                            <p className="price">${(itemPrice / 100).toFixed(2)}</p>
-                        </div>
-                    </div>
-                    <div className='formContainer'>
-                        {renderMessage()}
-
-                        <div className='productButton'>
-                            <Link to="/">
-                                <div className='shopButtonContainer'>
-                                    <button>Continue Shopping</button>
-                                </div>
-                            </Link>
-                            <Link to="/cart">
-                                <div className='checkoutButtonContainer'>
-                                    <button>Proceed to Checkout</button>
-                                </div>
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        )
-
-
-
-}
-
-export default ProductPage
+    export default ProductPage
