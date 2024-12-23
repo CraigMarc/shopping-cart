@@ -24,10 +24,27 @@ function ProductPage(props) {
 
     const [newQuantity, setNewQuantity] = useState(1)
     const inCart = useRef(false);
+    //const [inCart, setInCart] = useState(false)
     const [colorDrop, setColorDrop] = useState()
     const colorIndex = useRef(0)
     const [sizeDrop, setSizeDrop] = useState()
     const sizeIndex = useRef(0)
+    //const newQuantity = useRef()
+
+    // values of current color selected
+
+    const currentProduct = apiItems[arrayNumber]
+
+    let itemTitle = currentProduct.title
+    let itemDescription = currentProduct.description
+    let itemPrice = apiItems[arrayNumber].colorArray[colorIndex.current].sizeArray[sizeIndex.current].price
+    let itemLength = apiItems[arrayNumber].colorArray[colorIndex.current].sizeArray[sizeIndex.current].length
+    let itemHeight = apiItems[arrayNumber].colorArray[colorIndex.current].sizeArray[sizeIndex.current].height
+    let itemWidth = apiItems[arrayNumber].colorArray[colorIndex.current].sizeArray[sizeIndex.current].width
+    let itemWeight = apiItems[arrayNumber].colorArray[colorIndex.current].sizeArray[sizeIndex.current].weight
+    let itemQuantity = apiItems[arrayNumber].colorArray[colorIndex.current].sizeArray[sizeIndex.current].quantity
+    let itemImage = apiItems[arrayNumber].colorArray[colorIndex.current].images
+    let itemId = apiItems[arrayNumber]._id
 
     if (apiItems == undefined) {
         return (
@@ -40,7 +57,6 @@ function ProductPage(props) {
     }
 
 
-    let checkArr = []
 
     //if item already in cart update quantity state and change incart to show items in cart
 
@@ -49,12 +65,17 @@ function ProductPage(props) {
         for (let i = 0; i < cartItems.length; i++) {
 
             let exists = Object.values(cartItems[i]).includes(apiItems[arrayNumber]._id);
-            if (exists == true) {
+          
 
-                checkArr.push(i, cartItems[i])
-                setNewQuantity(checkArr[1].quantity)
+            if (exists == true && cartItems[i].colorIter == colorIndex.current && cartItems[i].sizeIter == sizeIndex.current) {
+
                 inCart.current = true
-
+                setNewQuantity(cartItems[i].quantity)
+               
+                return
+            }
+            else {
+               setNewQuantity(1)
             }
         }
 
@@ -63,23 +84,8 @@ function ProductPage(props) {
 
     useEffect(() => {
         checkCartQuantity();
-    }, [])
+    }, [colorIndex.current, sizeIndex.current])
 
-    const currentProduct = apiItems[arrayNumber]
-
-    let itemTitle = currentProduct.title
-    let itemDescription = currentProduct.description
-
-    // change depending on size and color chosen ************************
-
-    let itemPrice = apiItems[arrayNumber].colorArray[colorIndex.current].sizeArray[sizeIndex.current].price
-    let itemLength = apiItems[arrayNumber].colorArray[colorIndex.current].sizeArray[sizeIndex.current].length
-    let itemHeight = apiItems[arrayNumber].colorArray[colorIndex.current].sizeArray[sizeIndex.current].height
-    let itemWidth = apiItems[arrayNumber].colorArray[colorIndex.current].sizeArray[sizeIndex.current].width
-    let itemWeight = apiItems[arrayNumber].colorArray[colorIndex.current].sizeArray[sizeIndex.current].weight
-    let itemQuantity = apiItems[arrayNumber].colorArray[colorIndex.current].sizeArray[sizeIndex.current].quantity
-    let itemImage = apiItems[arrayNumber].colorArray[colorIndex.current].images
-    let itemId = apiItems[arrayNumber]._id
 
     let url = `http://localhost:3000/${itemImage[0]}`
 
@@ -170,11 +176,10 @@ function ProductPage(props) {
 
     }
 
-    console.log(cartItems)
-
     // set quantity
 
     function setCartQuant(e) {
+       
         setNewQuantity(e.target.value)
     }
 
