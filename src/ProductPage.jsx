@@ -66,21 +66,21 @@ function ProductPage(props) {
     }, [])
 
     const currentProduct = apiItems[arrayNumber]
-
+    
     let itemTitle = currentProduct.title
     let itemDescription = currentProduct.description
 
     // change depending on size and color chosen ************************
 
-    let itemPrice = apiItems[arrayNumber].price
-    let itemLength = apiItems[arrayNumber].length
-    let itemHeight = apiItems[arrayNumber].height
-    let itemWidth = apiItems[arrayNumber].width
-    let itemWeight = apiItems[arrayNumber].weight
-    let itemImage = apiItems[arrayNumber].image
+    let itemPrice = apiItems[arrayNumber].colorArray[colorIndex.current].sizeArray[sizeIndex.current].price
+    let itemLength = apiItems[arrayNumber].colorArray[colorIndex.current].sizeArray[sizeIndex.current].length
+    let itemHeight = apiItems[arrayNumber].colorArray[colorIndex.current].sizeArray[sizeIndex.current].height
+    let itemWidth = apiItems[arrayNumber].colorArray[colorIndex.current].sizeArray[sizeIndex.current].width
+    let itemWeight = apiItems[arrayNumber].colorArray[colorIndex.current].sizeArray[sizeIndex.current].weight
+    let itemImage = apiItems[arrayNumber].colorArray[colorIndex.current].images
     let itemId = apiItems[arrayNumber]._id
 
-    let url = `http://localhost:3000/${itemPrice}`
+    let url = `http://localhost:3000/${itemImage[0]}`
 
     function changeColor(e) {
 
@@ -100,8 +100,6 @@ function ProductPage(props) {
 
 
     //dropdown form
-    console.log(sizeIndex.current)
-    console.log(sizeDrop)
 
     function Dropdown() {
 
@@ -149,7 +147,7 @@ function ProductPage(props) {
     function handleProductSubmit(event) {
         event.preventDefault();
         const data = Object.fromEntries(new FormData(event.target).entries());
-        let uuid = self.crypto.randomUUID();
+        
         let quantity = data.quantity
         if (quantity == "") {
             quantity = 1
@@ -166,10 +164,12 @@ function ProductPage(props) {
 
         else {
 
-            setCartItems([...cartItems, { id: itemId, title: itemTitle, price: itemPrice, quantity: quantity, total: total, image: itemImage, length: itemLength, width: itemWidth, height: itemHeight, weight: itemWeight }])
+            setCartItems([...cartItems, { id: itemId, title: itemTitle, price: itemPrice, quantity: quantity, total: total, image: itemImage, length: itemLength, width: itemWidth, height: itemHeight, weight: itemWeight, colorIter: colorIndex.current, sizeIter: sizeIndex.current }])
         }
 
     }
+
+    console.log(cartItems)
 
     // set quantity
 
