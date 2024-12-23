@@ -97,7 +97,7 @@ function ProductPage(props) {
         sizeIndex.current = index
         setSizeDrop(e.target.value)
     }
-   
+
 
     //dropdown form
     console.log(sizeIndex.current)
@@ -107,58 +107,42 @@ function ProductPage(props) {
 
         return (
             <div>
-                <form>
-                    <label>Color</label>
-                    <select required value={colorDrop} onChange={(e) => changeColor(e)}>
 
-                        {currentProduct.colorArray.map((item, iter) => {
+                <label>Color</label>
+                <select required value={colorDrop} onChange={(e) => changeColor(e)}>
 
-                            return (
-                                <option id={iter} key={iter}>{item.color}</option>
+                    {currentProduct.colorArray.map((item, iter) => {
+                        let color = item.color
+                        if (item.color == "false") {
+                            color = 'only one color'
+                        }
+                        return (
+                            <option id={iter} key={iter}>{color}</option>
 
-                            )
-                        })}
-                    </select>
-                    <label>Size</label>
-                    <select required value={sizeDrop} onChange={(e) => changeSize(e)}>
+                        )
+                    })}
+                </select>
+                <label>Size</label>
+                <select required value={sizeDrop} onChange={(e) => changeSize(e)}>
 
-                        {currentProduct.colorArray[colorIndex.current].sizeArray.map((item, iter) => {
+                    {currentProduct.colorArray[colorIndex.current].sizeArray.map((item, iter) => {
+                        let size = item.size
+                        if (item.size == "false") {
+                            size = 'only one size'
+                        }
 
+                        return (
+                            <option id={iter} key={iter}>{size}</option>
 
-                            return (
-                                <option id={iter} key={iter}>{item.size}</option>
+                        )
+                    })}
+                </select>
 
-                            )
-                        })}
-                    </select>
-
-
-                </form>
             </div>
         )
 
     }
-    /*
-        function renderSizeDropdown() {
-            if (colorDrop) {
-                return (
-                    <div>
-                        <label>Size</label>
-                        <select required onChange={(e) => setSizeDrop(e.target.value)}>
-                            <option default value="">---</option>
-                            {currentProduct.colorArray[colorIndex.current].sizeArray.map((item, iter) => {
-    
-    
-                                return (
-                                    <option id={iter} key={iter}>{item.size}</option>
-    
-                                )
-                            })}
-                        </select>
-                    </div>
-                )
-            }
-        }*/
+
 
     //submit to cart
 
@@ -221,6 +205,7 @@ function ProductPage(props) {
             return (
 
                 <form id="edForm" onSubmit={handleProductSubmit}>
+                    <Dropdown />
                     <label>
                         Quantity { }
                         <input
@@ -256,6 +241,7 @@ function ProductPage(props) {
             return (
 
                 <form id="edForm" onSubmit={handleProductSubmit}>
+                    <Dropdown />
                     <label>
                         Quantity { }
                         <input
@@ -295,7 +281,7 @@ function ProductPage(props) {
                     </div>
                     <div className='formContainer'>
                         {renderMessage()}
-                        <Dropdown />
+
                         <div className='productButton'>
                             <Link to="/">
                                 <div className='shopButtonContainer'>
