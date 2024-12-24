@@ -154,6 +154,7 @@ const Checkout = (props) => {
 
 
   let totalPrice = order.shipping + cartState
+  
 
   const stripe = useStripe();
   const elements = useElements();
@@ -168,6 +169,7 @@ const Checkout = (props) => {
   }
 
 // function to make payment
+
 
   async function callStripe() { 
 

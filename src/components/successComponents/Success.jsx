@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { useLocation } from "react-router-dom";
+import SizeAndColor from '../reusedComponents/SizeAndColor'
 
 const Success = (props) => {
 
@@ -43,6 +44,10 @@ const Success = (props) => {
       let totalIter = "total" + i
       let weightIter = "weight" + i
       let widthIter = "width" + i
+      let colorQuery = "color" + i
+      let sizeQuery = "size" + i
+      let sizeIndex = "sizeIter" + i
+      let colorIndex = "colorIter" + i
 
       const price = new URLSearchParams(search).get(priceIter);
       const priceN = Number(price)
@@ -61,8 +66,14 @@ const Success = (props) => {
       const weightN = Number(weight)
       const width = new URLSearchParams(search).get(widthIter);
       const widthN = Number(width)
+      const color = new URLSearchParams(search).get(colorQuery);
+      const size = new URLSearchParams(search).get(sizeQuery);
+      const sizeIter =  new URLSearchParams(search).get(sizeIndex);
+      const sizeIterN = Number(sizeIter)
+      const colorIter =  new URLSearchParams(search).get(colorIndex);
+      const colorIterN = Number(colorIter)
 
-      productArray.push({ price: priceN, quantity: quantityN, id: id, height: heightN, image: image, length: lengthN, title: title, total: totalN, weight: weightN, width: widthN })
+      productArray.push({ price: priceN, quantity: quantityN, id: id, height: heightN, image: image, length: lengthN, title: title, total: totalN, weight: weightN, width: widthN, color: color, size: size, sizeIter: sizeIterN, colorIter: colorIterN })
 
     }
     return productArray
@@ -71,6 +82,8 @@ const Success = (props) => {
   // create email temp literals
 
   let productArray = createProductArray()
+
+  console.log(productArray)
 
   let orderTotal = orderCostN + shippingCostN
 
@@ -143,7 +156,7 @@ const Success = (props) => {
 
 
   //submit new product
-
+/*
   async function newOrder() {
     await fetch(`http://localhost:3000/users/newOrder`, {
       method: 'Post',
@@ -196,6 +209,7 @@ const Success = (props) => {
     }
   }, [])
 
+*/
 
   return (
     <div className="successContainer">
@@ -210,6 +224,9 @@ const Success = (props) => {
             <div className='orderSummary' key={iter}>
               <p>item: {index.title}</p>
               <p>quantity: {index.quantity}</p>
+              <SizeAndColor
+                data={index}
+              />
               <p>price: ${(index.price / 100).toFixed(2)}</p>
             </div>
           )

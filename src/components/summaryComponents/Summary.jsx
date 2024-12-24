@@ -17,7 +17,7 @@ const Summary = (props) => {
   let orderNum = Number(order.price)
 
   let orderTotal = orderNum + order.shipping
-
+console.log(order)
 
   return (
     <div className="error">
@@ -43,6 +43,8 @@ const Summary = (props) => {
         <p className="pItems">{order.firstName} {order.lastName}</p>
         <p className="pItems">{order.address1}</p>
         <p className="pItems">{order.address2}</p>
+        <p className="pItems">{order.town}</p>
+        <p className="pItems">{order.state}</p>
         <p className="pItems">{order.email}</p>
         <p className="pItems">subtotal: {(order.price / 100).toFixed(2)}</p>
         <p className="pItems">shipping: {(order.shipping / 100).toFixed(2)}</p>

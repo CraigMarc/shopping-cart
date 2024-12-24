@@ -2,7 +2,7 @@ import { Header } from '../headerComponents/Header'
 import { useState, useEffect } from 'react'
 import { Link } from "react-router-dom";
 
-/* get rid of *******************************
+
 
 import image1 from '../../assets/images/image1.jpg';
 import image2 from '../../assets/images/image2.jpg';
@@ -16,7 +16,7 @@ import image9 from '../../assets/images/image9.jpg';
 import image10 from '../../assets/images/image10.jpg';
 import image11 from '../../assets/images/image11.jpg';
 import image12 from '../../assets/images/image12.jpg';
-*/
+
 
 function Shop(props) {
 
@@ -83,7 +83,7 @@ function Shop(props) {
     if (loading) return <p className="loading">Loading...</p>;
 
   }
-
+console.log(apiItems)
 
   return (
     <div>
@@ -97,7 +97,7 @@ function Shop(props) {
           {apiItems.map((index, iter) => {
 
             let image = index.colorArray[0].images[0]
-
+            
             let url = `http://localhost:3000/${image}`
             let priceDiv = (index.colorArray[0].sizeArray[0].price / 100).toFixed(2)
 
