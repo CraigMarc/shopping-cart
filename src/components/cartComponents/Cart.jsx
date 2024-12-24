@@ -1,5 +1,5 @@
 import { Header } from '../headerComponents/Header'
-import Checkout from '../checkoutComponents/Checkout'
+import SizeAndColor from '../reusedComponents/SizeAndColor'
 import { Link } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 
@@ -26,18 +26,9 @@ function Cart(props) {
 
         let newArr = structuredClone(cartItems)
         newArr.splice(iter, 1)
-        
+
         setCartItems(newArr);
 
-    }
-
-    if (cartItems.length == 0) {
-        return (
-            <div className='checkoutContainer'>
-                <Header />
-                <h1>cart is empty</h1>
-            </div>
-        )
     }
 
     // total items in the cart
@@ -61,43 +52,55 @@ function Cart(props) {
         setCartState(grandTotal(cartItems))
     }, [cartItems]);
 
+   
     // render list of cart items
 
     const listCartItems = () => {
-        return (
-            <div>
-                {cartItems.map((data, iter) => {
+        if (cartItems.length == 0) {
+            return (
+                <div className='checkoutContainer'>
+                    <Header />
+                    <h1>cart is empty</h1>
+                </div>
+            )
+        }
+        else {
+            return (
+                <div>
+                    {cartItems.map((data, iter) => {
 
-                    let url = `http://localhost:3000/${data.image}`
+                        let url = `http://localhost:3000/${data.image}`
 
-                    return (
-                        <div className='cart2' key={data.id}>
-                            <div className='cartCont'>
-                                <div className='cartCont1'>
-                                    <p>{data.title}</p>
-                                    <img className="checkoutImg" src={url}></img>
-                                </div>
-                                <div className='cartCont2'>
-                                    <p>quantity: {data.quantity}</p>
-                                    <p>color: {data.color}</p>
-                                    <p>size: {data.size}</p>
-                                    <p>${(data.price / 100).toFixed(2)}</p>
-                                </div>
-                                {renderMessage(data, iter)}
-                                <div className="deleteButtonContainer">
-                                    <button className="delete" value={data.id} onClick={(e) => handleDelete(e, iter)}>delete</button>
+                        return (
+                            <div className='cart2' key={data.id}>
+                                <div className='cartCont'>
+                                    <div className='cartCont1'>
+                                        <p>{data.title}</p>
+                                        <img className="checkoutImg" src={url}></img>
+                                    </div>
+                                    <div className='cartCont2'>
+                                        <p>quantity: {data.quantity}</p>
+                                        <SizeAndColor
+                                            data={data}
+                                        />
+                                        <p>${(data.price / 100).toFixed(2)}</p>
+                                    </div>
+                                    {renderMessage(data, iter)}
+                                    <div className="deleteButtonContainer">
+                                        <button className="delete" value={data.id} onClick={(e) => handleDelete(e, iter)}>delete</button>
 
+                                    </div>
                                 </div>
+
+
                             </div>
 
+                        )
 
-                        </div>
-
-                    )
-
-                })}
-            </div>
-        )
+                    })}
+                </div>
+            )
+        }
     }
 
     // render quantity update
@@ -143,10 +146,10 @@ function Cart(props) {
         let productArray = apiItems.filter(function (obj) {
             return obj._id == data.id
         }
-       
+
         );
 
-       let dataBaseQuantity = productArray[0].colorArray[cartItems[iter].colorIter].sizeArray[cartItems[iter].sizeIter].quantity
+        let dataBaseQuantity = productArray[0].colorArray[cartItems[iter].colorIter].sizeArray[cartItems[iter].sizeIter].quantity
 
         // if item is over inventory  ******
 
@@ -196,7 +199,7 @@ function Cart(props) {
         // quantity is ok
 
         else {
-           
+
             showButton.current[iter] = true
             return (
 
@@ -225,7 +228,7 @@ function Cart(props) {
 
     function checkoutButton() {
 
-        if (showButton.current.includes(false)) {
+        if (showButton.current.includes(false) || cartItems.length == 0) {
             return (
                 <p></p>
             )

@@ -25,6 +25,7 @@ const Address = (props) => {
     const [state, setState] = useState()
     const [zip, setZip] = useState()
     const [town, setTown] = useState()
+    
 
     const packageTotal = () => {
 
@@ -33,6 +34,7 @@ const Address = (props) => {
         let totalHeight = 0
         let totalWeight = 0
 
+     
 
         for (let i = 0; i < cartItems.length; i++) {
             let quant = Number(cartItems[i].quantity)

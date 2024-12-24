@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import SizeAndColor from '../reusedComponents/SizeAndColor'
 
 const Summary = (props) => {
 
@@ -36,6 +37,9 @@ const Summary = (props) => {
               </div>
               <div className='cartCont2'>
                 <p>quantity: {data.quantity}</p>
+                <SizeAndColor
+                  data={data}
+                />
                 <p>${(cartState / 100).toFixed(2)}</p>
               </div>
 
@@ -56,12 +60,12 @@ const Summary = (props) => {
         <p className="total">order total: {(orderTotal / 100).toFixed(2)}</p>
       </div>
       <div className="summarySubmit">
-      <Link to="/checkout">
-        <button type="button">
-          Proceed to Payment
-        </button>
-      </Link>
-    </div>
+        <Link to="/checkout">
+          <button type="button">
+            Proceed to Payment
+          </button>
+        </Link>
+      </div>
     </div >
 
 
