@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import shoppingCart from './assets/shoppingCart.png';
+import shoppingCart from '../../assets/shoppingCart.png';
 
 
 function Header(props) {

@@ -1,4 +1,4 @@
-import { Header } from './Header'
+import { Header } from '../headerComponents/Header'
 import { useLocation, useNavigate } from 'react-router-dom';
 
 // before using backend and payment
