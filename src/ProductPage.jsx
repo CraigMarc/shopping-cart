@@ -24,12 +24,10 @@ function ProductPage(props) {
 
     const [newQuantity, setNewQuantity] = useState(1)
     const inCart = useRef(false);
-    //const [inCart, setInCart] = useState(false)
     const [colorDrop, setColorDrop] = useState()
     const colorIndex = useRef(0)
     const [sizeDrop, setSizeDrop] = useState()
     const sizeIndex = useRef(0)
-    //const newQuantity = useRef()
 
     // values of current color selected
 
@@ -43,6 +41,8 @@ function ProductPage(props) {
     let itemWidth = apiItems[arrayNumber].colorArray[colorIndex.current].sizeArray[sizeIndex.current].width
     let itemWeight = apiItems[arrayNumber].colorArray[colorIndex.current].sizeArray[sizeIndex.current].weight
     let itemQuantity = apiItems[arrayNumber].colorArray[colorIndex.current].sizeArray[sizeIndex.current].quantity
+    let itemColor = apiItems[arrayNumber].colorArray[colorIndex.current].color
+    let itemSize = apiItems[arrayNumber].colorArray[colorIndex.current].sizeArray[sizeIndex.current].size
     let itemImage = apiItems[arrayNumber].colorArray[colorIndex.current].images
     let itemId = apiItems[arrayNumber]._id
 
@@ -65,17 +65,17 @@ function ProductPage(props) {
         for (let i = 0; i < cartItems.length; i++) {
 
             let exists = Object.values(cartItems[i]).includes(apiItems[arrayNumber]._id);
-          
+
 
             if (exists == true && cartItems[i].colorIter == colorIndex.current && cartItems[i].sizeIter == sizeIndex.current) {
 
                 inCart.current = true
                 setNewQuantity(cartItems[i].quantity)
-               
+
                 return
             }
             else {
-               setNewQuantity(1)
+                setNewQuantity(1)
             }
         }
 
@@ -159,7 +159,7 @@ function ProductPage(props) {
         if (quantity == "") {
             quantity = 1
         }
-        let total = quantity * itemPrice
+        //let total = quantity * itemPrice
 
         if (inCart.current == true) {
 
@@ -171,7 +171,7 @@ function ProductPage(props) {
 
         else {
 
-            setCartItems([...cartItems, { id: itemId, title: itemTitle, price: itemPrice, quantity: quantity, total: total, image: itemImage, length: itemLength, width: itemWidth, height: itemHeight, weight: itemWeight, colorIter: colorIndex.current, sizeIter: sizeIndex.current }])
+            setCartItems([...cartItems, { id: itemId, title: itemTitle, price: itemPrice, quantity: quantity, image: itemImage, length: itemLength, width: itemWidth, height: itemHeight, weight: itemWeight, color: itemColor, size: itemSize, colorIter: colorIndex.current, sizeIter: sizeIndex.current }])
         }
 
     }
@@ -179,7 +179,7 @@ function ProductPage(props) {
     // set quantity
 
     function setCartQuant(e) {
-       
+
         setNewQuantity(e.target.value)
     }
 
@@ -218,82 +218,82 @@ function ProductPage(props) {
         else {
             return (
                 <div>
-                {renderSubmit()}
+                    {renderSubmit()}
                 </div>
-        )
+            )
         }
     }
 
 
 
 
-     // render quantity form
+    // render quantity form
 
-        function renderForm() {
-            return (
+    function renderForm() {
+        return (
 
-                <form id="edForm" onSubmit={handleProductSubmit}>
-                    <Dropdown />
-                    <label>
-                        Quantity { }
-                        <input
-                            onChange={setCartQuant}
-                            id="quantity"
-                            type="number"
-                            name="quantity"
-                            min="1"
-                            value={newQuantity}
-                        />
-                    </label>
-                    {renderMessage()}
-                   
-
-                </form>
-
-            )
-        }
-       
-
-
-        if (apiItems[arrayNumber].title)
-
-            return (
-                <div>
-                    <Header
-                        cartItems={cartItems}
+            <form id="edForm" onSubmit={handleProductSubmit}>
+                <Dropdown />
+                <label>
+                    Quantity { }
+                    <input
+                        onChange={setCartQuant}
+                        id="quantity"
+                        type="number"
+                        name="quantity"
+                        min="1"
+                        value={newQuantity}
                     />
-                    <div className='productPageContainer'>
-                        <div className="itemContainer">
-                            <div className="item">
-                                <h2>{itemTitle}</h2>
-                                <img className="img" src={url}></img>
-                                <p>{itemDescription}</p>
-                                <p className="price">${(itemPrice / 100).toFixed(2)}</p>
-                            </div>
-                        </div>
-                        <div className='formContainer'>
-                            {renderForm()}
+                </label>
+                {renderMessage()}
 
-                            <div className='productButton'>
-                                <Link to="/">
-                                    <div className='shopButtonContainer'>
-                                        <button>Continue Shopping</button>
-                                    </div>
-                                </Link>
-                                <Link to="/cart">
-                                    <div className='checkoutButtonContainer'>
-                                        <button>Proceed to Checkout</button>
-                                    </div>
-                                </Link>
-                            </div>
+
+            </form>
+
+        )
+    }
+
+
+
+    if (apiItems[arrayNumber].title)
+
+        return (
+            <div>
+                <Header
+                    cartItems={cartItems}
+                />
+                <div className='productPageContainer'>
+                    <div className="itemContainer">
+                        <div className="item">
+                            <h2>{itemTitle}</h2>
+                            <img className="img" src={url}></img>
+                            <p>{itemDescription}</p>
+                            <p className="price">${(itemPrice / 100).toFixed(2)}</p>
                         </div>
                     </div>
+                    <div className='formContainer'>
+                        {renderForm()}
 
+                        <div className='productButton'>
+                            <Link to="/">
+                                <div className='shopButtonContainer'>
+                                    <button>Continue Shopping</button>
+                                </div>
+                            </Link>
+                            <Link to="/cart">
+                                <div className='checkoutButtonContainer'>
+                                    <button>Proceed to Checkout</button>
+                                </div>
+                            </Link>
+                        </div>
+                    </div>
                 </div>
-            )
+
+            </div>
+        )
 
 
 
-    }
+}
 
-    export default ProductPage
+export default ProductPage

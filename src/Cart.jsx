@@ -20,10 +20,12 @@ function Cart(props) {
 
     let showButton = [true]
 
-    const handleDelete = (event) => {
-        const id = event.target.value;
-        const newData = cartItems.filter((item) => item.id !== id)
-        setCartItems(newData);
+    const handleDelete = (event, iter) => {
+
+        let newArr = structuredClone(cartItems)
+        newArr.splice(iter, 1)
+        
+        setCartItems(newArr);
 
     }
 
@@ -76,11 +78,13 @@ function Cart(props) {
                                 </div>
                                 <div className='cartCont2'>
                                     <p>quantity: {data.quantity}</p>
+                                    <p>color: {data.color}</p>
+                                    <p>size: {data.size}</p>
                                     <p>${(data.price / 100).toFixed(2)}</p>
                                 </div>
                                 {renderMessage(data, iter)}
                                 <div className="deleteButtonContainer">
-                                    <button className="delete" value={data.id} onClick={handleDelete}>delete</button>
+                                    <button className="delete" value={data.id} onClick={(e) => handleDelete(e, iter)}>delete</button>
 
                                 </div>
                             </div>
@@ -122,7 +126,6 @@ function Cart(props) {
 
     function renderMessage(data, iter) {
 
-
         updateQuantArr[iter] = cartItems[iter].quantity
 
         // update quantities in array when changed by user
@@ -146,12 +149,15 @@ function Cart(props) {
         let productArray = apiItems.filter(function (obj) {
             return obj._id == data.id
         }
+       
         );
+
+       let dataBaseQuantity = productArray[0].colorArray[cartItems[iter].colorIter].sizeArray[cartItems[iter].sizeIter].quantity
 
         // if item is over inventory  ******
 
 
-        if (updateQuantArr[iter] > productArray[0].quantity && productArray[0].quantity != 0 && productArray[0].quantity > 0) {
+        if (updateQuantArr[iter] > dataBaseQuantity && dataBaseQuantity != 0 && dataBaseQuantity > 0) {
             showButton[iter] = false
             return (
 
@@ -169,7 +175,7 @@ function Cart(props) {
                         />
                     </label>
 
-                    <h3>There are only {productArray[0].quantity} left in inventory</h3>
+                    <h3>There are only {dataBaseQuantity} left in inventory</h3>
 
                 </form>
 
@@ -179,7 +185,7 @@ function Cart(props) {
         // if item is out of stock delete oos item (only should happen if goes oos during checkout)
 
 
-        if (productArray[0].quantity <= 0) {
+        if (dataBaseQuantity <= 0) {
             showButton[iter] = false
 
             const filterOOS = cartItems.filter((item) => item.id != data.id);
