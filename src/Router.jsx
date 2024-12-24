@@ -1,14 +1,14 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./Home";
-import Shop from "./Shop"
-import ErrorPage from "./ErrorPage";
-import Cart from "./Cart"
-import Checkout from './Checkout'
-import ProductPage from './ProductPage'
-import Summary from './Summary'
-import Success from './Success'
-import Address from './Address'
-import OutOfStock from './OutOfStock'
+import Shop from "./components/shopComponents/Shop"
+import ErrorPage from "./components/errorPageComponents/ErrorPage";
+import Cart from "./components/cartComponents/Cart"
+import Checkout from './components/checkoutComponents/Checkout'
+import ProductPage from './components/productPageComponents/ProductPage'
+import Summary from './components/summaryComponents/Summary'
+import Success from './components/successComponents/Success'
+import Address from './components/addressComponents/Address'
+import OutOfStock from './components/OutOfStocKComponents/OutOfStock'
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 

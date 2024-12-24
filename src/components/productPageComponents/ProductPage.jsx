@@ -1,4 +1,4 @@
-import { Header } from './Header'
+import { Header } from '../headerComponents/Header'
 import { useLocation } from 'react-router-dom'
 import { Link } from "react-router-dom";
 import { useState, useEffect, useRef } from 'react'
@@ -29,7 +29,7 @@ function ProductPage(props) {
     const [sizeDrop, setSizeDrop] = useState()
     const sizeIndex = useRef(0)
 
-    // values of current color selected
+    // values of current color selected ******L*
 
     const currentProduct = apiItems[arrayNumber]
 
@@ -46,6 +46,7 @@ function ProductPage(props) {
     let itemImage = apiItems[arrayNumber].colorArray[colorIndex.current].images
     let itemId = apiItems[arrayNumber]._id
 
+    /*
     if (apiItems == undefined) {
         return (
             <div>
@@ -54,7 +55,7 @@ function ProductPage(props) {
                 />
             </div>
         )
-    }
+    }*/
 
 
 

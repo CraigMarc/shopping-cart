@@ -1,5 +1,5 @@
-import { Header } from './Header'
-import Checkout from './Checkout'
+import { Header } from '../headerComponents/Header'
+import Checkout from '../../Checkout'
 import { Link } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 
