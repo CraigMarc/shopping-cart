@@ -1,5 +1,5 @@
 import { Header } from '../headerComponents/Header'
-import SizeAndColor from '../reusedComponents/SizeAndColor'
+import CartItems from '../reusedComponents/CartItems'
 import { Link } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 
@@ -69,22 +69,12 @@ function Cart(props) {
                 <div>
                     {cartItems.map((data, iter) => {
 
-                        let url = `http://localhost:3000/${data.image}`
-
                         return (
                             <div className='cart2' key={data.id}>
                                 <div className='cartCont'>
-                                    <div className='cartCont1'>
-                                        <p>{data.title}</p>
-                                        <img className="checkoutImg" src={url}></img>
-                                    </div>
-                                    <div className='cartCont2'>
-                                        <p>quantity: {data.quantity}</p>
-                                        <SizeAndColor
-                                            data={data}
-                                        />
-                                        <p>${(data.price / 100).toFixed(2)}</p>
-                                    </div>
+                                   <CartItems
+                                           data={data}
+                                       />
                                     {renderMessage(data, iter)}
                                     <div className="deleteButtonContainer">
                                         <button className="delete" value={data.id} onClick={(e) => handleDelete(e, iter)}>delete</button>

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import SizeAndColor from '../reusedComponents/SizeAndColor'
+import CartItems from '../reusedComponents/CartItems'
 
 const Summary = (props) => {
 
@@ -31,21 +31,10 @@ const Summary = (props) => {
 
           <div className='cart2' key={data.id}>
             <div className='cartCont'>
-              <div className='cartCont1'>
-                <p>{data.title}</p>
-                <img className="checkoutImg" src={url}></img>
-              </div>
-              <div className='cartCont2'>
-                <p>quantity: {data.quantity}</p>
-                <SizeAndColor
-                  data={data}
-                />
-                <p>${(cartState / 100).toFixed(2)}</p>
-              </div>
-
+              <CartItems
+                data={data}
+              />
             </div>
-
-
           </div>
 
         )
