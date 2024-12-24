@@ -17,8 +17,10 @@ function Cart(props) {
 
     } = props;
 
+    const showButton = useRef([true])
+    const updateQuantArr = useRef([])
+    const updateQuantArr2 = useRef([])
 
-    let showButton = [true]
 
     const handleDelete = (event, iter) => {
 
@@ -52,12 +54,11 @@ function Cart(props) {
         return cartTotal
     }
 
-    let cartGrandTotal = grandTotal(cartItems)
 
     // update cartstate when cart array changes
 
     useEffect(() => {
-        setCartState(cartGrandTotal)
+        setCartState(grandTotal(cartItems))
     }, [cartItems]);
 
     // render list of cart items
@@ -101,10 +102,6 @@ function Cart(props) {
 
     // render quantity update
 
-    let updateQuantArr = []
-    let updateQuantArr2 = []
-
-
     // update cartitems state to new quantities
 
     function updateCart() {
@@ -112,33 +109,30 @@ function Cart(props) {
         const updateArray = structuredClone(cartItems)
 
         for (let i = 0; i < cartItems.length; i++) {
-            updateArray[i].quantity = updateQuantArr2[i]
+            updateArray[i].quantity = updateQuantArr2.current[i]
         }
 
         setCartItems(updateArray)
     }
 
 
-
-
-
     // render quantity inputs and show message if out of stock or over stock
 
     function renderMessage(data, iter) {
 
-        updateQuantArr[iter] = cartItems[iter].quantity
+        updateQuantArr.current[iter] = cartItems[iter].quantity
 
         // update quantities in array when changed by user
 
         function updateArray(e) {
 
-            updateQuantArr[e.target.id] = e.target.value
-            for (let i = 0; i < updateQuantArr.length; i++) {
+            updateQuantArr.current[e.target.id] = e.target.value
+            for (let i = 0; i < updateQuantArr.current.length; i++) {
                 if (i == e.target.id) {
-                    updateQuantArr2[i] = e.target.value
+                    updateQuantArr2.current[i] = e.target.value
                 }
                 else {
-                    updateQuantArr2[i] = updateQuantArr[i]
+                    updateQuantArr2.current[i] = updateQuantArr.current[i]
                 }
             }
 
@@ -157,8 +151,8 @@ function Cart(props) {
         // if item is over inventory  ******
 
 
-        if (updateQuantArr[iter] > dataBaseQuantity && dataBaseQuantity != 0 && dataBaseQuantity > 0) {
-            showButton[iter] = false
+        if (updateQuantArr.current[iter] > dataBaseQuantity && dataBaseQuantity != 0 && dataBaseQuantity > 0) {
+            showButton.current[iter] = false
             return (
 
                 <form id="edForm">
@@ -186,7 +180,7 @@ function Cart(props) {
 
 
         if (dataBaseQuantity <= 0) {
-            showButton[iter] = false
+            showButton.current[iter] = false
 
             const filterOOS = cartItems.filter((item) => item.id != data.id);
             setCartItems(filterOOS)
@@ -202,7 +196,8 @@ function Cart(props) {
         // quantity is ok
 
         else {
-            showButton[iter] = true
+           
+            showButton.current[iter] = true
             return (
 
                 <form id="edForm">
@@ -230,7 +225,7 @@ function Cart(props) {
 
     function checkoutButton() {
 
-        if (showButton.includes(false)) {
+        if (showButton.current.includes(false)) {
             return (
                 <p></p>
             )
