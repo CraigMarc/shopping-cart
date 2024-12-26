@@ -156,7 +156,7 @@ const Success = (props) => {
 
 
   //submit new product
-/*
+
   async function newOrder() {
     await fetch(`http://localhost:3000/users/newOrder`, {
       method: 'Post',
@@ -209,7 +209,7 @@ const Success = (props) => {
     }
   }, [])
 
-*/
+
 
   return (
     <div className="successContainer">
