@@ -143,7 +143,7 @@ function Cart(props) {
 
         // if item is over inventory  ******
 
-/* unquote when done testing ****************************
+
         if (updateQuantArr.current[iter] > dataBaseQuantity && dataBaseQuantity != 0 && dataBaseQuantity > 0) {
             showButton.current[iter] = false
             return (
@@ -184,11 +184,11 @@ function Cart(props) {
                 <h2>This item is currently out of stock</h2>
             )
 
-        }*/
+        }
 
         // quantity is ok
 
-       // else {
+        else {
 
             showButton.current[iter] = true
             return (
@@ -210,7 +210,7 @@ function Cart(props) {
                 </form>
 
             )
-       // }
+        }
     }
 
 

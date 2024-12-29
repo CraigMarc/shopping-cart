@@ -34,7 +34,7 @@ const OutOfStock = (props) => {
             return (
 
               <div key={iter}>
-                <p>{index.title} is out of stock</p>
+                <p>{index.oosArray.title} is out of stock</p>
               </div>
 
             )
