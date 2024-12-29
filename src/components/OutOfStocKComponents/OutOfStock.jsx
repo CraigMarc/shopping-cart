@@ -10,7 +10,7 @@ const OutOfStock = (props) => {
 
   } = props;
 
- 
+ console.log(oosRef.current)
 
   function renderMessage() {
 
@@ -18,18 +18,18 @@ const OutOfStock = (props) => {
       <div>
         {oosRef.current.map((index, iter) => {
 
-          if (index.quantity > 0) {
+          if (index.oosArray.colorArray[index.colorIter].sizeArray[index.sizeIter].quantity > 0) {
 
             return (
 
               <div key={iter}>
-                <p>There are only {index.quantity} {index.title}s left in stock</p>
+                <p>There are only {index.oosArray.colorArray[index.colorIter].sizeArray[index.sizeIter].quantity} {index.oosArray.title}s left in stock</p>
               </div>
 
             )
           }
 
-          if (index.quantity == 0) {
+          if (index.oosArray.colorArray[index.colorIter].sizeArray[index.sizeIter].quantity == 0) {
 
             return (
 

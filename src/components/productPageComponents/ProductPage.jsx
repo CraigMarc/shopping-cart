@@ -204,7 +204,7 @@ function ProductPage(props) {
     // let know if out of stock or overordered
 
     function renderMessage() {
-
+/* unquote when done testing    *********************8
         if (newQuantity > itemQuantity && itemQuantity != 0 && itemQuantity > 0) {
             return (
                 <h2>There are only {itemQuantity} left in inventory</h2>
@@ -215,14 +215,14 @@ function ProductPage(props) {
 
                 <h2>This item is currently out of stock</h2>
             )
-        }
-        else {
+        }*/
+      //  else {
             return (
                 <div>
                     {renderSubmit()}
                 </div>
             )
-        }
+      //  }
     }
 
 

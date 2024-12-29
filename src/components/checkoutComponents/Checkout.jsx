@@ -240,6 +240,7 @@ const Checkout = (props) => {
       .then((data) => {
 
     // subtract from inventory if in stock
+   
 
         function buildOosArray() {
 
@@ -252,13 +253,13 @@ const Checkout = (props) => {
             }
             );
            
-            if (oosArray[0].quantity < order.items[i].quantity ) {
+            if (oosArray[0].colorArray[order.items[i].colorIter].sizeArray[order.items[i].sizeIter].quantity < order.items[i].quantity ) {
              
-              oosArrayAll.push(oosArray[0])
+              oosArrayAll.push({oosArray: oosArray[0], colorIter: order.items[i].colorIter, sizeIter: order.items[i].sizeIter})
             
             }
           }
-          
+         
           return oosArrayAll
         }
   
