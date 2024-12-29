@@ -52,7 +52,7 @@ function Cart(props) {
         setCartState(grandTotal(cartItems))
     }, [cartItems]);
 
-   
+
     // render list of cart items
 
     const listCartItems = () => {
@@ -72,9 +72,9 @@ function Cart(props) {
                         return (
                             <div className='cart2' key={data.id}>
                                 <div className='cartCont'>
-                                   <CartItems
-                                           data={data}
-                                       />
+                                    <CartItems
+                                        data={data}
+                                    />
                                     {renderMessage(data, iter)}
                                     <div className="deleteButtonContainer">
                                         <button className="delete" value={data.id} onClick={(e) => handleDelete(e, iter)}>delete</button>
@@ -143,31 +143,31 @@ function Cart(props) {
 
         // if item is over inventory  ******
 
-
-        if (updateQuantArr.current[iter] > dataBaseQuantity && dataBaseQuantity != 0 && dataBaseQuantity > 0) {
-            showButton.current[iter] = false
-            return (
-
-                <form id="edForm">
-                    <label>
-                        Quantity { }
-                        <input
-                            onChange={updateArray}
-                            className='quantity'
-                            id={iter}
-                            type="number"
-                            name="quantity"
-                            min="1"
-                            placeholder='1'
-                        />
-                    </label>
-
-                    <h3>There are only {dataBaseQuantity} left in inventory</h3>
-
-                </form>
-
-            )
-        }
+        
+                if (updateQuantArr.current[iter] > dataBaseQuantity && dataBaseQuantity != 0 && dataBaseQuantity > 0) {
+                    showButton.current[iter] = false
+                    return (
+        
+                        <form id="edForm">
+                            <label>
+                                Quantity { }
+                                <input
+                                    onChange={updateArray}
+                                    className='quantity'
+                                    id={iter}
+                                    type="number"
+                                    name="quantity"
+                                    min="1"
+                                    value={data.quantity}
+                                />
+                            </label>
+        
+                            <h3>There are only {dataBaseQuantity} left in inventory</h3>
+        
+                        </form>
+        
+                    )
+                }
 
         // if item is out of stock delete oos item (only should happen if goes oos during checkout)
 
