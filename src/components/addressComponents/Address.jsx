@@ -66,7 +66,7 @@ const Address = (props) => {
 
         let uuid = self.crypto.randomUUID();
 
-       
+       console.log(packageShip)
 
         //send form data
         await fetch("http://localhost:3000/users/usps", {
