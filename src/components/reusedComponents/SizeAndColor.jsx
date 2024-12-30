@@ -5,7 +5,7 @@
         data
     } = props;
 
-    if (data.size != "false" & data.size != "false") {
+    if (data.size != "false" & data.color != "false") {
         return (
             <>
                 <p>size: {data.size}</p>

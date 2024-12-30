@@ -40,7 +40,7 @@ function ProductPage(props) {
     let itemHeight = apiItems[arrayNumber].colorArray[colorIndex.current].sizeArray[sizeIndex.current].height
     let itemWidth = apiItems[arrayNumber].colorArray[colorIndex.current].sizeArray[sizeIndex.current].width
     let itemWeight = apiItems[arrayNumber].colorArray[colorIndex.current].sizeArray[sizeIndex.current].weight
-    let itemQuantity = apiItems[arrayNumber].colorArray[colorIndex.current].sizeArray[sizeIndex.current].quantity
+    let itemQuantity = Number(apiItems[arrayNumber].colorArray[colorIndex.current].sizeArray[sizeIndex.current].quantity)
     let itemColor = apiItems[arrayNumber].colorArray[colorIndex.current].color
     let itemSize = apiItems[arrayNumber].colorArray[colorIndex.current].sizeArray[sizeIndex.current].size
     let itemImage = apiItems[arrayNumber].colorArray[colorIndex.current].images
@@ -160,8 +160,7 @@ function ProductPage(props) {
         if (quantity == "") {
             quantity = 1
         }
-        //let total = quantity * itemPrice
-
+        
         if (inCart.current == true) {
 
             const updateArray = structuredClone(cartItems)

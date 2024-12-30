@@ -68,9 +68,9 @@ const Success = (props) => {
       const widthN = Number(width)
       const color = new URLSearchParams(search).get(colorQuery);
       const size = new URLSearchParams(search).get(sizeQuery);
-      const sizeIter =  new URLSearchParams(search).get(sizeIndex);
+      const sizeIter = new URLSearchParams(search).get(sizeIndex);
       const sizeIterN = Number(sizeIter)
-      const colorIter =  new URLSearchParams(search).get(colorIndex);
+      const colorIter = new URLSearchParams(search).get(colorIndex);
       const colorIterN = Number(colorIter)
 
       productArray.push({ price: priceN, quantity: quantityN, id: id, height: heightN, image: image, length: lengthN, title: title, total: totalN, weight: weightN, width: widthN, color: color, size: size, sizeIter: sizeIterN, colorIter: colorIterN })
@@ -83,31 +83,72 @@ const Success = (props) => {
 
   let productArray = createProductArray()
 
-  console.log(productArray)
 
   let orderTotal = orderCostN + shippingCostN
 
   function orderTL() {
     let template = ""
+
     for (let i = 0; i < productArray.length; i++) {
 
+    if (productArray[i].color != "false" & productArray[i].size != "false") {
       template = template +
         `
-      ` +
+    ` +
         `
-      ${productArray[i].title} 
-      Quantity: ${productArray[i].quantity} 
-      Price: $${(productArray[i].price / 100).toFixed(2)
-        }`
+    ${productArray[i].title} 
+    Quantity: ${productArray[i].quantity} 
+    Price: $${(productArray[i].price / 100).toFixed(2)}
+    Color: ${productArray[i].color}
+    Size: ${productArray[i].size}`
+
     }
 
-    template = template + `
-    `
-      + `  Shipping: $${(shippingCostN / 100).toFixed(2)}` + `
-
+    if (productArray[i].size != "false" && productArray[i].color == "false") {
+      template = template +
+        `
     ` +
+        `
+    ${productArray[i].title} 
+    Quantity: ${productArray[i].quantity} 
+    Price: $${(productArray[i].price / 100).toFixed(2)}
+    Size: ${productArray[i].size}`
 
-      `Total: $${(orderTotal / 100).toFixed(2)}`
+    }
+
+    if (productArray[i].color != "false" && productArray[i].size == "false") {
+      template = template +
+        `
+  ` +
+        `
+  ${productArray[i].title} 
+  Quantity: ${productArray[i].quantity} 
+  Price: $${(productArray[i].price / 100).toFixed(2)}
+  Color: ${productArray[i].color}`
+
+    }
+
+    if (productArray[i].color == "false" && productArray[i].size == "false") {
+      template = template +
+      `
+` +
+      `
+${productArray[i].title} 
+Quantity: ${productArray[i].quantity} 
+Price: $${(productArray[i].price / 100).toFixed(2)}
+    `
+
+
+    }
+  }
+
+  template = template + `
+  `
+        + `  Shipping: $${(shippingCostN / 100).toFixed(2)}` + `
+
+  ` +
+
+        `Total: $${(orderTotal / 100).toFixed(2)}`
 
     return template
   }
