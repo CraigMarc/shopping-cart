@@ -20,8 +20,6 @@ function ProductPage(props) {
 
     const location = useLocation()
 
-    let arrayNumber = location.state
-
     const [newQuantity, setNewQuantity] = useState(1)
     const inCart = useRef(false);
     const [colorDrop, setColorDrop] = useState()
@@ -31,20 +29,23 @@ function ProductPage(props) {
 
     // values of current color selected ******L*
 
-    const currentProduct = apiItems[arrayNumber]
+    const pageData = location.state;
+   
+    const currentProduct = apiItems.filter((product) => product._id == pageData)
+    
 
-    let itemTitle = currentProduct.title
-    let itemDescription = currentProduct.description
-    let itemPrice = apiItems[arrayNumber].colorArray[colorIndex.current].sizeArray[sizeIndex.current].price
-    let itemLength = apiItems[arrayNumber].colorArray[colorIndex.current].sizeArray[sizeIndex.current].length
-    let itemHeight = apiItems[arrayNumber].colorArray[colorIndex.current].sizeArray[sizeIndex.current].height
-    let itemWidth = apiItems[arrayNumber].colorArray[colorIndex.current].sizeArray[sizeIndex.current].width
-    let itemWeight = apiItems[arrayNumber].colorArray[colorIndex.current].sizeArray[sizeIndex.current].weight
-    let itemQuantity = Number(apiItems[arrayNumber].colorArray[colorIndex.current].sizeArray[sizeIndex.current].quantity)
-    let itemColor = apiItems[arrayNumber].colorArray[colorIndex.current].color
-    let itemSize = apiItems[arrayNumber].colorArray[colorIndex.current].sizeArray[sizeIndex.current].size
-    let itemImage = apiItems[arrayNumber].colorArray[colorIndex.current].images
-    let itemId = apiItems[arrayNumber]._id
+    let itemTitle = currentProduct[0].title
+    let itemDescription = currentProduct[0].description
+    let itemPrice = currentProduct[0].colorArray[colorIndex.current].sizeArray[sizeIndex.current].price
+    let itemLength = currentProduct[0].colorArray[colorIndex.current].sizeArray[sizeIndex.current].length
+    let itemHeight = currentProduct[0].colorArray[colorIndex.current].sizeArray[sizeIndex.current].height
+    let itemWidth = currentProduct[0].colorArray[colorIndex.current].sizeArray[sizeIndex.current].width
+    let itemWeight = currentProduct[0].colorArray[colorIndex.current].sizeArray[sizeIndex.current].weight
+    let itemQuantity = Number(currentProduct[0].colorArray[colorIndex.current].sizeArray[sizeIndex.current].quantity)
+    let itemColor = currentProduct[0].colorArray[colorIndex.current].color
+    let itemSize = currentProduct[0].colorArray[colorIndex.current].sizeArray[sizeIndex.current].size
+    let itemImage = currentProduct[0].colorArray[colorIndex.current].images
+    let itemId = currentProduct[0]._id
 
     /*
     if (apiItems == undefined) {
@@ -65,7 +66,7 @@ function ProductPage(props) {
 
         for (let i = 0; i < cartItems.length; i++) {
 
-            let exists = Object.values(cartItems[i]).includes(apiItems[arrayNumber]._id);
+            let exists = Object.values(cartItems[i]).includes(currentProduct[0]._id);
 
 
             if (exists == true && cartItems[i].colorIter == colorIndex.current && cartItems[i].sizeIter == sizeIndex.current) {
@@ -92,7 +93,7 @@ function ProductPage(props) {
 
     function changeColor(e) {
 
-        let index = currentProduct.colorArray.findIndex(
+        let index = currentProduct[0].colorArray.findIndex(
             (temp) => temp['color'] == e.target.value)
         colorIndex.current = index
         setColorDrop(e.target.value)
@@ -100,7 +101,7 @@ function ProductPage(props) {
 
     function changeSize(e) {
 
-        let index = currentProduct.colorArray[colorIndex.current].sizeArray.findIndex(
+        let index = currentProduct[0].colorArray[colorIndex.current].sizeArray.findIndex(
             (temp) => temp['size'] == e.target.value)
         sizeIndex.current = index
         setSizeDrop(e.target.value)
@@ -117,7 +118,7 @@ function ProductPage(props) {
                 <label>Color</label>
                 <select required value={colorDrop} onChange={(e) => changeColor(e)}>
 
-                    {currentProduct.colorArray.map((item, iter) => {
+                    {currentProduct[0].colorArray.map((item, iter) => {
                         let color = item.color
                         if (item.color == "false") {
                             color = 'only one color'
@@ -131,7 +132,7 @@ function ProductPage(props) {
                 <label>Size</label>
                 <select required value={sizeDrop} onChange={(e) => changeSize(e)}>
 
-                    {currentProduct.colorArray[colorIndex.current].sizeArray.map((item, iter) => {
+                    {currentProduct[0].colorArray[colorIndex.current].sizeArray.map((item, iter) => {
                         let size = item.size
                         if (item.size == "false") {
                             size = 'only one size'
@@ -255,7 +256,7 @@ function ProductPage(props) {
 
 
 
-    if (apiItems[arrayNumber].title)
+    if (currentProduct[0].title)
 
         return (
             <div>

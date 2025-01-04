@@ -45,7 +45,7 @@ function Shop(props) {
 
             return (
 
-              <Link key={iter} to="/product" state={iter}>
+              <Link key={iter} to="/product" state={index._id}>
                 <div className="product">
 
                   <div id={index.id} className="card" >
@@ -80,7 +80,7 @@ function Shop(props) {
         cartItems={cartItems}
       />
       <div className='shopContainer'>
-        <h1>Our Products</h1>
+        <h1>{pageData.name}</h1>
         <div className="productCard">
           <RenderProducts />
 
