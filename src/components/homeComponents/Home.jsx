@@ -1,0 +1,116 @@
+import { Link } from "react-router-dom";
+import { Header } from '../headerComponents/Header'
+import { useState, useEffect } from 'react'
+
+const Home = (props) => {
+
+  const {
+
+    apiItems,
+    setApiItems,
+    cartItems,
+    setCategory,
+    setBrand,
+    category,
+    brand
+
+
+  } = props;
+
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true)
+
+  const fetchInfo = async () => {
+    //setLoading(true)
+
+    try {
+      //return fetch(picUrl)
+
+      const [apiProducts, apiCategory, apiBrand] = await Promise.all([
+        await fetch('http://localhost:3000/users/all'),
+        await fetch('http://localhost:3000/users/category'),
+        await fetch('http://localhost:3000/users/brand')
+      ]);
+
+
+
+      const productData = await apiProducts.json();
+      const categoryData = await apiCategory.json();
+      const brandData = await apiBrand.json();
+
+      setApiItems(productData)
+      setCategory(categoryData)
+      setBrand(brandData)
+    }
+
+    catch (error) {
+      console.error("There has been a problem with your fetch operation:", error);
+      //add error message to dom
+      setError("true")
+
+    }
+    setLoading(false)
+
+  }
+
+
+  useEffect(() => {
+    fetchInfo();
+  }, [])
+
+
+  //display error and loading for api call
+
+  if (error) return (
+    <div>
+
+      <p>A network error was encountered</p>
+    </div>
+  )
+
+  if (loading) return <p>Loading...</p>;
+
+  // render page
+ 
+
+  return (
+    <div>
+      <Header
+        cartItems={cartItems}
+      />
+
+      <div className="categoryContainer">
+        <h3>Categories</h3>
+        {category.map((index, iter) => {
+          let url = `http://localhost:3000/${index.image}`
+          return (
+            <div>
+            <img className="img" src={url}></img>
+            <p>{index.name}</p>
+            </div>
+          )
+        })}
+
+      </div>
+      <div className="categoryContainer">
+        <h3>Brands</h3>
+        {brand.map((index, iter) => {
+          let url = `http://localhost:3000/${index.image}`
+          return (
+            <div>
+            <img className="img" src={url}></img>
+            <p>{index.name}</p>
+            </div>
+          )
+        })}
+
+      </div>
+    </div>
+
+  )
+
+
+
+};
+
+export default Home;

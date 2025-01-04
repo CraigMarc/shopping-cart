@@ -11,6 +11,8 @@ function App() {
   const [apiItems, setApiItems] = useState()
   const [cartState, setCartState] = useState()
   const [order, setOrder] = useState()
+  const [category, setCategory] = useState()
+  const [brand, setBrand] = useState()
   const oosRef = useRef();
  
   
@@ -28,7 +30,10 @@ return (
     order={order}
     setOrder={setOrder}
     oosRef={oosRef}
-    
+    category={category}
+    setCategory={setCategory}
+    brand={brand}
+    setBrand={setBrand}
    
     />
   </div>

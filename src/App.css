@@ -358,3 +358,13 @@ input[type=email], select {
   font-weight: bold;
   padding-bottom: 10px;
 }
+
+/* home */
+
+.categoryContainer {
+  padding-top: 80px;
+  background-color: #F5F5F5;
+  padding-bottom: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
+}

@@ -84,6 +84,8 @@ function Shop(props) {
 
   }
 
+  
+
   return (
     <div>
       <Header

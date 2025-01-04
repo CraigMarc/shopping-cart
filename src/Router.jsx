@@ -1,5 +1,4 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./Home";
 import Shop from "./components/shopComponents/Shop"
 import ErrorPage from "./components/errorPageComponents/ErrorPage";
 import Cart from "./components/cartComponents/Cart"
@@ -9,6 +8,7 @@ import Summary from './components/summaryComponents/Summary'
 import Success from './components/successComponents/Success'
 import Address from './components/addressComponents/Address'
 import OutOfStock from './components/OutOfStocKComponents/OutOfStock'
+import Home from './components/homeComponents/Home'
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 
@@ -33,7 +33,11 @@ const Router = (props) => {
     order,
     setOrder,
     oosRef,
-   
+    category,
+    setCategory,
+    brand,
+    setBrand
+
 
   } = props;
 
@@ -48,14 +52,23 @@ const Router = (props) => {
 
 
   const router = createBrowserRouter([
-    /*
+
     {
       path: "/",
-      element: <Home />,
+      element: <Home
+        apiItems={apiItems}
+        setApiItems={setApiItems}
+        cartItems={cartItems}
+        setCategory={setCategory}
+        category={category}
+        setBrand={setBrand}
+        brand={brand}
+       
+      />,
       errorElement: <ErrorPage />,
-    },*/
+    },
     {
-      path: "/",
+      path: "/shop",
       element:
         <Shop
           apiItems={apiItems}
@@ -74,8 +87,8 @@ const Router = (props) => {
           cartState={cartState}
           setCartState={setCartState}
           apiItems={apiItems}
-          
-         
+
+
         />,
       errorElement: <ErrorPage />,
     },
