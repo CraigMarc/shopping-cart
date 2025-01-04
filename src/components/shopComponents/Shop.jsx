@@ -1,22 +1,6 @@
 import { Header } from '../headerComponents/Header'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from "react-router-dom";
-
-
-
-/*
-import image1 from '../../assets/images/image1.jpg';
-import image2 from '../../assets/images/image2.jpg';
-import image3 from '../../assets/images/image3.jpg';
-import image4 from '../../assets/images/image4.jpg';
-import image5 from '../../assets/images/image5.jpg';
-import image6 from '../../assets/images/image6.jpg';
-import image7 from '../../assets/images/image7.jpg';
-import image8 from '../../assets/images/image8.jpg';
-import image9 from '../../assets/images/image9.jpg';
-import image10 from '../../assets/images/image10.jpg';
-import image11 from '../../assets/images/image11.jpg';
-import image12 from '../../assets/images/image12.jpg';*/
 
 
 function Shop(props) {
@@ -31,87 +15,38 @@ function Shop(props) {
 
   const location = useLocation();
   const pageData = location.state;
-  console.log(pageData)
+  const filteredProducts = useRef()
 
+  const categoryData = apiItems.filter((product) => product.category._id == pageData._id)
+  const brandData = apiItems.filter((product) => product.brand._id == pageData._id)
 
-  // if api goes down use data in assets file uncomment and comment out fetch change setApiItems in app.jsx
-  //<img className="img" src={imageArray[index.id - 1]}></img>
-
-  //let imageArray = [image1, image2, image3, image4, image5, image6, image7, image8, image9, image10, image11, image12]
-
-/*
-
-  if (apiItems == undefined) {
-    const [error, setError] = useState(null);
-    const [loading, setLoading] = useState(true);
-
-    
-
-    const fetchInfo = async (pics) => {
-      //setLoading(true)
-
-      try {
-        //return fetch(picUrl)
-        const res = await fetch("http://localhost:3000/users/all")
-        // const res = await fetch("https://fakestoreapi.in/api/products")
-
-        const productData = await res.json();
-
-        setApiItems(productData)
-
-      }
-
-
-      catch (error) {
-        console.error("There has been a problem with your fetch operation:", error);
-        //add error message to dom
-        setError("true")
-
-      }
-      setLoading(false)
-
-    }
-
-
-    useEffect(() => {
-      fetchInfo();
-    }, [])
-
-    //display error and loading for api call
-
-    if (error) return (
-      <div>
-        <h3>A network error was encountered try again later.</h3>
-      </div>
-    )
-
-    if (loading) return <p className="loading">Loading...</p>;
-
+  if (categoryData.length > 0) {
+    filteredProducts.current = categoryData
   }
-*/
-  
 
-  return (
-    <div>
-      <Header
-        cartItems={cartItems}
-      />
-      <div className='shopContainer'>
-        <h1>Our Products</h1>
-        <div className="productCard">
+  if (brandData.length > 0) {
+    filteredProducts.current = brandData
+  }
 
-          {apiItems.map((index, iter) => {
+
+
+  function RenderProducts() {
+
+    if (filteredProducts.current) {
+      return (
+        <div>
+          {filteredProducts.current.map((index, iter) => {
 
             let image = index.colorArray[0].images[0]
-            
+
             let url = `http://localhost:3000/${image}`
             let priceDiv = (index.colorArray[0].sizeArray[0].price / 100).toFixed(2)
 
 
             return (
-              
+
               <Link key={iter} to="/product" state={iter}>
-                <div  className="product">
+                <div className="product">
 
                   <div id={index.id} className="card" >
 
@@ -125,6 +60,29 @@ function Shop(props) {
               </Link>
             )
           })}
+
+        </div>
+      )
+    }
+    else {
+      return (
+        <div>
+          <h3>There are no products currently available.</h3>
+        </div>
+      )
+    }
+
+  }
+
+  return (
+    <div>
+      <Header
+        cartItems={cartItems}
+      />
+      <div className='shopContainer'>
+        <h1>Our Products</h1>
+        <div className="productCard">
+          <RenderProducts />
 
         </div>
       </div>
