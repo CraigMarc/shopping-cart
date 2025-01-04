@@ -84,10 +84,12 @@ const Home = (props) => {
         {category.map((index, iter) => {
           let url = `http://localhost:3000/${index.image}`
           return (
+            <Link key={iter} to={`shop/${index._id}`} state={index}>
             <div>
             <img className="img" src={url}></img>
             <p>{index.name}</p>
             </div>
+            </Link>
           )
         })}
 
@@ -97,10 +99,12 @@ const Home = (props) => {
         {brand.map((index, iter) => {
           let url = `http://localhost:3000/${index.image}`
           return (
+            <Link key={iter} to={`shop/${index._id}`} state={index}>
             <div>
             <img className="img" src={url}></img>
             <p>{index.name}</p>
             </div>
+            </Link>
           )
         })}
 

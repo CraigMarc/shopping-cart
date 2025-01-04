@@ -68,7 +68,7 @@ const Router = (props) => {
       errorElement: <ErrorPage />,
     },
     {
-      path: "/shop",
+      path: "/shop/:id",
       element:
         <Shop
           apiItems={apiItems}

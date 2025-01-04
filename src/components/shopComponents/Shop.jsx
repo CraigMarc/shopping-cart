@@ -1,9 +1,10 @@
 import { Header } from '../headerComponents/Header'
 import { useState, useEffect } from 'react'
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 
 
+/*
 import image1 from '../../assets/images/image1.jpg';
 import image2 from '../../assets/images/image2.jpg';
 import image3 from '../../assets/images/image3.jpg';
@@ -15,7 +16,7 @@ import image8 from '../../assets/images/image8.jpg';
 import image9 from '../../assets/images/image9.jpg';
 import image10 from '../../assets/images/image10.jpg';
 import image11 from '../../assets/images/image11.jpg';
-import image12 from '../../assets/images/image12.jpg';
+import image12 from '../../assets/images/image12.jpg';*/
 
 
 function Shop(props) {
@@ -28,7 +29,9 @@ function Shop(props) {
 
   } = props;
 
-
+  const location = useLocation();
+  const pageData = location.state;
+  console.log(pageData)
 
 
   // if api goes down use data in assets file uncomment and comment out fetch change setApiItems in app.jsx
@@ -36,11 +39,13 @@ function Shop(props) {
 
   //let imageArray = [image1, image2, image3, image4, image5, image6, image7, image8, image9, image10, image11, image12]
 
-
+/*
 
   if (apiItems == undefined) {
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
+
+    
 
     const fetchInfo = async (pics) => {
       //setLoading(true)
@@ -83,7 +88,7 @@ function Shop(props) {
     if (loading) return <p className="loading">Loading...</p>;
 
   }
-
+*/
   
 
   return (
