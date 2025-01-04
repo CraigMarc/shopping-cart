@@ -74,6 +74,7 @@ const Router = (props) => {
           apiItems={apiItems}
           setApiItems={setApiItems}
           cartItems={cartItems}
+          category={category}
         />,
 
       errorElement: <ErrorPage />,
@@ -87,6 +88,7 @@ const Router = (props) => {
           cartState={cartState}
           setCartState={setCartState}
           apiItems={apiItems}
+          category={category}
 
 
         />,
@@ -100,6 +102,7 @@ const Router = (props) => {
           setCartItems={setCartItems}
           apiItems={apiItems}
           setApiItems={setApiItems}
+          category={category}
         />,
       errorElement: <ErrorPage />,
     },

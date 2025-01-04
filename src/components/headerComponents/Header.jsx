@@ -1,16 +1,17 @@
 import { Link } from "react-router-dom";
 import shoppingCart from '../../assets/shoppingCart.png';
-
+import { useState } from 'react'
 
 function Header(props) {
 
     const {
 
-        cartItems
+        cartItems,
+        category
 
     } = props;
 
-    
+    const [isDropdownVisible, setDropdownVisible] = useState(false);
 
     let itemNumber = 0
     if (cartItems != undefined) {
@@ -21,6 +22,33 @@ function Header(props) {
         }
 
     }
+
+   
+
+    const DropdownMenu = () => {
+        return (
+          <div className="dropdown-menu">
+            <ul className="ulDropdown">
+              <li className="liDropdown">All Products</li>
+              {category.map((index, iter) => {
+                return (
+                    <Link key={iter} to={`/shop/${index._id}`} state={index}>
+                    <li className="liDropdown">{index.name}</li>
+                    </Link>
+                )
+              })}
+            </ul>
+          </div>
+        );
+      };
+
+      const handleMouseEnter = () => {
+        setDropdownVisible(true);
+      };
+    
+      const handleMouseLeave = () => {
+        setDropdownVisible(false);
+      };
 
     
     return (
@@ -35,6 +63,15 @@ function Header(props) {
                 <div className="cartContainer"><span data-testid="cartNumber" className="itemNumber">{itemNumber}</span><img className="shoppingCart" src={shoppingCart}></img></div>
                     
             </Link>
+            <div
+          className="menu"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          <button className="buttonDropdown">Shop</button>
+          {/* <DropdownMenu /> */}
+          {isDropdownVisible && <DropdownMenu />}
+        </div>
         </header>
         </div>
     )

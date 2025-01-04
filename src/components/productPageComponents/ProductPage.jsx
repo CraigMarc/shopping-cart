@@ -12,6 +12,7 @@ function ProductPage(props) {
         setApiItems,
         cartItems,
         setCartItems,
+        category
 
     } = props;
 
@@ -262,6 +263,7 @@ function ProductPage(props) {
             <div>
                 <Header
                     cartItems={cartItems}
+                    category={category}
                 />
                 <div className='productPageContainer'>
                     <div className="itemContainer">

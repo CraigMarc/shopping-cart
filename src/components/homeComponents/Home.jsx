@@ -77,6 +77,7 @@ const Home = (props) => {
     <div>
       <Header
         cartItems={cartItems}
+        category={category}
       />
 
       <div className="categoryContainer">

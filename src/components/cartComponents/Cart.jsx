@@ -13,6 +13,7 @@ function Cart(props) {
         cartState,
         setCartState,
         apiItems,
+        category
 
 
     } = props;
@@ -59,7 +60,10 @@ function Cart(props) {
         if (cartItems.length == 0) {
             return (
                 <div className='checkoutContainer'>
-                    <Header />
+                    <Header
+                    cartItems={cartItems}
+                    category={category}
+                    />
                     <h1>cart is empty</h1>
                 </div>
             )
@@ -242,6 +246,7 @@ function Cart(props) {
         <div>
             <Header
                 cartItems={cartItems}
+                category={category}
             />
 
             <div className='checkoutContainer'>

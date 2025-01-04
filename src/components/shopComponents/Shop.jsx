@@ -9,7 +9,8 @@ function Shop(props) {
 
     apiItems,
     setApiItems,
-    cartItems
+    cartItems,
+    category
 
   } = props;
 
@@ -78,6 +79,7 @@ function Shop(props) {
     <div>
       <Header
         cartItems={cartItems}
+        category={category}
       />
       <div className='shopContainer'>
         <h1>{pageData.name}</h1>
