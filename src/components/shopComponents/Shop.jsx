@@ -29,6 +29,38 @@ function Shop(props) {
     filteredProducts.current = brandData
   }
 
+ 
+
+  function RenderSale (props) {
+
+    const {
+
+      index
+
+    } = props
+
+    console.log(index)
+
+    let priceDiv = (index.colorArray[0].sizeArray[0].price / 100).toFixed(2)
+    let salePrice = (priceDiv - (priceDiv * (index.sale_percent / 100))).toFixed(2)
+
+    if (index.sale_percent == 0) {
+      return (
+        <p className="price">${priceDiv}</p>
+      )
+    }
+
+    else {
+      return (
+        <div>
+          <p className='salePercent'>save {index.sale_percent}%</p>
+          <p className='regPrice'>${priceDiv}</p>
+          <p className='price'>${salePrice}</p>
+        </div>
+      )
+    }
+
+  }
 
 
   function RenderProducts() {
@@ -41,7 +73,7 @@ function Shop(props) {
             let image = index.colorArray[0].images[0]
 
             let url = `http://localhost:3000/${image}`
-            let priceDiv = (index.colorArray[0].sizeArray[0].price / 100).toFixed(2)
+            //let priceDiv = (index.colorArray[0].sizeArray[0].price / 100).toFixed(2)
 
 
             return (
@@ -53,7 +85,9 @@ function Shop(props) {
 
                     <img className="img" src={url}></img>
                     <p>{index.title}</p>
-                    <p className="price">${priceDiv}</p>
+                    <RenderSale
+                      index={index}
+                    />
 
                   </div>
 

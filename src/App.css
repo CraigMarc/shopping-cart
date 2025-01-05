@@ -401,3 +401,13 @@ select {
   border: none;
   cursor: pointer;
 }
+
+/* sale price shop*/
+
+.salePercent {
+  color: red;
+}
+
+.regPrice {
+  text-decoration: line-through;
+}
