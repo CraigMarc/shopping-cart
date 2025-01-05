@@ -48,6 +48,7 @@ const Success = (props) => {
       let sizeQuery = "size" + i
       let sizeIndex = "sizeIter" + i
       let colorIndex = "colorIter" + i
+      let sale_percentIter = "sale_percent" + i
 
       const price = new URLSearchParams(search).get(priceIter);
       const priceN = Number(price)
@@ -72,8 +73,11 @@ const Success = (props) => {
       const sizeIterN = Number(sizeIter)
       const colorIter = new URLSearchParams(search).get(colorIndex);
       const colorIterN = Number(colorIter)
+      const sale_percent = new URLSearchParams(search).get(sale_percentIter);
+      const sale_percentN = Number(sale_percent)
 
-      productArray.push({ price: priceN, quantity: quantityN, id: id, height: heightN, image: image, length: lengthN, title: title, total: totalN, weight: weightN, width: widthN, color: color, size: size, sizeIter: sizeIterN, colorIter: colorIterN })
+
+      productArray.push({ price: priceN, quantity: quantityN, id: id, height: heightN, image: image, length: lengthN, title: title, total: totalN, weight: weightN, width: widthN, color: color, size: size, sizeIter: sizeIterN, colorIter: colorIterN, sale_percent: sale_percentN })
 
     }
     return productArray
@@ -82,7 +86,7 @@ const Success = (props) => {
   // create email temp literals
 
   let productArray = createProductArray()
-
+ 
 
   let orderTotal = orderCostN + shippingCostN
 
@@ -91,64 +95,77 @@ const Success = (props) => {
 
     for (let i = 0; i < productArray.length; i++) {
 
-    if (productArray[i].color != "false" & productArray[i].size != "false") {
-      template = template +
-        `
+      let priceEmail = 0
+      
+
+      if (productArray[i].sale_percent == 0) {
+        priceEmail = (productArray[i].price / 100).toFixed(2)
+       
+      }
+
+      else {
+        priceEmail = ((productArray[i].price - (productArray[i].price * (productArray[i].sale_percent / 100)))/100).toFixed(2)
+      }
+
+
+      if (productArray[i].color != "false" & productArray[i].size != "false") {
+        template = template +
+          `
     ` +
-        `
+          `
     ${productArray[i].title} 
     Quantity: ${productArray[i].quantity} 
-    Price: $${(productArray[i].price / 100).toFixed(2)}
+    Price: $${priceEmail}
     Color: ${productArray[i].color}
     Size: ${productArray[i].size}`
 
-    }
+      }
 
-    if (productArray[i].size != "false" && productArray[i].color == "false") {
-      template = template +
-        `
+      if (productArray[i].size != "false" && productArray[i].color == "false") {
+        template = template +
+          `
     ` +
-        `
+          `
     ${productArray[i].title} 
     Quantity: ${productArray[i].quantity} 
-    Price: $${(productArray[i].price / 100).toFixed(2)}
+    Price: $${priceEmail}
     Size: ${productArray[i].size}`
 
-    }
+      }
 
-    if (productArray[i].color != "false" && productArray[i].size == "false") {
-      template = template +
-        `
+      if (productArray[i].color != "false" && productArray[i].size == "false") {
+        template = template +
+          `
   ` +
-        `
+          `
   ${productArray[i].title} 
   Quantity: ${productArray[i].quantity} 
-  Price: $${(productArray[i].price / 100).toFixed(2)}
+  Price: $${priceEmail}
   Color: ${productArray[i].color}`
 
-    }
+      }
 
-    if (productArray[i].color == "false" && productArray[i].size == "false") {
-      template = template +
-      `
+      if (productArray[i].color == "false" && productArray[i].size == "false") {
+        template = template +
+          `
 ` +
-      `
+          `
 ${productArray[i].title} 
 Quantity: ${productArray[i].quantity} 
-Price: $${(productArray[i].price / 100).toFixed(2)}
+Price: $${priceEmail}
     `
 
 
+      }
     }
-  }
 
-  template = template + `
+    template = template + `
   `
-        + `  Shipping: $${(shippingCostN / 100).toFixed(2)}` + `
+      + `  Shipping: $${(shippingCostN / 100).toFixed(2)}` + `
 
   ` +
 
-        `Total: $${(orderTotal / 100).toFixed(2)}`
+      `Total: $${(orderTotal / 100).toFixed(2)}`
 
     return template
   }
@@ -226,7 +243,7 @@ Price: $${(productArray[i].price / 100).toFixed(2)}
 
       .then((response) => response.json())
       .then((data) => {
-        //navigate('/')
+
 
       })
 
@@ -250,6 +267,30 @@ Price: $${(productArray[i].price / 100).toFixed(2)}
     }
   }, [])
 
+  // render sale price 
+
+  function RenderPrice(props) {
+
+    const {
+
+      index
+
+    } = props;
+
+    let priceDiv = (index.price / 100).toFixed(2)
+    let salePrice = (priceDiv - (priceDiv * (index.sale_percent / 100))).toFixed(2)
+
+    if (index.sale_percent == 0) {
+      return (
+        <p>price: ${priceDiv}</p>
+      )
+    }
+    else {
+      return (
+        <p>price: ${salePrice}</p>
+      )
+    }
+  }
 
 
   return (
@@ -268,7 +309,9 @@ Price: $${(productArray[i].price / 100).toFixed(2)}
               <SizeAndColor
                 data={index}
               />
-              <p>price: ${(index.price / 100).toFixed(2)}</p>
+              <RenderPrice
+                index={index}
+              />
             </div>
           )
         })}

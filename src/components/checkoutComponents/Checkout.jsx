@@ -152,7 +152,6 @@ const Checkout = (props) => {
 
   }
 
-
   let totalPrice = order.shipping + cartState
   
 
