@@ -174,7 +174,7 @@ function ProductPage(props) {
 
         else {
 
-            setCartItems([...cartItems, { id: itemId, title: itemTitle, price: itemPrice, quantity: quantity, image: itemImage, length: itemLength, width: itemWidth, height: itemHeight, weight: itemWeight, color: itemColor, size: itemSize, colorIter: colorIndex.current, sizeIter: sizeIndex.current }])
+            setCartItems([...cartItems, { id: itemId, title: itemTitle, price: itemPrice, quantity: quantity, image: itemImage, length: itemLength, width: itemWidth, height: itemHeight, weight: itemWeight, color: itemColor, size: itemSize, colorIter: colorIndex.current, sizeIter: sizeIndex.current, sale_percent: sale_percent }])
         }
 
     }

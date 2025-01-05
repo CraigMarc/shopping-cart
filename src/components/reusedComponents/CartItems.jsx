@@ -9,6 +9,34 @@ const CartItems = (props) => {
         data
     } = props;
 
+  
+
+    // render sale price 
+
+    function RenderSale() {
+
+
+        let priceDiv = (data.price / 100).toFixed(2)
+        let salePrice = (priceDiv - (priceDiv * (data.sale_percent / 100))).toFixed(2)
+
+        if (data.sale_percent == 0) {
+            return (
+                <p className="price">${priceDiv}</p>
+            )
+        }
+
+        else {
+            return (
+                <div>
+                    <p className='salePercent'>save {data.sale_percent}%</p>
+                    <p className='regPrice'>${priceDiv}</p>
+                    <p className='price'>${salePrice}</p>
+                </div>
+            )
+        }
+
+    }
+
     let url = `http://localhost:3000/${data.image}`
 
     return (
@@ -22,7 +50,7 @@ const CartItems = (props) => {
                 <SizeAndColor
                     data={data}
                 />
-                <p>${(data.price / 100).toFixed(2)}</p>
+                <RenderSale/>
             </div>
         </>
     )
