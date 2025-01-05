@@ -39,8 +39,6 @@ function Shop(props) {
 
     } = props
 
-    console.log(index)
-
     let priceDiv = (index.colorArray[0].sizeArray[0].price / 100).toFixed(2)
     let salePrice = (priceDiv - (priceDiv * (index.sale_percent / 100))).toFixed(2)
 

@@ -31,12 +31,13 @@ function ProductPage(props) {
     // values of current color selected ******L*
 
     const pageData = location.state;
-   
+
     const currentProduct = apiItems.filter((product) => product._id == pageData)
-    
+
 
     let itemTitle = currentProduct[0].title
     let itemDescription = currentProduct[0].description
+    let sale_percent = currentProduct[0].sale_percent
     let itemPrice = currentProduct[0].colorArray[colorIndex.current].sizeArray[sizeIndex.current].price
     let itemLength = currentProduct[0].colorArray[colorIndex.current].sizeArray[sizeIndex.current].length
     let itemHeight = currentProduct[0].colorArray[colorIndex.current].sizeArray[sizeIndex.current].height
@@ -162,7 +163,7 @@ function ProductPage(props) {
         if (quantity == "") {
             quantity = 1
         }
-        
+
         if (inCart.current == true) {
 
             const updateArray = structuredClone(cartItems)
@@ -226,6 +227,31 @@ function ProductPage(props) {
         }
     }
 
+    // render sale price 
+
+    function RenderSale() {
+
+
+        let priceDiv = (itemPrice / 100).toFixed(2)
+        let salePrice = (priceDiv - (priceDiv * (sale_percent / 100))).toFixed(2)
+
+        if (sale_percent == 0) {
+            return (
+                <p className="price">${priceDiv}</p>
+            )
+        }
+
+        else {
+            return (
+                <div>
+                    <p className='salePercent'>save {sale_percent}%</p>
+                    <p className='regPrice'>${priceDiv}</p>
+                    <p className='price'>${salePrice}</p>
+                </div>
+            )
+        }
+
+    }
 
 
 
@@ -271,7 +297,7 @@ function ProductPage(props) {
                             <h2>{itemTitle}</h2>
                             <img className="img" src={url}></img>
                             <p>{itemDescription}</p>
-                            <p className="price">${(itemPrice / 100).toFixed(2)}</p>
+                            <RenderSale />
                         </div>
                     </div>
                     <div className='formContainer'>
