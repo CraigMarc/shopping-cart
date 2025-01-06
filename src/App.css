@@ -411,3 +411,15 @@ select {
 .regPrice {
   text-decoration: line-through;
 }
+
+/* footer*/
+
+footer {
+  background-color: lightgray;
+  padding-top: 10px;
+ 
+}
+
+.footerContainer {
+  padding-bottom: 10px;
+}

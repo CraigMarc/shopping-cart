@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Header } from '../headerComponents/Header'
 import { useState, useEffect } from 'react'
+import { Footer } from '../footerComponents/Footer'
 
 const Home = (props) => {
 
@@ -110,6 +111,7 @@ const Home = (props) => {
         })}
 
       </div>
+      <Footer/>
     </div>
 
   )
