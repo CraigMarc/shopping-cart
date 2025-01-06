@@ -4,10 +4,10 @@ function Footer () {
 return (
     <footer>
         <div className="footerContainer">
-        <Link>
+        <Link to="/contact">
         <p>Contact us</p>
         </Link>
-        <Link>
+        <Link to="/order_status">
         <p>Check order status</p>
         </Link>
         </div>

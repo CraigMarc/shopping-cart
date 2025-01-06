@@ -417,9 +417,21 @@ select {
 footer {
   background-color: lightgray;
   padding-top: 10px;
- 
+
 }
 
 .footerContainer {
-  padding-bottom: 10px;
+  padding-bottom: 25px;
+}
+
+/*contact*/
+
+.contactContainer {
+  padding-top: 80px;
+}
+
+/*order status*/
+
+.orderStatusContainer {
+  padding-top: 80px;
 }

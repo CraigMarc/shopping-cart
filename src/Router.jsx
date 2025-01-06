@@ -9,6 +9,8 @@ import Success from './components/successComponents/Success'
 import Address from './components/addressComponents/Address'
 import OutOfStock from './components/OutOfStocKComponents/OutOfStock'
 import Home from './components/homeComponents/Home'
+import Contact from './components/contactComponents/Contact'
+import OrderStatus from './components/orderStatusComponents/OrderStatus'
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 
@@ -63,7 +65,7 @@ const Router = (props) => {
         category={category}
         setBrand={setBrand}
         brand={brand}
-       
+
       />,
       errorElement: <ErrorPage />,
     },
@@ -169,6 +171,25 @@ const Router = (props) => {
       errorElement: <ErrorPage />,
     },
 
+    {
+      path: "/contact",
+      element:
+        < Contact
+          cartItems={cartItems}
+          category={category}
+        />,
+      errorElement: <ErrorPage />,
+    },
+
+    {
+      path: "/order_status",
+      element:
+        < OrderStatus
+          cartItems={cartItems}
+          category={category}
+        />,
+      errorElement: <ErrorPage />,
+    },
 
 
   ]);
