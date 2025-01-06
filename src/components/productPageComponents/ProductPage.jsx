@@ -32,6 +32,7 @@ function ProductPage(props) {
 
     const pageData = location.state;
 
+
     const currentProduct = apiItems.filter((product) => product._id == pageData)
 
 

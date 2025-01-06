@@ -18,8 +18,17 @@ function Shop(props) {
   const pageData = location.state;
   const filteredProducts = useRef()
 
+ 
+
+  console.log(filteredProducts)
+
+ 
   const categoryData = apiItems.filter((product) => product.category._id == pageData._id)
   const brandData = apiItems.filter((product) => product.brand._id == pageData._id)
+
+  if (categoryData.length == 0 && brandData.length == 0 ) {
+    filteredProducts.current = null
+  }
 
   if (categoryData.length > 0) {
     filteredProducts.current = categoryData
@@ -29,6 +38,16 @@ function Shop(props) {
     filteredProducts.current = brandData
   }
 
+  
+  if (pageData._id == "all") {
+    let newArray = structuredClone(apiItems)
+    filteredProducts.current = newArray
+  }
+
+  if (pageData._id == "sale") {
+    const saleData = apiItems.filter((product) => product.sale_percent != 0)
+    filteredProducts.current = saleData
+  }
  
 
   function RenderSale (props) {

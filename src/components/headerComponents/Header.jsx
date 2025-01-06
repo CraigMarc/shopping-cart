@@ -37,8 +37,12 @@ function Header(props) {
               </Link>
             )
           })}
+          <Link to={`/shop/all`} state={{name: "All Products", _id: "all"}}>
           <li className="liDropdown">All Products</li>
+          </Link>
+          <Link to={`/shop/all`} state={{name: "On Sale", _id: "sale"}}>
           <li className="liDropdown">On Sale</li>
+          </Link>
         </ul>
       </div>
     );
