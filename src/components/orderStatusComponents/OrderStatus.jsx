@@ -106,7 +106,7 @@ function OrderStatus(props) {
     )
   }
 
-  console.log(orderStatus)
+
   function RenderOrderStatus(props) {
     const {
 
@@ -128,50 +128,31 @@ function OrderStatus(props) {
 
   }
 
-
-  if (orderStatus == null) {
-    return (
-      <div>
-        <Header
-          cartItems={cartItems}
-          category={category}
-        />
-        <div className='orderStatusContainer'>
+  function RenderContent() {
+    if (orderStatus == null) {
+      return (
+        <div>
           <h3>Order Status</h3>
           <form onSubmit={handleSubmit}>
             <label>
               <p>Email</p>
-              <input className="titleInput" type="text" name="email" />
+              <input className="titleInput" type="email" name="email" />
             </label>
             <div>
               <button type="submit">Submit</button>
             </div>
           </form>
         </div>
-      </div>
-    )
-  }
-  if (orderStatus.length == 0) {
-    return (
-      <div>
-        <Header
-          cartItems={cartItems}
-          category={category}
-        />
-        <div className='orderStatusContainer'>
-          <h3>No orders were found that matched this email.</h3>
-        </div>
-      </div>
-    )
-  }
-  else {
-    return (
-      <div>
-        <Header
-          cartItems={cartItems}
-          category={category}
-        />
-        <div className='orderStatusContainer'>
+      )
+    }
+    if (orderStatus.length == 0) {
+      return (
+        <h3>No orders were found that matched this email.</h3>
+      )
+    }
+    else {
+      return (
+        <div>
           <h3>Your Orders</h3>
 
           {orderStatus.map((index, iter) => {
@@ -188,13 +169,27 @@ function OrderStatus(props) {
               </div>
             )
           })}
-
-
-
         </div>
-      </div>
-    )
+      )
+    }
   }
+
+
+
+  return (
+    <div>
+      <Header
+        cartItems={cartItems}
+        category={category}
+      />
+      <div className='orderStatusContainer'>
+        <RenderContent />
+      </div>
+    </div>
+  )
+
+
+
 }
 
 export default OrderStatus;

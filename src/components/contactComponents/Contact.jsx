@@ -18,7 +18,7 @@ function Contact(props) {
   const handleSubmit = async e => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.target).entries());
-   
+
 
     //send form data
     await fetch(`http://localhost:3000/users/contact`, {
@@ -38,8 +38,8 @@ function Contact(props) {
 
       .then((response) => response.json())
       .then((data) => {
-       
-       
+
+
         if (data.Email == 'sent') {
           setMessage("We have recieved your message and will get back to you shortly.")
         }
@@ -56,7 +56,36 @@ function Contact(props) {
 
   }
 
-if (message == null) {
+  function RenderContent() {
+    if (message == null) {
+      return (
+        <div className='contactContainer'>
+          <h3>Contact Us</h3>
+          <form onSubmit={handleSubmit}>
+            <label>
+              <p>Subject</p>
+              <input className="titleInput" type="text" name="subject" />
+            </label>
+            <label>
+              <p>Message</p>
+              <textarea type="text" name="message" />
+            </label>
+            <div>
+              <button type="submit">Submit</button>
+            </div>
+          </form>
+
+        </div>
+      )
+    }
+    else {
+      return (
+        <h3 className='contactMessage'>{message}</h3>
+      )
+    }
+  }
+
+
   return (
     <div>
       <Header
@@ -64,39 +93,12 @@ if (message == null) {
         category={category}
       />
       <div className='contactContainer'>
-      <h3>Contact Us</h3>
-        <form onSubmit={handleSubmit}>
-          <label>
-            <p>Subject</p>
-            <input className="titleInput" type="text" name="subject" />
-          </label>
-          <label>
-            <p>Message</p>
-            <textarea type="text" name="message" />
-          </label>
-          <div>
-            <button type="submit">Submit</button>
-          </div>
-        </form>
-        
+        <RenderContent/>
       </div>
-     
-    </div>
-  )}
 
-  else {
-    return (
-      <div>
-      <Header
-        cartItems={cartItems}
-        category={category}
-      />
-      <div className='contactContainer'>
-        <h3 className='contactMessage'>{message}</h3>
-      </div>
-      </div>
-    )
-  }
+    </div>
+  )
+
 }
 
 export default Contact;
