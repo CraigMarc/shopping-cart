@@ -18,7 +18,7 @@ function Contact(props) {
   const handleSubmit = async e => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.target).entries());
-    console.log(data.message)
+   
 
     //send form data
     await fetch(`http://localhost:3000/users/contact`, {
