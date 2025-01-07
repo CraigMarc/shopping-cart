@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import shoppingCart from '../../assets/shoppingCart.png';
 import { useState } from 'react'
 
@@ -10,6 +10,8 @@ function Header(props) {
     category
 
   } = props;
+
+  const navigate = useNavigate();
 
   const [isDropdownVisible, setDropdownVisible] = useState(false);
 
@@ -23,7 +25,16 @@ function Header(props) {
 
   }
 
+  const handleSearchSubmit = (event) => {
 
+    event.preventDefault();
+    const data = Object.fromEntries(new FormData(event.target).entries());
+
+    navigate('/shop/search', { state: { name: data.search, _id: "search" } });
+
+  }
+
+// dropdown menu
 
   const DropdownMenu = () => {
     return (
@@ -69,6 +80,11 @@ function Header(props) {
           <div className="cartContainer"><span data-testid="cartNumber" className="itemNumber">{itemNumber}</span><img className="shoppingCart" src={shoppingCart}></img></div>
 
         </Link>
+        <form onSubmit={handleSearchSubmit}>
+          <input type="text" name="search" placeholder="search our products">
+          </input>
+          <input type="submit"></input>
+        </form>
         <div
           className="menu"
           onMouseEnter={handleMouseEnter}
