@@ -27,6 +27,7 @@ function ProductPage(props) {
     const colorIndex = useRef(0)
     const [sizeDrop, setSizeDrop] = useState()
     const sizeIndex = useRef(0)
+    const [imageIter, setImageIter] = useState(0)
 
     // values of current color selected ******L*
 
@@ -91,8 +92,6 @@ function ProductPage(props) {
         checkCartQuantity();
     }, [colorIndex.current, sizeIndex.current])
 
-
-    let url = `http://localhost:3000/${itemImage[0]}`
 
     function changeColor(e) {
 
@@ -282,6 +281,49 @@ function ProductPage(props) {
         )
     }
 
+    // increase or decrease image index
+    
+    function increaseImage() {
+        if (imageIter == itemImage.length -1) {
+            setImageIter(0)
+        }
+        else {
+            setImageIter(imageIter + 1)
+        }
+    }
+
+    function decreaseImage() {
+        if (imageIter == 0) {
+            setImageIter(itemImage.length -1)
+        }
+        else {
+        setImageIter(imageIter - 1)
+        }
+    }
+
+    //image scroll 
+    console.log(itemImage)
+    function ImageScroll() {
+        if (itemImage.length == 1) {
+            let url = `http://localhost:3000/${itemImage[0]}`
+            return (
+                <img className="img" src={url}></img>
+            )
+        }
+        else {
+            let url = `http://localhost:3000/${itemImage[imageIter]}`
+            return (
+
+                < div>
+                    <img className="img" src={url}></img>
+                    <div onClick={(e) => increaseImage(e)}>up</div>
+                    <div onClick={(e) => decreaseImage(e)}>down</div>
+                </div>
+
+            )
+        }
+
+    }
 
 
     if (currentProduct[0].title)
@@ -296,14 +338,13 @@ function ProductPage(props) {
                     <div className="itemContainer">
                         <div className="item">
                             <h2>{itemTitle}</h2>
-                            <img className="img" src={url}></img>
+                            <ImageScroll />
                             <p>{itemDescription}</p>
                             <RenderSale />
                         </div>
                     </div>
                     <div className='formContainer'>
                         {renderForm()}
-
                         <div className='productButton'>
                             <Link to="/">
                                 <div className='shopButtonContainer'>

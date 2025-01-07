@@ -18,10 +18,7 @@ function Shop(props) {
   const pageData = location.state;
   const filteredProducts = useRef()
 
- 
-
-  console.log(filteredProducts)
-
+  // filter products
  
   const categoryData = apiItems.filter((product) => product.category._id == pageData._id)
   const brandData = apiItems.filter((product) => product.brand._id == pageData._id)
@@ -49,6 +46,7 @@ function Shop(props) {
     filteredProducts.current = saleData
   }
  
+  // display sale price or reg price
 
   function RenderSale (props) {
 
@@ -79,6 +77,7 @@ function Shop(props) {
 
   }
 
+// display products if exist
 
   function RenderProducts() {
 
@@ -90,8 +89,7 @@ function Shop(props) {
             let image = index.colorArray[0].images[0]
 
             let url = `http://localhost:3000/${image}`
-            //let priceDiv = (index.colorArray[0].sizeArray[0].price / 100).toFixed(2)
-
+          
 
             return (
 
