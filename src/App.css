@@ -439,3 +439,29 @@ footer {
 .orderStatusContainer {
   padding-top: 80px;
 }
+
+/*image slider*/
+
+.arrowContainer {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  display: flex;
+  background-color: #F5F5F5;
+  border: solid;
+  border-width: 0.1px;
+  border-color: black;
+ 
+}
+
+.arrowContainer:hover {
+ background: lightgray;
+
+}
+
+.scrollContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}

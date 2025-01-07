@@ -2,7 +2,8 @@ import { Header } from '../headerComponents/Header'
 import { useLocation } from 'react-router-dom'
 import { Link } from "react-router-dom";
 import { useState, useEffect, useRef } from 'react'
-
+import arrowLeft from '../../assets/arrowLeft.png';
+import arrowRight from '../../assets/arrowRight.png';
 
 function ProductPage(props) {
 
@@ -282,9 +283,9 @@ function ProductPage(props) {
     }
 
     // increase or decrease image index
-    
+
     function increaseImage() {
-        if (imageIter == itemImage.length -1) {
+        if (imageIter == itemImage.length - 1) {
             setImageIter(0)
         }
         else {
@@ -294,15 +295,15 @@ function ProductPage(props) {
 
     function decreaseImage() {
         if (imageIter == 0) {
-            setImageIter(itemImage.length -1)
+            setImageIter(itemImage.length - 1)
         }
         else {
-        setImageIter(imageIter - 1)
+            setImageIter(imageIter - 1)
         }
     }
 
     //image scroll 
-    console.log(itemImage)
+
     function ImageScroll() {
         if (itemImage.length == 1) {
             let url = `http://localhost:3000/${itemImage[0]}`
@@ -314,10 +315,10 @@ function ProductPage(props) {
             let url = `http://localhost:3000/${itemImage[imageIter]}`
             return (
 
-                < div>
+                <div className='scrollContainer'>
+                    <div className='arrowContainer' onClick={(e) => increaseImage(e)}><img src={arrowLeft}></img></div>
                     <img className="img" src={url}></img>
-                    <div onClick={(e) => increaseImage(e)}>up</div>
-                    <div onClick={(e) => decreaseImage(e)}>down</div>
+                    <div className='arrowContainer' onClick={(e) => decreaseImage(e)}><img src={arrowRight}></img></div>
                 </div>
 
             )
