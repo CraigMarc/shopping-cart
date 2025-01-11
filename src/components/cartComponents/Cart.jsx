@@ -39,7 +39,7 @@ function Cart(props) {
         let cartTotal = 0
         for (let i = 0; i < cartItems.length; i++) {
 
-            if (cartItems[i].sale_percent == 0){
+            if (cartItems[i].sale_percent == null){
             cartTotal = cartTotal + (cartItems[i].price * cartItems[i].quantity)
             }
             else {

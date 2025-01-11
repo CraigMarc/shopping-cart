@@ -19,7 +19,7 @@ const CartItems = (props) => {
         let priceDiv = (data.price / 100).toFixed(2)
         let salePrice = (priceDiv - (priceDiv * (data.sale_percent / 100))).toFixed(2)
 
-        if (data.sale_percent == 0) {
+        if (data.sale_percent == null) {
             return (
                 <p className="price">${priceDiv}</p>
             )

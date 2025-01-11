@@ -98,7 +98,7 @@ const Success = (props) => {
       let priceEmail = 0
       
 
-      if (productArray[i].sale_percent == 0) {
+      if (!productArray[i].sale_percent) {
         priceEmail = (productArray[i].price / 100).toFixed(2)
        
       }
@@ -280,7 +280,7 @@ Price: $${priceEmail}
     let priceDiv = (index.price / 100).toFixed(2)
     let salePrice = (priceDiv - (priceDiv * (index.sale_percent / 100))).toFixed(2)
 
-    if (index.sale_percent == 0) {
+    if (!index.sale_percent) {
       return (
         <p>price: ${priceDiv}</p>
       )

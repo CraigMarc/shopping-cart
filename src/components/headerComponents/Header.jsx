@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import shoppingCart from '../../assets/shoppingCart.png';
 import { useState } from 'react'
+import search from '../../assets/search.png';
 
 function Header(props) {
 
@@ -75,16 +76,17 @@ function Header(props) {
         <Link className="heading" to="/">
           <div>Home</div>
         </Link>
-
+        <form onSubmit={handleSearchSubmit}>
+          <div className="searchContainer">
+          <input className="searchInput" type="text" name="search" placeholder="search our products">
+          </input>
+          <input className="searchSubmit" type="image" src={search}></input>
+          </div>
+        </form>
         <Link className="heading" to="/cart">
           <div className="cartContainer"><span data-testid="cartNumber" className="itemNumber">{itemNumber}</span><img className="shoppingCart" src={shoppingCart}></img></div>
 
         </Link>
-        <form onSubmit={handleSearchSubmit}>
-          <input type="text" name="search" placeholder="search our products">
-          </input>
-          <input type="submit"></input>
-        </form>
         <div
           className="menu"
           onMouseEnter={handleMouseEnter}

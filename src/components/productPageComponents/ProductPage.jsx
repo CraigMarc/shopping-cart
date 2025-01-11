@@ -236,7 +236,7 @@ function ProductPage(props) {
         let priceDiv = (itemPrice / 100).toFixed(2)
         let salePrice = (priceDiv - (priceDiv * (sale_percent / 100))).toFixed(2)
 
-        if (sale_percent == 0) {
+        if (sale_percent == null) {
             return (
                 <p className="price">${priceDiv}</p>
             )

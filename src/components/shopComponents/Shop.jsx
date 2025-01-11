@@ -50,7 +50,7 @@ function Shop(props) {
     const searchData = apiItems.filter((product) => product.title.toLowerCase().includes(pageData.name) || product.description.toLowerCase().includes(pageData.name) || product.category.name.toLowerCase().includes(pageData.name))
     filteredProducts.current = searchData
   }
- console.log(apiItems)
+ 
   // display sale price or reg price
 
   function RenderSale (props) {
@@ -64,7 +64,7 @@ function Shop(props) {
     let priceDiv = (index.colorArray[0].sizeArray[0].price / 100).toFixed(2)
     let salePrice = (priceDiv - (priceDiv * (index.sale_percent / 100))).toFixed(2)
 
-    if (index.sale_percent == 0) {
+    if (index.sale_percent == null) {
       return (
         <p className="price">${priceDiv}</p>
       )
