@@ -15,11 +15,14 @@ h2 {
 /*shop*/
 
 .shopContainer {
-  padding-top: 80px;
+ 
+  margin-top: 10px;
   background-color: #F5F5F5;
   padding-bottom: 30px;
   padding-left: 10px;
   padding-right: 10px;
+ 
+  
 }
 
 
@@ -72,12 +75,13 @@ h1 {
 
 .headerDiv {
   background-color: lightgray;
-  position: fixed;
+  position: sticky;
   top: 0;
   width: 100%;
   border: 0;
   padding-top: 10px;
   padding-bottom: 10px;
+ 
 
 }
 
@@ -414,7 +418,7 @@ select {
   box-shadow: 0px 10px 30px 0px rgba(82, 63, 105, 0.05);
   transition: all linear 0.3s;
   position: absolute;
-  right: 120px;
+  right: 100%;
   top: 1%;
 
 }

@@ -66,8 +66,8 @@ function Header(props) {
           </Link>
           {index.subCategory.map((index, iter) => {
             return (
-              <div>
-                <Link key={iter} to={`/shop/${index._id}`} state={index}>
+              <div key={iter}>
+                <Link  to={`/shop/${index._id}`} state={index}>
                   <li className="liDropdown">{index.name}</li>
                 </Link>
               </div>
@@ -100,12 +100,12 @@ function Header(props) {
     }
     else {
       return (
-        <div
+        <div key={iter}
           className="subMenu" value={iter}
           onMouseEnter={(e) => handleSubMouseEnter(e, iter)}
           onMouseLeave={handleSubMouseLeave}
         >
-          <Link key={iter} to={`/shop/${index._id}`} state={index}>
+          <Link to={`/shop/${index._id}`} state={index}>
             
               <li className="liDropdown"><img className="downArrowImg" src={leftArrow}></img>{index.name}</li>
             
@@ -130,6 +130,7 @@ function Header(props) {
           {category.map((index, iter) => {
             return (
               <RenderSubMenu
+                key={iter}
                 index={index}
                 iter={iter}
               />
