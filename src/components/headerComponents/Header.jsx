@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import shoppingCart from '../../assets/shoppingCart.png';
 import { useState } from 'react'
 import search from '../../assets/search.png';
-import downArrow from '../../assets/downArrow.png';
+import leftArrow from '../../assets/leftArrowMenu.png';
 
 function Header(props) {
 
@@ -90,7 +90,7 @@ function Header(props) {
 
     } = props;
 
-    
+
     if (index.subCategory.length == 0) {
       return (
         <Link key={iter} to={`/shop/${index._id}`} state={index}>
@@ -106,12 +106,11 @@ function Header(props) {
           onMouseLeave={handleSubMouseLeave}
         >
           <Link key={iter} to={`/shop/${index._id}`} state={index}>
-            <li className="liDropdown"><img className="downArrowImg" src={downArrow}></img>{index.name}</li>
+            
+              <li className="liDropdown"><img className="downArrowImg" src={leftArrow}></img>{index.name}</li>
+            
           </Link>
-          {/* <SubDropdownMenu
-        index={index}
-        iter={iter}
-        /> */}
+
           {subIter == iter && isSubDropdownVisible && <SubDropdownMenu index={index} iter={iter} catName={index.name} />}
         </div>
       )
@@ -181,7 +180,7 @@ function Header(props) {
           onMouseLeave={handleMouseLeave}
         >
           <button className="buttonDropdown">Shop</button>
-          {/* <DropdownMenu /> */}
+
           {isDropdownVisible && <DropdownMenu />}
         </div>
       </header>

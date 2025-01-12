@@ -395,6 +395,7 @@ select {
   color: #fff;
 }
 
+
 .dropdown-menu {
   background: #fff;
   box-shadow: 0px 10px 30px 0px rgba(82, 63, 105, 0.05);
@@ -404,23 +405,24 @@ select {
 
 .subMenu {
   position: relative;
-  
+
 }
 
 .subDropdown-menu {
-  
+
   background: #fff;
   box-shadow: 0px 10px 30px 0px rgba(82, 63, 105, 0.05);
   transition: all linear 0.3s;
   position: absolute;
   right: 120px;
- top: 2%;
+  top: 1%;
 
 }
 
 .downArrowImg {
   height: 15px;
   width: 15px;
+  padding-right: 5px;
 }
 
 .buttonDropdown {
@@ -429,6 +431,7 @@ select {
   border: none;
   cursor: pointer;
 }
+
 
 /* sale price shop*/
 
