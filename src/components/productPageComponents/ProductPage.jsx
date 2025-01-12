@@ -51,6 +51,9 @@ function ProductPage(props) {
     let itemSize = currentProduct[0].colorArray[colorIndex.current].sizeArray[sizeIndex.current].size
     let itemImage = currentProduct[0].colorArray[colorIndex.current].images
     let itemId = currentProduct[0]._id
+    if (!itemImage) {
+        itemImage = []
+    }
 
     /*
     if (apiItems == undefined) {
@@ -305,13 +308,20 @@ function ProductPage(props) {
     //image scroll 
 
     function ImageScroll() {
+        if (itemImage.length == 0) {
+            return (
+            <img className="img" alt="no image available" src={''}></img>
+            )
+        }
         if (itemImage.length == 1) {
             let url = `http://localhost:3000/${itemImage[0]}`
             return (
                 <img className="img" src={url}></img>
             )
         }
-        else {
+       
+        
+        if (itemImage.length > 1) {
             let url = `http://localhost:3000/${itemImage[imageIter]}`
             return (
 

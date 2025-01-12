@@ -91,9 +91,12 @@ function Shop(props) {
         <div>
           {filteredProducts.current.map((index, iter) => {
 
-            let image = index.colorArray[0].images[0]
-
-            let url = `http://localhost:3000/${image}`
+let url = ""
+if (index.colorArray[0].images) {
+           let image = index.colorArray[0].images[0]
+            url = `http://localhost:3000/${image}`
+          }
+            
           
 
             return (
