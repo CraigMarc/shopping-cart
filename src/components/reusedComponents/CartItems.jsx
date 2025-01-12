@@ -43,7 +43,7 @@ const CartItems = (props) => {
         <>
             <div className='cartCont1'>
                 <p>{data.title}</p>
-                <img className="checkoutImg" src={url}></img>
+                <img className="checkoutImg" alt="no image available" src={url}></img>
             </div>
             <div className='cartCont2'>
                 <p>quantity: {data.quantity}</p>

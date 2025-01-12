@@ -106,7 +106,7 @@ if (index.colorArray[0].images) {
 
                   <div id={index.id} className="card" >
 
-                    <img className="img" src={url}></img>
+                    <img className="img" alt="no image available" src={url}></img>
                     <p>{index.title}</p>
                     <RenderSale
                       index={index}
