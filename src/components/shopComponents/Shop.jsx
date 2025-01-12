@@ -50,6 +50,10 @@ function Shop(props) {
     const searchData = apiItems.filter((product) => product.title.toLowerCase().includes(pageData.name) || product.description.toLowerCase().includes(pageData.name) || product.category.name.toLowerCase().includes(pageData.name))
     filteredProducts.current = searchData
   }
+
+  if (!filteredProducts.current) {
+    filteredProducts.current = []
+  }
  
   // display sale price or reg price
 
@@ -85,8 +89,8 @@ function Shop(props) {
 // display products if exist
 
   function RenderProducts() {
-
-    if (filteredProducts.current) {
+console.log(filteredProducts.current)
+    if (filteredProducts.current.length > 0) {
       return (
         <div>
           {filteredProducts.current.map((index, iter) => {
