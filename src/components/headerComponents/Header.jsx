@@ -60,7 +60,7 @@ function Header(props) {
 
     return (
       <div className="subDropdown-menu">
-        <ul className="ulDropdown">
+        <ul className="ulSubDropdown">
           <Link key={iter} to={`/shop/${index._id}`} state={index}>
             <li className="liDropdown">All {catName}</li>
           </Link>
