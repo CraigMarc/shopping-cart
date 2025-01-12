@@ -88,7 +88,7 @@ const Home = (props) => {
           return (
             <Link key={iter} to={`shop/${index._id}`} state={index}>
             <div>
-            <img className="img" src={url}></img>
+            <img className="img" alt="no image available" src={url}></img>
             <p>{index.name}</p>
             </div>
             </Link>
@@ -103,7 +103,7 @@ const Home = (props) => {
           return (
             <Link key={iter} to={`shop/${index._id}`} state={index}>
             <div>
-            <img className="img" src={url}></img>
+            <img className="img" alt="no image available" src={url}></img>
             <p>{index.name}</p>
             </div>
             </Link>

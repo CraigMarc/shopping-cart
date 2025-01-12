@@ -19,11 +19,11 @@ function Shop(props) {
   const filteredProducts = useRef()
 
   // filter products
- 
+
   const categoryData = apiItems.filter((product) => product.category._id == pageData._id)
   const brandData = apiItems.filter((product) => product.brand._id == pageData._id)
 
-  if (categoryData.length == 0 && brandData.length == 0 ) {
+  if (categoryData.length == 0 && brandData.length == 0) {
     filteredProducts.current = null
   }
 
@@ -35,7 +35,7 @@ function Shop(props) {
     filteredProducts.current = brandData
   }
 
-  
+
   if (pageData._id == "all") {
     let newArray = structuredClone(apiItems)
     filteredProducts.current = newArray
@@ -54,10 +54,10 @@ function Shop(props) {
   if (!filteredProducts.current) {
     filteredProducts.current = []
   }
- 
+
   // display sale price or reg price
 
-  function RenderSale (props) {
+  function RenderSale(props) {
 
     const {
 
@@ -86,22 +86,22 @@ function Shop(props) {
 
   }
 
-// display products if exist
+  // display products if exist
 
   function RenderProducts() {
-console.log(filteredProducts.current)
+
     if (filteredProducts.current.length > 0) {
       return (
         <div>
           {filteredProducts.current.map((index, iter) => {
 
-let url = ""
-if (index.colorArray[0].images) {
-           let image = index.colorArray[0].images[0]
-            url = `http://localhost:3000/${image}`
-          }
-            
-          
+            let url = ""
+            if (index.colorArray[0].images) {
+              let image = index.colorArray[0].images[0]
+              url = `http://localhost:3000/${image}`
+            }
+
+
 
             return (
 
