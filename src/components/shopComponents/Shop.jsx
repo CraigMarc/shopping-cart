@@ -17,12 +17,13 @@ function Shop(props) {
   const location = useLocation();
   const pageData = location.state;
   const filteredProducts = useRef()
+ 
 
   // filter products
 
-  const categoryData = apiItems.filter((product) => product.category._id == pageData._id)
-  const brandData = apiItems.filter((product) => product.brand._id == pageData._id)
-
+  const categoryData = apiItems.filter((product) => product.category._id == pageData.category._id)
+  const brandData = apiItems.filter((product) => product.brand._id == pageData.category._id)
+ 
   if (categoryData.length == 0 && brandData.length == 0) {
     filteredProducts.current = null
   }
@@ -31,23 +32,27 @@ function Shop(props) {
     filteredProducts.current = categoryData
   }
 
+  if (pageData.subCategory) {
+    filteredProducts.current = categoryData.filter((product) => product.subCategory == pageData.subCategory)
+  }
+
   if (brandData.length > 0) {
     filteredProducts.current = brandData
   }
 
 
-  if (pageData._id == "all") {
+  if (pageData.category._id == "all") {
     let newArray = structuredClone(apiItems)
     filteredProducts.current = newArray
   }
 
-  if (pageData._id == "sale") {
-    const saleData = apiItems.filter((product) => product.sale_percent != 0)
+  if (pageData.category._id == "sale") {
+    const saleData = apiItems.filter((product) => product.sale_percent > 0)
     filteredProducts.current = saleData
   }
 
-  if (pageData._id == "search") {
-    const searchData = apiItems.filter((product) => product.title.toLowerCase().includes(pageData.name) || product.description.toLowerCase().includes(pageData.name) || product.category.name.toLowerCase().includes(pageData.name))
+  if (pageData.category._id == "search") {
+    const searchData = apiItems.filter((product) => product.title.toLowerCase().includes(pageData.category.name) || product.description.toLowerCase().includes(pageData.category.name) || product.category.name.toLowerCase().includes(pageData.category.name))
     filteredProducts.current = searchData
   }
 
@@ -84,6 +89,19 @@ function Shop(props) {
       )
     }
 
+  }
+
+  function RenderTitle() {
+    if (pageData.subCategory) {
+      return (
+        <h1>{pageData.subCategory}</h1>
+      )
+    }
+    else {
+      return (
+        <h1>{pageData.category.name}</h1>
+      )
+    }
   }
 
   // display products if exist
@@ -143,7 +161,7 @@ function Shop(props) {
         category={category}
       />
       <div className='shopContainer'>
-        <h1>{pageData.name}</h1>
+        <RenderTitle />
         <div className="productCard">
           <RenderProducts />
 

@@ -34,7 +34,7 @@ function Header(props) {
     event.preventDefault();
     const data = Object.fromEntries(new FormData(event.target).entries());
 
-    navigate('/shop/search', { state: { name: data.search, _id: "search" } });
+    navigate('/shop/search', { state: { category: {name: data.search, _id: "search"} } });
 
   }
 
@@ -61,14 +61,14 @@ function Header(props) {
     return (
       <div className="subDropdown-menu">
         <ul className="ulSubDropdown">
-          <Link key={iter} to={`/shop/${index._id}`} state={index}>
+          <Link key={iter} to={`/shop/${index._id}`} state={{category: index}}>
             <li className="liDropdown">All {catName}</li>
           </Link>
-          {index.subCategory.map((index, iter) => {
+          {index.subCategory.map((index2, iter) => {
             return (
               <div key={iter}>
-                <Link  to={`/shop/${index._id}`} state={index}>
-                  <li className="liDropdown">{index.name}</li>
+                <Link  to={`/shop/${index._id}`} state={{category: index, subCategory: index2.name}}>
+                  <li className="liDropdown">{index2.name}</li>
                 </Link>
               </div>
             )
@@ -93,7 +93,7 @@ function Header(props) {
 
     if (index.subCategory.length == 0) {
       return (
-        <Link key={iter} to={`/shop/${index._id}`} state={index}>
+        <Link key={iter} to={`/shop/${index._id}`} state={{category:index}}>
           <li className="liDropdown">{index.name}</li>
         </Link>
       )
@@ -105,7 +105,7 @@ function Header(props) {
           onMouseEnter={(e) => handleSubMouseEnter(e, iter)}
           onMouseLeave={handleSubMouseLeave}
         >
-          <Link to={`/shop/${index._id}`} state={index}>
+          <Link to={`/shop/${index._id}`} state={{category: index}}>
             
               <li className="liDropdown"><img className="downArrowImg" src={leftArrow}></img>{index.name}</li>
             
@@ -136,10 +136,10 @@ function Header(props) {
               />
             )
           })}
-          <Link to={`/shop/all`} state={{ name: "All Products", _id: "all" }}>
+          <Link to={`/shop/all`} state={{category: {name: "All Products", _id: "all" }}}>
             <li className="liDropdown">All Products</li>
           </Link>
-          <Link to={`/shop/all`} state={{ name: "On Sale", _id: "sale" }}>
+          <Link to={`/shop/all`} state={{category: {name: "On Sale", _id: "sale" }}}>
             <li className="liDropdown">On Sale</li>
           </Link>
         </ul>
