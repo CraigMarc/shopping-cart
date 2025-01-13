@@ -132,7 +132,7 @@ header {
 /*product page css*/
 
 .productPageContainer {
-  padding-top: 130px;
+  padding-top: 50px;
   background-color: #F5F5F5;
 }
 
@@ -196,7 +196,7 @@ input[type=number]::-webkit-inner-spin-button {
 /*cart css*/
 
 .checkoutContainer {
-  padding-top: 70px;
+  padding-top: 5px;
   text-align: center;
   background-color: #F5F5F5;
   padding-bottom: 30px;
@@ -366,7 +366,7 @@ select {
 /* home */
 
 .categoryContainer {
-  padding-top: 80px;
+  padding-top: 10px;
   background-color: #F5F5F5;
   padding-bottom: 30px;
   padding-left: 10px;

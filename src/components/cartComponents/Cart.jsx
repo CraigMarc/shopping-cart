@@ -65,10 +65,7 @@ function Cart(props) {
         if (cartItems.length == 0) {
             return (
                 <div className='checkoutContainer'>
-                    <Header
-                    cartItems={cartItems}
-                    category={category}
-                    />
+                  
                     <h1>cart is empty</h1>
                 </div>
             )
