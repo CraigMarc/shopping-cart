@@ -2,14 +2,18 @@ import { useState, useRef } from 'react'
 import Router from './Router'
 import './App.css'
 import fileJson from './assets/data/data2.json';
+import { usePersistState } from './usePersistState';
 
 function App() {
 
-  const [cartItems, setCartItems] = useState([])
+  //const [cartItems, setCartItems] = useState([])
+  const [cartItems, setCartItems] = usePersistState([], 'cartItems');
   //if api goes down data in assets data use the following setstate
   //const [apiItems, setApiItems] = useState(fileJson.products)
-  const [apiItems, setApiItems] = useState()
-  const [cartState, setCartState] = useState()
+  //const [apiItems, setApiItems] = useState()
+  const [apiItems, setApiItems] = usePersistState("", 'apiItems');
+  //const [cartState, setCartState] = useState()
+  const [cartState, setCartState] = usePersistState("", 'cartState');
   const [order, setOrder] = useState()
   const [category, setCategory] = useState()
   const [brand, setBrand] = useState()

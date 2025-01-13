@@ -16,7 +16,7 @@ function ProductPage(props) {
         category
 
     } = props;
-
+console.log(cartItems)
 
     //get data from link
 
