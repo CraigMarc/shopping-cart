@@ -243,8 +243,13 @@ Price: $${priceEmail}
 
       .then((response) => response.json())
       .then((data) => {
-
-
+        localStorage.removeItem("state:apiItems");
+        localStorage.removeItem("state:cartItems");
+        localStorage.removeItem("state:cartState");
+        localStorage.removeItem("state:category");
+        localStorage.removeItem("state:brand");
+        localStorage.removeItem("state:order");
+       
       })
 
 
