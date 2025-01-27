@@ -232,7 +232,7 @@ const Checkout = (props) => {
 
     // make api call to make sure items are in stock
 
-    await fetch("http://localhost:3000/users/all")
+    await fetch("http://localhost:3000/users/published")
 
 
       .then((response) => response.json())

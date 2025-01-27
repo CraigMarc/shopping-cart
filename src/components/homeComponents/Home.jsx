@@ -28,7 +28,7 @@ const Home = (props) => {
       //return fetch(picUrl)
 
       const [apiProducts, apiCategory, apiBrand] = await Promise.all([
-        await fetch('http://localhost:3000/users/all'),
+        await fetch('http://localhost:3000/users/published'),
         await fetch('http://localhost:3000/users/category'),
         await fetch('http://localhost:3000/users/brand')
       ]);
