@@ -10,11 +10,10 @@ import Address from './components/addressComponents/Address'
 import OutOfStock from './components/OutOfStocKComponents/OutOfStock'
 import Home from './components/homeComponents/Home'
 import Contact from './components/contactComponents/Contact'
+import NetworkError from './components/NetworkError'
 import OrderStatus from './components/orderStatusComponents/OrderStatus'
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
-
-
 
 
 
@@ -187,6 +186,14 @@ const Router = (props) => {
         < OrderStatus
           cartItems={cartItems}
           category={category}
+        />,
+      errorElement: <ErrorPage />,
+    },
+    {
+      path: "/network_error",
+      element:
+        < NetworkError
+        
         />,
       errorElement: <ErrorPage />,
     },

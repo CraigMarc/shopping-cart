@@ -178,6 +178,7 @@ const Checkout = (props) => {
 
   async function callStripe() { 
 
+try {
     const response = await fetch('http://localhost:3000/users/intent', {
     
       method: 'POST',
@@ -188,7 +189,9 @@ const Checkout = (props) => {
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
       },
-    })
+      
+         })
+       
 
     const { client_secret: clientSecret } = await response.json();
 
@@ -214,6 +217,10 @@ const Checkout = (props) => {
       // methods like iDEAL, your customer is redirected to an intermediate
       // site first to authorize the payment, then redirected to the `return_url`.
     }
+  }
+  catch {
+    navigate('/network_error')
+  }
     
   }
 
