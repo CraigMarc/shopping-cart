@@ -244,12 +244,12 @@ Price: $${priceEmail}
 
       .then((response) => response.json())
       .then((data) => {
-        localStorage.removeItem("state:apiItems");
-        localStorage.removeItem("state:cartItems");
-        localStorage.removeItem("state:cartState");
-        localStorage.removeItem("state:category");
-        localStorage.removeItem("state:brand");
-        localStorage.removeItem("state:order");
+        sessionStorage.removeItem("state:apiItems");
+        sessionStorage.removeItem("state:cartItems");
+        sessionStorage.removeItem("state:cartState");
+        sessionStorage.removeItem("state:category");
+        sessionStorage.removeItem("state:brand");
+        sessionStorage.removeItem("state:order");
        
       })
 
