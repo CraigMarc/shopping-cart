@@ -165,12 +165,7 @@ const Checkout = (props) => {
   const handleError = (error) => {
     setLoading(false);
     setErrorMessage(error.message);
-    console.log('hello')
-    return (
-    <div className='netError'>
-    <h3>A network error was encountered try again later.</h3>
-  </div>
-    )
+   
   }
 
 // function to make payment
@@ -218,7 +213,8 @@ try {
       // site first to authorize the payment, then redirected to the `return_url`.
     }
   }
-  catch {
+  catch(err) {
+    console.log(err.message);
     navigate('/network_error')
   }
     

@@ -1,6 +1,7 @@
 import { Header } from '../headerComponents/Header'
 import { useState } from 'react'
 import SizeAndColor from '../reusedComponents/SizeAndColor'
+import { useNavigate } from 'react-router-dom';
 
 function OrderStatus(props) {
 
@@ -12,6 +13,8 @@ function OrderStatus(props) {
   } = props;
 
   const [orderStatus, setOrderStatus] = useState(null)
+
+  const navigate = useNavigate();
 
   //submit function
 
@@ -43,6 +46,7 @@ function OrderStatus(props) {
 
       .catch((err) => {
         console.log(err.message);
+        navigate('/network_error')
       });
 
 
