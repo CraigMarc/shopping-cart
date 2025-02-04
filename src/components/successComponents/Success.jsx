@@ -83,6 +83,8 @@ const Success = (props) => {
     return productArray
   }
 
+  
+
   // create email temp literals
 
   let productArray = createProductArray()
@@ -170,8 +172,7 @@ Price: $${priceEmail}
     return template
   }
 
-
-
+  
   // send email
 
   async function sendEmail() {

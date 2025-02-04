@@ -523,3 +523,10 @@ footer {
 .searchInput {
   font-size: 20px;
 }
+
+/*network error*/
+
+.netError {
+  text-align: center;
+  padding-top: 40px;
+}

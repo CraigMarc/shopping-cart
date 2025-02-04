@@ -165,6 +165,12 @@ const Checkout = (props) => {
   const handleError = (error) => {
     setLoading(false);
     setErrorMessage(error.message);
+    console.log('hello')
+    return (
+    <div className='netError'>
+    <h3>A network error was encountered try again later.</h3>
+  </div>
+    )
   }
 
 // function to make payment
@@ -199,13 +205,16 @@ const Checkout = (props) => {
     if (error) {
       // This point is only reached if there's an immediate error when
       // confirming the payment. Show the error to your customer (for example, payment details incomplete)
+      
       handleError(error);
+
     } else {
 
       // Your customer is redirected to your `return_url`. For some payment
       // methods like iDEAL, your customer is redirected to an intermediate
       // site first to authorize the payment, then redirected to the `return_url`.
     }
+    
   }
 
 
@@ -287,7 +296,7 @@ const Checkout = (props) => {
   };
 
   if (errorServer) return (
-    <div>
+    <div className='netError'>
       <h3>A network error was encountered try again later.</h3>
     </div>
   )

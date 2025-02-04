@@ -63,9 +63,9 @@ const Home = (props) => {
   //display error and loading for api call
 
   if (error) return (
-    <div>
+    <div className="netError">
 
-      <p>A network error was encountered</p>
+      <h2>A network error was encountered please try again later</h2>
     </div>
   )
 

@@ -125,7 +125,7 @@ const Address = (props) => {
     }
 
     if (errorMess) return (
-        <div>
+        <div className="netError">
           <h3>A network error was encountered try again later.</h3>
         </div>
       )
