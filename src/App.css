@@ -75,7 +75,7 @@ h1 {
 
 .headerDiv {
   background-color: lightgray;
-  position: sticky;
+  
   top: 0;
   width: 100%;
   border: 0;
@@ -89,13 +89,14 @@ header>h1 {
   margin: 0;
 }
 
-@media only screen and (max-width: 650px) {
+
+@media only screen and (max-width: 790px) {
   header>h1 {
-    font-size: 20px;
+    font-size: 25px;
   }
 }
 
-header {
+.headerReg {
   display: flex;
   justify-content: center;
   gap: 40px;
@@ -106,10 +107,17 @@ header {
  
 }
 
+@media only screen and (max-width: 870px) {
+  .headerReg {
+    gap: 20px;
+  }
+}
+
 .cartContainer {
   display: flex;
   align-items: center;
   gap: 5px;
+  width: 50px;
 }
 
 .heading:hover {
@@ -135,7 +143,7 @@ header {
 .ulDropdown {
   list-style: none;
   padding: unset;
-  margin: unset;
+ margin: unset;
   
 }
 
@@ -165,8 +173,7 @@ header {
   box-shadow: 0px 10px 30px 0px rgba(82, 63, 105, 0.05);
   transition: all linear 0.3s;
   position: absolute;
- 
- 
+  
  
 }
 
@@ -194,9 +201,24 @@ header {
 
 .buttonDropdown {
   box-shadow: 0px 10px 30px 0px rgba(82, 63, 105, 0.05);
-  padding: 12px 25px;
+  padding: 8px 10px;
   border: none;
   cursor: pointer;
+}
+
+/*header Mobile*/
+
+.headerMobile {
+  
+    display: flex;
+    justify-content: space-around;
+    gap: 40px;
+    font-size: 20px;
+    align-items: center;
+    padding-right: 10px;
+    padding-left: 10px;
+    
+   
 }
 
 /*mobile search*/

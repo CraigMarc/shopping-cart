@@ -126,6 +126,15 @@ function HeaderMobile(props) {
     return (
       <div className="dropdown-menu">
         <ul className="ulDropdown">
+        <Link to={`/`} state={{ category: { name: "All Products", _id: "all" } }}>
+            <li className="liDropdown">Home</li>
+          </Link>
+        <Link to={`/shop/all`} state={{ category: { name: "All Products", _id: "all" } }}>
+            <li className="liDropdown">All Products</li>
+          </Link>
+          <Link to={`/shop/all`} state={{ category: { name: "On Sale", _id: "sale" } }}>
+            <li className="liDropdown">On Sale</li>
+          </Link>
 
           {category.map((index, iter) => {
             return (
@@ -136,12 +145,7 @@ function HeaderMobile(props) {
               />
             )
           })}
-          <Link to={`/shop/all`} state={{ category: { name: "All Products", _id: "all" } }}>
-            <li className="liDropdown">All Products</li>
-          </Link>
-          <Link to={`/shop/all`} state={{ category: { name: "On Sale", _id: "sale" } }}>
-            <li className="liDropdown">On Sale</li>
-          </Link>
+          
         </ul>
       </div>
     );
@@ -159,15 +163,9 @@ function HeaderMobile(props) {
 
   return (
     <div className="headerDiv">
-      <header>
+      <header className="headerMobile">
         <h1>My Store</h1>
-        <Link className="heading" to="/">
-          <div>Home</div>
-        </Link>
-        <Link className="heading" to="/cart">
-          <div className="cartContainer"><span data-testid="cartNumber" className="itemNumber">{itemNumber}</span><img className="shoppingCart" src={shoppingCart}></img></div>
-
-        </Link>
+       
 
         <div
           className="menu"
@@ -178,7 +176,10 @@ function HeaderMobile(props) {
 
           {isDropdownVisible && <DropdownMenu />}
         </div>
-        
+        <Link className="heading" to="/cart">
+          <div className="cartContainer"><span data-testid="cartNumber" className="itemNumber">{itemNumber}</span><img className="shoppingCart" src={shoppingCart}></img></div>
+
+        </Link>
       </header>
       <div className="mobileSearch">
         <form onSubmit={handleSearchSubmit}>

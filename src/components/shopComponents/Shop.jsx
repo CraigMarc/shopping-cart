@@ -1,4 +1,5 @@
 import { Header } from '../headerComponents/Header'
+import { HeaderMobile } from '../headerComponents/HeaderMobile'
 import { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from "react-router-dom";
 
@@ -17,13 +18,13 @@ function Shop(props) {
   const location = useLocation();
   const pageData = location.state;
   const filteredProducts = useRef()
- 
+
 
   // filter products
 
   const categoryData = apiItems.filter((product) => product.category._id == pageData.category._id)
   const brandData = apiItems.filter((product) => product.brand._id == pageData.category._id)
- 
+
   if (categoryData.length == 0 && brandData.length == 0) {
     filteredProducts.current = null
   }
@@ -156,10 +157,9 @@ function Shop(props) {
 
   return (
     <div>
-      <Header
-        cartItems={cartItems}
-        category={category}
-      />
+      {Width > 730 ? <Header cartItems={cartItems}
+        category={category} /> : <HeaderMobile cartItems={cartItems}
+          category={category} />}
       <div className='shopContainer'>
         <RenderTitle />
         <div className="productCard">

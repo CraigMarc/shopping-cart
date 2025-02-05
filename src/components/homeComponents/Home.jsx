@@ -77,7 +77,7 @@ const Home = (props) => {
 
   return (
     <div>
-      {window.innerWidth > 800 ? <Header cartItems={cartItems}
+      {window.innerWidth > 600 ? <Header cartItems={cartItems}
         category={category}/> : <HeaderMobile cartItems={cartItems}
         category={category}/>}
       

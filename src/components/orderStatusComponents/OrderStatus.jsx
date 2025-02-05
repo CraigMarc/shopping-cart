@@ -1,4 +1,5 @@
 import { Header } from '../headerComponents/Header'
+import { HeaderMobile } from '../headerComponents/HeaderMobile'
 import { useState } from 'react'
 import SizeAndColor from '../reusedComponents/SizeAndColor'
 import { useNavigate } from 'react-router-dom';
@@ -182,10 +183,9 @@ function OrderStatus(props) {
 
   return (
     <div>
-      <Header
-        cartItems={cartItems}
-        category={category}
-      />
+      {window.innerWidth > 600 ? <Header cartItems={cartItems}
+        category={category} /> : <HeaderMobile cartItems={cartItems}
+          category={category} />}
       <div className='orderStatusContainer'>
         <RenderContent />
       </div>

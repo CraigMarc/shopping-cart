@@ -1,4 +1,5 @@
 import { Header } from '../headerComponents/Header'
+import { HeaderMobile } from '../headerComponents/HeaderMobile'
 import { useLocation } from 'react-router-dom'
 import { Link } from "react-router-dom";
 import { useState, useEffect, useRef } from 'react'
@@ -310,7 +311,7 @@ function ProductPage(props) {
     function ImageScroll() {
         if (itemImage.length == 0) {
             return (
-            <img className="img" alt="no image available" src={''}></img>
+                <img className="img" alt="no image available" src={''}></img>
             )
         }
         if (itemImage.length == 1) {
@@ -319,8 +320,8 @@ function ProductPage(props) {
                 <img className="img" src={url}></img>
             )
         }
-       
-        
+
+
         if (itemImage.length > 1) {
             let url = `http://localhost:3000/${itemImage[imageIter]}`
             return (
@@ -341,10 +342,9 @@ function ProductPage(props) {
 
         return (
             <div>
-                <Header
-                    cartItems={cartItems}
-                    category={category}
-                />
+                {window.innerWidth > 600 ? <Header cartItems={cartItems}
+                    category={category} /> : <HeaderMobile cartItems={cartItems}
+                        category={category} />}
                 <div className='productPageContainer'>
                     <div className="itemContainer">
                         <div className="item">

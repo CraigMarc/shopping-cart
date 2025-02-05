@@ -1,4 +1,5 @@
 import { Header } from '../headerComponents/Header'
+import { HeaderMobile } from '../headerComponents/HeaderMobile'
 import CartItems from '../reusedComponents/CartItems'
 import { Link } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
@@ -39,11 +40,11 @@ function Cart(props) {
         let cartTotal = 0
         for (let i = 0; i < cartItems.length; i++) {
 
-            if (cartItems[i].sale_percent == null){
-            cartTotal = cartTotal + (cartItems[i].price * cartItems[i].quantity)
+            if (cartItems[i].sale_percent == null) {
+                cartTotal = cartTotal + (cartItems[i].price * cartItems[i].quantity)
             }
             else {
-                
+
                 cartTotal = cartTotal + ((cartItems[i].price - (cartItems[i].price * (cartItems[i].sale_percent / 100))) * cartItems[i].quantity)
             }
         }
@@ -65,7 +66,7 @@ function Cart(props) {
         if (cartItems.length == 0) {
             return (
                 <div className='checkoutContainer'>
-                  
+
                     <h1>cart is empty</h1>
                 </div>
             )
@@ -149,31 +150,31 @@ function Cart(props) {
 
         // if item is over inventory  ******
 
-        
-                if (updateQuantArr.current[iter] > dataBaseQuantity && dataBaseQuantity != 0 && dataBaseQuantity > 0) {
-                    showButton.current[iter] = false
-                    return (
-        
-                        <form id="edForm">
-                            <label>
-                                Quantity { }
-                                <input
-                                    onChange={updateArray}
-                                    className='quantity'
-                                    id={iter}
-                                    type="number"
-                                    name="quantity"
-                                    min="1"
-                                    value={data.quantity}
-                                />
-                            </label>
-        
-                            <h3>There are only {dataBaseQuantity} left in inventory</h3>
-        
-                        </form>
-        
-                    )
-                }
+
+        if (updateQuantArr.current[iter] > dataBaseQuantity && dataBaseQuantity != 0 && dataBaseQuantity > 0) {
+            showButton.current[iter] = false
+            return (
+
+                <form id="edForm">
+                    <label>
+                        Quantity { }
+                        <input
+                            onChange={updateArray}
+                            className='quantity'
+                            id={iter}
+                            type="number"
+                            name="quantity"
+                            min="1"
+                            value={data.quantity}
+                        />
+                    </label>
+
+                    <h3>There are only {dataBaseQuantity} left in inventory</h3>
+
+                </form>
+
+            )
+        }
 
         // if item is out of stock delete oos item (only should happen if goes oos during checkout)
 
@@ -246,10 +247,9 @@ function Cart(props) {
 
     return (
         <div>
-            <Header
-                cartItems={cartItems}
-                category={category}
-            />
+            {window.innerWidth > 600 ? <Header cartItems={cartItems}
+                category={category} /> : <HeaderMobile cartItems={cartItems}
+                    category={category} />}
 
             <div className='checkoutContainer'>
                 <h1>Shopping Cart</h1>

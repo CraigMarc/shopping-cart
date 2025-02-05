@@ -125,6 +125,7 @@ function Header(props) {
   const DropdownMenu = () => {
     return (
       <div className="dropdown-menu">
+       
         <ul className="ulDropdown">
 
           {category.map((index, iter) => {
@@ -143,6 +144,7 @@ function Header(props) {
             <li className="liDropdown">On Sale</li>
           </Link>
         </ul>
+        
       </div>
     );
   };
@@ -159,7 +161,7 @@ function Header(props) {
 
   return (
     <div className="headerDiv">
-      <header>
+      <header className="headerReg">
         <h1>My Store</h1>
         <Link className="heading" to="/">
           <div>Home</div>
@@ -171,9 +173,7 @@ function Header(props) {
             <input className="searchSubmit" type="image" src={search}></input>
           </div>
         </form>
-        <Link className="heading" to="/cart">
-          <div className="cartContainer"><span data-testid="cartNumber" className="itemNumber">{itemNumber}</span><img className="shoppingCart" src={shoppingCart}></img></div>
-        </Link>
+        
         <div
           className="menu"
           onMouseEnter={handleMouseEnter}
@@ -183,7 +183,9 @@ function Header(props) {
 
           {isDropdownVisible && <DropdownMenu />}
         </div>
-        
+        <Link className="heading" to="/cart">
+          <div className="cartContainer"><span data-testid="cartNumber" className="itemNumber">{itemNumber}</span><img className="shoppingCart" src={shoppingCart}></img></div>
+        </Link>
        
       </header>
      
