@@ -75,14 +75,13 @@ h1 {
 
 .headerDiv {
   background-color: lightgray;
-  position: sticky;
+ 
   top: 0;
   width: 100%;
   border: 0;
   padding-top: 10px;
   padding-bottom: 10px;
   
-
 }
 
 header>h1 {
@@ -162,7 +161,7 @@ header {
   box-shadow: 0px 10px 30px 0px rgba(82, 63, 105, 0.05);
   transition: all linear 0.3s;
   position: fixed;
-  right: 10px;
+ 
 }
 
 .subMenu {
@@ -194,14 +193,6 @@ header {
   cursor: pointer;
 }
 
-/*mobile search*/
-
-.mobileSearch {
-  padding-left: 10px;
-  padding-right: 10px;
-  max-width: 400px;
-  margin: auto;
-}
 
 /*header search*/
 .searchSubmit {
@@ -226,6 +217,29 @@ header {
 .searchInput {
   font-size: 20px;
 }
+
+/* mobile header*/
+
+/*mobile search*/
+
+.mobileSearch {
+  padding-left: 10px;
+  padding-right: 10px;
+  max-width: 400px;
+  margin: auto;
+}
+
+.headerMobileDiv {
+  background-color: lightgray;
+  
+  top: 0;
+  width: 100%;
+  border: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  
+}
+
 
 
 

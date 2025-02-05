@@ -158,7 +158,7 @@ function HeaderMobile(props) {
 
 
   return (
-    <div className="headerDiv">
+    <div className="headerMobileDiv">
       <header>
         <h1>My Store</h1>
         <Link className="heading" to="/">
