@@ -34,7 +34,7 @@ function HeaderMobile(props) {
     event.preventDefault();
     const data = Object.fromEntries(new FormData(event.target).entries());
 
-    navigate('/shop/search', { state: { category: {name: data.search, _id: "search"} } });
+    navigate('/shop/search', { state: { category: { name: data.search, _id: "search" } } });
 
   }
 
@@ -61,13 +61,13 @@ function HeaderMobile(props) {
     return (
       <div className="subDropdown-menu">
         <ul className="ulSubDropdown">
-          <Link key={iter} to={`/shop/${index._id}`} state={{category: index}}>
+          <Link key={iter} to={`/shop/${index._id}`} state={{ category: index }}>
             <li className="liDropdown">All {catName}</li>
           </Link>
           {index.subCategory.map((index2, iter) => {
             return (
               <div key={iter}>
-                <Link  to={`/shop/${index._id}`} state={{category: index, subCategory: index2.name}}>
+                <Link to={`/shop/${index._id}`} state={{ category: index, subCategory: index2.name }}>
                   <li className="liDropdown">{index2.name}</li>
                 </Link>
               </div>
@@ -93,7 +93,7 @@ function HeaderMobile(props) {
 
     if (index.subCategory.length == 0) {
       return (
-        <Link key={iter} to={`/shop/${index._id}`} state={{category:index}}>
+        <Link key={iter} to={`/shop/${index._id}`} state={{ category: index }}>
           <li className="liDropdown">{index.name}</li>
         </Link>
       )
@@ -105,10 +105,10 @@ function HeaderMobile(props) {
           onMouseEnter={(e) => handleSubMouseEnter(e, iter)}
           onMouseLeave={handleSubMouseLeave}
         >
-          <Link to={`/shop/${index._id}`} state={{category: index}}>
-            
-              <li className="liDropdown"><img className="downArrowImg" src={leftArrow}></img>{index.name}</li>
-            
+          <Link to={`/shop/${index._id}`} state={{ category: index }}>
+
+            <li className="liDropdown"><img className="downArrowImg" src={leftArrow}></img>{index.name}</li>
+
           </Link>
 
           {subIter == iter && isSubDropdownVisible && <SubDropdownMenu index={index} iter={iter} catName={index.name} />}
@@ -136,10 +136,10 @@ function HeaderMobile(props) {
               />
             )
           })}
-          <Link to={`/shop/all`} state={{category: {name: "All Products", _id: "all" }}}>
+          <Link to={`/shop/all`} state={{ category: { name: "All Products", _id: "all" } }}>
             <li className="liDropdown">All Products</li>
           </Link>
-          <Link to={`/shop/all`} state={{category: {name: "On Sale", _id: "sale" }}}>
+          <Link to={`/shop/all`} state={{ category: { name: "On Sale", _id: "sale" } }}>
             <li className="liDropdown">On Sale</li>
           </Link>
         </ul>
@@ -158,17 +158,17 @@ function HeaderMobile(props) {
 
 
   return (
-    <div className="headerMobileDiv">
+    <div className="headerDiv">
       <header>
         <h1>My Store</h1>
         <Link className="heading" to="/">
           <div>Home</div>
         </Link>
-       
         <Link className="heading" to="/cart">
           <div className="cartContainer"><span data-testid="cartNumber" className="itemNumber">{itemNumber}</span><img className="shoppingCart" src={shoppingCart}></img></div>
 
         </Link>
+
         <div
           className="menu"
           onMouseEnter={handleMouseEnter}
@@ -178,16 +178,17 @@ function HeaderMobile(props) {
 
           {isDropdownVisible && <DropdownMenu />}
         </div>
+        
       </header>
       <div className="mobileSearch">
-      <form onSubmit={handleSearchSubmit}>
+        <form onSubmit={handleSearchSubmit}>
           <div className="searchContainer">
             <input className="searchInput" type="text" name="search" placeholder="search our products">
             </input>
             <input className="searchSubmit" type="image" src={search}></input>
           </div>
         </form>
-        </div>
+      </div>
     </div>
   )
 
