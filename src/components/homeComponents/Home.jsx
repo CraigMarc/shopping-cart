@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Header } from '../headerComponents/Header'
+import { HeaderMobile } from '../headerComponents/HeaderMobile'
 import { useState, useEffect } from 'react'
 import { Footer } from '../footerComponents/Footer'
 
@@ -72,14 +73,14 @@ const Home = (props) => {
   if (loading) return <p>Loading...</p>;
 
   // render page
- 
+
 
   return (
     <div>
-      <Header
-        cartItems={cartItems}
-        category={category}
-      />
+      {window.innerWidth > 800 ? <Header cartItems={cartItems}
+        category={category}/> : <HeaderMobile cartItems={cartItems}
+        category={category}/>}
+      
 
       <div className="categoryContainer">
         <h3>Categories</h3>
