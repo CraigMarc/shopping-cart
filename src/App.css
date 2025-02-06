@@ -498,14 +498,25 @@ select {
 /* home */
 
 .categoryContainer {
-  padding-top: 10px;
+  padding-top: 20px;
   background-color: #F5F5F5;
   padding-bottom: 30px;
   padding-left: 10px;
   padding-right: 10px;
+  text-align: center;
+ 
 }
 
+.categoryContainer2 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center; padding-top: 20px;
+}
 
+.homeLinkContainer:hover {
+ color: grey;
+}
 
 /* sale price shop*/
 
@@ -522,7 +533,16 @@ select {
 footer {
   background-color: lightgray;
   padding-top: 10px;
+ padding-left: 20px;
 
+}
+
+.footerText {
+  padding-top: 10px;
+}
+
+.footerText:hover {
+  color: grey;
 }
 
 .footerContainer {

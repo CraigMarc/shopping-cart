@@ -78,41 +78,43 @@ const Home = (props) => {
   return (
     <div>
       {window.innerWidth > 600 ? <Header cartItems={cartItems}
-        category={category}/> : <HeaderMobile cartItems={cartItems}
-        category={category}/>}
-      
+        category={category} /> : <HeaderMobile cartItems={cartItems}
+          category={category} />}
+
 
       <div className="categoryContainer">
-        <h3>Categories</h3>
-        {category.map((index, iter) => {
-          let url = `http://localhost:3000/${index.image}`
-          return (
-            <Link key={iter} to={`shop/${index._id}`} state={{category:index}}>
-            <div>
-            <img className="img" alt="no image available" src={url}></img>
-            <p>{index.name}</p>
-            </div>
-            </Link>
-          )
-        })}
-
+        <h2>Categories</h2>
+        <div className="categoryContainer2">
+          {category.map((index, iter) => {
+            let url = `http://localhost:3000/${index.image}`
+            return (
+              <Link key={iter} to={`shop/${index._id}`} state={{ category: index }}>
+                <div className="homeLinkContainer">
+                  <h3>{index.name}</h3>
+                  <img className="img" alt="no image available" src={url}></img>
+                </div>
+              </Link>
+            )
+          })}
+        </div>
       </div>
       <div className="categoryContainer">
-        <h3>Brands</h3>
-        {brand.map((index, iter) => {
-          let url = `http://localhost:3000/${index.image}`
-          return (
-            <Link key={iter} to={`shop/${index._id}`} state={{category: index}}>
-            <div>
-            <img className="img" alt="no image available" src={url}></img>
-            <p>{index.name}</p>
-            </div>
-            </Link>
-          )
-        })}
-
+        <h2>Brands</h2>
+        <div className="categoryContainer2">
+          {brand.map((index, iter) => {
+            let url = `http://localhost:3000/${index.image}`
+            return (
+              <Link key={iter} to={`shop/${index._id}`} state={{ category: index }}>
+                <div className="homeLinkContainer">
+                  <h3>{index.name}</h3>
+                  <img className="img" alt="no image available" src={url}></img>
+                </div>
+              </Link>
+            )
+          })}
+        </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
 
   )
