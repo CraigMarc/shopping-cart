@@ -36,14 +36,14 @@ h2 {
 }
 
 .img {
-  height: 188px;
-  width: 250px;
+  height: 300px;
+  width: 150px;
   padding-top: 10px;
 }
 
 
 .product {
-  height: 350px;
+  height: 450px;
   width: 300px;
   box-shadow: 0 0 5px grey;
   background-color: white;
@@ -335,8 +335,8 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .checkoutImg {
-  width: 100px;
-  height: 75px;
+  width: 40px;
+  height: 80px;
 }
 
 
@@ -521,7 +521,7 @@ select {
 
 .homeLinkContainer:hover {
   color: grey;
-  opacity: 0.5;
+  opacity: 0.8;
 }
 
 /* sale price shop*/
