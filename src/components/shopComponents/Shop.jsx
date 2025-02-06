@@ -111,7 +111,7 @@ function Shop(props) {
 
     if (filteredProducts.current.length > 0) {
       return (
-        <div>
+        <div className="productCard">
           {filteredProducts.current.map((index, iter) => {
 
             let url = ""
@@ -162,10 +162,9 @@ function Shop(props) {
           category={category} />}
       <div className='shopContainer'>
         <RenderTitle />
-        <div className="productCard">
+        
           <RenderProducts />
 
-        </div>
       </div>
     </div>
   )
