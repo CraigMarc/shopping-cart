@@ -74,19 +74,18 @@ const Home = (props) => {
 
   function RenderSale() {
     const saleData = apiItems.filter((product) => product.sale_percent > 0)
-   
+
     if (saleData.length > 0) {
       let urlSale = `http://localhost:3000/${saleData[0].colorArray[0].images[0]}`
       return (
         <div className="categoryContainer">
           <h2>Check out our sale items</h2>
-          
-          <div className="categoryContainer2">
-          <Link to={`/shop/all`} state={{ category: { name: "On Sale", _id: "sale" } }}>
-            <img className="img" alt="no image available" src={urlSale}></img>
-            
-              <div className="homeLinkContainer">
 
+          <div className="categoryContainer2">
+            <Link to={`/shop/all`} state={{ category: { name: "On Sale", _id: "sale" } }}>
+
+              <div className="homeLinkContainer">
+                <img className="img" alt="no image available" src={urlSale}></img>
               </div>
             </Link>
 
@@ -104,41 +103,42 @@ const Home = (props) => {
       {window.innerWidth > 600 ? <Header cartItems={cartItems}
         category={category} /> : <HeaderMobile cartItems={cartItems}
           category={category} />}
-
-      <RenderSale />
-      <div className="categoryContainer">
-        <h2>Shop by category</h2>
-        <div className="categoryContainer2">
-          {category.map((index, iter) => {
-            let url = `http://localhost:3000/${index.image}`
-            return (
-              <Link key={iter} to={`shop/${index._id}`} state={{ category: index }}>
-                <div className="homeLinkContainer">
-                  <h3>{index.name}</h3>
-                  <img className="img" alt="no image available" src={url}></img>
-                </div>
-              </Link>
-            )
-          })}
+      <div className="homeContainer">
+        <RenderSale />
+        <div className="categoryContainer">
+          <h2>Shop by category</h2>
+          <div className="categoryContainer2">
+            {category.map((index, iter) => {
+              let url = `http://localhost:3000/${index.image}`
+              return (
+                <Link key={iter} to={`shop/${index._id}`} state={{ category: index }}>
+                  <div className="homeLinkContainer">
+                    <h3>{index.name}</h3>
+                    <img className="img" alt="no image available" src={url}></img>
+                  </div>
+                </Link>
+              )
+            })}
+          </div>
         </div>
-      </div>
-      <div className="categoryContainer">
-        <h2>Shop by brand</h2>
-        <div className="categoryContainer2">
-          {brand.map((index, iter) => {
-            let url = `http://localhost:3000/${index.image}`
-            return (
-              <Link key={iter} to={`shop/${index._id}`} state={{ category: index }}>
-                <div className="homeLinkContainer">
-                  <h3>{index.name}</h3>
-                  <img className="img" alt="no image available" src={url}></img>
-                </div>
-              </Link>
-            )
-          })}
+        <div className="categoryContainer">
+          <h2>Shop by brand</h2>
+          <div className="categoryContainer2">
+            {brand.map((index, iter) => {
+              let url = `http://localhost:3000/${index.image}`
+              return (
+                <Link key={iter} to={`shop/${index._id}`} state={{ category: index }}>
+                  <div className="homeLinkContainer">
+                    <h3>{index.name}</h3>
+                    <img className="img" alt="no image available" src={url}></img>
+                  </div>
+                </Link>
+              )
+            })}
+          </div>
         </div>
+        <Footer />
       </div>
-      <Footer />
     </div>
 
   )

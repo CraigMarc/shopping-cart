@@ -497,6 +497,10 @@ select {
 
 /* home */
 
+.homeContainer {
+  padding-top: 20px;
+}
+
 .categoryContainer {
   padding-top: 20px;
   background-color: #F5F5F5;
@@ -517,6 +521,7 @@ select {
 
 .homeLinkContainer:hover {
   color: grey;
+  opacity: 0.5;
 }
 
 /* sale price shop*/
