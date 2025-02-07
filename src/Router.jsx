@@ -36,8 +36,7 @@ const Router = (props) => {
     oosRef,
     category,
     setCategory,
-    brand,
-    setBrand
+   
 
 
   } = props;
@@ -62,8 +61,7 @@ const Router = (props) => {
         cartItems={cartItems}
         setCategory={setCategory}
         category={category}
-        setBrand={setBrand}
-        brand={brand}
+       
 
       />,
       errorElement: <ErrorPage />,

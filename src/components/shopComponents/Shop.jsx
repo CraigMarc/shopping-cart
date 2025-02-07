@@ -19,11 +19,12 @@ function Shop(props) {
   const pageData = location.state;
   const filteredProducts = useRef()
 
+  
 
   // filter products
 
   const categoryData = apiItems.filter((product) => product.category._id == pageData.category._id)
-  const brandData = apiItems.filter((product) => product.brand._id == pageData.category._id)
+  const brandData = apiItems.filter((product) => product.brand == pageData.category)
 
   if (categoryData.length == 0 && brandData.length == 0) {
     filteredProducts.current = null
@@ -96,6 +97,11 @@ function Shop(props) {
     if (pageData.subCategory) {
       return (
         <h1>{pageData.subCategory}</h1>
+      )
+    }
+    if (!pageData.category.name) {
+      return (
+        <h1>{pageData.category}</h1>
       )
     }
     else {

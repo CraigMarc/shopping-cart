@@ -12,10 +12,8 @@ const Home = (props) => {
     setApiItems,
     cartItems,
     setCategory,
-    setBrand,
     category,
-    brand
-
+    
 
   } = props;
 
@@ -31,18 +29,18 @@ const Home = (props) => {
       const [apiProducts, apiCategory, apiBrand] = await Promise.all([
         await fetch('http://localhost:3000/users/published'),
         await fetch('http://localhost:3000/users/category'),
-        await fetch('http://localhost:3000/users/brand')
+       
       ]);
 
 
 
       const productData = await apiProducts.json();
       const categoryData = await apiCategory.json();
-      const brandData = await apiBrand.json();
+      
 
       setApiItems(productData)
       setCategory(categoryData)
-      setBrand(brandData)
+     
     }
 
     catch (error) {
@@ -72,6 +70,7 @@ const Home = (props) => {
 
   if (loading) return <p>Loading...</p>;
 
+
   function RenderSale() {
     const saleData = apiItems.filter((product) => product.sale_percent > 0)
 
@@ -96,7 +95,7 @@ const Home = (props) => {
   }
 
   // render page
-
+  
 
   return (
     <div>
@@ -124,12 +123,12 @@ const Home = (props) => {
         <div className="categoryContainer">
           <h2>Shop by brand</h2>
           <div className="categoryContainer2">
-            {brand.map((index, iter) => {
-              let url = `http://localhost:3000/${index.image}`
+            {apiItems.map((index, iter) => {
+              let url = `http://localhost:3000/${index.colorArray[0].images[0]}`
               return (
-                <Link key={iter} to={`shop/${index._id}`} state={{ category: index }}>
+                <Link key={iter} to={`shop/${index._id}`} state={{ category: index.brand }}>
                   <div className="homeLinkContainer">
-                    <h3>{index.name}</h3>
+                    <h3>{index.brand}</h3>
                     <img className="img" alt="no image available" src={url}></img>
                   </div>
                 </Link>

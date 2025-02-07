@@ -19,7 +19,7 @@ function App() {
   // const [category, setCategory] = useState()
   const [category, setCategory] = usePersistState("", 'category');
   //const [brand, setBrand] = useState()
-  const [brand, setBrand] = usePersistState("", 'brand');
+ 
   const oosRef = useRef();
 
 
@@ -39,8 +39,7 @@ function App() {
         oosRef={oosRef}
         category={category}
         setCategory={setCategory}
-        brand={brand}
-        setBrand={setBrand}
+        
 
       />
     </div>
