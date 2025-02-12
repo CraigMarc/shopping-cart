@@ -6,6 +6,7 @@ import { Footer } from '../footerComponents/Footer'
 
 const Home = (props) => {
 
+
   const {
 
     apiItems,
@@ -26,12 +27,11 @@ const Home = (props) => {
     try {
       //return fetch(picUrl)
 
-      const [apiProducts, apiCategory, apiBrand] = await Promise.all([
+      const [apiProducts, apiCategory] = await Promise.all([
         await fetch('http://localhost:3000/users/published'),
         await fetch('http://localhost:3000/users/category'),
        
       ]);
-
 
 
       const productData = await apiProducts.json();

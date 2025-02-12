@@ -9,7 +9,6 @@ const CartItems = (props) => {
         data
     } = props;
 
-  
 
     // render sale price 
 
@@ -37,7 +36,7 @@ const CartItems = (props) => {
 
     }
 
-    let url = `http://localhost:3000/${data.image}`
+    let url = `http://localhost:3000/${data.image[0]}`
 
     return (
         <>
