@@ -8,8 +8,8 @@
     if (data.size != "false" & data.color != "false") {
         return (
             <>
-                <p>size: {data.size}</p>
-                <p>color: {data.color}</p>
+                <p><span className='ccSpan'>size:</span> {data.size}</p>
+                <p><span className='ccSpan'>color:</span> {data.color}</p>
             </>
         )
     }
@@ -17,14 +17,14 @@
     if (data.size != "false") {
         return (
             <>
-                <p>size: {data.size}</p>
+                <p><span className='ccSpan'>size:</span> {data.size}</p>
             </>
         )
     }
     if (data.color != "false") {
         return (
             <>
-                <p>color: {data.color}</p>
+                <p><span className='ccSpan'>color:</span> {data.color}</p>
 
             </>
         )

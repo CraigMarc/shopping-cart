@@ -360,6 +360,16 @@ padding: 10px;
 margin-top: 20px;
 }
 
+.ppInput {
+  max-width: 200px;
+  padding: 5px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
 /*cart css*/
 
 .checkoutContainer {
@@ -385,8 +395,19 @@ margin-top: 20px;
 
 .cartCont2 {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   gap: 20px;
+  padding-left: 60px;
+  padding-right: 60px;
+  padding-top: 10px;
+}
+
+.ccText {
+  text-align: left;
+}
+
+.ccSpan {
+  font-weight: bold;
 }
 
 .cart2 {
@@ -487,27 +508,6 @@ margin-top: 20px;
   padding-top: 15px;
 }
 
-input[type=text],
-select {
-  max-width: 200px;
-  padding: 5px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-input[type=email],
-select {
-  width: 100%;
-  padding: 5px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
 
 .summarySubmit {
   padding-top: 15px;
@@ -642,3 +642,29 @@ footer {
   text-align: center;
   padding-top: 40px;
 }
+
+/* address*/
+
+/*
+input[type=text],
+select {
+  max-width: 50px;
+  padding: 5px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}*/
+
+.addressInput {
+  width: 300px;
+}
+
+.addressPadding {
+  padding-top: 20px;
+  padding: 5px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+

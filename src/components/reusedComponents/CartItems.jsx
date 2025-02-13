@@ -41,14 +41,17 @@ const CartItems = (props) => {
     return (
         <>
             <div className='cartCont1'>
-                <p>{data.title}</p>
+                <h3>{data.title}</h3>
                 <img className="checkoutImg" alt="no image available" src={url}></img>
             </div>
             <div className='cartCont2'>
-                <p>quantity: {data.quantity}</p>
+                <div className='ccText'>
+                <p><span className='ccSpan'>quantity:</span> {data.quantity}</p>
+                
                 <SizeAndColor
                     data={data}
                 />
+                </div>
                 <RenderSale/>
             </div>
         </>

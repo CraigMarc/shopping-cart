@@ -125,7 +125,7 @@ function ProductPage(props) {
                     <div>
                     <label className='ppLabel'>Color</label>
                     </div>
-                    <select required value={colorDrop} onChange={(e) => changeColor(e)}>
+                    <select className='ppInput' required value={colorDrop} onChange={(e) => changeColor(e)}>
 
                         {currentProduct[0].colorArray.map((item, iter) => {
                             let color = item.color
@@ -143,7 +143,7 @@ function ProductPage(props) {
                     <div>
                     <label className='ppLabel'>Size</label>
                     </div>
-                    <select required value={sizeDrop} onChange={(e) => changeSize(e)}>
+                    <select className='ppInput' required value={sizeDrop} onChange={(e) => changeSize(e)}>
 
                         {currentProduct[0].colorArray[colorIndex.current].sizeArray.map((item, iter) => {
                             let size = item.size
