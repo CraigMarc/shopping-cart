@@ -306,13 +306,16 @@ try {
 
   
   return (
+    <div>
+      <h2 className='checkoutTitle'>Billing</h2>
     <form className='paymentForm' onSubmit={handleSubmit}>
       <PaymentElement />
-      <button type="submit" disabled={!stripe || loading}>
+      <button className='checkoutButton' type="submit" disabled={!stripe || loading}>
         Submit Payment
       </button>
       {errorMessage && <div>{errorMessage}</div>}
     </form>
+    </div>
   );
 }
 

@@ -435,7 +435,7 @@ margin-top: 20px;
 
 .cartCont2 {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   gap: 20px;
   flex-wrap: wrap;
   padding-left: 60px;
@@ -473,6 +473,7 @@ margin-top: 20px;
   padding-top: 10px;
   background-color: white;
   box-shadow: 0 0 2px grey;
+  padding-bottom: 20px;
 }
 
 @media only screen and (max-width: 650px) {
@@ -557,6 +558,11 @@ margin-top: 20px;
 
 .summarySubmit {
   padding-top: 15px;
+}
+
+.summaryContainer {
+  text-align: center;
+  padding-bottom: 20px;
 }
 
 /* success screen*/
@@ -677,6 +683,11 @@ select {
   box-sizing: border-box;
 }*/
 
+.addTitle {
+  text-align: center;
+  padding-top: 30px;
+}
+
 .addressInput {
   width: 300px;
 }
@@ -712,4 +723,16 @@ select {
 
 .osSubmit {
   padding-top: 20px;
+}
+
+/*checkout*/
+
+.checkoutTitle {
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 20px;
+}
+
+.checkoutButton {
+  margin-top: 20px;
 }

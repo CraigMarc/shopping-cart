@@ -133,7 +133,7 @@ const Address = (props) => {
 
     return (
         <div>
-
+            <h2 className="addTitle">Contact and Address</h2>
             <form onSubmit={handleSubmit}>
                 <div className="newAddressContainer">
                     <div>

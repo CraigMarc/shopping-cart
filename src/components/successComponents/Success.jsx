@@ -288,12 +288,12 @@ Price: $${priceEmail}
 
     if (!index.sale_percent) {
       return (
-        <p>price: ${priceDiv}</p>
+        <p><span className='ccSpan'>price:</span> ${priceDiv}</p>
       )
     }
     else {
       return (
-        <p>price: ${salePrice}</p>
+        <p><span className='ccSpan'>price:</span> ${salePrice}</p>
       )
     }
   }
@@ -304,14 +304,14 @@ Price: $${priceEmail}
 
       <div>
         <h3>Order Summary:</h3>
-        <p>order number: {orderId}</p>
+        <p><span className='ccSpan'>order number:</span> {orderId}</p>
 
         {productArray.map((index, iter) => {
 
           return (
             <div className='orderSummary' key={iter}>
-              <p>item: {index.title}</p>
-              <p>quantity: {index.quantity}</p>
+              <p><span className='ccSpan'>item:</span> {index.title}</p>
+              <p><span className='ccSpan'>quantity:</span> {index.quantity}</p>
               <SizeAndColor
                 data={index}
               />
@@ -321,7 +321,7 @@ Price: $${priceEmail}
             </div>
           )
         })}
-        <p>shipping: ${(shippingCostN / 100).toFixed(2)}</p>
+        <p><span className='ccSpan'>shipping:</span> ${(shippingCostN / 100).toFixed(2)}</p>
         <p className='totalSum'>total: ${(orderTotal / 100).toFixed(2)}</p>
       </div>
       <p>Your order is being prepared and you should receive a confirmation email shortly.</p>

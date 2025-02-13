@@ -20,7 +20,7 @@ const Summary = (props) => {
 
 
   return (
-    <div className="error">
+    <div className="summaryContainer">
       <h1>Order Summary</h1>
 
       {cartItems.map((data) => {
