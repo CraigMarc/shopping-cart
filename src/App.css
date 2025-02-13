@@ -47,7 +47,7 @@ h2 {
 .product {
   height: 420px;
   width: 300px;
-  box-shadow: 0 0 5px grey;
+  box-shadow: 0 0 2px grey;
   background-color: white;
   padding-left: 5px;
   padding-right: 5px;
@@ -272,7 +272,7 @@ header>h1 {
 }
 
 .item {
-  box-shadow: 0 0 5px grey;
+  box-shadow: 0 0 2px grey;
   width: 90vw;
   text-align: left;
   background-color: white;
@@ -472,7 +472,7 @@ margin-top: 20px;
   margin: auto;
   padding-top: 10px;
   background-color: white;
-  box-shadow: 0 0 5px grey;
+  box-shadow: 0 0 2px grey;
 }
 
 @media only screen and (max-width: 650px) {
@@ -708,4 +708,8 @@ select {
 .orderStatusContainer {
   padding-top: 20px;
   padding-left: 20px;
+}
+
+.osSubmit {
+  padding-top: 20px;
 }

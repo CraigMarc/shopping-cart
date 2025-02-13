@@ -143,7 +143,7 @@ function OrderStatus(props) {
               <p>Email</p>
               <input className="osInput" type="email" name="email" />
             </label>
-            <div>
+            <div className='osSubmit'>
               <button type="submit">Submit</button>
             </div>
           </form>
