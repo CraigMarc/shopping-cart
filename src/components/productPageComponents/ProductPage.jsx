@@ -319,13 +319,13 @@ function ProductPage(props) {
     function ImageScroll() {
         if (itemImage.length == 0) {
             return (
-                <img className="img" alt="no image available" src={''}></img>
+                <img className="ppImg" alt="no image available" src={''}></img>
             )
         }
         if (itemImage.length == 1) {
             let url = `http://localhost:3000/${itemImage[0]}`
             return (
-                <img className="img" src={url}></img>
+                <img className="ppImg" src={url}></img>
             )
         }
 
@@ -336,7 +336,7 @@ function ProductPage(props) {
 
                 <div className='scrollContainer'>
                     <div className='arrowContainer' onClick={(e) => increaseImage(e)}><img src={arrowLeft}></img></div>
-                    <img className="img" src={url}></img>
+                    <img className="ppImg" src={url}></img>
                     <div className='arrowContainer' onClick={(e) => decreaseImage(e)}><img src={arrowRight}></img></div>
                 </div>
 
