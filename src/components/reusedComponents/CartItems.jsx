@@ -27,7 +27,7 @@ const CartItems = (props) => {
         else {
             return (
                 <div>
-                    <p className='salePercent'>save {data.sale_percent}%</p>
+                    <p className='salePercent'>you save {data.sale_percent}%</p>
                     <p className='regPrice'>${priceDiv}</p>
                     <p className='price'>${salePrice}</p>
                 </div>
@@ -41,19 +41,23 @@ const CartItems = (props) => {
     return (
         <>
             <div className='cartCont1'>
+                <div>
                 <h3>{data.title}</h3>
-                <img className="checkoutImg" alt="no image available" src={url}></img>
-            </div>
-            <div className='cartCont2'>
                 <div className='ccText'>
                 <p><span className='ccSpan'>quantity:</span> {data.quantity}</p>
                 
                 <SizeAndColor
                     data={data}
                 />
+                 <RenderSale/>
                 </div>
-                <RenderSale/>
+                </div>
+                <div>
+                <img className="checkoutImg" alt="no image available" src={url}></img>
+                
+                </div>
             </div>
+           
         </>
     )
 

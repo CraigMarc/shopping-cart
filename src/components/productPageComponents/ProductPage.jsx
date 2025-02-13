@@ -256,8 +256,8 @@ function ProductPage(props) {
         else {
             return (
                 <div>
-                    <p className='salePercent'>save {sale_percent}%</p>
-                    <p className='regPrice'>${priceDiv}</p>
+                    <p className='salePercentShop'>you save {sale_percent}%</p>
+                    <p className='regPrice'>${priceDiv}</p>    
                     <p className='price'>${salePrice}</p>
                 </div>
             )

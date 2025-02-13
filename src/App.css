@@ -45,7 +45,7 @@ h2 {
 
 
 .product {
-  height: 420px;
+  height: 440px;
   width: 300px;
   box-shadow: 0 0 2px grey;
   background-color: white;
@@ -433,18 +433,11 @@ margin-top: 20px;
   padding-right: 10px;
 }
 
-.cartCont2 {
-  display: flex;
-  justify-content: space-evenly;
-  gap: 20px;
-  flex-wrap: wrap;
-  padding-left: 60px;
-  padding-right: 60px;
-  padding-top: 10px;
-}
+
 
 .ccText {
   text-align: left;
+  padding-left: 40px;
 }
 
 .ccSpan {
@@ -469,6 +462,7 @@ margin-top: 20px;
 
   border-width: 2px;
   width: 70%;
+  max-width: 600px;
   margin: auto;
   padding-top: 10px;
   background-color: white;
@@ -484,8 +478,8 @@ margin-top: 20px;
 }
 
 .deleteButtonContainer {
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 20px;
+ 
 }
 
 .delete {
@@ -604,8 +598,9 @@ margin-top: 20px;
   flex-wrap: wrap;
   gap: 20px;
   justify-content: flex-start;
-  padding-top: 20px;
+  
 }
+
 
 .homeLinkContainer:hover {
   color: grey;
@@ -617,12 +612,22 @@ margin-top: 20px;
 .salePercent {
   color: red;
   font-size: 18px;
+  padding-top: 20px;
+}
+
+.salePercentShop {
+  color: red;
+  font-size: 18px;
+  padding-top: 5px;
 }
 
 .regPrice {
   text-decoration: line-through;
   font-size: 18px;
+ 
 }
+
+
 
 /* footer*/
 
