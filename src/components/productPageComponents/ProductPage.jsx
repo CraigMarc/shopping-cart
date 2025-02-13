@@ -121,37 +121,43 @@ function ProductPage(props) {
 
         return (
             <div>
+                <div>
+                    <div>
+                    <label className='ppLabel'>Color</label>
+                    </div>
+                    <select required value={colorDrop} onChange={(e) => changeColor(e)}>
 
-                <label>Color</label>
-                <select required value={colorDrop} onChange={(e) => changeColor(e)}>
+                        {currentProduct[0].colorArray.map((item, iter) => {
+                            let color = item.color
+                            if (item.color == "false") {
+                                color = 'only one color'
+                            }
+                            return (
+                                <option id={iter} key={iter}>{color}</option>
 
-                    {currentProduct[0].colorArray.map((item, iter) => {
-                        let color = item.color
-                        if (item.color == "false") {
-                            color = 'only one color'
-                        }
-                        return (
-                            <option id={iter} key={iter}>{color}</option>
+                            )
+                        })}
+                    </select>
+                </div>
+                <div>
+                    <div>
+                    <label className='ppLabel'>Size</label>
+                    </div>
+                    <select required value={sizeDrop} onChange={(e) => changeSize(e)}>
 
-                        )
-                    })}
-                </select>
-                <label>Size</label>
-                <select required value={sizeDrop} onChange={(e) => changeSize(e)}>
+                        {currentProduct[0].colorArray[colorIndex.current].sizeArray.map((item, iter) => {
+                            let size = item.size
+                            if (item.size == "false") {
+                                size = 'only one size'
+                            }
 
-                    {currentProduct[0].colorArray[colorIndex.current].sizeArray.map((item, iter) => {
-                        let size = item.size
-                        if (item.size == "false") {
-                            size = 'only one size'
-                        }
+                            return (
+                                <option id={iter} key={iter}>{size}</option>
 
-                        return (
-                            <option id={iter} key={iter}>{size}</option>
-
-                        )
-                    })}
-                </select>
-
+                            )
+                        })}
+                    </select>
+                </div>
             </div>
         )
 
@@ -197,13 +203,13 @@ function ProductPage(props) {
 
         if (inCart.current == true) {
             return (
-                <input type="submit" value="Update Quantity" />
+                <input className='ppSubmit' type="submit" value="Update Quantity" />
             )
         }
 
         else {
             return (
-                <input type="submit" value="Add to Cart" />
+                <input className='ppSubmit' type="submit" value="Add to Cart" />
             )
         }
     }
@@ -265,9 +271,10 @@ function ProductPage(props) {
     function renderForm() {
         return (
 
-            <form id="edForm" onSubmit={handleProductSubmit}>
+            <form id="edForm" className='ppform' onSubmit={handleProductSubmit}>
                 <Dropdown />
-                <label>
+                <div className='ppQuantity'>
+                <label className='ppLabel'>
                     Quantity { }
                     <input
                         onChange={setCartQuant}
@@ -278,6 +285,7 @@ function ProductPage(props) {
                         value={newQuantity}
                     />
                 </label>
+                </div>
                 {renderMessage()}
 
 
@@ -348,9 +356,9 @@ function ProductPage(props) {
                 <div className='productPageContainer'>
                     <div className="itemContainer">
                         <div className="item">
-                            <h2>{itemTitle}</h2>
+                            <h2 className='productPageTitle'>{itemTitle}</h2>
                             <ImageScroll />
-                            <p>{itemDescription}</p>
+                            <p className='productPageDescript'>{itemDescription}</p>
                             <RenderSale />
                         </div>
                     </div>

@@ -49,7 +49,7 @@ h2 {
   background-color: white;
   padding-left: 5px;
   padding-right: 5px;
- 
+
 }
 
 .product:hover {
@@ -156,7 +156,7 @@ header>h1 {
   list-style: none;
   padding: unset;
   margin: unset;
-  width: 120px;
+  width: 130px;
 }
 
 .liDropdown {
@@ -178,7 +178,7 @@ header>h1 {
   box-shadow: 0px 10px 30px 0px rgba(82, 63, 105, 0.05);
   transition: all linear 0.3s;
   position: absolute;
-
+  font-size: 15px;
 
 }
 
@@ -271,17 +271,28 @@ header>h1 {
 
 .item {
   box-shadow: 0 0 5px grey;
-  width: 70vw;
-  text-align: center;
+  width: 90vw;
+  text-align: left;
   background-color: white;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-bottom: 10px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-bottom: 25px;
+  padding-top: 25px;
 }
 
 .itemContainer {
   display: flex;
   justify-content: center;
+}
+
+.productPageDescript {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.productPageTitle {
+  text-align: center;
+  padding-bottom: 20px;
 }
 
 form {
@@ -324,6 +335,29 @@ label {
 
 input[type=number]::-webkit-inner-spin-button {
   opacity: 1
+}
+
+.ppform {
+ text-align: left;
+ margin-left: 30px;
+ padding-top: 30px;
+ 
+
+}
+
+.ppLabel {
+  font-weight: bold;
+  
+ 
+}
+
+.ppQuantity {
+  padding-top: 20px;
+}
+
+.ppSubmit {
+padding: 10px;
+margin-top: 20px;
 }
 
 /*cart css*/
@@ -421,6 +455,7 @@ input[type=number]::-webkit-inner-spin-button {
 
 .price {
   font-weight: bold;
+  font-size: 18px;
 }
 
 .paymentForm {
@@ -454,7 +489,7 @@ input[type=number]::-webkit-inner-spin-button {
 
 input[type=text],
 select {
-  width: 100%;
+  max-width: 200px;
   padding: 5px 20px;
   margin: 8px 0;
   display: inline-block;
@@ -529,10 +564,12 @@ select {
 
 .salePercent {
   color: red;
+  font-size: 18px;
 }
 
 .regPrice {
   text-decoration: line-through;
+  font-size: 18px;
 }
 
 /* footer*/
