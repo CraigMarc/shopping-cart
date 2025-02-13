@@ -12,6 +12,8 @@ h2 {
   margin: 0;
 }
 
+
+
 /*shop*/
 
 .shopContainer {
@@ -363,7 +365,7 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .ppSubmit {
-padding: 10px;
+
 margin-top: 20px;
 }
 
@@ -414,6 +416,7 @@ margin-top: 20px;
   text-align: center;
   background-color: #F5F5F5;
   padding-bottom: 30px;
+  height: 30vh;
 }
 
 .checkoutImg {
@@ -434,6 +437,7 @@ margin-top: 20px;
   display: flex;
   justify-content: space-between;
   gap: 20px;
+  flex-wrap: wrap;
   padding-left: 60px;
   padding-right: 60px;
   padding-top: 10px;
@@ -455,6 +459,10 @@ margin-top: 20px;
   width: 50px;
   font-size: 17px;
 
+}
+
+.cartFooter {
+  text-align: left;
 }
 
 .cartCont {
@@ -489,6 +497,7 @@ margin-top: 20px;
   justify-content: center;
   gap: 20px;
   padding-top: 30px;
+  margin-bottom: 20px;
 }
 
 .subTotal {
@@ -633,17 +642,17 @@ footer {
 /*contact*/
 
 .contactContainer {
-  padding-top: 80px;
+  padding-top: 20px;
+  padding-left: 20px;
 }
 
 .contactMessage {
   text-align: center;
 }
 
-/*order status*/
-
-.orderStatusContainer {
-  padding-top: 80px;
+.contactText {
+  height: 100px;
+  width: 300px;
 }
 
 
@@ -679,3 +688,24 @@ select {
   box-sizing: border-box;
 }
 
+/*order status*/
+
+.osContainer {
+  padding-left: 30px;
+  margin-top: 0px;
+}
+
+.osInput {
+  width: 300px;
+}
+
+.osMessage {
+  padding-top: 20px;
+  padding-bottom: 60px;
+}
+
+
+.orderStatusContainer {
+  padding-top: 20px;
+  padding-left: 20px;
+}

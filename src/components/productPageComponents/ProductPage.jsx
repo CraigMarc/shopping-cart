@@ -1,4 +1,5 @@
 import { Header } from '../headerComponents/Header'
+import { Footer } from '../footerComponents/Footer'
 import { HeaderMobile } from '../headerComponents/HeaderMobile'
 import { useLocation } from 'react-router-dom'
 import { Link } from "react-router-dom";
@@ -378,7 +379,7 @@ function ProductPage(props) {
                         </div>
                     </div>
                 </div>
-
+                <Footer/>
             </div>
         )
 

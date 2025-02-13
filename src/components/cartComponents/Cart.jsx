@@ -1,4 +1,5 @@
 import { Header } from '../headerComponents/Header'
+import { Footer } from '../footerComponents/Footer'
 import { HeaderMobile } from '../headerComponents/HeaderMobile'
 import CartItems from '../reusedComponents/CartItems'
 import { Link } from "react-router-dom";
@@ -263,7 +264,9 @@ function Cart(props) {
 
                     {checkoutButton()}
                 </div>
-
+                <div className='cartFooter'>
+                    <Footer />
+                </div>
             </div>
 
 

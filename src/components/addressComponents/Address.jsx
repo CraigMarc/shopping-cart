@@ -154,7 +154,7 @@ const Address = (props) => {
                             <input className="addressInput" type="text" required onChange={e => setAddress1(e.target.value)} />
                         </div>
                         <div className="addressPadding">
-                            <label>Address Line 2</label>
+                            <label>Address Line 2 (optional)</label>
                             <input className="addressInput" type="text" onChange={e => setAddress2(e.target.value)} />
                         </div>
                         <div className="addressPadding">

@@ -69,7 +69,7 @@ function Contact(props) {
             </label>
             <label>
               <p>Message</p>
-              <textarea type="text" name="message" />
+              <textarea className='contactText' type="text" name="message" />
             </label>
             <div>
               <button type="submit">Submit</button>

@@ -87,13 +87,13 @@ function OrderStatus(props) {
     } = props;
 
     return (
-      <div>
+      <div className='osOrder'>
         {index.productsArray.map((data) => {
 
           return (
 
-            <div className='cart2' key={data.id}>
-              <div className='cartCont'>
+            <div  key={data.id}>
+              <div >
                 <p>item: {data.title}</p>
                 <SizeAndColor
                   data={data}
@@ -121,12 +121,12 @@ function OrderStatus(props) {
 
     if (index.shipped == true) {
       return (
-        <p>You order has been shipped the tracking number is 1Z1325425FW</p>
+        <p className='osMessage'>You order has been shipped the tracking number is 1Z1325425FW</p>
       )
     }
     else {
       return (
-        <p>We have recieved your order and will be shipping it shortly.</p>
+        <p className='osMessage'>We have recieved your order and will be shipping it shortly.</p>
       )
     }
 
@@ -137,11 +137,11 @@ function OrderStatus(props) {
     if (orderStatus == null) {
       return (
         <div>
-          <h3>Order Status</h3>
+          <h3>Submit your email to check your order status</h3>
           <form onSubmit={handleSubmit}>
             <label>
               <p>Email</p>
-              <input className="titleInput" type="email" name="email" />
+              <input className="osInput" type="email" name="email" />
             </label>
             <div>
               <button type="submit">Submit</button>

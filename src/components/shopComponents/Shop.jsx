@@ -1,4 +1,5 @@
 import { Header } from '../headerComponents/Header'
+import { Footer } from '../footerComponents/Footer'
 import { HeaderMobile } from '../headerComponents/HeaderMobile'
 import { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from "react-router-dom";
@@ -172,6 +173,7 @@ function Shop(props) {
           <RenderProducts />
 
       </div>
+      <Footer/>
     </div>
   )
 
