@@ -174,7 +174,7 @@ const Checkout = (props) => {
   async function callStripe() { 
 
 try {
-    const response = await fetch('http://localhost:3000/users/intent', {
+    const response = await fetch('https://shoppingapi.fly.dev/users/intent', {
     
       method: 'POST',
       body: JSON.stringify({
@@ -244,7 +244,7 @@ try {
 
     // make api call to make sure items are in stock
 
-    await fetch("http://localhost:3000/users/published")
+    await fetch("https://shoppingapi.fly.dev/users/published")
 
 
       .then((response) => response.json())

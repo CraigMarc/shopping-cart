@@ -25,7 +25,7 @@ function OrderStatus(props) {
 
 
     //send form data
-    await fetch(`http://localhost:3000/users/order_status`, {
+    await fetch(`https://shoppingapi.fly.dev/users/order_status`, {
       method: 'Post',
       body: JSON.stringify({
         email: data.email,

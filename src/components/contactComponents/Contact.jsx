@@ -22,7 +22,7 @@ function Contact(props) {
 
 
     //send form data
-    await fetch(`http://localhost:3000/users/contact`, {
+    await fetch(`https://shoppingapi.fly.dev/users/contact`, {
       method: 'Post',
       body: JSON.stringify({
         subject: data.subject,

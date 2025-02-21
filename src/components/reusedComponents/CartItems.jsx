@@ -36,7 +36,7 @@ const CartItems = (props) => {
 
     }
 
-    let url = `http://localhost:3000/${data.image[0]}`
+    let url = `https://shoppingapi.fly.dev/${data.image[0]}`
 
     return (
         <>

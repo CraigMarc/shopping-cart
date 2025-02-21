@@ -68,7 +68,7 @@ const Address = (props) => {
 
 
         //send form data
-        await fetch("http://localhost:3000/users/usps", {
+        await fetch("https://shoppingapi.fly.dev/users/usps", {
             method: 'POST',
 
             body: JSON.stringify({

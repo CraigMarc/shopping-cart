@@ -324,7 +324,7 @@ function ProductPage(props) {
             )
         }
         if (itemImage.length == 1) {
-            let url = `http://localhost:3000/${itemImage[0]}`
+            let url = `https://shoppingapi.fly.dev/${itemImage[0]}`
             return (
                 <img className="ppImg" src={url}></img>
             )
@@ -332,7 +332,7 @@ function ProductPage(props) {
 
 
         if (itemImage.length > 1) {
-            let url = `http://localhost:3000/${itemImage[imageIter]}`
+            let url = `https://shoppingapi.fly.dev/${itemImage[imageIter]}`
             return (
 
                 <div className='scrollContainer'>

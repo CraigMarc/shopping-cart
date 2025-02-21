@@ -28,8 +28,8 @@ const Home = (props) => {
       //return fetch(picUrl)
 
       const [apiProducts, apiCategory] = await Promise.all([
-        await fetch('http://localhost:3000/users/published'),
-        await fetch('http://localhost:3000/users/category'),
+        await fetch('https://shoppingapi.fly.dev/users/published'),
+        await fetch('https://shoppingapi.fly.dev/users/category'),
        
       ]);
 
@@ -75,7 +75,7 @@ const Home = (props) => {
     const saleData = apiItems.filter((product) => product.sale_percent > 0)
 
     if (saleData.length > 0) {
-      let urlSale = `http://localhost:3000/${saleData[0].colorArray[0].images[0]}`
+      let urlSale = `https://shoppingapi.fly.dev/${saleData[0].colorArray[0].images[0]}`
       return (
         <div className="categoryContainer">
           <h2>Check out our sale items</h2>
@@ -108,7 +108,7 @@ const Home = (props) => {
           <h2>Shop by category</h2>
           <div className="categoryContainer2">
             {category.map((index, iter) => {
-              let url = `http://localhost:3000/${index.image}`
+              let url = `https://shoppingapi.fly.dev/${index.image}`
               return (
                 <Link key={iter} to={`shop/${index._id}`} state={{ category: index }}>
                   <div className="homeLinkContainer">
@@ -124,7 +124,7 @@ const Home = (props) => {
           <h2>Shop by brand</h2>
           <div className="categoryContainer2">
             {apiItems.map((index, iter) => {
-              let url = `http://localhost:3000/${index.colorArray[0].images[0]}`
+              let url = `https://shoppingapi.fly.dev/${index.colorArray[0].images[0]}`
               return (
                 <Link key={iter} to={`shop/${index._id}`} state={{ category: index.brand }}>
                   <div className="homeLinkContainer">

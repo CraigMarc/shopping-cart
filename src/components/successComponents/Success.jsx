@@ -176,7 +176,7 @@ Price: $${priceEmail}
   // send email
 
   async function sendEmail() {
-    await fetch(`http://localhost:3000/users/email`, {
+    await fetch(`https://shoppingapi.fly.dev/users/email`, {
       method: 'Post',
       body: JSON.stringify({
         email: email,
@@ -217,7 +217,7 @@ Price: $${priceEmail}
   //submit new product
 
   async function newOrder() {
-    await fetch(`http://localhost:3000/users/newOrder`, {
+    await fetch(`https://shoppingapi.fly.dev/users/newOrder`, {
       method: 'Post',
       body: JSON.stringify({
 

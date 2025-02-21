@@ -124,7 +124,7 @@ function Shop(props) {
             let url = ""
             if (index.colorArray[0].images) {
               let image = index.colorArray[0].images[0]
-              url = `http://localhost:3000/${image}`
+              url = `https://shoppingapi.fly.dev/${image}`
             }
 
 

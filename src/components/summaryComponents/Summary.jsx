@@ -25,7 +25,7 @@ const Summary = (props) => {
 
       {cartItems.map((data) => {
 
-        let url = `http://localhost:3000/${data.image}`
+        let url = `https://shoppingapi.fly.dev/${data.image}`
 
         return (
 
