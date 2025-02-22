@@ -96,6 +96,7 @@ const Home = (props) => {
 
   // render page
   
+  let brandArray = []
 
   return (
     <div>
@@ -125,6 +126,10 @@ const Home = (props) => {
           <div className="categoryContainer2">
             {apiItems.map((index, iter) => {
               let url = `https://shoppingapi.fly.dev/${index.colorArray[0].images[0]}`
+
+              if (!brandArray.includes(index.brand) && iter<=6) {
+              brandArray.push(index.brand)
+
               return (
                 <Link key={iter} to={`shop/${index._id}`} state={{ category: index.brand }}>
                   <div className="homeLinkContainer">
@@ -133,6 +138,7 @@ const Home = (props) => {
                   </div>
                 </Link>
               )
+            }
             })}
           </div>
         </div>
