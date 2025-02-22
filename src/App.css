@@ -279,7 +279,7 @@ header>h1 {
 
 .item {
   box-shadow: 0 0 2px grey;
-  width: 90vw;
+  width: 100%;
   text-align: left;
   background-color: white;
   padding-left: 25px;
