@@ -326,7 +326,9 @@ function ProductPage(props) {
         if (itemImage.length == 1) {
             let url = `https://shoppingapi.fly.dev/${itemImage[0]}`
             return (
+                <div className='nonScrollContainer'>
                 <img className="ppImg" src={url}></img>
+                </div>
             )
         }
 
