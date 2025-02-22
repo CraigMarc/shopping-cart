@@ -61,13 +61,13 @@ function Header(props) {
     return (
       <div className="subDropdown-menu">
         <ul className="ulSubDropdown">
-          <Link key={iter} to={`/shop/${index._id}`} state={{ category: index }}>
+          <Link onClick={handleAnchorClick} key={iter} to={`/shop/${index._id}`} state={{ category: index }}>
             <li className="liDropdown">All {catName}</li>
           </Link>
           {index.subCategory.map((index2, iter) => {
             return (
               <div key={iter}>
-                <Link to={`/shop/${index._id}`} state={{ category: index, subCategory: index2.name }}>
+                <Link onClick={handleAnchorClick} to={`/shop/${index._id}`} state={{ category: index, subCategory: index2.name }}>
                   <li className="liDropdown">{index2.name}</li>
                 </Link>
               </div>
@@ -93,7 +93,7 @@ function Header(props) {
 
     if (index.subCategory.length == 0) {
       return (
-        <Link key={iter} to={`/shop/${index._id}`} state={{ category: index }}>
+        <Link onClick={handleAnchorClick} key={iter} to={`/shop/${index._id}`} state={{ category: index }}>
           <li className="liDropdown">{index.name}</li>
         </Link>
       )
@@ -118,6 +118,10 @@ function Header(props) {
 
   }
 
+  const handleAnchorClick = () => {
+    setDropdownVisible(false);
+  }
+
 
 
   // dropdown menu
@@ -127,10 +131,10 @@ function Header(props) {
       <div className="dropdown-menu">
 
         <ul className="ulDropdown">
-          <Link to={`/shop/all`} state={{ category: { name: "All Products", _id: "all" } }}>
+          <Link onClick={handleAnchorClick} to={`/shop/all`} state={{ category: { name: "All Products", _id: "all" } }}>
             <li className="liDropdown">All Products</li>
           </Link>
-          <Link to={`/shop/all`} state={{ category: { name: "On Sale", _id: "sale" } }}>
+          <Link onClick={handleAnchorClick} to={`/shop/all`} state={{ category: { name: "On Sale", _id: "sale" } }}>
             <li className="liDropdown">On Sale</li>
           </Link>
 
