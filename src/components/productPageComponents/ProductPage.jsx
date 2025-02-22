@@ -57,18 +57,29 @@ function ProductPage(props) {
         itemImage = []
     }
 
-    /*
-    if (apiItems == undefined) {
-        return (
-            <div>
-                <Header
-                    cartItems={cartItems}
-                />
-            </div>
-        )
-    }*/
+    // preload images
 
-
+      
+        const cacheImages = async (srcArray) => {
+            
+          const promises = srcArray.map((src) => {
+            return new Promise((resolve, reject) => {
+              const img = new Image();
+              img.src =  `https://shoppingapi.fly.dev/${src}`;
+              img.onload = () => resolve();
+              img.onerror = () => reject();
+            });
+          });
+          await Promise.all(promises);
+         
+        };
+        
+        useEffect(() => {
+          cacheImages(itemImage);
+        }, [itemImage]);
+       
+    
+   
 
     //if item already in cart update quantity state and change incart to show items in cart
 
