@@ -166,7 +166,7 @@ header>h1 {
   transition: all linear 0.3s;
 }
 
-.liDropdown:hover {
+.liDropdown:hover, .liDropdown:active {
   background: gray;
   cursor: pointer;
   color: #fff;

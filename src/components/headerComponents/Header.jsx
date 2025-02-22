@@ -105,11 +105,11 @@ function Header(props) {
           onMouseEnter={(e) => handleSubMouseEnter(e, iter)}
           onMouseLeave={handleSubMouseLeave}
         >
-          <Link to={`/shop/${index._id}`} state={{ category: index }}>
+          
 
             <li className="liDropdown"><img className="downArrowImg" src={leftArrow}></img>{index.name}</li>
 
-          </Link>
+        
 
           {subIter == iter && isSubDropdownVisible && <SubDropdownMenu index={index} iter={iter} catName={index.name} />}
         </div>
