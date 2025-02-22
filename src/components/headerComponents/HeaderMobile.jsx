@@ -3,6 +3,7 @@ import shoppingCart from '../../assets/shoppingCart.png';
 import { useState } from 'react'
 import search from '../../assets/search.png';
 import leftArrow from '../../assets/leftArrowMenu.png';
+import upArrow from '../../assets/upArrow.png';
 
 function HeaderMobile(props) {
 
@@ -105,11 +106,11 @@ function HeaderMobile(props) {
           onMouseEnter={(e) => handleSubMouseEnter(e, iter)}
           onMouseLeave={handleSubMouseLeave}
         >
-          
 
-            <li className="liDropdown"><img className="downArrowImg" src={leftArrow}></img>{index.name}</li>
 
-          
+          <li className="liDropdown"><img className="downArrowImg" src={leftArrow}></img>{index.name}</li>
+
+
 
           {subIter == iter && isSubDropdownVisible && <SubDropdownMenu index={index} iter={iter} catName={index.name} />}
         </div>
@@ -129,17 +130,18 @@ function HeaderMobile(props) {
     return (
       <div className="dropdown-menu">
         <ul className="ulDropdown">
-        <Link onClick={handleAnchorClick} to={`/`} state={{ category: { name: "All Products", _id: "all" } }}>
+          <li onClick={handleAnchorClick} className="liDropdown"><img className="upArrowImg" src={upArrow}/></li>
+          <Link onClick={handleAnchorClick} to={`/`} state={{ category: { name: "All Products", _id: "all" } }}>
             <li className="liDropdown">Home</li>
-            
+
           </Link>
-        <Link onClick={handleAnchorClick} to={`/shop/all`} state={{ category: { name: "All Products", _id: "all" } }}>
+          <Link onClick={handleAnchorClick} to={`/shop/all`} state={{ category: { name: "All Products", _id: "all" } }}>
             <li className="liDropdown">All Products</li>
-            
+
           </Link>
           <Link onClick={handleAnchorClick} to={`/shop/all`} state={{ category: { name: "On Sale", _id: "sale" } }}>
             <li className="liDropdown">On Sale</li>
-            
+
           </Link>
 
           {category.map((index, iter) => {
@@ -151,7 +153,7 @@ function HeaderMobile(props) {
               />
             )
           })}
-          
+
         </ul>
       </div>
     );
@@ -171,7 +173,7 @@ function HeaderMobile(props) {
     <div className="headerDiv">
       <header className="headerMobile">
         <h1>My Store</h1>
-       
+
 
         <div
           className="menu"
