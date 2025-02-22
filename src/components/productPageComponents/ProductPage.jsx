@@ -61,8 +61,9 @@ function ProductPage(props) {
 
       
         const cacheImages = async (srcArray) => {
-            
+          
           const promises = srcArray.map((src) => {
+           
             return new Promise((resolve, reject) => {
               const img = new Image();
               img.src =  `https://shoppingapi.fly.dev/${src}`;
