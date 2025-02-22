@@ -1,6 +1,6 @@
 # React + Vite
 
-An ecommerce site built with react and node js. It has an api do get products and keep track of order information from the database and takes payments with stripe.
+An ecommerce site built with react and node js. It has an api to get products and keep track of order information from the database and takes payments with stripe.
 
 the repo is live [here](https://shopping-cart-topaz-sigma.vercel.app/)
 
