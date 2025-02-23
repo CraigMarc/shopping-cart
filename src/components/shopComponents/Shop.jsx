@@ -26,7 +26,7 @@ function Shop(props) {
   const pageData = location.state;
   const filteredProducts = useRef()
 
-  console.log(pageData)
+  
 
   // filter products
 
@@ -61,10 +61,11 @@ function Shop(props) {
   }
 
   if (pageData.category._id == "search") {
+    console.log('hello')
     const searchData = apiItems.filter((product) => product.title.toLowerCase().includes(pageData.category.name) || product.description.toLowerCase().includes(pageData.category.name) || product.category.name.toLowerCase().includes(pageData.category.name))
     filteredProducts.current = searchData
   }
-
+console.log(filteredProducts.current)
   if (!filteredProducts.current) {
     filteredProducts.current = []
   }
