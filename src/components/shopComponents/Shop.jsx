@@ -62,6 +62,7 @@ function Shop(props) {
 
   if (pageData.category._id == "search") {
     console.log('hello')
+    console.log(pageData)
     const searchData = apiItems.filter((product) => product.title.toLowerCase().includes(pageData.category.name) || product.description.toLowerCase().includes(pageData.category.name) || product.category.name.toLowerCase().includes(pageData.category.name))
     filteredProducts.current = searchData
   }
