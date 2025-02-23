@@ -33,8 +33,14 @@ function Header(props) {
 
     event.preventDefault();
     const data = Object.fromEntries(new FormData(event.target).entries());
-
+    clearAllInputs()
     navigate('/shop/search', { state: { category: { name: data.search, _id: "search" } } });
+
+  }
+
+  function clearAllInputs() {
+    let allInputs = document.getElementById("productSearch");;
+    allInputs.value = ''
 
   }
 
@@ -105,11 +111,11 @@ function Header(props) {
           onMouseEnter={(e) => handleSubMouseEnter(e, iter)}
           onMouseLeave={handleSubMouseLeave}
         >
-          
 
-            <li className="liDropdown"><img className="downArrowImg" src={leftArrow}></img>{index.name}</li>
 
-        
+          <li className="liDropdown"><img className="downArrowImg" src={leftArrow}></img>{index.name}</li>
+
+
 
           {subIter == iter && isSubDropdownVisible && <SubDropdownMenu index={index} iter={iter} catName={index.name} />}
         </div>
@@ -173,7 +179,7 @@ function Header(props) {
         </Link>
         <form onSubmit={handleSearchSubmit}>
           <div className="searchContainer">
-            <input className="searchInput" type="text" name="search" placeholder="search our products">
+            <input id="productSearch" className="searchInput" type="text" name="search" placeholder="search our products">
             </input>
             <input className="searchSubmit" type="image" src={search}></input>
           </div>
