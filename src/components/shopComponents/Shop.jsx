@@ -61,12 +61,11 @@ function Shop(props) {
   }
 
   if (pageData.category._id == "search") {
-    console.log('hello')
-    console.log(pageData)
-    const searchData = apiItems.filter((product) => product.title.toLowerCase().includes(pageData.category.name) || product.description.toLowerCase().includes(pageData.category.name) || product.category.name.toLowerCase().includes(pageData.category.name))
+    let lowerCase = pageData.category.name.toLowerCase()
+    const searchData = apiItems.filter((product) => product.title.toLowerCase().includes(lowerCase) || product.description.toLowerCase().includes(lowerCase) || product.category.name.toLowerCase().includes(lowerCase))
     filteredProducts.current = searchData
   }
-console.log(filteredProducts.current)
+
   if (!filteredProducts.current) {
     filteredProducts.current = []
   }
