@@ -34,8 +34,14 @@ function HeaderMobile(props) {
 
     event.preventDefault();
     const data = Object.fromEntries(new FormData(event.target).entries());
-
+    clearAllInputs()
     navigate('/shop/search', { state: { category: { name: data.search, _id: "search" } } });
+
+  }
+
+  function clearAllInputs() {
+    let allInputs = document.getElementById("productSearch");;
+    allInputs.value = ''
 
   }
 
@@ -192,7 +198,7 @@ function HeaderMobile(props) {
       <div className="mobileSearch">
         <form onSubmit={handleSearchSubmit}>
           <div className="searchContainer">
-            <input className="searchInput" type="text" name="search" placeholder="search our products">
+            <input id="productSearch" className="searchInput" type="text" name="search" placeholder="search our products">
             </input>
             <input className="searchSubmit" type="image" src={search}></input>
           </div>
