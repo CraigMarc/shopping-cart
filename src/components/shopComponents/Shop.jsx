@@ -26,7 +26,7 @@ function Shop(props) {
   const pageData = location.state;
   const filteredProducts = useRef()
 
-  
+
 
   // filter products
 
@@ -62,9 +62,20 @@ function Shop(props) {
 
   if (pageData.category._id == "search") {
     let lowerCase = pageData.category.name.toLowerCase()
-    let plural = lowerCase.substring(0, lowerCase.length - 1)
-    let searchData = apiItems.filter((product) => product.title.toLowerCase().includes(lowerCase) || product.description.toLowerCase().includes(lowerCase) || product.category.name.toLowerCase().includes(lowerCase) || product.title.toLowerCase().includes(plural) || product.description.toLowerCase().includes(plural) || product.category.name.toLowerCase().includes(plural))
-    filteredProducts.current = searchData
+    
+
+    if (lowerCase.charAt(lowerCase.length - 1) == 's') {
+     let nonPlural = lowerCase.substring(0, lowerCase.length - 1)
+      let searchData = apiItems.filter((product) => product.title.toLowerCase().includes(nonPlural) || product.description.toLowerCase().includes(nonPlural) || product.category.name.toLowerCase().includes(nonPlural) || product.title.toLowerCase().includes(lowerCase) || product.description.toLowerCase().includes(lowerCase) || product.category.name.toLowerCase().includes(lowerCase))
+      filteredProducts.current = searchData
+    }
+
+    if (lowerCase.charAt(lowerCase.length - 1) != 's') {
+      let plural = lowerCase + 's'
+      let searchData = apiItems.filter((product) => product.title.toLowerCase().includes(plural) || product.description.toLowerCase().includes(plural) || product.category.name.toLowerCase().includes(plural) || product.title.toLowerCase().includes(lowerCase) || product.description.toLowerCase().includes(lowerCase) || product.category.name.toLowerCase().includes(lowerCase))
+      filteredProducts.current = searchData
+    }
+
 
   }
 
@@ -95,7 +106,7 @@ function Shop(props) {
       return (
         <div>
           <p className='salePercentShop'>you save {index.sale_percent}%</p>
-          <p className='regPrice'>${priceDiv}</p>   
+          <p className='regPrice'>${priceDiv}</p>
           <p className='price'>${salePrice}</p>
         </div>
       )
@@ -178,11 +189,11 @@ function Shop(props) {
           category={category} />}
       <div className='shopContainer'>
         <RenderTitle />
-        
-          <RenderProducts />
+
+        <RenderProducts />
 
       </div>
-      <Footer/>
+      <Footer />
     </div>
   )
 
