@@ -26,7 +26,7 @@ function Shop(props) {
   const pageData = location.state;
   const filteredProducts = useRef()
 
-  
+  console.log(pageData)
 
   // filter products
 
