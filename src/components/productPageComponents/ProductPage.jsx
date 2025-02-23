@@ -19,6 +19,12 @@ function ProductPage(props) {
 
     } = props;
 
+    // scroll to top of page 
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, []);
+     
 
     //get data from link
 

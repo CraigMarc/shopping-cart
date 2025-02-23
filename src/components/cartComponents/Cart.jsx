@@ -20,6 +20,12 @@ function Cart(props) {
 
     } = props;
 
+    // scroll to top of page 
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, []);
+
     const showButton = useRef([true])
     const updateQuantArr = useRef([])
     const updateQuantArr2 = useRef([])

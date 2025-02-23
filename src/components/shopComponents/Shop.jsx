@@ -16,6 +16,12 @@ function Shop(props) {
 
   } = props;
 
+  // scroll to top of page 
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, []);
+
   const location = useLocation();
   const pageData = location.state;
   const filteredProducts = useRef()
