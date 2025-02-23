@@ -62,8 +62,18 @@ function Shop(props) {
 
   if (pageData.category._id == "search") {
     let lowerCase = pageData.category.name.toLowerCase()
-    const searchData = apiItems.filter((product) => product.title.toLowerCase().includes(lowerCase) || product.description.toLowerCase().includes(lowerCase) || product.category.name.toLowerCase().includes(lowerCase))
+    
+    let searchData = apiItems.filter((product) => product.title.toLowerCase().includes(lowerCase) || product.description.toLowerCase().includes(lowerCase) || product.category.name.toLowerCase().includes(lowerCase))
+    
+    if (searchData.length == 0 && lowerCase.at(-1) == 's') {
+      let plural = lowerCase.substring(0, lowerCase.length - 1)
+      
+      searchData = apiItems.filter((product) => product.title.toLowerCase().includes(plural) || product.description.toLowerCase().includes(plural) || product.category.name.toLowerCase().includes(plural))
+    }
+   
+    
     filteredProducts.current = searchData
+
   }
 
   if (!filteredProducts.current) {
