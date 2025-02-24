@@ -37,6 +37,7 @@ function ProductPage(props) {
     const [sizeDrop, setSizeDrop] = useState()
     const sizeIndex = useRef(0)
     const [imageIter, setImageIter] = useState(0)
+    const updateIter = useRef()
 
     // values of current color selected ******L*
 
@@ -100,6 +101,7 @@ function ProductPage(props) {
             if (exists == true && cartItems[i].colorIter == colorIndex.current && cartItems[i].sizeIter == sizeIndex.current) {
 
                 inCart.current = true
+                updateIter.current = i
                 setNewQuantity(cartItems[i].quantity)
 
                 return
@@ -197,7 +199,7 @@ function ProductPage(props) {
         if (inCart.current == true) {
 
             const updateArray = structuredClone(cartItems)
-            updateArray[0].quantity = quantity
+            updateArray[updateIter.current].quantity = quantity
             setCartItems(updateArray)
 
         }
