@@ -173,10 +173,10 @@ function Header(props) {
   return (
     <div className="headerDiv">
       <header className="headerReg">
-        <h1>My Store</h1>
-        <Link className="heading" to="/">
-          <div>Home</div>
-        </Link>
+      <Link className="heading" to="/">
+        <h1 className="headerTitle">My Store</h1>
+      </Link>
+        
         <form onSubmit={handleSearchSubmit}>
           <div className="searchContainer">
             <input id="productSearch" className="searchInput" required type="text" name="search" placeholder="search our products">

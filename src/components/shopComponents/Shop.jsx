@@ -188,7 +188,7 @@ function Shop(props) {
 
   return (
     <div>
-      {window.innerWidth > 600 ? <Header cartItems={cartItems}
+      {window.innerWidth > 630 ? <Header cartItems={cartItems}
         category={category} /> : <HeaderMobile cartItems={cartItems}
           category={category} />}
       <div className='shopContainer'>
