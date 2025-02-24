@@ -52,7 +52,7 @@ const CartItems = (props) => {
                  <RenderSale/>
                 </div>
                 </div>
-                <div>
+                <div className='cartImageContainer'>
                 <img className="checkoutImg" alt="no image available" src={url}></img>
                 
                 </div>

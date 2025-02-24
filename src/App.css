@@ -116,12 +116,7 @@ header>h1 {
   }
 }
 
-.cartContainer {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  width: 50px;
-}
+
 
 .heading {
   font-weight: 620;
@@ -429,9 +424,20 @@ margin-top: 20px;
   height: 30vh;
 }
 
+.cartContainer {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  width: 50px;
+}
+
 .checkoutImg {
   width: 80px;
   height: 80px;
+}
+
+.cartImageContainer {
+ padding-top: 30px;
 }
 
 
