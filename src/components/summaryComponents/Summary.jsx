@@ -46,9 +46,9 @@ const Summary = (props) => {
         <p className="pItems">{order.town}</p>
         <p className="pItems">{order.state}</p>
         <p className="pItems">{order.email}</p>
-        <p className="pItems">subtotal: {(order.price / 100).toFixed(2)}</p>
-        <p className="pItems">shipping: {(order.shipping / 100).toFixed(2)}</p>
-        <p className="total">order total: {(orderTotal / 100).toFixed(2)}</p>
+        <p className="pItems">subtotal: ${(order.price / 100).toFixed(2)}</p>
+        <p className="pItems">shipping: ${(order.shipping / 100).toFixed(2)}</p>
+        <p className="total">order total: ${(orderTotal / 100).toFixed(2)}</p>
       </div>
       <div className="summarySubmit">
         <Link to="/checkout">
