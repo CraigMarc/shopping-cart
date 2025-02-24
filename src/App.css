@@ -758,3 +758,11 @@ select {
 .checkoutButton {
   margin-top: 20px;
 }
+
+/*loading screen*/
+
+.loadingImage {
+  display: flex;
+ margin-top: 100px;
+justify-content: center;
+}

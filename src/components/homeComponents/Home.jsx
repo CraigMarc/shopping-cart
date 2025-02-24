@@ -3,6 +3,7 @@ import { Header } from '../headerComponents/Header'
 import { HeaderMobile } from '../headerComponents/HeaderMobile'
 import { useState, useEffect } from 'react'
 import { Footer } from '../footerComponents/Footer'
+import RingLoader from "react-spinners/RingLoader";
 
 const Home = (props) => {
 
@@ -17,6 +18,8 @@ const Home = (props) => {
     
 
   } = props;
+
+  
 
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true)
@@ -68,7 +71,20 @@ const Home = (props) => {
     </div>
   )
 
-  if (loading) return <p>Loading...</p>;
+  //if (loading) return <p>Loading...</p>;
+
+  if (loading) return (
+    <div className="loadingImage">
+       <RingLoader
+        color='black'
+        loading={loading}
+        
+        size={150}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />
+    </div>
+  )
 
 
   function RenderSale() {
