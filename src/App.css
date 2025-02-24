@@ -432,12 +432,13 @@ margin-top: 20px;
 }
 
 .checkoutImg {
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
 }
 
 .cartImageContainer {
- padding-top: 30px;
+ display: flex;
+ align-items: center;
 }
 
 
