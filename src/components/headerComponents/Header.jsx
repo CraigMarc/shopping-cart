@@ -179,7 +179,7 @@ function Header(props) {
         </Link>
         <form onSubmit={handleSearchSubmit}>
           <div className="searchContainer">
-            <input id="productSearch" className="searchInput" type="text" name="search" placeholder="search our products">
+            <input id="productSearch" className="searchInput" required type="text" name="search" placeholder="search our products">
             </input>
             <input className="searchSubmit" type="image" src={search}></input>
           </div>

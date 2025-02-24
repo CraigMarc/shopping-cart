@@ -26,12 +26,11 @@ function Shop(props) {
   const pageData = location.state;
   const filteredProducts = useRef()
 
-
-
   // filter products
 
   const categoryData = apiItems.filter((product) => product.category._id == pageData.category._id)
   const brandData = apiItems.filter((product) => product.brand == pageData.category)
+
 
   if (categoryData.length == 0 && brandData.length == 0) {
     filteredProducts.current = null
@@ -43,21 +42,25 @@ function Shop(props) {
 
   if (pageData.subCategory) {
     filteredProducts.current = categoryData.filter((product) => product.subCategory == pageData.subCategory)
+    
   }
 
   if (brandData.length > 0) {
     filteredProducts.current = brandData
+   
   }
 
 
   if (pageData.category._id == "all") {
     let newArray = structuredClone(apiItems)
     filteredProducts.current = newArray
+   
   }
 
   if (pageData.category._id == "sale") {
     const saleData = apiItems.filter((product) => product.sale_percent > 0)
     filteredProducts.current = saleData
+   
   }
 
   if (pageData.category._id == "search") {
@@ -75,8 +78,7 @@ function Shop(props) {
       let searchData = apiItems.filter((product) => product.title.toLowerCase().includes(plural) || product.description.toLowerCase().includes(plural) || product.category.name.toLowerCase().includes(plural) || product.title.toLowerCase().includes(lowerCase) || product.description.toLowerCase().includes(lowerCase) || product.category.name.toLowerCase().includes(lowerCase))
       filteredProducts.current = searchData
     }
-
-
+   
   }
 
   if (!filteredProducts.current) {
@@ -131,6 +133,8 @@ function Shop(props) {
       )
     }
   }
+
+   
 
   // display products if exist
 
