@@ -38,6 +38,7 @@ function ProductPage(props) {
     const sizeIndex = useRef(0)
     const [imageIter, setImageIter] = useState(0)
     const updateIter = useRef()
+   
 
     // values of current color selected ******L*
 
@@ -96,7 +97,7 @@ function ProductPage(props) {
         for (let i = 0; i < cartItems.length; i++) {
 
             let exists = Object.values(cartItems[i]).includes(currentProduct[0]._id);
-
+            inCart.current = false
 
             if (exists == true && cartItems[i].colorIter == colorIndex.current && cartItems[i].sizeIter == sizeIndex.current) {
 
