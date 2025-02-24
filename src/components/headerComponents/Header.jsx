@@ -9,7 +9,8 @@ function Header(props) {
   const {
 
     cartItems,
-    category
+    category,
+    apiItems
 
   } = props;
 
@@ -168,6 +169,17 @@ function Header(props) {
     setDropdownVisible(false);
   };
 
+  function ShopLinks () {
+    const saleData = apiItems.filter((product) => product.sale_percent > 0)
+    if (window.innerWidth > 800 && saleData) {
+      return (
+        <Link to={`/shop/all`} state={{ category: { name: "On Sale", _id: "sale" } }}>
+        <p className="saleLink">Sale</p>
+      </Link>
+       
+      )
+    }
+  }
 
 
   return (
@@ -175,8 +187,9 @@ function Header(props) {
       <header className="headerReg">
       <Link className="heading" to="/">
         <h1 className="headerTitle">My Store</h1>
-      </Link>
         
+      </Link>
+      <ShopLinks/>
         <form onSubmit={handleSearchSubmit}>
           <div className="searchContainer">
             <input id="productSearch" className="searchInput" required type="text" name="search" placeholder="search our products">

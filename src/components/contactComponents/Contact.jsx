@@ -9,6 +9,7 @@ function Contact(props) {
 
     cartItems,
     category,
+    apiItems
 
   } = props;
 
@@ -89,7 +90,7 @@ function Contact(props) {
 
   return (
     <div>
-      {window.innerWidth > 600 ? <Header cartItems={cartItems}
+      {window.innerWidth > 600 ? <Header cartItems={cartItems} apiItems={apiItems}
         category={category} /> : <HeaderMobile cartItems={cartItems}
           category={category} />}
       <div className='contactContainer'>

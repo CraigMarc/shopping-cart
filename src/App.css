@@ -88,6 +88,16 @@ h1 {
 
 }
 
+.saleLink {
+  color: red;
+  font-weight: 600;
+}
+
+.saleLink:hover {
+  color: grey;
+  font-weight: 600;
+}
+
 .headerTitle {
   margin: 0;
 }

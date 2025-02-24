@@ -174,6 +174,7 @@ const Router = (props) => {
         < Contact
           cartItems={cartItems}
           category={category}
+          apiItems={apiItems}
         />,
       errorElement: <ErrorPage />,
     },
@@ -184,6 +185,7 @@ const Router = (props) => {
         < OrderStatus
           cartItems={cartItems}
           category={category}
+          apiItems={apiItems}
         />,
       errorElement: <ErrorPage />,
     },
