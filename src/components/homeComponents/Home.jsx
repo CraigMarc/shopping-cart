@@ -74,6 +74,7 @@ const Home = (props) => {
   //if (loading) return <p>Loading...</p>;
 
   if (loading) return (
+    
     <div className="loadingImage">
        <RingLoader
         color='black'
@@ -84,6 +85,7 @@ const Home = (props) => {
         data-testid="loader"
       />
     </div>
+    
   )
 
 

@@ -161,7 +161,8 @@ header>h1 {
   transition: all linear 0.3s;
 }
 
-.liDropdown:hover, .liDropdown:active {
+.liDropdown:hover,
+.liDropdown:active {
   background: gray;
   cursor: pointer;
   color: #fff;
@@ -341,17 +342,17 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .ppform {
- text-align: left;
- margin-left: 30px;
- padding-top: 30px;
- 
+  text-align: left;
+  margin-left: 30px;
+  padding-top: 30px;
+
 
 }
 
 .ppLabel {
   font-weight: bold;
-  
- 
+
+
 }
 
 .ppQuantity {
@@ -359,15 +360,15 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .ppImg {
- max-width: 700px;
- max-height: 700px;
- width: 80%;
- height: auto;
+  max-width: 700px;
+  max-height: 700px;
+  width: 80%;
+  height: auto;
 }
 
 .ppSubmit {
 
-margin-top: 20px;
+  margin-top: 20px;
 }
 
 .ppInput {
@@ -437,8 +438,8 @@ margin-top: 20px;
 }
 
 .cartImageContainer {
- display: flex;
- align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 
@@ -496,7 +497,7 @@ margin-top: 20px;
 
 .deleteButtonContainer {
   padding-top: 20px;
- 
+
 }
 
 .delete {
@@ -615,7 +616,7 @@ margin-top: 20px;
   flex-wrap: wrap;
   gap: 20px;
   justify-content: flex-start;
-  
+
 }
 
 
@@ -641,7 +642,7 @@ margin-top: 20px;
 .regPrice {
   text-decoration: line-through;
   font-size: 18px;
- 
+
 }
 
 
@@ -763,6 +764,8 @@ select {
 
 .loadingImage {
   display: flex;
- margin-top: 100px;
-justify-content: center;
+  justify-content: center;
+  height: 100vh;
+  align-items: center;
 }
+
