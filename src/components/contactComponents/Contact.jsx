@@ -26,6 +26,7 @@ function Contact(props) {
     await fetch(`https://shoppingapi.fly.dev/users/contact`, {
       method: 'Post',
       body: JSON.stringify({
+        email: data.email,
         subject: data.subject,
         message: data.message,
 
@@ -64,13 +65,17 @@ function Contact(props) {
         <div className='contactContainer'>
           <h3>Contact Us</h3>
           <form onSubmit={handleSubmit}>
+          <label>
+              <p>email</p>
+              <input required className="titleInput" type="email" name="email" />
+            </label>
             <label>
               <p>Subject</p>
-              <input className="titleInput" type="text" name="subject" />
+              <input required className="titleInput" type="text" name="subject" />
             </label>
             <label>
               <p>Message</p>
-              <textarea className='contactText' type="text" name="message" />
+              <textarea required className='contactText' type="text" name="message" />
             </label>
             <div>
               <button type="submit">Submit</button>
