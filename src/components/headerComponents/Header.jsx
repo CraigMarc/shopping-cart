@@ -171,7 +171,8 @@ function Header(props) {
 
   function ShopLinks () {
     const saleData = apiItems.filter((product) => product.sale_percent > 0)
-    if (window.innerWidth > 800 && saleData) {
+    
+    if (window.innerWidth > 800 && saleData.length != 0) {
       return (
         <Link to={`/shop/all`} state={{ category: { name: "On Sale", _id: "sale" } }}>
         <p className="saleLink">Sale</p>
