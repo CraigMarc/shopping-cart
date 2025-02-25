@@ -653,6 +653,9 @@ input[type=number]::-webkit-inner-spin-button {
 /* footer*/
 
 footer {
+  display: flex;
+  height:100vh;
+  min-height:100vh;
   background-color: lightgray;
   padding-top: 10px;
   padding-left: 20px;
