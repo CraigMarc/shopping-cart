@@ -38,7 +38,8 @@ function ProductPage(props) {
     const sizeIndex = useRef(0)
     const [imageIter, setImageIter] = useState(0)
     const updateIter = useRef()
-   
+
+  
 
     // values of current color selected ******L*
 
@@ -125,6 +126,8 @@ function ProductPage(props) {
         let index = currentProduct[0].colorArray.findIndex(
             (temp) => temp['color'] == e.target.value)
         colorIndex.current = index
+        sizeIndex.current = 0
+        setSizeDrop(currentProduct[0].colorArray[colorIndex.current].sizeArray[0].size)
         setColorDrop(e.target.value)
     }
 
