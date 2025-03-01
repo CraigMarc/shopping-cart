@@ -66,7 +66,7 @@ function Contact(props) {
           <h3>Contact Us</h3>
           <form onSubmit={handleSubmit}>
           <label>
-              <p>email</p>
+              <p>Email</p>
               <input required className="titleInput" type="email" name="email" />
             </label>
             <label>
