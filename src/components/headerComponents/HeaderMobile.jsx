@@ -126,6 +126,7 @@ function HeaderMobile(props) {
   }
 
   const handleAnchorClick = () => {
+    setSubVisible(false)
     setDropdownVisible(false);
   }
 
